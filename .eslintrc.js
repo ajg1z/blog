@@ -1,0 +1,42 @@
+module.exports = {
+    env: {
+        browser: true,
+        es2021: true,
+    },
+    extends: ['plugin:react/recommended', 'airbnb'],
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+    },
+    plugins: ['react', '@typescript-eslint'],
+    rules: {
+        'react/function-component-definition': 'off',
+        'no-unused-vars': 'warn',
+        'react/jsx-indent': [2, 4],
+        'import/no-unresolved': 'off',
+        'no-shadow': 'off',
+        'no-undef': 'off',
+        indent: [2, 4],
+        'react/require-default-props': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react/jsx-filename-extension': [
+            1,
+            { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+        ],
+        'react/jsx-indent-props': 'off',
+        'react/jsx-props-no-spreading': 'warn',
+        'jsx-quotes': 'off',
+        'import/prefer-default-export': 'off',
+        'import/extensions': 'off',
+        'react/jsx-no-bind': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'no-underscore-dangle': 'off',
+        'comma-dangle': 'warn',
+        'operator-linebreak': 'off',
+        'object-curly-newline': 'off',
+    },
+};
