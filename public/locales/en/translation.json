@@ -1,3 +1,7 @@
 {
-	"lan": "English"
+    "lan": "English",
+    "navbar": {
+        "about": "About",
+        "main": "Main"
+    }
 }

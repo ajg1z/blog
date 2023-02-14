@@ -9,6 +9,17 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         use: ['@svgr/webpack'],
     };
 
+    const babelLoader = {
+        test: /\.m?ts|js|jsx|tsx$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: [['@babel/preset-env', { targets: 'defaults' }]],
+            },
+        },
+    };
+
     // images
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff|woff2)$/i,
@@ -46,5 +57,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
-    return [fileLoader, svgLoader, typescriptLoader, cssLoader];
+    return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 }
