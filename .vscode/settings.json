@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["languagedetector"]
+    "cSpell.words": ["languagedetector"],
+    "prettier.tabWidth": 4
 }

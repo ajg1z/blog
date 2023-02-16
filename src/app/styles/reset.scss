@@ -10,4 +10,14 @@ textarea,
 select {
     margin: 0;
     font-size: inherit;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
