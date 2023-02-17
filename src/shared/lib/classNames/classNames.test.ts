@@ -1,4 +1,4 @@
-import { classNames } from './classNames';
+import { classNames } from 'shared/classNames/classNames';
 
 describe('classNames', () => {
     test('main class', () => {
@@ -14,11 +14,15 @@ describe('classNames', () => {
     });
 
     test('mods', () => {
-        expect(classNames('class', { select: true, isIgnore: true })).toBe('class select isIgnore');
+        expect(classNames('class', { select: true, isIgnore: true })).toBe(
+            'class select isIgnore',
+        );
     });
 
     test('mods check false', () => {
-        expect(classNames('class', { select: false, isIgnore: true })).toBe('class isIgnore');
+        expect(classNames('class', { select: false, isIgnore: true })).toBe(
+            'class isIgnore',
+        );
     });
 
     test('mods check undefined', () => {

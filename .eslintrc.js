@@ -33,7 +33,10 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
         'object-curly-newline': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
+        'i18next/no-literal-string': [
+            'error',
+            { markupOnly: true, ignoreAttribute: ['data-testid'] },
+        ],
         'max-len': [
             'error',
             {
@@ -43,4 +46,8 @@ module.exports = {
         ],
         'jsx-quotes': ['error', 'prefer-single'],
     },
+    globals: {
+        __IS_DEV__: true,
+    },
+    overrides: [{}],
 };

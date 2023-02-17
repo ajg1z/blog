@@ -1,5 +1,5 @@
 import { useState, FC } from 'react';
-import { classNames } from 'shared/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
@@ -12,17 +12,20 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
     const [collapsed, setCollapsed] = useState(false);
 
-    function onToggle() {
+    async function onToggle() {
         setCollapsed((state) => !state);
     }
 
     return (
         <div
+            aria-label='sidebar'
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className,
             ])}
         >
-            {/* <Button onClick={onToggle}>toggle</Button> */}
+            <Button data-testid='toggle-btn' onClick={onToggle}>
+                toggle
+            </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher />
