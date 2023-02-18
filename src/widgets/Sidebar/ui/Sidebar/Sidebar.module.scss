@@ -6,10 +6,6 @@
     transition: width 0.3s;
 }
 
-.collapsed {
-    width: var(--sidebar-width-collapsed);
-}
-
 .switchers {
     position: absolute;
     bottom: 20px;
@@ -17,4 +13,54 @@
     justify-content: center;
     width: 100%;
     gap: 10px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+.icon {
+    fill: var(--primary-color);
+}
+
+.items {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: var(--font-size-l);
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switchers {
+        flex-direction: column;
+    }
+
+    .items {
+        align-items: center;
+
+        span {
+            opacity: 0;
+            width: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+    }
+}
+
+.collapseBtn {
+    z-index: 2;
+    position: absolute;
+    right: -32px;
+    bottom: 40px;
 }

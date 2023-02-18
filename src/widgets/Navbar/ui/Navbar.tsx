@@ -14,10 +14,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
-            <div className={cls.links}>
-                <AppLink to={RoutePath.main}>{t('navbar.main')}</AppLink>
-                <AppLink to={RoutePath.about}>{t('navbar.about')}</AppLink>
-            </div>
+            {/* <div className={cls.links}></div> */}
         </div>
     );
 };

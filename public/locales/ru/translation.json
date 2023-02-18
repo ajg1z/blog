@@ -9,5 +9,6 @@
     "reload_page": "Обновить страницу",
     "button": {
         "toggle": "Переключить"
-    }
+    },
+    "short_lan": "Ru"
 }
