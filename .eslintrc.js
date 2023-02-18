@@ -4,10 +4,17 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
+    extends: [
+        'plugin:react/recommended',
+        'airbnb',
+        'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        ecmaFeatures: { jsx: true },
+        ecmaFeatures: {
+            jsx: true,
+        },
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
@@ -24,24 +31,34 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': [
             1,
-            { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+            {
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            },
         ],
         'react/jsx-indent-props': ['error', 4],
         'import/prefer-default-export': 'off',
         'import/extensions': 'off',
         'react/jsx-no-bind': 'off',
         'import/no-extraneous-dependencies': 'off',
-        'no-underscore-dangle': ['error', { allow: ['__IS_DEV__'] }],
+        'no-underscore-dangle': [
+            'error',
+            {
+                allow: ['__IS_DEV__'],
+            },
+        ],
         'object-curly-newline': 'off',
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['data-testid'] },
+            {
+                markupOnly: true,
+                ignoreAttribute: ['data-testid', 'aria-label', 'to'],
+            },
         ],
         'max-len': [
             'error',
             {
                 ignoreComments: true,
-                code: 90,
+                code: 105,
             },
         ],
         'jsx-quotes': ['error', 'prefer-single'],
@@ -49,5 +66,4 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
     },
-    overrides: [{}],
 };

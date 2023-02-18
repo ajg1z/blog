@@ -10,11 +10,9 @@ i18n.use(Backend)
     .init({
         fallbackLng: 'ru',
         debug: __IS_DEV__,
+        defaultNS: 'translation',
         interpolation: {
             escapeValue: false,
-        },
-        backend: {
-            loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
     });
 
