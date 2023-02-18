@@ -62,6 +62,7 @@ module.exports = {
             },
         ],
         'jsx-quotes': ['error', 'prefer-single'],
+        'linebreak-style': 'off',
     },
     globals: {
         __IS_DEV__: true,
