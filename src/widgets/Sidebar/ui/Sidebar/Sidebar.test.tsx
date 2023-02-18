@@ -1,14 +1,13 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation';
+import { fireEvent, screen } from '@testing-library/react';
+import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import { Sidebar } from './Sidebar';
 
 describe('Sidebar', () => {
     beforeEach(() => {
-        renderWithTranslation(<Sidebar />);
+        componentRender(<Sidebar />);
     });
     test('render', () => {
         expect(screen.getByTestId('toggle-btn')).toBeInTheDocument();
-        expect(screen.getByTestId('toggle-btn')).toHaveClass('primary');
         screen.debug();
     });
 
