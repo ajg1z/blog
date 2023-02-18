@@ -6,5 +6,8 @@
     },
     "not_found_page": "Page not found",
     "page_error": "Something went wrong...",
-    "reload_page": "Reload page"
+    "reload_page": "Reload page",
+    "button": {
+        "toggle": "Toggle"
+    }
 }
