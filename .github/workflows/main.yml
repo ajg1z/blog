@@ -1,0 +1,7 @@
+name: linting, testing, building
+on: [push]
+jobs:
+    check-bats-version:
+        runs-on: windows-latest
+        steps:
+            - run: echo 'pushing process!!!'
