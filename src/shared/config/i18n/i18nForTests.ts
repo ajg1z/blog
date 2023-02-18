@@ -18,6 +18,9 @@ i18nForTests
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
+        react: {
+            useSuspense: false,
+        },
     });
 
 export default i18nForTests;

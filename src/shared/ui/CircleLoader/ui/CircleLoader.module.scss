@@ -1,3 +1,7 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable declaration-colon-newline-after */
 .CircleLoader {
     font-size: 10px;
     margin: 50px auto;
@@ -11,21 +15,9 @@
         var(--inverted-bg-color) 10%,
         rgba(255, 255, 255, 0) 42%
     );
-    background: -o-linear-gradient(
-        left,
-        var(--inverted-bg-color) 10%,
-        rgba(255, 255, 255, 0) 42%
-    );
-    background: -ms-linear-gradient(
-        left,
-        var(--inverted-bg-color) 10%,
-        rgba(255, 255, 255, 0) 42%
-    );
-    background: linear-gradient(
-        to right,
-        var(--inverted-bg-color) 10%,
-        rgba(255, 255, 255, 0) 42%
-    );
+    background: -o-linear-gradient(left, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
     position: relative;
     -webkit-animation: load3 1.4s infinite linear;
     animation: load3 1.4s infinite linear;
@@ -38,7 +30,7 @@
     width: 50%;
     height: 50%;
     background: var(--inverted-bg-color);
-    border-radius: 100% 0 0 0;
+    border-radius: 100% 0 0;
     position: absolute;
     top: 0;
     left: 0;

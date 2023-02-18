@@ -1,4 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation';
 import { Sidebar } from './Sidebar';
 
@@ -17,5 +17,6 @@ describe('Sidebar', () => {
         expect(screen.getByLabelText('sidebar')).toHaveClass('collapsed');
         fireEvent.click(screen.getByTestId('toggle-btn'));
         expect(screen.getByLabelText('sidebar')).not.toHaveClass('collapsed');
+        screen.debug();
     });
 });
