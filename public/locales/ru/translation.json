@@ -10,5 +10,6 @@
     "button": {
         "toggle": "Переключить"
     },
-    "short_lan": "Ru"
+    "short_lan": "Ru",
+    "sign": "Войти"
 }

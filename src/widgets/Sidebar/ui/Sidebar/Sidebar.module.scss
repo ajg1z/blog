@@ -35,8 +35,12 @@
     flex-direction: column;
     gap: 15px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 23px;
     font-size: var(--font-size-l);
+
+    span {
+        transition: all 0.3s;
+    }
 }
 
 .collapsed {
@@ -47,13 +51,13 @@
     }
 
     .items {
-        align-items: center;
+        /* align-items: center; */
 
         span {
             opacity: 0;
+            scale: 0;
             width: 0;
             visibility: hidden;
-            transition: all 0.2s;
         }
     }
 }

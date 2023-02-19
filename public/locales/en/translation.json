@@ -10,5 +10,6 @@
     "button": {
         "toggle": "Toggle"
     },
-    "short_lan": "En"
+    "short_lan": "En",
+    "sign": "Sign in"
 }

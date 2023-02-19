@@ -22,11 +22,16 @@
     height: var(--font-line-xl);
 }
 
-.clear {
+.clear,
+.clearInverted {
     padding: 0;
     background: none;
     outline: none;
     border: none;
+}
+
+.clearInverted {
+    color: var(--inverted-primary-color);
 }
 
 .outline {

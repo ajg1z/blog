@@ -1,0 +1,64 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+}
+
+.content {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    z-index: 2;
+}
+
+.overlayEnter {
+    opacity: 0;
+}
+
+.overlayEnterActive {
+    transition: opacity 200ms;
+    opacity: 1;
+}
+
+.contentEnter {
+    opacity: 0;
+    transform: scale(0.1);
+}
+
+.contentEnterActive {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms, transform 200ms;
+}
+
+.overlayExit {
+    opacity: 1;
+}
+
+.overlayExitActive {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+.contentExit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.contentExitActive {
+    opacity: 0;
+    transform: scale(0.01);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
