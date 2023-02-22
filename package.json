@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "start:dev:server": "node ./json-server/index.js",
         "test": "jest",
         "start": "webpack serve --env port=3000",
         "build:prod": "npx webpack --env mode=production",
