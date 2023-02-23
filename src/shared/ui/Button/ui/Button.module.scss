@@ -1,6 +1,10 @@
 .Button {
     cursor: pointer;
     padding: 6px 15px;
+
+    &:disabled {
+        opacity: 0.6;
+    }
 }
 
 .square {

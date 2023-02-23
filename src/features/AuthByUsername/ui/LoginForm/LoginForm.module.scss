@@ -1,0 +1,21 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sign {
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.field {
+    span {
+        flex-basis: 70px;
+        display: block;
+    }
+
+    input {
+        flex: 1;
+    }
+}

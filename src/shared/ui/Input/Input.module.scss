@@ -1,0 +1,28 @@
+.Input {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 2px;
+
+    &:focus {
+        outline: 1px solid var(--primary-color);
+        box-shadow: 0 0 10px var(--primary-color);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+    }
+}
+
+.background {
+    background-color: var(--bg-color);
+}
+
+.backgroundInverted {
+    background-color: var(--inverted-bg-color);
+}
+
+.outline {
+    border: 1px solid var(--primary-color);
+}

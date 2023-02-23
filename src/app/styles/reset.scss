@@ -25,3 +25,10 @@ a {
 svg {
     font-size: inherit;
 }
+
+input {
+    &::placeholder {
+        color: inherit;
+        font-size: inherit;
+    }
+}

@@ -11,5 +11,7 @@
         "toggle": "Toggle"
     },
     "short_lan": "En",
-    "sign": "Sign in"
+    "sign": "Sign in",
+    "login": "Username",
+    "password": "Password"
 }
