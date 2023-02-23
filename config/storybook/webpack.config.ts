@@ -1,4 +1,4 @@
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
@@ -28,6 +28,12 @@ export default ({ config }: { config: Configuration }) => {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
+
+    config.plugins.push(
+        new DefinePlugin({
+            __IS_DEV__: true,
+        }),
+    );
 
     return config;
 };

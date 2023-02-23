@@ -13,5 +13,11 @@
     "short_lan": "Ru",
     "sign": "Войти",
     "login": "Логин",
-    "password": "Пароль"
+    "password": "Пароль",
+    "login_error": {
+        "bag_request": "Логин или пароль не правильный",
+        "internal_server": "Internal Server Error"
+    },
+    "form_auth": "Форма авторизации",
+    "logout": "Выйти"
 }

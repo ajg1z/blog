@@ -6,7 +6,6 @@
 
 .sign {
     margin-left: auto;
-    margin-top: 10px;
 }
 
 .field {
@@ -18,4 +17,12 @@
     input {
         flex: 1;
     }
+}
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
 }

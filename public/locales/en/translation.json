@@ -13,5 +13,11 @@
     "short_lan": "En",
     "sign": "Sign in",
     "login": "Username",
-    "password": "Password"
+    "password": "Password",
+    "login_error": {
+        "bag_request": "Username or password is wrong",
+        "internal_server": "Internal Server Error"
+    },
+    "form_auth": "Authorization form",
+    "logout": "Logout"
 }
