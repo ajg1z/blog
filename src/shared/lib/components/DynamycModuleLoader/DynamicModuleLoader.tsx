@@ -1,8 +1,8 @@
-import { useStore } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { PropsWithChildren, useEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import { useStore } from 'shared/hooks/useStore/useStore';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer;

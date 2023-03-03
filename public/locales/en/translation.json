@@ -2,7 +2,8 @@
     "lan": "English",
     "navbar": {
         "about": "About",
-        "main": "Main"
+        "main": "Main",
+        "profile": "Profile"
     },
     "not_found_page": "Page not found",
     "page_error": "Something went wrong...",

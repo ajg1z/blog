@@ -61,6 +61,7 @@ module.exports = {
                 code: 105,
             },
         ],
+        'react/prop-types': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
         'linebreak-style': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',

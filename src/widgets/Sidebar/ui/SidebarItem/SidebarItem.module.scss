@@ -1,0 +1,13 @@
+.item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+.icon {
+    fill: var(--primary-color);
+}

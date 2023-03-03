@@ -15,20 +15,6 @@
     gap: 10px;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    span {
-        white-space: nowrap;
-    }
-}
-
-.icon {
-    fill: var(--primary-color);
-}
-
 .items {
     display: flex;
     align-items: start;
@@ -51,8 +37,6 @@
     }
 
     .items {
-        /* align-items: center; */
-
         span {
             opacity: 0;
             scale: 0;

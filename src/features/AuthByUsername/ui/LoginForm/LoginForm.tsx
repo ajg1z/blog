@@ -6,13 +6,14 @@ import { Button } from 'shared/ui/Button';
 import { Input, InputTheme } from 'shared/ui/Input/Input';
 import { Field } from 'shared/ui/Field/Field';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { LoginError } from 'features/AuthByUsername/model/types/loginSchema';
 import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamycModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUserName';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
@@ -22,6 +23,7 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 
 interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -29,7 +31,7 @@ const initialReducers: ReducersList = {
 };
 
 const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
-    const { className } = props;
+    const { className, onSuccess } = props;
     const { t } = useTranslation();
 
     const password = useSelector(getLoginPassword);
@@ -37,7 +39,7 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
     const isLoading = useSelector(getLoginLoading);
     const error = useSelector(getLoginError);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onChangeUsername = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
@@ -64,14 +66,15 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
         [dispatch],
     );
 
-    const onLoginClick = useCallback(() => {
-        dispatch(
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(
             loginByUsername({
                 password,
                 username,
             }),
         );
-    }, [username, password, dispatch]);
+        if (result.meta.requestStatus === 'fulfilled') onSuccess();
+    }, [username, password, dispatch, onSuccess]);
 
     useEffect(() => {
         dispatch(loginActions.setEmptyState());

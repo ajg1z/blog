@@ -1,4 +1,4 @@
-import { PropsWithChildren, Suspense } from 'react';
+import { memo, PropsWithChildren, Suspense } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { CircleLoader } from 'shared/ui/CircleLoader';
 import { Modal } from 'shared/ui/Modal';
@@ -10,7 +10,7 @@ interface LoginModalProps {
     isOpen?: boolean;
 }
 
-export function LoginModal(props: PropsWithChildren<LoginModalProps>) {
+export const LoginModal = memo((props: PropsWithChildren<LoginModalProps>) => {
     const { className, isOpen, onClose } = props;
 
     return (
@@ -21,8 +21,8 @@ export function LoginModal(props: PropsWithChildren<LoginModalProps>) {
             width={400}
         >
             <Suspense fallback={<CircleLoader />}>
-                <LoginFormAsync />
+                <LoginFormAsync onSuccess={onClose} />
             </Suspense>
         </Modal>
     );
-}
+});
