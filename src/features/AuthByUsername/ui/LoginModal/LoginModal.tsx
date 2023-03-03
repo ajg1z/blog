@@ -1,7 +1,8 @@
-import type { PropsWithChildren } from 'react';
+import { PropsWithChildren, Suspense } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { CircleLoader } from 'shared/ui/CircleLoader';
 import { Modal } from 'shared/ui/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface LoginModalProps {
     className?: string;
@@ -19,7 +20,9 @@ export function LoginModal(props: PropsWithChildren<LoginModalProps>) {
             className={classNames('', {}, [className])}
             width={400}
         >
-            <LoginForm />
+            <Suspense fallback={<CircleLoader />}>
+                <LoginFormAsync />
+            </Suspense>
         </Modal>
     );
 }

@@ -51,7 +51,7 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'aria-label', 'to'],
+                ignoreAttribute: ['data-testid', 'aria-label', 'to', 'name'],
             },
         ],
         'max-len': [
