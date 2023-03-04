@@ -21,14 +21,14 @@ export const DynamicModuleLoader = (props: PropsWithChildren<DynamicModuleLoader
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
-            store.manager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.manager.add(name as StateSchemaKey, reducer);
             dispatch({ type: `${name} reducer added to store` });
         });
         return () => {
             if (isRemoveAfterUnmount) {
-                Object.entries(reducers).forEach(([name]: ReducerListEntry) => {
-                    store.manager.remove(name);
+                Object.entries(reducers).forEach(([name]) => {
+                    store.manager.remove(name as StateSchemaKey);
                     dispatch({ type: `${name} reducer removed from store` });
                 });
             }

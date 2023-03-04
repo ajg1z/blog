@@ -13,11 +13,11 @@ const useTheme = (): UseThemeResult => {
         const value = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, value);
         document.body.className = value;
-        setTheme(value);
+        setTheme?.(value);
     }
 
     return {
-        theme,
+        theme: theme || Theme.LIGHT,
         toggleTheme,
     };
 };

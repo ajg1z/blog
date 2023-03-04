@@ -1,5 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { DeepPartial } from 'redux';
 import { initialState } from '../../slice/loginSlice';
 import { getLoginState } from './getLoginState';
 

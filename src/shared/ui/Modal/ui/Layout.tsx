@@ -9,7 +9,7 @@ interface LayoutProps {
     height?: number;
     onClose: () => void;
     className?: string;
-    isOpen?: boolean;
+    isOpen: boolean;
 }
 
 const overlayAnimation = {

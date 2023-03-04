@@ -3,19 +3,21 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { checkAuth, getUserLoading } from 'entities/User';
 import { TokenLocalStorageKey } from 'shared/const/localStorage';
 import { PageLoader } from 'widgets/PageLoader';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 
 function App() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const userLoading = useSelector(getUserLoading);
 
     useEffect(() => {
         const token = localStorage.getItem(TokenLocalStorageKey);
-        if (token) dispatch(checkAuth(token));
-    }, [dispatch]);
+        if (token) dispatch(checkAuth());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className={classNames('app')}>

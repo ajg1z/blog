@@ -4,8 +4,8 @@ import { useMount } from '../lib/useMount';
 import { Layout } from './Layout';
 
 interface ModalProps {
-    isOpen?: boolean;
-    onClose?: () => void;
+    isOpen: boolean;
+    onClose: () => void;
     width?: number;
     height?: number;
     className?: string;

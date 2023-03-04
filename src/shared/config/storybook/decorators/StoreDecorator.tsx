@@ -3,7 +3,7 @@
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { Story } from '@storybook/react';
 import 'app/styles/index.scss';
-import { DeepPartial, ReducersMapObject } from 'redux';
+import { ReducersMapObject } from 'redux';
 import { loginReducer } from 'features/AuthByUsername';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {

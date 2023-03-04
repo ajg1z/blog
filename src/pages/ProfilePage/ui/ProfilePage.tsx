@@ -5,7 +5,7 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamycModuleLoader/DynamicModuleLoader';
-import { profileReducer } from 'entities/Profile';
+import { ProfileCard, profileReducer } from 'entities/Profile';
 
 interface ProfilePageProps {}
 
@@ -18,7 +18,7 @@ const ProfilePage = memo((props: PropsWithChildren<ProfilePageProps>) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
-            <div>{t('title')}</div>
+            <ProfileCard />
         </DynamicModuleLoader>
     );
 });

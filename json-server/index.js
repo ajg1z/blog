@@ -97,7 +97,9 @@ server.use((req, res, next) => {
         return res.status(403).json({ message: 'AUTH ERROR' });
     }
 
-    const isVerify = jwt.verify(req.headers.authorization, SecretJwtKey);
+    const token = req.headers.authorization?.split(' ')[1];
+
+    const isVerify = jwt.verify(token, SecretJwtKey);
 
     if (!isVerify) {
         return res.status(403).json({ message: 'AUTH ERROR' });

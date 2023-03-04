@@ -1,22 +1,25 @@
 import { TokenLocalStorageKey } from 'shared/const/localStorage';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { ThunkConfig } from 'app/providers/StoreProvider';
+import { AuthResponse } from 'features/AuthByUsername';
 import { User } from '../../types/userSchema';
 
-export const checkAuth = createAsyncThunk<User, string>(
+export const checkAuth = createAsyncThunk<User, undefined, ThunkConfig<number>>(
     'user/checkAuth',
-    async (token, thunkApi) => {
+    async (_, thunkApi) => {
         try {
-            const response = await axios.get('http://localhost:8000/check-login', {
-                headers: { authorization: `Bearer ${token.replaceAll('"', '')}` },
-            });
+            const { extra } = thunkApi;
+
+            const response = await extra.privateApi.get<AuthResponse>('/check-login');
 
             if (!response.data || !response.data.user || !response.data.token) throw new Error();
+
             localStorage.setItem(TokenLocalStorageKey, response.data.token);
+
             return response.data.user;
         } catch (e) {
             console.log(e);
-            return thunkApi.rejectWithValue(e);
+            return thunkApi.rejectWithValue(400);
         }
     },
 );

@@ -52,7 +52,7 @@ export const Square = Template.bind({});
 Square.args = {
     theme: ButtonTheme.BACKGROUND_INVERTED,
     children: 'Text',
-    sqare: true,
+    square: true,
 };
 
 export const SizeM = Template.bind({});

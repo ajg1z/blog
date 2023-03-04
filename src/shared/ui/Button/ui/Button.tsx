@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, ClassNamesMods } from 'shared/lib/classNames/classNames';
 import { FC, ButtonHTMLAttributes, memo } from 'react';
 import cls from './Button.module.scss';
 
@@ -34,7 +34,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
         ...otherProps
     } = props;
 
-    const mods: Record<string, boolean> = {
+    const mods: ClassNamesMods = {
         [cls.square]: square,
     };
 

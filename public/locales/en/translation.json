@@ -9,7 +9,8 @@
     "page_error": "Something went wrong...",
     "reload_page": "Reload page",
     "button": {
-        "toggle": "Toggle"
+        "toggle": "Toggle",
+        "edit": "Edit"
     },
     "short_lan": "En",
     "sign": "Sign in",

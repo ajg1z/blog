@@ -1,3 +1,6 @@
 {
-    "title": "Profile Page"
+    "title": "Profile",
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "age": "Age"
 }

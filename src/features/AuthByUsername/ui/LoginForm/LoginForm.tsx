@@ -74,11 +74,12 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
             }),
         );
         if (result.meta.requestStatus === 'fulfilled') onSuccess();
-    }, [username, password, dispatch, onSuccess]);
+    }, [dispatch, onSuccess, password, username]);
 
     useEffect(() => {
         dispatch(loginActions.setEmptyState());
-    }, [dispatch]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>

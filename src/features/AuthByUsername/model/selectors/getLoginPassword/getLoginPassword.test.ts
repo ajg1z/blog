@@ -1,17 +1,22 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { DeepPartial } from 'redux';
+import { LoginError } from '../../types/loginSchema';
 import { getLoginPassword } from './getLoginPassword';
 
 describe('getLoginPassword', () => {
     test('should return value', () => {
         const state: DeepPartial<StateSchema> = {
-            login: { password: '@@@@@' },
+            login: {
+                password: '@@@@@',
+                error: LoginError.BAD_REQUEST,
+                isLoading: false,
+                username: '',
+            },
         };
         expect(getLoginPassword(state as StateSchema)).toEqual('@@@@@');
     });
 
     test('should be undefined', () => {
-        const state: DeepPartial<StateSchema> = {
+        const state = {
             login: {},
         };
         expect(getLoginPassword(state as StateSchema)).toEqual(undefined);
