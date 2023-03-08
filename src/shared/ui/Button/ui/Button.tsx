@@ -2,20 +2,16 @@ import { classNames, ClassNamesMods } from 'shared/lib/classNames/classNames';
 import { FC, ButtonHTMLAttributes, memo } from 'react';
 import cls from './Button.module.scss';
 
-export enum ButtonTheme {
-    PRIMARY = 'primary',
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clearInverted',
-    OUTLINE = 'outline',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-}
+export type ButtonTheme =
+    | 'primary'
+    | 'clear'
+    | 'clearInverted'
+    | 'outline'
+    | 'outlineRed'
+    | 'background'
+    | 'backgroundInverted';
 
-export enum ButtonSize {
-    M = 'sizeM',
-    L = 'sizeL',
-    XL = 'sizeXl',
-}
+export type ButtonSize = 'M' | 'L' | 'XL';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -25,14 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<ButtonProps> = memo((props) => {
-    const {
-        className,
-        children,
-        theme = ButtonTheme.PRIMARY,
-        square,
-        size = ButtonSize.M,
-        ...otherProps
-    } = props;
+    const { className, children, theme = 'primary', square, size = 'M', ...otherProps } = props;
 
     const mods: ClassNamesMods = {
         [cls.square]: square,

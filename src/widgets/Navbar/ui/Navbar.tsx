@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenLocalStorageKey } from 'shared/const/localStorage';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Button } from 'shared/ui/Button';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -38,7 +38,7 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
     if (user) {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>
-                <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
+                <Button theme='clearInverted' onClick={onLogout}>
                     {t('logout')}
                 </Button>
             </div>
@@ -47,7 +47,7 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
 
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
-            <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={openAuthModal}>
+            <Button theme='clearInverted' onClick={openAuthModal}>
                 {t('sign')}
             </Button>
             {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />}

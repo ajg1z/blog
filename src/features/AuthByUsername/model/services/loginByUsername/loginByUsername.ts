@@ -12,7 +12,7 @@ interface LoginByUsernameProps {
 export const loginByUsername = createAsyncThunk<
     AuthResponse,
     LoginByUsernameProps,
-    ThunkConfig<number>
+    ThunkConfig<string>
 >('login/loginByUsername', async (authData, thunkApi) => {
     try {
         const { extra } = thunkApi;
@@ -28,6 +28,6 @@ export const loginByUsername = createAsyncThunk<
         return response.data;
     } catch (e) {
         console.log(e);
-        return thunkApi.rejectWithValue(400);
+        return thunkApi.rejectWithValue('error');
     }
 });

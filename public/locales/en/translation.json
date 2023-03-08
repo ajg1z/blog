@@ -10,7 +10,9 @@
     "reload_page": "Reload page",
     "button": {
         "toggle": "Toggle",
-        "edit": "Edit"
+        "edit": "Edit",
+        "cancel": "Сancel",
+        "save": "Save"
     },
     "short_lan": "En",
     "sign": "Sign in",
@@ -21,5 +23,11 @@
         "internal_server": "Internal Server Error"
     },
     "form_auth": "Authorization form",
-    "logout": "Logout"
+    "logout": "Logout",
+    "currency": {
+        "label_select": "Select the currency"
+    },
+    "country": {
+        "label_select": "Select the country"
+    }
 }

@@ -51,7 +51,15 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'aria-label', 'to', 'name'],
+                ignoreAttribute: [
+                    'data-testid',
+                    'aria-label',
+                    'to',
+                    'name',
+                    'theme',
+                    'size',
+                    'alt',
+                ],
             },
         ],
         'max-len': [
@@ -70,6 +78,7 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         'no-param-reassign': 'off',
         'no-debugger': 'warn',
+        'implicit-arrow-linebreak': 'off',
     },
     globals: {
         __IS_DEV__: true,

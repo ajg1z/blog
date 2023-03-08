@@ -1,5 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { LoginError } from '../../types/loginSchema';
 import { getLoginUsername } from './getLoginUsername';
 
 describe('getLoginUsername', () => {
@@ -7,9 +6,6 @@ describe('getLoginUsername', () => {
         const state: DeepPartial<StateSchema> = {
             login: {
                 username: 'volf',
-                error: LoginError.BAD_REQUEST,
-                isLoading: false,
-                password: '',
             },
         };
 

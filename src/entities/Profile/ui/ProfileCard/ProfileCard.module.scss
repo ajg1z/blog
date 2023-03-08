@@ -1,6 +1,10 @@
 .ProfileCard {
     padding: 10px;
     border: 2px solid var(--inverted-secondary-color);
+
+    &.editable {
+        border-color: var(--inverted-primary-color);
+    }
 }
 
 .header {
@@ -14,4 +18,15 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 100px;
 }

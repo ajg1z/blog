@@ -1,11 +1,9 @@
-import { useTranslation } from 'react-i18next';
-
 import { memo, PropsWithChildren } from 'react';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamycModuleLoader/DynamicModuleLoader';
-import { ProfileCard, profileReducer } from 'entities/Profile';
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
 
 interface ProfilePageProps {}
 
@@ -13,14 +11,10 @@ const initialReducers: ReducersList = {
     profile: profileReducer,
 };
 
-const ProfilePage = memo((props: PropsWithChildren<ProfilePageProps>) => {
-    const { t } = useTranslation('profile');
-
-    return (
-        <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
-            <ProfileCard />
-        </DynamicModuleLoader>
-    );
-});
+const ProfilePage = memo((props: PropsWithChildren<ProfilePageProps>) => (
+    <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
+        <EditableProfileCard />
+    </DynamicModuleLoader>
+));
 
 export default ProfilePage;

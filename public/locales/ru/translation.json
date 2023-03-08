@@ -10,7 +10,9 @@
     "reload_page": "Обновить страницу",
     "button": {
         "toggle": "Переключить",
-        "edit": "Редактировать"
+        "edit": "Редактировать",
+        "cancel": "Отменить",
+        "save": "Сохранить"
     },
     "short_lan": "Ru",
     "sign": "Войти",
@@ -21,5 +23,11 @@
         "internal_server": "Internal Server Error"
     },
     "form_auth": "Форма авторизации",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "currency": {
+        "label_select": "Выберите валюту"
+    },
+    "country": {
+        "label_select": "Выберите страну"
+    }
 }

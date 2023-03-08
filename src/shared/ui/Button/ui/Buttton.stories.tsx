@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button, ButtonSize, ButtonTheme } from './Button';
+import { Button } from './Button';
 
 export default {
     title: 'shared/Button',
@@ -20,61 +20,61 @@ Primary.args = {
 
 export const Clear = Template.bind({});
 Clear.args = {
-    theme: ButtonTheme.CLEAR,
+    theme: 'clear',
     children: 'Text',
 };
 
 export const ClearInverted = Template.bind({});
 ClearInverted.args = {
-    theme: ButtonTheme.CLEAR_INVERTED,
+    theme: 'clearInverted',
     children: 'Text',
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-    theme: ButtonTheme.OUTLINE,
+    theme: 'outline',
     children: 'Text',
 };
 
 export const Background = Template.bind({});
 Background.args = {
-    theme: ButtonTheme.BACKGROUND,
+    theme: 'background',
     children: 'Text',
 };
 
 export const BackgroundInverted = Template.bind({});
 BackgroundInverted.args = {
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     children: 'Text',
 };
 
 export const Square = Template.bind({});
 Square.args = {
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     children: 'Text',
     square: true,
 };
 
 export const SizeM = Template.bind({});
 SizeM.args = {
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     children: '>',
-    size: ButtonSize.M,
+    size: 'M',
     square: true,
 };
 
 export const SizeL = Template.bind({});
 SizeL.args = {
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     children: '>',
-    size: ButtonSize.L,
+    size: 'L',
     square: true,
 };
 
 export const SizeXL = Template.bind({});
 SizeXL.args = {
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     children: '>',
-    size: ButtonSize.XL,
+    size: 'XL',
     square: true,
 };

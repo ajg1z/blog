@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Input, InputTheme } from './Input';
+import { Input } from './Input';
 
 export default {
     title: 'shared/Input',
@@ -15,18 +15,18 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Outline = Template.bind({});
 Outline.args = {
-    theme: InputTheme.OUTLINE,
+    theme: 'outline',
     value: 'Text is input',
 };
 
 export const Background = Template.bind({});
 Background.args = {
-    theme: InputTheme.BACKGROUND,
+    theme: 'background',
     value: 'Text is input',
 };
 
 export const BackgroundInverted = Template.bind({});
 BackgroundInverted.args = {
-    theme: InputTheme.BACKGROUND_INVERTED,
+    theme: 'backgroundInverted',
     value: 'Text is input',
 };

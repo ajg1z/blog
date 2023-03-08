@@ -2,5 +2,9 @@
     "title": "Profile",
     "firstname": "First Name",
     "lastname": "Last Name",
-    "age": "Age"
+    "age": "Age",
+    "city": "City",
+    "avatar": "Avatar",
+    "username": "Username",
+    "error_title": "An error has occurred"
 }

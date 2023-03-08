@@ -1,5 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { LoginError } from '../../types/loginSchema';
 import { getLoginPassword } from './getLoginPassword';
 
 describe('getLoginPassword', () => {
@@ -7,9 +6,6 @@ describe('getLoginPassword', () => {
         const state: DeepPartial<StateSchema> = {
             login: {
                 password: '@@@@@',
-                error: LoginError.BAD_REQUEST,
-                isLoading: false,
-                username: '',
             },
         };
         expect(getLoginPassword(state as StateSchema)).toEqual('@@@@@');

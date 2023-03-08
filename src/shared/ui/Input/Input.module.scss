@@ -7,11 +7,17 @@
 
     &:focus {
         outline: 1px solid var(--primary-color);
-        box-shadow: 0 0 10px var(--primary-color);
+        box-shadow: 0 0 5px var(--primary-color);
     }
 
     &:disabled {
         opacity: 0.6;
+    }
+
+    &:read-only {
+        outline: none;
+        background: transparent;
+        box-shadow: none;
     }
 }
 

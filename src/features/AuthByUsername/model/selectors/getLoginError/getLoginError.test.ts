@@ -1,13 +1,12 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { LoginError } from '../../types/loginSchema';
 import { getLoginError } from './getLoginError';
 
 describe('getLoginError', () => {
     test('should return value', () => {
         const state: DeepPartial<StateSchema> = {
-            login: { error: LoginError.BAD_REQUEST, isLoading: false, password: '', username: '' },
+            login: { error: 'error', isLoading: false, password: '', username: '' },
         };
-        expect(getLoginError(state as StateSchema)).toEqual(LoginError.BAD_REQUEST);
+        expect(getLoginError(state as StateSchema)).toEqual('error');
     });
 
     test('should be undefined', () => {

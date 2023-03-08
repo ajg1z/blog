@@ -1,20 +1,33 @@
 {
-    "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-    "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-    "profile": {
-        "firstname": "ajja",
-        "lastname": "Bup",
-        "age": 25,
-        "currency": "RUB",
-        "city": "Ufa",
-        "username": "admin",
-        "avatar": "https://www.vecteezy.com/vector-art/2275847-male-avatar-profile-icon-of-smiling-caucasian-man"
-    },
-    "users": [
-        {
-            "username": "admin",
-            "password": "admin",
-            "id": 1
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "firstname": "ajgiz",
+    "lastname": "ummo",
+    "age": 20,
+    "currency": "RUB",
+    "city": "Ufa",
+    "username": "admin",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
+    "country": "Belarus"
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "id": 1
+    }
+  ]
 }

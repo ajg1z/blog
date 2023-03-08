@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Text, TextTheme } from './Text';
+import { Text } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -33,5 +33,5 @@ export const Error = Template.bind({});
 Error.args = {
     text: 'Text is Text',
     title: 'Title',
-    theme: TextTheme.ERROR,
+    theme: 'error',
 };

@@ -3,19 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { ChangeEvent, memo, PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button';
-import { Input, InputTheme } from 'shared/ui/Input/Input';
+import { Input } from 'shared/ui/Input/Input';
 import { Field } from 'shared/ui/Field/Field';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
-import { LoginError } from 'features/AuthByUsername/model/types/loginSchema';
-import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError/getLoginError';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamycModuleLoader/DynamicModuleLoader';
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUserName';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
@@ -48,17 +47,6 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
         [dispatch],
     );
 
-    const textError = useMemo(() => {
-        switch (error) {
-            case LoginError.BAD_REQUEST:
-                return t('login_error.bag_request');
-            case LoginError.INTERNAL_SERVER:
-                return t('login_error.internal_server');
-            default:
-                return '';
-        }
-    }, [error, t]);
-
     const onChangePassword = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
             dispatch(loginActions.setPassword(e.target.value));
@@ -88,7 +76,7 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
                 <Field label={t('login')} className={cls.field}>
                     <Input
                         autofocus
-                        theme={InputTheme.BACKGROUND_INVERTED}
+                        theme='backgroundInverted'
                         value={username}
                         onChange={onChangeUsername}
                     />
@@ -96,13 +84,13 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
 
                 <Field label={t('password')} className={cls.field}>
                     <Input
-                        theme={InputTheme.BACKGROUND_INVERTED}
+                        theme='backgroundInverted'
                         value={password}
                         onChange={onChangePassword}
                     />
                 </Field>
                 <div className={cls.footer}>
-                    {error && <Text theme={TextTheme.ERROR} text={textError} />}
+                    {error && <Text theme='error' text={error} />}
                     <Button disabled={isLoading} className={cls.sign} onClick={onLoginClick}>
                         {t('sign')}
                     </Button>

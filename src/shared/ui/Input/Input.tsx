@@ -3,11 +3,7 @@ import { InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-export enum InputTheme {
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'backgroundInverted',
-    OUTLINE = 'outline',
-}
+export type InputTheme = 'background' | 'backgroundInverted' | 'outline';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
@@ -18,7 +14,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = memo((props: InputProps) => {
     // eslint-disable-next-line react/prop-types
-    const { className, getRef, theme = InputTheme.BACKGROUND, autofocus, ...otherProps } = props;
+    const { className, getRef, theme = 'background', autofocus, ...otherProps } = props;
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
