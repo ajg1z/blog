@@ -6,6 +6,7 @@
     "scripts": {
         "start:dev:server": "node ./json-server/index.js",
         "test": "jest",
+        "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
         "start": "webpack serve --env port=3000",
         "build:prod": "npx webpack --env mode=production",
         "build:dev": "npx webpack --env mode=development",
@@ -105,7 +106,7 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.0",
         "axios": "^0.26.1",
-        "concurrently": "^7.0.0",
+        "concurrently": "^7.6.0",
         "i18next": "^21.6.11",
         "i18next-browser-languagedetector": "^6.1.3",
         "i18next-http-backend": "^1.3.2",
