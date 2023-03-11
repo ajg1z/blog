@@ -2,7 +2,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Profile } from '../../../../../entities/Profile/model/types/profileSchema';
 
-export const fetchProfileData = createAsyncThunk<Profile, undefined, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
     'login/fetchProfileData',
     async (_, thunkApi) => {
         try {
@@ -13,6 +13,7 @@ export const fetchProfileData = createAsyncThunk<Profile, undefined, ThunkConfig
             if (!response.data) {
                 throw new Error();
             }
+
             return response.data;
         } catch (e) {
             console.log(e);

@@ -25,9 +25,9 @@
     "form_auth": "Форма авторизации",
     "logout": "Выйти",
     "currency": {
-        "label_select": "Выберите валюту"
+        "label_select": "Валюта"
     },
     "country": {
-        "label_select": "Выберите страну"
+        "label_select": "Страна"
     }
 }

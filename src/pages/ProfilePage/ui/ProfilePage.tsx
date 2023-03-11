@@ -11,8 +11,8 @@ const initialReducers: ReducersList = {
     profile: profileReducer,
 };
 
-const ProfilePage = memo((props: PropsWithChildren<ProfilePageProps>) => (
-    <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
+const ProfilePage = memo(() => (
+    <DynamicModuleLoader reducers={initialReducers}>
         <EditableProfileCard />
     </DynamicModuleLoader>
 ));

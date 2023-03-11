@@ -10,24 +10,27 @@ const AppRouter: FC = () => {
     const isAuth = useSelector(getUserData);
 
     const routes = useMemo(() => {
-        return Object.values(RouteConfig)
-            .filter((route) => {
-                if (route.authOnly && !isAuth) return false;
-                return true;
-            })
-            .map((val) => (
-                <Route
-                    key={val.path}
-                    path={val.path}
-                    element={<div className='page-wrapper'>{val.element}</div>}
-                />
-            ));
+        return Object.values(RouteConfig).filter((route) => {
+            if (route.authOnly && !isAuth) return false;
+            return true;
+        });
     }, [isAuth]);
 
     return (
-        <Suspense fallback={<PageLoader />}>
-            <Routes>{routes}</Routes>
-        </Suspense>
+        <Routes>
+            {routes.map(({ element, path }) => (
+                <Route
+                    key={path}
+                    path={path}
+                    element={
+                        // eslint-disable-next-line react/jsx-wrap-multilines
+                        <Suspense fallback={<PageLoader />}>
+                            <div className='page-wrapper'>{element}</div>
+                        </Suspense>
+                    }
+                />
+            ))}
+        </Routes>
     );
 };
 

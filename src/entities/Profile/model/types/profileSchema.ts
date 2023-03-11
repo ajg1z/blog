@@ -1,15 +1,16 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
+import { ValidateProfileError } from 'features/EditableProfileCard/model/types/profile';
 
 export interface Profile {
-    firstname: string;
-    lastname: string;
-    age: number;
-    currency: Currency;
-    city: string;
-    country: Country;
-    username: string;
-    avatar: string;
+    firstname?: string;
+    lastname?: string;
+    age?: number;
+    currency?: Currency;
+    city?: string;
+    country?: Country;
+    username?: string;
+    avatar?: string;
 }
 
 export interface ProfileSchema {
@@ -18,4 +19,5 @@ export interface ProfileSchema {
     error?: string;
     readonly: boolean;
     form?: Profile;
+    validateError?: ValidateProfileError[];
 }

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { ChangeEvent, PropsWithChildren, useCallback, useEffect } from 'react';
+import { ChangeEvent, PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button';
 import { ProfileCard } from 'entities/Profile';
@@ -18,6 +18,8 @@ import { getProfileReadOnly } from '../model/selectors/getProfileReadOnly/getPro
 import { profileActions } from '../model/slice/profileSlice';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
+import { getProfileValidateError } from '../model/selectors/getProfileValError/getProfileValError';
+import { ValidateProfileError } from '../model/types/profile';
 
 interface EditableProfileCardProps {
     className?: string;
@@ -33,9 +35,26 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     const error = useSelector(getProfileError);
     const data = useSelector(getProfileForm);
     const readonly = useSelector(getProfileReadOnly);
+    const validateError = useSelector(getProfileValidateError);
+
+    const validateErrorTranslate: Record<ValidateProfileError, string> = useMemo(
+        () => ({
+            FailUpdate: t('errors.no_data'),
+            InvalidAge: t('errors.invalid_age'),
+            InvalidAvatar: t('errors.invalid_avatar'),
+            InvalidCity: t('errors.invalid_city'),
+            InvalidCountry: t('errors.invalid_country'),
+            InvalidCurrency: t('errors.invalid_currency'),
+            InvalidFirstName: t('errors.invalid_firstname'),
+            InvalidLastName: t('errors.invalid_lastname'),
+            InvalidUsername: t('errors.invalid_username'),
+            NoData: t('errors.no_data'),
+        }),
+        [t],
+    );
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__ENVIRONMENT__ !== 'storybook') dispatch(fetchProfileData());
     }, [dispatch]);
 
     const onCancel = () => {
@@ -47,7 +66,7 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     };
 
     const onSave = () => {
-        dispatch(updateProfileData());
+        if (__ENVIRONMENT__ !== 'storybook') dispatch(updateProfileData());
     };
 
     const onChangeFirstName = useCallback(
@@ -112,21 +131,25 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
         <div className={classNames(cls.EditableProfileCard, {}, [className])}>
             <header className={cls.header}>
                 <Text title={t('title')} className={cls.title} />
-                {readonly ? (
-                    <Button theme='background' onClick={onEdit}>
+                {readonly || isLoading ? (
+                    <Button theme='background' disabled={isLoading} onClick={onEdit}>
                         {commonT('button.edit')}
                     </Button>
                 ) : (
                     <>
-                        <Button theme='outlineRed' onClick={onCancel}>
+                        <Button theme='outlineRed' disabled={isLoading} onClick={onCancel}>
                             {commonT('button.cancel')}
                         </Button>
-                        <Button theme='backgroundInverted' onClick={onSave}>
+                        <Button theme='backgroundInverted' disabled={isLoading} onClick={onSave}>
                             {commonT('button.save')}
                         </Button>
                     </>
                 )}
             </header>
+
+            {validateError?.map((error) => (
+                <Text theme='error' key={error} text={validateErrorTranslate[error]} />
+            ))}
 
             <ProfileCard
                 data={data}

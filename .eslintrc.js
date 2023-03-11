@@ -43,7 +43,7 @@ module.exports = {
         'no-underscore-dangle': [
             'error',
             {
-                allow: ['__IS_DEV__', '__API__'],
+                allow: ['__IS_DEV__', '__API__', '__ENVIRONMENT__'],
             },
         ],
         'object-curly-newline': 'off',
@@ -83,5 +83,6 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        __ENVIRONMENT__: true,
     },
 };

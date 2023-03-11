@@ -17,9 +17,8 @@ export const StoreDecorator =
         state: DeepPartial<StateSchema>,
         asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
     ) =>
-    // eslint-disable-next-line arrow-body-style, implicit-arrow-linebreak
-    (Story: Story) => {
-        return (
+    (Story: Story) =>
+        (
             <StoreProvider
                 initialState={state}
                 asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
@@ -27,4 +26,3 @@ export const StoreDecorator =
                 <Story />
             </StoreProvider>
         );
-    };

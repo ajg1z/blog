@@ -8,6 +8,7 @@ import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
+    readOnly?: boolean;
 }
 
 const CurrencyOptions: SelectOption[] = [
@@ -17,7 +18,15 @@ const CurrencyOptions: SelectOption[] = [
 ];
 
 export const CurrencySelect = memo((props: PropsWithChildren<CurrencySelectProps>) => {
+    const { readOnly } = props;
     const { t } = useTranslation();
 
-    return <Select {...props} options={CurrencyOptions} label={t('currency.label_select')} />;
+    return (
+        <Select
+            {...props}
+            options={CurrencyOptions}
+            readOnly={readOnly}
+            label={t('currency.label_select')}
+        />
+    );
 });

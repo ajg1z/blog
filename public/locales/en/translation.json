@@ -25,9 +25,9 @@
     "form_auth": "Authorization form",
     "logout": "Logout",
     "currency": {
-        "label_select": "Select the currency"
+        "label_select": "Currency"
     },
     "country": {
-        "label_select": "Select the country"
+        "label_select": "Country"
     }
 }

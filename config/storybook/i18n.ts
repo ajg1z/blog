@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-const ns = ['translation', 'main', 'about'];
+const ns = ['translation', 'main', 'about', 'profile'];
 const supportedLngs = ['en', 'ru'];
 const resources = ns.reduce((acc: Record<any, any>, n) => {
     supportedLngs.forEach((lng) => {

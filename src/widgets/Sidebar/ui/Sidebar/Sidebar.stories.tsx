@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
 
 import { Sidebar } from './Sidebar';
 
@@ -10,8 +11,12 @@ export default {
     },
 } as ComponentMeta<typeof Sidebar>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
-const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
+const Template: ComponentStory<typeof Sidebar> = () => <Sidebar />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const isAuth = Template.bind({});
+isAuth.args = {};
+isAuth.decorators = [StoreDecorator({ user: { authData: { id: 1, username: 'masha' } } })];
+
+export const isNotAuth = Template.bind({});
+isNotAuth.args = {};
+isNotAuth.decorators = [StoreDecorator({ user: {} })];

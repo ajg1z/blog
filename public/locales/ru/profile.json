@@ -6,5 +6,17 @@
     "city": "Город",
     "avatar": "Аватар",
     "username": "Никнейм",
-    "error_title": "Произошла ошибка"
+    "error_title": "Произошла ошибка",
+    "errors": {
+        "no_data": "Нет данных профиля",
+        "invalid_firstname": "Некоректное имя",
+        "invalid_lastname": "Некоректная фамилия",
+        "invalid_age": "Некоректный возраст",
+        "invalid_country": "Некоректная страна",
+        "invalid_currency": "Некоректная валюта",
+        "invalid_username": "Некоректный никнейм",
+        "invalid_avatar": "Некоректный аватар",
+        "invalid_city": "Некоректный город",
+        "fail_update": "Ошибка обновления"
+    }
 }

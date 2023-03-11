@@ -8,6 +8,7 @@ import { Country } from '../../model/types/country';
 
 interface CountrySelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     className?: string;
+    readOnly?: boolean;
 }
 
 const CountryOptions: SelectOption[] = [
@@ -19,7 +20,15 @@ const CountryOptions: SelectOption[] = [
 ];
 
 export const CountrySelect = memo((props: PropsWithChildren<CountrySelectProps>) => {
+    const { readOnly } = props;
     const { t } = useTranslation();
 
-    return <Select {...props} options={CountryOptions} label={t('country.label_select')} />;
+    return (
+        <Select
+            {...props}
+            options={CountryOptions}
+            readOnly={readOnly}
+            label={t('country.label_select')}
+        />
+    );
 });

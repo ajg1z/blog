@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { Profile, ProfileSchema } from '../../../../entities/Profile/model/types/profileSchema';
-import { UpdateProfile } from '../types/actions';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const initialState: ProfileSchema = {
-    isLoading: false,
+    isLoading: true,
     readonly: true,
     data: undefined,
     error: undefined,
@@ -18,13 +17,14 @@ export const profileSlice = createSlice({
         setReadonly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
-        updateProfile: (state, action: PayloadAction<UpdateProfile>) => {
+        updateProfile: (state, action: PayloadAction<Profile>) => {
             state.form = {
                 ...state.form,
-                ...(action.payload as Profile),
+                ...action.payload,
             };
         },
         cancelEdit: (state) => {
+            state.validateError = undefined;
             state.form = state.data;
             state.readonly = true;
         },
@@ -48,17 +48,18 @@ export const profileSlice = createSlice({
 
             .addCase(updateProfileData.pending, (state) => {
                 state.isLoading = true;
-                state.error = undefined;
+                state.validateError = undefined;
             })
             .addCase(updateProfileData.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = action.payload;
                 state.form = action.payload;
                 state.readonly = true;
+                state.validateError = undefined;
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload;
+                state.validateError = action.payload;
             });
     },
 });

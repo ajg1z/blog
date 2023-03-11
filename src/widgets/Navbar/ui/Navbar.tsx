@@ -31,10 +31,6 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
-    useEffect(() => {
-        if (user) setIsAuthModal(false);
-    }, [user]);
-
     if (user) {
         return (
             <div className={classNames(cls.Navbar, {}, [className])}>

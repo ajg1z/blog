@@ -44,6 +44,7 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
         onChangeCurrency,
         onChangeCountry,
     } = props;
+
     const { t } = useTranslation('profile');
 
     if (isLoading) {
@@ -92,14 +93,15 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
                 <Field label={t('username')}>
                     <Input value={data?.username} readOnly={readonly} onChange={onChangeUserName} />
                 </Field>
+
                 <CurrencySelect
                     value={data?.currency}
-                    disabled={readonly}
+                    readOnly={readonly}
                     onChange={onChangeCurrency}
                 />
                 <CountrySelect
                     value={data?.country}
-                    disabled={readonly}
+                    readOnly={readonly}
                     onChange={onChangeCountry}
                 />
             </main>

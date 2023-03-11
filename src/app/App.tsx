@@ -16,8 +16,7 @@ function App() {
     useEffect(() => {
         const token = localStorage.getItem(TokenLocalStorageKey);
         if (token) dispatch(checkAuth());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={classNames('app')}>

@@ -8,6 +8,7 @@ export default {
     globals: {
         __API__: '',
         __IS_DEV__: true,
+        __ENVIRONMENT__: 'jest',
     },
     clearMocks: true,
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -19,7 +20,7 @@ export default {
     modulePaths: ['<rootDir>src'],
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
-        '\\.(s?css)$': 'identity-obj-proxy',
+        '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestMockComponent.tsx'),
     },
 };

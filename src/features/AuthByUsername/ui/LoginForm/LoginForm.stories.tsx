@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
 
@@ -10,18 +11,17 @@ export default {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof LoginForm>;
-
-// eslint-disable-next-line react/jsx-props-no-spreading
-const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
+const Template: ComponentStory<typeof LoginForm> = (arg) => <LoginForm {...arg} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 Default.decorators = [
     StoreDecorator({
         login: {
-            password: 'admin',
-            username: 'admin',
-            isLoading: false,
+            password: 'entity',
+            username: 'demon',
+            isLoading: true,
+            error: undefined,
         },
     }),
 ];

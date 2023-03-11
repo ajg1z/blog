@@ -1,8 +1,8 @@
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren, useEffect, useLayoutEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import { useStore } from 'shared/hooks/useStore/useStore';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer;
@@ -17,14 +17,16 @@ interface DynamicModuleLoaderProps {
 
 export const DynamicModuleLoader = (props: PropsWithChildren<DynamicModuleLoaderProps>) => {
     const { children, isRemoveAfterUnmount, reducers } = props;
-    const store = useStore();
-    const dispatch = useDispatch();
 
-    useEffect(() => {
+    const store = useStore();
+    const dispatch = useAppDispatch();
+
+    useLayoutEffect(() => {
         Object.entries(reducers).forEach(([name, reducer]) => {
             store.manager.add(name as StateSchemaKey, reducer);
             dispatch({ type: `${name} reducer added to store` });
         });
+
         return () => {
             if (isRemoveAfterUnmount) {
                 Object.entries(reducers).forEach(([name]) => {

@@ -18,9 +18,9 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
 
     return (
         <Link
-            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
+            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
         >
             {children}
         </Link>

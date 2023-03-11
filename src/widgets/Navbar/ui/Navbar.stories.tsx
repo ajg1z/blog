@@ -11,17 +11,21 @@ export default {
     },
 } as ComponentMeta<typeof Navbar>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
-const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
+const Template: ComponentStory<typeof Navbar> = () => <Navbar />;
 
-export const Default = Template.bind({});
-Default.args = {};
-Default.decorators = [
+export const Sign = Template.bind({});
+Sign.args = {};
+Sign.decorators = [StoreDecorator({ user: {} })];
+
+export const Logout = Template.bind({});
+Logout.args = {};
+Logout.decorators = [
     StoreDecorator({
-        login: {
-            password: 'admin',
-            username: 'admin',
-            isLoading: false,
+        user: {
+            authData: {
+                id: 1,
+                username: 'masha',
+            },
         },
     }),
 ];

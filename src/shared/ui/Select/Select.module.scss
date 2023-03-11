@@ -20,3 +20,14 @@
     background: var(--inverted-bg-color);
     padding: 1px 5px;
 }
+
+.readOnly {
+    & > select {
+        border: none;
+        text-overflow: '';
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        opacity: 1;
+    }
+}

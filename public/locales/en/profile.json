@@ -6,5 +6,17 @@
     "city": "City",
     "avatar": "Avatar",
     "username": "Username",
-    "error_title": "An error has occurred"
+    "error_title": "An error has occurred",
+    "errors": {
+        "no_data": "No profile data",
+        "invalid_firstname": "Invalid firstname",
+        "invalid_lastname": "Invalid lastname",
+        "invalid_age": "Invalid age",
+        "invalid_country": "Invalid country",
+        "invalid_currency": "Invalid currency",
+        "invalid_username": "Invalid username",
+        "invalid_avatar": "Invalid avatar",
+        "invalid_city": "Invalid city",
+        "fail_update": "Error update"
+    }
 }

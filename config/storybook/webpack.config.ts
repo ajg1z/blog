@@ -6,21 +6,21 @@ import { BuildPaths } from '../build/types/config';
 export default ({ config }: { config: Configuration }) => {
     const paths: BuildPaths = {
         build: '',
-        entry: '',
         html: '',
-        src: path.resolve(__dirname, '..', '..', 'src'),
+        entry: '',
+        src: '../../src/',
     };
 
     config!.resolve!.modules!.push(paths.src);
     config!.resolve!.extensions!.push('.ts', '.tsx');
-    config!.module!.rules!.push(buildCssLoader(true));
 
     // eslint-disable-next-line no-param-reassign
-    config!.module!.rules = config!.module!.rules!.map((rule) => {
-        if (typeof rule !== 'object') return rule;
+    // @ts-ignore
+    config!.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
+
         return rule;
     });
 
@@ -29,10 +29,13 @@ export default ({ config }: { config: Configuration }) => {
         use: ['@svgr/webpack'],
     });
 
+    config!.module!.rules.push(buildCssLoader(true));
+
     config!.plugins!.push(
         new DefinePlugin({
-            __IS_DEV__: true,
-            __API__: '',
+            __IS_DEV__: JSON.stringify(true),
+            __API__: JSON.stringify(''),
+            __ENVIRONMENT__: JSON.stringify('storybook'),
         }),
     );
 
