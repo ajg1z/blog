@@ -5,7 +5,7 @@ export enum AppRoutes {
     PROFILE = 'profile',
 }
 
-export const RoutePath: Record<AppRoutes, string> = {
+export const RoutePaths: Record<AppRoutes, string> = {
     about: '/about',
     main: '/',
     notFound: '*',

@@ -3,7 +3,7 @@ import { checkAuth } from '../services/checkAuth/checkAuth';
 import { User, UserSchema } from '../types/userSchema';
 
 const initialState: UserSchema = {
-    isLoading: false,
+    isLoading: true,
 };
 
 export const userSlice = createSlice({

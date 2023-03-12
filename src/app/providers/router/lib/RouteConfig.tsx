@@ -3,7 +3,7 @@ import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFountPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
-import { AppRoutes, RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { AppRoutes, RoutePaths } from 'shared/config/routeConfig/routeConfig';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -11,19 +11,19 @@ export type AppRouteProps = RouteProps & {
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
     about: {
-        path: RoutePath.about,
+        path: RoutePaths.about,
         element: <AboutPage />,
     },
     main: {
-        path: RoutePath.main,
+        path: RoutePaths.main,
         element: <MainPage />,
     },
     notFound: {
-        path: RoutePath.notFound,
+        path: RoutePaths.notFound,
         element: <NotFoundPage />,
     },
     profile: {
-        path: RoutePath.profile,
+        path: RoutePaths.profile,
         element: <ProfilePage />,
         authOnly: true,
     },

@@ -1,4 +1,4 @@
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import React from 'react';
 import MainIcon from 'shared/assets/img/main.svg';
 import AboutIcon from 'shared/assets/img/about.svg';
@@ -13,17 +13,17 @@ export interface SidebarItemType {
 
 export const SidebarItemsList: SidebarItemType[] = [
     {
-        path: RoutePath.main,
+        path: RoutePaths.main,
         text: 'main',
         Icon: MainIcon,
     },
     {
-        path: RoutePath.about,
+        path: RoutePaths.about,
         text: 'about',
         Icon: AboutIcon,
     },
     {
-        path: RoutePath.profile,
+        path: RoutePaths.profile,
         text: 'profile',
         Icon: ProfileIcon,
         authOnly: true,
