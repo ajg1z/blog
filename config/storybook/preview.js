@@ -23,6 +23,7 @@ export const parameters = {
         list: [
             { name: 'light', class: ['app', 'light'] },
             { name: 'dark', class: ['app', 'dark'] },
+            { name: 'orange', class: ['app', 'orange'] },
         ],
     },
 };

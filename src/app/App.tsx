@@ -5,7 +5,6 @@ import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { checkAuth, getUserLoading } from 'entities/User';
-import { TokenLocalStorageKey } from 'shared/const/localStorage';
 import { PageLoader } from 'widgets/PageLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 
@@ -14,8 +13,7 @@ function App() {
     const userLoading = useSelector(getUserLoading);
 
     useEffect(() => {
-        const token = localStorage.getItem(TokenLocalStorageKey);
-        if (token) dispatch(checkAuth());
+        dispatch(checkAuth());
     }, [dispatch]);
 
     return (

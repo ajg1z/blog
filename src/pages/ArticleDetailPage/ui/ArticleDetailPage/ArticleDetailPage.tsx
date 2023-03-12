@@ -1,5 +1,7 @@
+import { ArticleDetail } from 'entities/Article';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailPage.module.scss';
 
@@ -9,9 +11,22 @@ interface ArticleDetailPageProps {
 
 const ArticleDetailPage: FC<ArticleDetailPageProps> = (props) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
+    const { id } = useParams<{ id: string }>();
 
-    return <div className={classNames(cls.ArticleDetailPage, {}, [className])}>2</div>;
+    if (!id) {
+        return (
+            <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+                {t('article-not-found')}
+            </div>
+        );
+    }
+
+    return (
+        <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+            <ArticleDetail id={id} />
+        </div>
+    );
 };
 
 export default ArticleDetailPage;

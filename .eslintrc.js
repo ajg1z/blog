@@ -59,6 +59,7 @@ module.exports = {
                     'theme',
                     'size',
                     'alt',
+                    'align',
                 ],
             },
         ],
