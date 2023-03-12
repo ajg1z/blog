@@ -3,7 +3,8 @@
     "navbar": {
         "about": "О нас",
         "main": "Главная",
-        "profile": "Профиль"
+        "profile": "Профиль",
+        "articles": "Статьи"
     },
     "not_found_page": "Страница не найдена",
     "page_error": "Что то пошло не так...",

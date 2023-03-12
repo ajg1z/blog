@@ -1,4 +1,6 @@
 import { AboutPage } from 'pages/AboutPage';
+import { ArticleDetailPage } from 'pages/ArticleDetailPage';
+import { ArticlesPage } from 'pages/ArticlesPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFountPage';
 import { ProfilePage } from 'pages/ProfilePage';
@@ -10,21 +12,31 @@ export type AppRouteProps = RouteProps & {
 };
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
-    about: {
+    [AppRoutes.ABOUT]: {
         path: RoutePaths.about,
         element: <AboutPage />,
     },
-    main: {
+    [AppRoutes.MAIN]: {
         path: RoutePaths.main,
         element: <MainPage />,
     },
-    notFound: {
+    [AppRoutes.NOT_FOUND]: {
         path: RoutePaths.notFound,
         element: <NotFoundPage />,
     },
-    profile: {
+    [AppRoutes.PROFILE]: {
         path: RoutePaths.profile,
         element: <ProfilePage />,
+        authOnly: true,
+    },
+    [AppRoutes.ARTICLES]: {
+        path: RoutePaths.articles,
+        element: <ArticlesPage />,
+        authOnly: true,
+    },
+    [AppRoutes.ARTICLE_DETAIL]: {
+        path: `${RoutePaths.articleDetail}:id`,
+        element: <ArticleDetailPage />,
         authOnly: true,
     },
 };

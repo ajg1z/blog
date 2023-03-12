@@ -3,7 +3,8 @@
     "navbar": {
         "about": "About",
         "main": "Main",
-        "profile": "Profile"
+        "profile": "Profile",
+        "articles": "Articles"
     },
     "not_found_page": "Page not found",
     "page_error": "Something went wrong...",
