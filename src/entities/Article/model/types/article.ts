@@ -1,4 +1,4 @@
-export type ArticleBlockType = 'text' | 'code' | 'image';
+export type ArticleBlockType = 'text' | 'image' | 'code';
 
 export interface ArticleBlockBase {
     type: ArticleBlockType;
@@ -8,15 +8,18 @@ export interface ArticleBlockBase {
 export interface ArticleBlockText extends ArticleBlockBase {
     title?: string;
     paragraphs: string[];
+    type: 'text';
 }
 
 export interface ArticleBlockImage extends ArticleBlockBase {
     title: string;
     src: string;
+    type: 'image';
 }
 
 export interface ArticleBlockCode extends ArticleBlockBase {
     code: string;
+    type: 'code';
 }
 
 export type ArticleBlock = ArticleBlockText | ArticleBlockImage | ArticleBlockCode;

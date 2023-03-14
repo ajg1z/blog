@@ -13,7 +13,8 @@
         "toggle": "Toggle",
         "edit": "Edit",
         "cancel": "Сancel",
-        "save": "Save"
+        "save": "Save",
+        "copy": "Copy"
     },
     "short_lan": "En",
     "sign": "Sign in",

@@ -67,7 +67,7 @@ module.exports = {
             'error',
             {
                 ignoreComments: true,
-                code: 105,
+                code: 110,
             },
         ],
         'react/prop-types': 'off',

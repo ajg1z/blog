@@ -6,10 +6,12 @@ import { ReducersMapObject } from 'redux';
 import { loginReducer } from 'features/AuthByUsername';
 import { Story } from '@storybook/react';
 import { profileReducer } from 'features/EditableProfileCard';
+import { articleDetailsReducer } from 'entities/Article';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     login: loginReducer,
     profile: profileReducer,
+    articleDetails: articleDetailsReducer,
 };
 
 export const StoreDecorator =

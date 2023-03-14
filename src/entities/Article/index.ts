@@ -1,4 +1,4 @@
-export { ArticleDetail } from './ui/ArticleDetail/ArticleDetail';
+export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export { Article } from './model/types/article';
-export { ArticleDetailSchema } from './model/types/articleDetailSchema';
-export { articleDetailReducer } from './model/slice/articleDetailSlice';
+export { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
+export { articleDetailsReducer } from './model/slice/articleDetailsSlice';

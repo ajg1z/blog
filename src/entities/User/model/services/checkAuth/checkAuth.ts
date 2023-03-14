@@ -4,7 +4,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { AuthResponse } from 'features/AuthByUsername';
 import { User } from '../../types/userSchema';
 
-export const checkAuth = createAsyncThunk<User, undefined, ThunkConfig<number>>(
+export const checkAuth = createAsyncThunk<User, void, ThunkConfig<number>>(
     'user/checkAuth',
     async (_, thunkApi) => {
         try {
@@ -12,9 +12,13 @@ export const checkAuth = createAsyncThunk<User, undefined, ThunkConfig<number>>(
 
             const response = await extra.privateApi.get<AuthResponse>('/check-login');
 
-            if (!response.data || !response.data.user || !response.data.token) throw new Error();
+            if (!response.data || !response.data.user || !response.data.token) {
+                throw new Error();
+            }
 
-            localStorage.setItem(TokenLocalStorageKey, response.data.token);
+            if (__ENVIRONMENT__ === 'frontend') {
+                localStorage.setItem(TokenLocalStorageKey, response.data.token);
+            }
 
             return response.data.user;
         } catch (e) {

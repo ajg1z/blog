@@ -1,0 +1,18 @@
+.Code {
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    position: relative;
+    background-color: var(--code-bg);
+    overflow-x: auto;
+}
+
+.copy {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.icon {
+    stroke: var(--primary-color);
+    fill: transparent;
+}
