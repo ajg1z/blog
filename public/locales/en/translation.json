@@ -31,5 +31,8 @@
     },
     "country": {
         "label_select": "Country"
-    }
+    },
+    "noComments": "There are no comments here yet, but yours could be the first",
+    "commentsTitle": "Комментарии",
+    "errorLoadingComments": "Failed to load comments"
 }

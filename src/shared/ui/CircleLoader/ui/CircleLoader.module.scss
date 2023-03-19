@@ -6,8 +6,6 @@
     font-size: 10px;
     margin: 50px auto;
     text-indent: -9999em;
-    width: 11em;
-    height: 11em;
     border-radius: 50%;
     background: var(--inverted-bg-color);
     background: -webkit-linear-gradient(
@@ -15,9 +13,21 @@
         var(--inverted-bg-color) 10%,
         rgba(255, 255, 255, 0) 42%
     );
-    background: -o-linear-gradient(left, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, var(--inverted-bg-color) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(
+        left,
+        var(--inverted-bg-color) 10%,
+        rgba(255, 255, 255, 0) 42%
+    );
+    background: -ms-linear-gradient(
+        left,
+        var(--inverted-bg-color) 10%,
+        rgba(255, 255, 255, 0) 42%
+    );
+    background: linear-gradient(
+        to right,
+        var(--inverted-bg-color) 10%,
+        rgba(255, 255, 255, 0) 42%
+    );
     position: relative;
     -webkit-animation: load3 1.4s infinite linear;
     animation: load3 1.4s infinite linear;
@@ -73,4 +83,19 @@
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+.medium {
+    width: 41px;
+    height: 41px;
+}
+
+.small {
+    width: 21px;
+    height: 21px;
+}
+
+.large {
+    width: 61px;
+    height: 61px;
 }
