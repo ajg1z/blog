@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import { ValidateProfileError } from 'features/EditableProfileCard/model/types/profile';
 import { Profile } from 'entities/Profile';
-import { isNumber } from 'lodash';
 
 export const validateProfileData = (data?: Profile) => {
     const errors: ValidateProfileError[] = [];

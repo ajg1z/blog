@@ -6,33 +6,37 @@
         "profile": "Профиль",
         "articles": "Статьи"
     },
-    "not_found_page": "Страница не найдена",
-    "page_error": "Что то пошло не так...",
-    "reload_page": "Обновить страницу",
+    "notFoundPage": "Страница не найдена",
+    "pageError": "Что то пошло не так...",
+    "reloadPage": "Обновить страницу",
     "button": {
         "toggle": "Переключить",
         "edit": "Редактировать",
         "cancel": "Отменить",
         "save": "Сохранить",
-        "copy": "Копировать"
+        "copy": "Копировать",
+        "send": "Отправить"
     },
-    "short_lan": "Ru",
+    "shortLan": "Ru",
     "sign": "Войти",
     "login": "Логин",
     "password": "Пароль",
-    "login_error": {
-        "bag_request": "Логин или пароль не правильный",
-        "internal_server": "Internal Server Error"
+    "loginError": {
+        "bagRequest": "Логин или пароль не правильный",
+        "internalServer": "Internal Server Error"
     },
-    "form_auth": "Форма авторизации",
+    "formAuth": "Форма авторизации",
     "logout": "Выйти",
     "currency": {
-        "label_select": "Валюта"
+        "labelSelect": "Валюта"
     },
     "country": {
-        "label_select": "Страна"
+        "labelSelect": "Страна"
     },
     "noComments": "Здесь пока нет комментариев, но ваш может стать первым",
     "commentsTitle": "Комментарии",
-    "errorLoadingComments": "Не удалось загрузить комментарии"
+    "errorLoadingComments": "Не удалось загрузить комментарии",
+    "placeholder": {
+        "addComment": "Написать коментарий..."
+    }
 }

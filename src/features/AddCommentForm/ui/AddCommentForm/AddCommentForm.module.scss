@@ -1,0 +1,22 @@
+.AddCommentForm {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    &:focus {
+        outline: none;
+    }
+
+    margin-right: 10px;
+    resize: none;
+    font: var(--font-m);
+}

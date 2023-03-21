@@ -10,6 +10,7 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { isNumber } from 'shared/lib/validators/isNumber';
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import cls from './EditableProfileCard.module.scss';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
@@ -23,10 +24,12 @@ import { ValidateProfileError } from '../model/types/profile';
 
 interface EditableProfileCardProps {
     className?: string;
+    id: string;
+    isEditable?: boolean;
 }
 
 export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCardProps>) => {
-    const { className } = props;
+    const { className, id, isEditable } = props;
     const { t: commonT } = useTranslation();
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
@@ -53,9 +56,9 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
         [t],
     );
 
-    useEffect(() => {
-        if (__ENVIRONMENT__ !== 'storybook') dispatch(fetchProfileData());
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchProfileData(id));
+    });
 
     const onCancel = () => {
         dispatch(profileActions.cancelEdit());
@@ -66,7 +69,7 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     };
 
     const onSave = () => {
-        if (__ENVIRONMENT__ !== 'storybook') dispatch(updateProfileData());
+        if (__ENVIRONMENT__ !== 'storybook') dispatch(updateProfileData(id));
     };
 
     const onChangeFirstName = useCallback(
@@ -132,9 +135,11 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
             <header className={cls.header}>
                 <Text title={t('title')} className={cls.title} />
                 {readonly || isLoading ? (
-                    <Button theme='background' disabled={isLoading} onClick={onEdit}>
-                        {commonT('button.edit')}
-                    </Button>
+                    isEditable && (
+                        <Button theme='background' disabled={isLoading} onClick={onEdit}>
+                            {commonT('button.edit')}
+                        </Button>
+                    )
                 ) : (
                     <>
                         <Button theme='outlineRed' disabled={isLoading} onClick={onCancel}>

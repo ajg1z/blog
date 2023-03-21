@@ -19,7 +19,7 @@ describe('fetchProfileData', () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.privateApi.get.mockReturnValue(Promise.resolve({ data }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
 
@@ -31,7 +31,7 @@ describe('fetchProfileData', () => {
     test('bad request', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.privateApi.get.mockReturnValue(Promise.resolve({ status: 400 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
 

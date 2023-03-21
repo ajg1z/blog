@@ -18,5 +18,6 @@
         "invalid_avatar": "Invalid avatar",
         "invalid_city": "Invalid city",
         "fail_update": "Error update"
-    }
+    },
+    "noProfile": "Profile not found"
 }

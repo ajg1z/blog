@@ -3,5 +3,6 @@ import { Comment } from 'entities/Comment';
 
 export interface ArticleDetailsCommentsSchema extends EntityState<Comment> {
     isLoading: boolean;
-    error?: string;
+    fetchCommentsError?: string;
+    sendCommentError?: string;
 }

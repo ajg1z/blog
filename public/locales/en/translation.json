@@ -6,33 +6,37 @@
         "profile": "Profile",
         "articles": "Articles"
     },
-    "not_found_page": "Page not found",
-    "page_error": "Something went wrong...",
-    "reload_page": "Reload page",
+    "notFoundPage": "Page not found",
+    "pageError": "Something went wrong...",
+    "reloadPage": "Reload page",
     "button": {
         "toggle": "Toggle",
         "edit": "Edit",
         "cancel": "Сancel",
         "save": "Save",
-        "copy": "Copy"
+        "copy": "Copy",
+        "send": "Send"
     },
-    "short_lan": "En",
+    "shortLan": "En",
     "sign": "Sign in",
     "login": "Username",
     "password": "Password",
-    "login_error": {
-        "bag_request": "Username or password is wrong",
-        "internal_server": "Internal Server Error"
+    "loginError": {
+        "bagRequest": "Username or password is wrong",
+        "internalServer": "Internal Server Error"
     },
-    "form_auth": "Authorization form",
+    "formAuth": "Authorization form",
     "logout": "Logout",
     "currency": {
-        "label_select": "Currency"
+        "labelSelect": "Currency"
     },
     "country": {
-        "label_select": "Country"
+        "labelSelect": "Country"
     },
     "noComments": "There are no comments here yet, but yours could be the first",
-    "commentsTitle": "Комментарии",
-    "errorLoadingComments": "Failed to load comments"
+    "commentsTitle": "Comments",
+    "errorLoadingComments": "Failed to load comments",
+    "placeholder": {
+        "addComment": "Write comment..."
+    }
 }

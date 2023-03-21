@@ -1,14 +1,7 @@
 import { ArticleDetails } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
-import {
-    getArticleCommentsError,
-    getArticleCommentsLoading,
-} from 'pages/ArticleDetailsPage/model/selectors/comments';
-import {
-    articleDetailsCommentsReducer,
-    getArticleComments,
-} from 'pages/ArticleDetailsPage/model/slice/ArticleDetailsComments';
-import { FC } from 'react';
+import { AddCommentForm } from 'features/AddCommentForm';
+import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -20,6 +13,16 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text } from 'shared/ui/Text';
+import {
+    articleDetailsCommentsReducer,
+    getArticleComments,
+} from '../../model/slice/ArticleDetailsComments';
+import {
+    getArticleCommentsLoading,
+    getArticleFetchCommentError,
+    getArticleSendCommentError,
+} from '../../model/selectors/comments';
+import { addCommentForArticle } from '../../model/service/addCommentForArticle/addCommentForArticle';
 // eslint-disable-next-line max-len
 import { fetchCommentsByArticleId } from '../../model/service/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import cls from './ArticleDetailsPage.module.scss';
@@ -40,9 +43,17 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
     const comments = useSelector(getArticleComments.selectAll);
     const commentsLoading = useSelector(getArticleCommentsLoading);
-    const commentsError = useSelector(getArticleCommentsError);
+    const sendCommentsError = useSelector(getArticleSendCommentError);
+    const fetchCommentsError = useSelector(getArticleFetchCommentError);
 
     const dispatch = useAppDispatch();
+
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -61,7 +72,12 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id} />
                 <Text title={commonT('commentsTitle')} className={cls.commentsTitle} />
-                <CommentList error={commentsError} comments={comments} isLoading={!!commentsLoading} />
+                <AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
+                <CommentList
+                    error={fetchCommentsError}
+                    comments={comments}
+                    isLoading={!!commentsLoading}
+                />
             </div>
         </DynamicModuleLoader>
     );

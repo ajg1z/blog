@@ -21,7 +21,7 @@ describe('updateProfileData', () => {
 
         thunk.privateApi.put.mockReturnValue(Promise.resolve({ data }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
 
@@ -37,7 +37,7 @@ describe('updateProfileData', () => {
 
         thunk.privateApi.put.mockReturnValue(Promise.resolve({ status: 400 }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
 
@@ -53,7 +53,7 @@ describe('updateProfileData', () => {
 
         thunk.privateApi.put.mockReturnValue(Promise.resolve({ status: 400 }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
 

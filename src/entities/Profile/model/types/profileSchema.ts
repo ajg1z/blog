@@ -3,6 +3,7 @@ import { Currency } from 'entities/Currency';
 import { ValidateProfileError } from 'features/EditableProfileCard/model/types/profile';
 
 export interface Profile {
+    id?: string;
     firstname?: string;
     lastname?: string;
     age?: number;
