@@ -1,0 +1,9 @@
+.ArticleList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.noArticles {
+    margin: 10px 0;
+}

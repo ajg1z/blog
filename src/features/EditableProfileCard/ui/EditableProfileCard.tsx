@@ -35,6 +35,8 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     const dispatch = useAppDispatch();
 
     const isLoading = useSelector(getProfileLoading);
+    console.log('isLoading', isLoading);
+
     const error = useSelector(getProfileError);
     const data = useSelector(getProfileForm);
     const readonly = useSelector(getProfileReadOnly);

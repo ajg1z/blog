@@ -1,0 +1,69 @@
+.TAIL {
+    width: 300px;
+    transition: 0.2s;
+    cursor: pointer;
+
+    .createdAt {
+        transition: 0.2s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        padding: 2px;
+        background: var(--inverted-bg-color);
+
+        & p {
+            color: var(--bg-color);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.01);
+
+        & .createdAt {
+            opacity: 1;
+        }
+    }
+
+    .imgWrapper {
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+
+    .img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    .articleInfo {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .articleTypes p,
+    .articleTitle p {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 210px;
+        overflow: hidden;
+    }
+
+    .articleTitle p {
+        width: auto;
+    }
+
+    .viewsIcon {
+        height: 14px;
+    }
+}
+
+.LIST {
+}

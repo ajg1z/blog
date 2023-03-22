@@ -36,3 +36,8 @@ export interface Article {
     type: ArticleType[];
     blocks: ArticleBlock[];
 }
+
+export enum ArticleView {
+    LIST = 'LIST',
+    TILE = 'TILE',
+}

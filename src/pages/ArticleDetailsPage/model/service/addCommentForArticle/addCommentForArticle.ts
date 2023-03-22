@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Comment } from 'entities/Comment';
 import { articleDetailsCommentsActions } from '../../slice/ArticleDetailsComments';
+import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(
     'articleDetailsComments/addCommentForArticle',
@@ -25,12 +26,7 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
 
             if (!response.data) throw new Error();
 
-            const newComment = {
-                ...response.data,
-                user: user!,
-            };
-
-            dispatch(articleDetailsCommentsActions.addComment(newComment));
+            dispatch(fetchCommentsByArticleId(String(article!.id)));
 
             return response.data;
         } catch (e) {

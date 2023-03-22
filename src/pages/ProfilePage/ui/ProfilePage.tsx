@@ -1,4 +1,4 @@
-import { memo, PropsWithChildren } from 'react';
+import { memo } from 'react';
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -29,7 +29,7 @@ const ProfilePage = memo(() => {
     }
 
     return (
-        <DynamicModuleLoader reducers={initialReducers}>
+        <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
             <EditableProfileCard id={id} isEditable={+id === user?.id} />
         </DynamicModuleLoader>
     );
