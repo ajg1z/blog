@@ -4,7 +4,7 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -13,6 +13,8 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text } from 'shared/ui/Text';
+import { Button } from 'shared/ui/Button';
+import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import {
     articleDetailsCommentsReducer,
     getArticleComments,
@@ -47,6 +49,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const fetchCommentsError = useSelector(getArticleFetchCommentError);
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const onSendComment = useCallback(
         (text: string) => {
@@ -54,6 +57,10 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
         },
         [dispatch],
     );
+
+    const onBackToList = () => {
+        navigate(RoutePaths.articles);
+    };
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -70,6 +77,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     return (
         <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                <Button onClick={onBackToList}>{t('backToArticles')}</Button>
                 <ArticleDetails id={id} />
                 <Text title={commonT('commentsTitle')} className={cls.commentsTitle} />
                 <AddCommentForm sendComment={onSendComment} error={sendCommentsError} />

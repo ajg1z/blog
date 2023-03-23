@@ -1,3 +1,5 @@
+import { User } from 'entities/User';
+
 export type ArticleBlockType = 'text' | 'image' | 'code';
 
 export interface ArticleBlockBase {
@@ -29,6 +31,7 @@ export type ArticleType = 'IT' | 'SCIENCE' | 'ECONOMICS' | 'SPACE' | 'GAME' | 'M
 export interface Article {
     id: number;
     title: string;
+    user: User;
     subtitle: string;
     img: string;
     views: number;

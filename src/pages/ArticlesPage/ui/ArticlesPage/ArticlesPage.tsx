@@ -17,6 +17,11 @@ const mock = {
     views: 1022,
     createdAt: '26.02.2022',
     type: ['IT', 'ECONOMICS', 'POLITICS', 'GAMEDEV'],
+    user: {
+        id: 1,
+        username: 'Ajgiz',
+        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU',
+    },
     blocks: [
         {
             id: '1',
@@ -86,11 +91,12 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     return (
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
             <ArticleList
-                view={ArticleView.LIST}
+                view={ArticleView.TILE}
                 articles={new Array(16).fill(0).map((_, index) => ({
                     ...mock,
                     id: index,
                 }))}
+                isLoading
             />
         </div>
     );
