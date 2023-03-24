@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card';
 import { Skeleton } from 'shared/ui/Skeleton';
@@ -11,7 +11,7 @@ interface ArticleListItemProps {
     view: ArticleView;
 }
 
-export const ArticleListItemSkeleton: FC<ArticleListItemProps> = (props) => {
+export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo((props) => {
     const { className, view } = props;
 
     if (view === ArticleView.LIST) {
@@ -54,4 +54,4 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = (props) => {
             </Card>
         </div>
     );
-};
+});

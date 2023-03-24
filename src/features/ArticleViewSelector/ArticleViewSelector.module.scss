@@ -1,0 +1,5 @@
+.activeView {
+    & svg {
+        fill: var(--secondary-color);
+    }
+}

@@ -18,7 +18,7 @@ import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import {
     articleDetailsCommentsReducer,
     getArticleComments,
-} from '../../model/slice/ArticleDetailsComments';
+} from '../../model/slice/articleDetailsComments';
 import {
     getArticleCommentsLoading,
     getArticleFetchCommentError,

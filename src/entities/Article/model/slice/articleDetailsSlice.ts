@@ -6,7 +6,7 @@ const initialState: ArticleDetailsSchema = {
     isLoading: true,
 };
 
-export const ArticleDetailsSlice = createSlice({
+export const articleDetailsSlice = createSlice({
     initialState,
     name: 'articleDetails',
     reducers: {},
@@ -27,5 +27,5 @@ export const ArticleDetailsSlice = createSlice({
     },
 });
 
-export const { actions: articleDetailsActions } = ArticleDetailsSlice;
-export const { reducer: articleDetailsReducer } = ArticleDetailsSlice;
+export const { actions: articleDetailsActions } = articleDetailsSlice;
+export const { reducer: articleDetailsReducer } = articleDetailsSlice;

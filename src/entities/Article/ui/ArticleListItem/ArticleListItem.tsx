@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card';
@@ -20,7 +20,7 @@ interface ArticleListItemProps {
     article: Article;
 }
 
-export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
+export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
     const { className, article, view } = props;
     const { t } = useTranslation('articles');
 
@@ -83,4 +83,4 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
             </Card>
         </div>
     );
-};
+});

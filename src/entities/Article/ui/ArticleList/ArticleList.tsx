@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createArray } from 'shared/lib/arrayUtils/arrayUtils';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -15,17 +15,17 @@ interface ArticleListProps {
     view: ArticleView;
 }
 
-export const ArticleList: FC<ArticleListProps> = (props) => {
+export const ArticleList: FC<ArticleListProps> = memo((props) => {
     const { className, articles, view = ArticleView.TILE, isLoading } = props;
     const { t } = useTranslation('articles');
 
     if (isLoading) {
         return (
-            <>
+            <div className={classNames(cls.ArticleList, {}, [className])}>
                 {createArray(view === ArticleView.LIST ? 12 : 3).map(() => (
                     <ArticleListItemSkeleton view={view} />
                 ))}
-            </>
+            </div>
         );
     }
 
@@ -42,4 +42,4 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
             )}
         </div>
     );
-};
+});
