@@ -20,8 +20,8 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
     const { t } = useTranslation('articles');
 
     const getSkeletons = () =>
-        createArray(view === ArticleView.TILE ? 12 : 3).map(() => (
-            <ArticleListItemSkeleton view={view} />
+        createArray(view === ArticleView.TILE ? 12 : 3).map((index) => (
+            <ArticleListItemSkeleton key={index} view={view} />
         ));
 
     const renderArticle = (article: Article) => (
