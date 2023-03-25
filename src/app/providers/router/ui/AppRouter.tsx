@@ -14,9 +14,7 @@ const AppRouter: FC = () => {
                 element={
                     // eslint-disable-next-line react/jsx-wrap-multilines
                     <Suspense fallback={<PageLoader />}>
-                        <div className='page-wrapper'>
-                            {authOnly ? <RequireAuth>{element}</RequireAuth> : element}
-                        </div>
+                        {authOnly ? <RequireAuth>{element}</RequireAuth> : element}
                     </Suspense>
                 }
             />

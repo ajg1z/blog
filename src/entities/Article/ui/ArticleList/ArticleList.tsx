@@ -19,15 +19,10 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
     const { className, articles, view = ArticleView.TILE, isLoading } = props;
     const { t } = useTranslation('articles');
 
-    if (isLoading) {
-        return (
-            <div className={classNames(cls.ArticleList, {}, [className])}>
-                {createArray(view === ArticleView.LIST ? 12 : 3).map(() => (
-                    <ArticleListItemSkeleton view={view} />
-                ))}
-            </div>
-        );
-    }
+    const getSkeletons = () =>
+        createArray(view === ArticleView.TILE ? 12 : 3).map(() => (
+            <ArticleListItemSkeleton view={view} />
+        ));
 
     const renderArticle = (article: Article) => (
         <ArticleListItem article={article} view={view} key={article.id} />
@@ -35,11 +30,13 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className])}>
-            {articles.length ? (
-                articles.map(renderArticle)
-            ) : (
+            {!!articles.length && articles.map(renderArticle)}
+
+            {!isLoading && !articles.length && (
                 <Text title={t('noArticles')} align='center' className={cls.noArticles} />
             )}
+
+            {isLoading && getSkeletons()}
         </div>
     );
 });

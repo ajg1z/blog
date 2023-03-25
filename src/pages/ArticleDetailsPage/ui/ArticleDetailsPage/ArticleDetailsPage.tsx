@@ -15,6 +15,7 @@ import {
 import { Text } from 'shared/ui/Text';
 import { Button } from 'shared/ui/Button';
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
+import { PageWrapper } from 'widgets/PageWrapper';
 import {
     articleDetailsCommentsReducer,
     getArticleComments,
@@ -76,17 +77,19 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <Button onClick={onBackToList}>{t('backToArticles')}</Button>
-                <ArticleDetails id={id} />
-                <Text title={commonT('commentsTitle')} className={cls.commentsTitle} />
-                <AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
-                <CommentList
-                    error={fetchCommentsError}
-                    comments={comments}
-                    isLoading={!!commentsLoading}
-                />
-            </div>
+            <PageWrapper>
+                <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                    <Button onClick={onBackToList}>{t('backToArticles')}</Button>
+                    <ArticleDetails id={id} />
+                    <Text title={commonT('commentsTitle')} className={cls.commentsTitle} />
+                    <AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
+                    <CommentList
+                        error={fetchCommentsError}
+                        comments={comments}
+                        isLoading={!!commentsLoading}
+                    />
+                </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 };

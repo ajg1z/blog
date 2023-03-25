@@ -39,7 +39,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
         </>
     );
 
-    if (view === ArticleView.LIST) {
+    if (view === ArticleView.TILE) {
         return (
             <div className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}>
                 <Card className={cls.card} onClick={openArticle}>

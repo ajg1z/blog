@@ -14,7 +14,7 @@ interface ArticleListItemProps {
 export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo((props) => {
     const { className, view } = props;
 
-    if (view === ArticleView.LIST) {
+    if (view === ArticleView.TILE) {
         return (
             <div className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}>
                 <Card className={cls.card}>

@@ -12,6 +12,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text } from 'shared/ui/Text';
+import { PageWrapper } from 'widgets/PageWrapper';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -22,8 +23,8 @@ import {
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import cls from './ArticlesPage.module.scss';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 interface ArticlesPageProps {
     className?: string;
@@ -44,7 +45,6 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     const articles = useSelector(getArticles.selectAll);
 
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.initState());
     });
 
@@ -55,20 +55,26 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
         [dispatch],
     );
 
+    const onLoadNextPage = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-            <div className={classNames(cls.ArticlesPage, {}, [className])}>
-                <ArticleViewSelector
-                    activeView={view}
-                    className={cls.articleViewSelector}
-                    onViewSelect={onViewChange}
-                />
-                {error ? (
-                    <Text title={error} theme='error' align='center' />
-                ) : (
-                    <ArticleList view={view!} articles={articles} isLoading={isLoading} />
-                )}
-            </div>
+            <PageWrapper onScrollEnd={onLoadNextPage}>
+                <div className={classNames(cls.ArticlesPage, {}, [className])}>
+                    <ArticleViewSelector
+                        activeView={view}
+                        className={cls.articleViewSelector}
+                        onViewSelect={onViewChange}
+                    />
+                    {error ? (
+                        <Text title={error} theme='error' align='center' />
+                    ) : (
+                        <ArticleList view={view!} articles={articles} isLoading={isLoading} />
+                    )}
+                </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 };

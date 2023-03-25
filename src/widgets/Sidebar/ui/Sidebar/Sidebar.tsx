@@ -23,7 +23,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
     }
 
     return (
-        <div
+        <menu
             aria-label='sidebar'
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
@@ -48,6 +48,6 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
                 <ThemeSwitcher />
                 <LangSwitcher isShort={collapsed} />
             </div>
-        </div>
+        </menu>
     );
 });

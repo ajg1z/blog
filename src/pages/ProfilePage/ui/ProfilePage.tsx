@@ -9,6 +9,7 @@ import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
+import { PageWrapper } from 'widgets/PageWrapper';
 import cls from './ProfilePage.module.scss';
 
 const initialReducers: ReducersList = {
@@ -30,7 +31,9 @@ const ProfilePage = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
-            <EditableProfileCard id={id} isEditable={+id === user?.id} />
+            <PageWrapper>
+                <EditableProfileCard id={id} isEditable={+id === user?.id} />
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 });
