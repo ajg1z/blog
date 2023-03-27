@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import { ArticleList, ArticleView } from 'entities/Article';
-import { ArticleViewSelector } from 'features/ArticleViewSelector';
 import { FC, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
@@ -12,6 +11,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text } from 'shared/ui/Text';
 import { PageWrapper } from 'widgets/PageWrapper';
+import { useSearchParams } from 'react-router-dom';
 import {
     articlesPageActions,
     articlesPageReducer,
@@ -25,6 +25,7 @@ import {
 import cls from './ArticlesPage.module.scss';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
     className?: string;
@@ -42,17 +43,11 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
     const articles = useSelector(getArticles.selectAll);
+    const [searchParams] = useSearchParams();
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
-
-    const onViewChange = useCallback(
-        (view: ArticleView) => {
-            dispatch(articlesPageActions.setView(view));
-        },
-        [dispatch],
-    );
 
     const onLoadNextPage = useCallback(() => {
         dispatch(fetchNextArticlesPage());
@@ -62,11 +57,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
         <DynamicModuleLoader reducers={reducers}>
             <PageWrapper onScrollEnd={onLoadNextPage}>
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>
-                    <ArticleViewSelector
-                        activeView={view}
-                        className={cls.articleViewSelector}
-                        onViewSelect={onViewChange}
-                    />
+                    <ArticlesPageFilters className={cls.articleFilters} />
                     {error ? (
                         <Text title={error} theme='error' align='center' />
                     ) : (

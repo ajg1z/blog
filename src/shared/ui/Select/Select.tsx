@@ -1,28 +1,35 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { classNames, ClassNamesMods } from 'shared/lib/classNames/classNames';
-
-import { memo, PropsWithChildren, SelectHTMLAttributes, useMemo } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 import cls from './Select.module.scss';
 
-export interface SelectOption {
-    value: string;
+export interface SelectOption<T extends string> {
+    value: T;
     content: string;
 }
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps<T extends string> {
     className?: string;
     label?: string;
-    readOnly?: boolean;
-    options: SelectOption[];
+    options?: SelectOption<T>[];
+    value?: T;
+    onChange?: (value: T) => void;
+    readonly?: boolean;
+    disabled?: boolean;
 }
 
-export const Select = memo((props: PropsWithChildren<SelectProps>) => {
-    const { className, options, label, readOnly, ...otherProps } = props;
+export const Select = <T extends string>(props: SelectProps<T>) => {
+    const { className, label, options, onChange, value, readonly, disabled } = props;
+
+    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        if (onChange) {
+            onChange(e.target.value as T);
+        }
+    };
 
     const optionsList = useMemo(
         () =>
-            options.map((opt) => (
-                <option key={opt.value} value={opt.value}>
+            options?.map((opt) => (
+                <option className={cls.option} value={opt.value} key={opt.value}>
                     {opt.content}
                 </option>
             )),
@@ -30,24 +37,20 @@ export const Select = memo((props: PropsWithChildren<SelectProps>) => {
     );
 
     const mods: ClassNamesMods = {
-        [cls.readOnly]: readOnly,
+        [cls.readOnly]: readonly,
     };
 
     return (
         <div className={classNames(cls.Wrapper, mods, [className])}>
-            {label && (
-                <label htmlFor='select_label' className={cls.label}>
-                    {label}
-                </label>
-            )}
+            {label && <span className={cls.label}>{`${label}`}</span>}
             <select
-                {...otherProps}
-                id='select_label'
-                disabled={readOnly ?? otherProps.disabled}
+                disabled={readonly || disabled}
                 className={cls.select}
+                value={value}
+                onChange={onChangeHandler}
             >
                 {optionsList}
             </select>
         </div>
     );
-});
+};

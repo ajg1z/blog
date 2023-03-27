@@ -38,5 +38,9 @@
     "errorLoadingComments": "Не удалось загрузить комментарии",
     "placeholder": {
         "addComment": "Написать коментарий..."
-    }
+    },
+    "sortBy": "Сортировать по",
+    "search": "Поиск",
+    "increasing": "возрастанию",
+    "decreasing": "убыванию"
 }

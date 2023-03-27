@@ -105,8 +105,8 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     );
 
     const onChangeCountry = useCallback(
-        (e: ChangeEvent<HTMLSelectElement>) => {
-            dispatch(profileActions.updateProfile({ country: e.target.value as Country }));
+        (value: Country) => {
+            dispatch(profileActions.updateProfile({ country: value }));
         },
         [dispatch],
     );
@@ -126,8 +126,8 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     );
 
     const onChangeCurrency = useCallback(
-        (e: ChangeEvent<HTMLSelectElement>) => {
-            dispatch(profileActions.updateProfile({ currency: e.target.value as Currency }));
+        (value: Currency) => {
+            dispatch(profileActions.updateProfile({ currency: value }));
         },
         [dispatch],
     );

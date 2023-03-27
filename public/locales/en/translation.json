@@ -38,5 +38,9 @@
     "errorLoadingComments": "Failed to load comments",
     "placeholder": {
         "addComment": "Write comment..."
-    }
+    },
+    "sortBy": "Sort by",
+    "search": "Search",
+    "increasing": "increasing",
+    "decreasing": "decreasing"
 }

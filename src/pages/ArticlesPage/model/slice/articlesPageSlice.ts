@@ -1,7 +1,8 @@
-import { Article, ArticleView } from 'entities/Article';
+import { Article, ArticleView, ArticleSortField, ArticleType } from 'entities/Article';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ArticlesViewLocalStorageKey } from 'shared/const/localStorage';
+import { SortOrder } from 'shared/types';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { CountItemListPage, CountItemTilePage } from '../const/loadNextArticlePage';
@@ -23,6 +24,10 @@ export const articlesPageSlice = createSlice({
         hasMore: true,
         page: 0,
         inited: false,
+        order: 'asc',
+        search: '',
+        sort: ArticleSortField.CREATED,
+        type: 'ALL',
     }),
     name: 'articlesPage',
     reducers: {
@@ -42,15 +47,43 @@ export const articlesPageSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
         },
+        setOrder: (state, action: PayloadAction<SortOrder>) => {
+            state.order = action.payload;
+        },
+        setSort: (state, action: PayloadAction<ArticleSortField>) => {
+            state.sort = action.payload;
+        },
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
+        },
+        setType: (state, action: PayloadAction<ArticleType>) => {
+            state.type = action.payload;
+        },
+        initSortParamsFromUrl: (state, action: PayloadAction<URLSearchParams>) => {
+            const sortUrl = action.payload.get('sort');
+            const searchUrl = action.payload.get('search');
+            const orderUrl = action.payload.get('order');
+            const typeUrl = action.payload.get('type');
+
+            if (sortUrl) state.sort = sortUrl as ArticleSortField;
+            if (orderUrl) state.order = sortUrl as SortOrder;
+            if (searchUrl) state.search = searchUrl;
+            if (typeUrl) state.type = typeUrl as ArticleType;
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticlesList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                articlesAdapter.addMany(state, action.payload);
-                state.hasMore = action.payload.length > 0;
+                state.hasMore = action.payload.length >= (state?.limit ?? 0);
+                if (action.meta.arg.replace) {
+                    articlesAdapter.setAll(state, action.payload);
+                } else articlesAdapter.addMany(state, action.payload);
             })
-            .addCase(fetchArticlesList.pending, (state) => {
+            .addCase(fetchArticlesList.pending, (state, action) => {
+                if (action.meta.arg.replace) {
+                    articlesAdapter.removeAll(state);
+                }
                 state.isLoading = true;
                 state.error = undefined;
             })

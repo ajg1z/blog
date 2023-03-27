@@ -5,7 +5,7 @@ import { ArticleView } from 'entities/Article';
 import { Icon } from 'shared/ui/Icon';
 import { Button } from 'shared/ui/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticleViewSelector.module.scss';
+import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
     className?: string;
@@ -24,7 +24,7 @@ const viewTypes = [
     },
 ];
 
-export function ArticleViewSelector(props: PropsWithChildren<ArticleViewSelectorProps>) {
+export function ArticlesViewSelector(props: PropsWithChildren<ArticleViewSelectorProps>) {
     const { className, onViewSelect, activeView } = props;
 
     return (

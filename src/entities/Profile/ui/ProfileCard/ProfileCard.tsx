@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { classNames, ClassNamesMods } from 'shared/lib/classNames/classNames';
 
-import { CurrencySelect } from 'entities/Currency';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import { ChangeEvent, PropsWithChildren } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { Field } from 'shared/ui/Field/Field';
 import { Input } from 'shared/ui/Input/Input';
 import { CircleLoader } from 'shared/ui/CircleLoader';
 import { Avatar } from 'shared/ui/Avatar';
-import { CountrySelect } from 'entities/Country';
+import { Country, CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profileSchema';
 
@@ -24,8 +24,8 @@ interface ProfileCardProps {
     onChangeAvatar?: (e: ChangeEvent<HTMLInputElement>) => void;
     onChangeCity?: (e: ChangeEvent<HTMLInputElement>) => void;
     onChangeUserName?: (e: ChangeEvent<HTMLInputElement>) => void;
-    onChangeCurrency?: (e: ChangeEvent<HTMLSelectElement>) => void;
-    onChangeCountry?: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onChangeCurrency?: (value: Currency) => void;
+    onChangeCountry?: (value: Country) => void;
 }
 
 export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
@@ -96,12 +96,12 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
 
                 <CurrencySelect
                     value={data?.currency}
-                    readOnly={readonly}
+                    readonly={readonly}
                     onChange={onChangeCurrency}
                 />
                 <CountrySelect
                     value={data?.country}
-                    readOnly={readonly}
+                    readonly={readonly}
                     onChange={onChangeCountry}
                 />
             </main>
