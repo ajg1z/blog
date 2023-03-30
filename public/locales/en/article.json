@@ -1,5 +1,6 @@
 {
     "articleNotFound": "Article not found",
     "errorLoading": "An error occurred while loading the article",
-    "backToArticles": "Back to list"
+    "backToArticles": "Back to list",
+    "recommendations": "Recommendations"
 }

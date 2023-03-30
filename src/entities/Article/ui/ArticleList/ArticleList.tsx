@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createArray } from 'shared/lib/arrayUtils/arrayUtils';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -13,10 +13,12 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     view: ArticleView;
+    error?: string;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList: FC<ArticleListProps> = memo((props) => {
-    const { className, articles, view = ArticleView.TILE, isLoading } = props;
+    const { className, articles, view = ArticleView.TILE, isLoading, error, target } = props;
     const { t } = useTranslation('articles');
 
     const getSkeletons = () =>
@@ -25,12 +27,14 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
         ));
 
     const renderArticle = (article: Article) => (
-        <ArticleListItem article={article} view={view} key={article.id} />
+        <ArticleListItem target={target} article={article} view={view} key={article.id} />
     );
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className])}>
             {!!articles.length && articles.map(renderArticle)}
+
+            {error && <Text title={error} theme='error' align='center' />}
 
             {!isLoading && !articles.length && (
                 <Text title={t('noArticles')} align='center' className={cls.noArticles} />

@@ -58,11 +58,12 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
             <PageWrapper onScrollEnd={onLoadNextPage}>
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>
                     <ArticlesPageFilters className={cls.articleFilters} />
-                    {error ? (
-                        <Text title={error} theme='error' align='center' />
-                    ) : (
-                        <ArticleList view={view!} articles={articles} isLoading={isLoading} />
-                    )}
+                    <ArticleList
+                        error={error}
+                        view={view!}
+                        articles={articles}
+                        isLoading={isLoading}
+                    />
                 </div>
             </PageWrapper>
         </DynamicModuleLoader>

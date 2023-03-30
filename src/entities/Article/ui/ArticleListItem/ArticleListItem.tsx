@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card';
@@ -7,8 +7,8 @@ import { Text } from 'shared/ui/Text';
 import EyeIcon from 'shared/assets/img/eye.svg';
 import { Avatar } from 'shared/ui/Avatar';
 import { Button } from 'shared/ui/Button';
-import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
+import { AppLink } from 'shared/ui/AppLink';
 import { Article, ArticleBlockText, ArticleView } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
@@ -18,19 +18,15 @@ interface ArticleListItemProps {
     className?: string;
     view: ArticleView;
     article: Article;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
-    const { className, article, view } = props;
+    const { className, article, view, target } = props;
     const { t } = useTranslation('articles');
 
-    const navigate = useNavigate();
-
-    const openArticle = () => {
-        navigate(RoutePaths.articleDetail + article.id);
-    };
-
     const types = <Text text={article.type.join(', ')} className={cls.articleTypes} />;
+    const link = RoutePaths.articleDetail + article.id;
 
     const views = (
         <>
@@ -41,8 +37,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
     if (view === ArticleView.TILE) {
         return (
-            <div className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}>
-                <Card className={cls.card} onClick={openArticle}>
+            <AppLink
+                target={target}
+                to={link}
+                className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}
+            >
+                <Card className={cls.card}>
                     <div className={cls.imgWrapper}>
                         <Text text={article.createdAt} className={cls.createdAt} />
                         <img src={article.img} alt={article.title} className={cls.img} />
@@ -53,7 +53,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                     </div>
                     <Text text={article.title} className={cls.articleTitle} />
                 </Card>
-            </div>
+            </AppLink>
         );
     }
 
@@ -74,10 +74,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                     <ArticleBlockTextComponent block={textBlock} className={cls.description} />
                 )}
                 <div className={cls.footer}>
-                    <Button theme='outline' onClick={openArticle}>
-                        {t('readMore')}
-                        ...
-                    </Button>
+                    <AppLink to={link}>
+                        <Button theme='outline'>
+                            {t('readMore')}
+                            ...
+                        </Button>
+                    </AppLink>
                     {views}
                 </div>
             </Card>

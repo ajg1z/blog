@@ -1,5 +1,6 @@
 {
     "articleNotFound": "Статья не найдена",
     "errorLoading": "Произошла ошибка при загрузке статьи",
-    "backToArticles": "Назад к списку"
+    "backToArticles": "Назад к списку",
+    "recommendations": "Рекомендуем"
 }

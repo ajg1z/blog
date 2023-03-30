@@ -5,7 +5,7 @@ export type ArticleBlockType = 'text' | 'image' | 'code';
 export enum ArticleSortField {
     VIEWS = 'views',
     TITLE = 'title',
-    CREATED = 'created',
+    CREATED = 'createdAt',
 }
 
 export interface ArticleBlockBase {

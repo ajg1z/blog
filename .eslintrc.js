@@ -60,6 +60,7 @@ module.exports = {
                     'size',
                     'alt',
                     'align',
+                    'target',
                 ],
             },
         ],
@@ -67,7 +68,7 @@ module.exports = {
             'error',
             {
                 ignoreComments: true,
-                code: 110,
+                code: 120,
             },
         ],
         'react/prop-types': 'off',
@@ -80,6 +81,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-debugger': 'warn',
         'implicit-arrow-linebreak': 'off',
+        'operator-linebreak': 'off',
     },
     globals: {
         __IS_DEV__: true,
