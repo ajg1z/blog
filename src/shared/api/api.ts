@@ -5,9 +5,14 @@ const baseURL = __API__;
 
 export const privateApi = axios.create({
     baseURL,
-    headers: {
-        authorization: `Bearer ${localStorage.getItem(TokenLocalStorageKey)?.replaceAll('"', '')}`,
-    },
+});
+
+privateApi.interceptors.request.use((config) => {
+    if (config.headers) {
+        config.headers.Authorization =
+            `Bearer ${localStorage.getItem(TokenLocalStorageKey)?.replaceAll('"', '')}` ?? '';
+    }
+    return config;
 });
 
 export const publicApi = axios.create({
