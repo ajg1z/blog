@@ -3,7 +3,7 @@ import { PropsWithChildren, memo, useMemo } from 'react';
 import { TabItem, Tabs } from 'shared/ui/Tabs';
 import { ArticleType } from 'entities/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticleTypeTAbs.module.scss';
+import cls from './ArticleTypeTabs.module.scss';
 
 interface ArticleTypeTAbsProps {
     className?: string;

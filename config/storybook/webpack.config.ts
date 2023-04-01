@@ -1,5 +1,4 @@
 import { Configuration, DefinePlugin } from 'webpack';
-import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
 
@@ -9,6 +8,8 @@ export default ({ config }: { config: Configuration }) => {
         html: '',
         entry: '',
         src: '../../src/',
+        locales: '',
+        buildLocales: '',
     };
 
     config!.resolve!.modules!.push(paths.src);

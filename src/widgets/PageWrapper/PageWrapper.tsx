@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
-import { useThrottle } from 'shared/lib/useThrottle/useThrottle';
+import { useThrottle } from 'shared/hooks/useThrottle/useThrottle';
 import cls from './PageWrapper.module.scss';
 
 interface PageWrapperProps {

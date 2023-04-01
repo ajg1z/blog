@@ -34,6 +34,7 @@ import {
 // eslint-disable-next-line max-len
 import { fetchArticleRecommendations } from '../../model/service/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -59,7 +60,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     const recommendationsError = useSelector(getArticleRecommendationsError);
 
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const onSendComment = useCallback(
         (text: string) => {
@@ -67,10 +67,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
         },
         [dispatch],
     );
-
-    const onBackToList = () => {
-        navigate(RoutePaths.articles);
-    };
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -89,7 +85,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
         <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
             <PageWrapper>
                 <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                    <Button onClick={onBackToList}>{t('backToArticles')}</Button>
+                    <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
                     <Text title={t('recommendations')} className={cls.recommendationsTitle} />
                     <ArticleList
