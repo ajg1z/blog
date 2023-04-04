@@ -55,7 +55,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <PageWrapper onScrollEnd={onLoadNextPage}>
+            <PageWrapper className={cls.page} saveScrollPosition={false}>
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>
                     <ArticlesPageFilters className={cls.articleFilters} />
                     <ArticleList
@@ -63,6 +63,10 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
                         view={view!}
                         articles={articles}
                         isLoading={isLoading}
+                        className={cls.ArticleList}
+                        onScrollEnd={onLoadNextPage}
+                        saveScrollPosition
+                        virtualized
                     />
                 </div>
             </PageWrapper>

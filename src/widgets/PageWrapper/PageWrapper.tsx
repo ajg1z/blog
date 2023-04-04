@@ -8,16 +8,18 @@ import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect
 import { StateSchema } from 'app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
 import { useThrottle } from 'shared/hooks/useThrottle/useThrottle';
+import { PageWrapperId } from 'shared/const/id';
 import cls from './PageWrapper.module.scss';
 
 interface PageWrapperProps {
     className?: string;
     children?: ReactNode;
     onScrollEnd?: () => void;
+    saveScrollPosition?: boolean;
 }
 
 export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
-    const { className, children, onScrollEnd } = props;
+    const { className, children, onScrollEnd, saveScrollPosition = true } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -25,20 +27,27 @@ export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
 
-    const scrollPosition = useSelector(
-        (state: StateSchema) => getScrollPositionByPath(state, pathname),
-        // eslint-disable-next-line function-paren-newline
-    );
+    if (saveScrollPosition) {
+        // eslint-disable-next-line
+        const scrollPosition = useSelector(
+            (state: StateSchema) => getScrollPositionByPath(state, pathname),
+            // eslint-disable-next-line function-paren-newline
+        );
 
-    useInfiniteScroll({
-        callback: onScrollEnd,
-        triggerRef,
-        wrapperRef,
-    });
+        // eslint-disable-next-line
+        useInitialEffect(() => {
+            wrapperRef.current.scrollTop = scrollPosition;
+        });
+    }
 
-    useInitialEffect(() => {
-        wrapperRef.current.scrollTop = scrollPosition;
-    });
+    if (onScrollEnd) {
+        // eslint-disable-next-line
+        useInfiniteScroll({
+            callback: onScrollEnd,
+            triggerRef,
+            wrapperRef,
+        });
+    }
 
     const onScroll = useThrottle((e: UIEvent) => {
         dispatch(
@@ -51,9 +60,10 @@ export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
 
     return (
         <section
+            id={PageWrapperId}
             ref={wrapperRef}
             className={classNames(cls.PageWrapper, {}, [className])}
-            onScroll={onScroll}
+            onScroll={saveScrollPosition ? onScroll : undefined}
         >
             {children}
             {onScrollEnd && <div className={cls.trigger} ref={triggerRef} />}

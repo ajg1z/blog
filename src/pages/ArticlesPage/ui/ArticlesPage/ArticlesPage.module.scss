@@ -1,7 +1,18 @@
 .ArticlesPage {
     min-height: 100%;
+    position: relative;
 }
 
 .articleFilters {
+    position: sticky;
+    top: 0;
     margin-bottom: 20px;
+}
+
+.ArticleList {
+    overflow-y: auto;
+}
+
+.page {
+    overflow-y: hidden;
 }

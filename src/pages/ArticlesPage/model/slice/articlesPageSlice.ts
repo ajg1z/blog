@@ -22,7 +22,7 @@ export const articlesPageSlice = createSlice({
         isLoading: false,
         view: ArticleView.TILE,
         hasMore: true,
-        page: 0,
+        page: 1,
         inited: false,
         order: 'asc',
         search: '',

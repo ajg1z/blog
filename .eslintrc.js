@@ -18,7 +18,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', ' "ug-fsd-plugin"'],
     rules: {
         'react/function-component-definition': 'off',
         'no-unused-vars': 'warn',
