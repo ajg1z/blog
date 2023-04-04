@@ -78,7 +78,7 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
                 align='stretch'
                 className={classNames('', {}, [className])}
             >
-                <Text title={t('form_auth')} />
+                <Text title={t('formAuth')} />
                 <Field label={t('login')} className={cls.field}>
                     <Input
                         autofocus

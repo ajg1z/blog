@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
@@ -43,7 +43,7 @@ const directionClasses: Record<Direction, string> = {
     row: cls.directionRow,
 };
 
-export interface FlexProps {
+export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     justify?: JustifyContent;
     align?: AlignItems;

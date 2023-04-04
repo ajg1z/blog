@@ -81,14 +81,14 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 
             if (virtualized && (virtuosoGridRef.current || virtuosoListRef.current)) {
                 if (virtuosoGridRef.current) {
-                    setTimeout(
-                        () =>
-                            virtuosoGridRef.current!.scrollTo({
+                    setTimeout(() => {
+                        if (virtuosoGridRef.current) {
+                            virtuosoGridRef.current.scrollTo({
                                 top: scrollPosition,
                                 behavior: 'auto',
-                            }),
-                        100,
-                    );
+                            });
+                        }
+                    }, 100);
                 }
 
                 if (virtuosoListRef.current) {

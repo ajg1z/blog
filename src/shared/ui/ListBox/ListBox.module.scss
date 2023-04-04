@@ -1,0 +1,40 @@
+.ListBox {
+    position: relative;
+}
+
+.trigger {
+    outline: none;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.options {
+    background-color: var(--list-box-bg);
+    position: absolute;
+    z-index: 1000;
+    min-width: 100%;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 4px 4px 8px var(--overlay-color);
+}
+
+.item {
+    padding: 5px 8px;
+    cursor: pointer;
+    transition: scale 0.2s;
+
+    &.selectedItem {
+        background-color: var(--primary-color);
+        color: var(--bg-color);
+    }
+
+    &.activeItem {
+        background-color: var(--inverted-bg-color);
+    }
+
+    &.disabledItem {
+        opacity: 0.6;
+    }
+}

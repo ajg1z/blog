@@ -17,7 +17,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className, isShort })
 
     return (
         <Button theme='clear' className={classNames('', {}, [className])} onClick={onToggle}>
-            {isShort ? t('short_lan') : t('lan')}
+            {isShort ? t('shortLan') : t('lan')}
         </Button>
     );
 });

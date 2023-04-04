@@ -39,7 +39,7 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <VStack className={cls.items} gap={24}>
+            <VStack className={cls.items} gap={24} role='navigation'>
                 {sidebarListLink.map((item) => (
                     <SidebarItem item={item} key={item.path} />
                 ))}

@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useTranslation } from 'react-i18next';
-import { Select, SelectProps, SelectOption } from 'shared/ui/Select';
+import { SelectOption } from 'shared/ui/Select';
 
 import { PropsWithChildren } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { ListBoxProps, ListBox, ListBoxItem } from 'shared/ui/ListBox';
 import { Currency } from '../../model/types/currency';
 
-interface CurrencySelectProps<T extends string> extends SelectProps<T> {}
+interface CurrencySelectProps<T extends string> extends ListBoxProps<T> {}
 
 const CurrencyOptions: SelectOption<Currency>[] = [
     { value: Currency.EUR, content: Currency.EUR },
@@ -17,16 +18,17 @@ const CurrencyOptions: SelectOption<Currency>[] = [
 export const CurrencySelect = <T extends string>(
     props: PropsWithChildren<CurrencySelectProps<T>>,
 ) => {
-    const { className, value, ...otherProps } = props;
+    const { className, value, onChange, ...otherProps } = props;
     const { t } = useTranslation();
 
     return (
-        <Select
+        <ListBox
             {...otherProps}
             value={value as T}
             className={classNames('', {}, [className])}
-            options={CurrencyOptions as SelectOption<T>[]}
-            label={t('currency.label_select')}
+            items={CurrencyOptions as ListBoxItem<T>[]}
+            label={t('currency.labelSelect')}
+            onChange={onChange}
         />
     );
 };

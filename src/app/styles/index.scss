@@ -8,11 +8,13 @@
 body {
     font-size: var(--font-m);
     color: var(--primary-color);
+    overflow: hidden;
 }
 
 .app {
     min-height: 100vh;
     background-color: var(--bg-color);
+    overflow: hidden;
 }
 
 .content-page {

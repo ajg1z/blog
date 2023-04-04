@@ -1,0 +1,30 @@
+.trigger {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.item {
+    padding: 10px 15px;
+    width: 100%;
+    background: none;
+    outline: none;
+    display: block;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+
+    &.active {
+        background-color: var(--card-bg);
+    }
+}
+
+.menu {
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px var(--overlay-color);
+    position: absolute;
+    z-index: 10000;
+    background-color: var(--inverted-bg-color);
+    border: 1px solid var(--primary-color);
+}
