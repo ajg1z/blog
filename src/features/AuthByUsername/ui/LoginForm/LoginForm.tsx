@@ -12,6 +12,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
@@ -71,7 +72,12 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
 
     return (
         <DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>
-            <div className={classNames(cls.LoginForm, {}, [className])}>
+            <VStack
+                gap={4}
+                justify='start'
+                align='stretch'
+                className={classNames('', {}, [className])}
+            >
                 <Text title={t('form_auth')} />
                 <Field label={t('login')} className={cls.field}>
                     <Input
@@ -89,13 +95,13 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
                         onChange={onChangePassword}
                     />
                 </Field>
-                <div className={cls.footer}>
+                <HStack className={cls.footer} gap={12} justify='end'>
                     {error && <Text theme='error' text={error} />}
                     <Button disabled={isLoading} className={cls.sign} onClick={onLoginClick}>
                         {t('sign')}
                     </Button>
-                </div>
-            </div>
+                </HStack>
+            </VStack>
         </DynamicModuleLoader>
     );
 });

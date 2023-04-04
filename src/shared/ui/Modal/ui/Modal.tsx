@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect } from 'react';
-import { Portal } from 'shared/ui/Portal/Portal';
+import { Portal } from '../../Portal/Portal';
 import { useMount } from '../lib/useMount';
 import { Layout } from './Layout';
 

@@ -12,7 +12,8 @@ import { Text } from 'shared/ui/Text';
 import { Skeleton } from 'shared/ui/Skeleton';
 import { Avatar } from 'shared/ui/Avatar';
 import { Icon } from 'shared/ui/Icon';
-import { ArticleBlock } from 'entities/Article/model/types/article';
+import { HStack } from 'shared/ui/Stack';
+import { ArticleBlock } from '../../model/types/article';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import {
     getArticleDetailsData,
@@ -104,14 +105,15 @@ export const ArticleDetails: FC<ArticleDetailProps> = memo((props) => {
                     text={article?.subtitle}
                     size='L'
                 />
-                <div className={cls.articleInfo}>
+                <HStack gap={12}>
                     <Icon Svg={EyeIcon} />
                     <Text text={String(article?.views)} />
-                </div>
-                <div className={cls.articleInfo}>
+                </HStack>
+
+                <HStack gap={12}>
                     <Icon Svg={CalendarIcon} />
                     <Text text={article?.createdAt} />
-                </div>
+                </HStack>
                 {article?.blocks.map(renderBlock)}
             </>
         );

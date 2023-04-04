@@ -38,8 +38,6 @@
     }
 
     .articleInfo {
-        display: flex;
-        align-items: center;
         margin: 5px 0;
     }
 
@@ -74,9 +72,6 @@
     }
 
     .header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         margin-bottom: 5px;
     }
 
@@ -104,9 +99,6 @@
     }
 
     .skeletonTypes {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         margin-bottom: 15px;
     }
 
@@ -124,8 +116,6 @@
 
     .footer {
         margin-top: 20px;
-        display: flex;
-        align-items: center;
     }
 
     .skeletonHeader {

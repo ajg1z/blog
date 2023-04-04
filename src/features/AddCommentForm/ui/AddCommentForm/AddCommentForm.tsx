@@ -8,12 +8,9 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Button } from 'shared/ui/Button';
-import { Input } from 'shared/ui/Input';
 import { Text } from 'shared/ui/Text';
-import {
-    getAddCommentFormError,
-    getAddCommentFormText,
-} from '../../model/selectors/addCommentForm';
+import { HStack } from 'shared/ui/Stack';
+import { getAddCommentFormText } from '../../model/selectors/addCommentForm';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -51,7 +48,10 @@ const AddCommentForm: FC<AddCommentFormProps> = memo((props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-            <div className={classNames(cls.AddCommentForm, {}, [className])}>
+            <HStack
+                justify='space-between'
+                className={classNames(cls.AddCommentForm, {}, [className])}
+            >
                 <textarea
                     placeholder={t('placeholder.addComment')}
                     rows={3}
@@ -62,7 +62,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo((props) => {
                 <Button theme='outline' onClick={onSendComment}>
                     {t('button.send')}
                 </Button>
-            </div>
+            </HStack>
             {error && <Text align='right' theme='error' text={error} />}
         </DynamicModuleLoader>
     );

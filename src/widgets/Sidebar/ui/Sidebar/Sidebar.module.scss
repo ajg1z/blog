@@ -10,17 +10,9 @@
 .switchers {
     position: absolute;
     bottom: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
 }
 
 .items {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    gap: 15px;
     margin-top: 10px;
     margin-left: 23px;
     font-size: var(--font-size-l);

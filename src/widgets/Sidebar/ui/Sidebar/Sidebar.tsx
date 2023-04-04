@@ -4,9 +4,10 @@ import { Button } from 'shared/ui/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { useSelector } from 'react-redux';
+import { HStack, VStack } from 'shared/ui/Stack';
+import { SidebarItem } from '../../ui/SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { getSidebarLinkList } from '../../model/selectors/getSidebarList';
-import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
     className?: string;
@@ -38,16 +39,16 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <div className={cls.items}>
+            <VStack className={cls.items} gap={24}>
                 {sidebarListLink.map((item) => (
                     <SidebarItem item={item} key={item.path} />
                 ))}
-            </div>
+            </VStack>
 
-            <div className={cls.switchers}>
+            <HStack className={cls.switchers} gap={8} max justify='center'>
                 <ThemeSwitcher />
                 <LangSwitcher isShort={collapsed} />
-            </div>
+            </HStack>
         </menu>
     );
 });

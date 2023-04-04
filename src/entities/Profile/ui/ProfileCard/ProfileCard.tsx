@@ -9,6 +9,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { CircleLoader } from 'shared/ui/CircleLoader';
 import { Avatar } from 'shared/ui/Avatar';
 import { Country, CountrySelect } from 'entities/Country';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profileSchema';
 
@@ -49,17 +50,17 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className, cls.center])}>
+            <HStack justify='center' className={classNames(cls.ProfileCard, {}, [className])}>
                 <CircleLoader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [className, cls.center])}>
+            <HStack justify='center' className={classNames(cls.ProfileCard, {}, [className])}>
                 <Text title={t('error_title')} />
-            </div>
+            </HStack>
         );
     }
 
@@ -70,7 +71,7 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
     return (
         <div className={classNames(cls.ProfileCard, mods, [className])}>
             {data?.avatar && <Avatar src={data?.avatar} alt='avatar' />}
-            <main className={cls.body}>
+            <VStack gap={4}>
                 <Field label={t('firstname')}>
                     <Input
                         value={data?.firstname}
@@ -104,7 +105,7 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
                     readonly={readonly}
                     onChange={onChangeCountry}
                 />
-            </main>
+            </VStack>
         </div>
     );
 };

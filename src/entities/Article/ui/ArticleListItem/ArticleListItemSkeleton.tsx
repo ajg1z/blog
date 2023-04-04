@@ -2,6 +2,7 @@ import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card';
 import { Skeleton } from 'shared/ui/Skeleton';
+import { HStack } from 'shared/ui/Stack';
 import { ArticleView } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
@@ -38,11 +39,13 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo((props) =>
                     <Skeleton height={20} width={130} />
                     <Skeleton height={20} width={130} className={cls.createdAt} />
                 </div>
+
                 <Skeleton height={25} width={330} className={cls.articleTitle} />
-                <div className={cls.skeletonTypes}>
+
+                <HStack gap={12} className={cls.skeletonTypes}>
                     <Skeleton height={20} width={40} className={cls.articleTitle} />
                     <Skeleton height={20} width={40} className={cls.articleTitle} />
-                </div>
+                </HStack>
 
                 <Skeleton height={200} className={classNames(cls.img, {}, [cls.skeletonImg])} />
 

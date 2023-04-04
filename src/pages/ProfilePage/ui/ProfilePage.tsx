@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
 import { PageWrapper } from 'widgets/PageWrapper';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
 
 const initialReducers: ReducersList = {
@@ -23,9 +24,9 @@ const ProfilePage = memo(() => {
 
     if (!id) {
         return (
-            <div className={cls.noProfile}>
+            <HStack justify='center' className={cls.noProfile}>
                 <Text align='center' title={t('noProfile')} />
-            </div>
+            </HStack>
         );
     }
 

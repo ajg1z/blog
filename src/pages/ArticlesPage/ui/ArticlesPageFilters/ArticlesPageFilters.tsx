@@ -11,6 +11,7 @@ import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
 import { TabItem } from 'shared/ui/Tabs';
 import { ArticleTypeTabs } from 'features/ArticleTypeTabs';
+import { HStack } from 'shared/ui/Stack';
 import cls from './ArticlesPageFilters.module.scss';
 import {
     getArticlesPageOrder,
@@ -92,7 +93,7 @@ export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSel
 
     return (
         <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
-            <div className={cls.sortWrapper}>
+            <HStack justify='space-between' className={cls.sortWrapper}>
                 <ArticlesSortSelector
                     order={order}
                     sort={sort}
@@ -100,7 +101,7 @@ export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSel
                     onChangeSortOrder={onChangeOrder}
                 />
                 <ArticlesViewSelector activeView={view} onViewSelect={onChangeView} />
-            </div>
+            </HStack>
             <Input
                 value={search}
                 onChange={onChangeSearch}

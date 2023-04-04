@@ -9,6 +9,7 @@ import { Avatar } from 'shared/ui/Avatar';
 import { Button } from 'shared/ui/Button';
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
+import { HStack } from 'shared/ui/Stack';
 import { Article, ArticleBlockText, ArticleView } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
@@ -47,10 +48,10 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                         <Text text={article.createdAt} className={cls.createdAt} />
                         <img src={article.img} alt={article.title} className={cls.img} />
                     </div>
-                    <div className={cls.articleInfo}>
+                    <HStack className={cls.articleInfo}>
                         {types}
                         {views}
-                    </div>
+                    </HStack>
                     <Text text={article.title} className={cls.articleTitle} />
                 </Card>
             </AppLink>
@@ -62,18 +63,18 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
     return (
         <div className={classNames(cls.ArticleListItem, {}, [className, cls.LIST])}>
             <Card className={cls.card}>
-                <div className={cls.header}>
+                <HStack gap={12} className={cls.header}>
                     <Avatar src={article.user.avatar} alt={article.user.username} size={30} />
                     <Text className={cls.author} text={article.user.username} />
                     <Text className={cls.createdAt} text={article.createdAt} />
-                </div>
+                </HStack>
                 <Text title={article.title} className={cls.articleTitle} />
                 {types}
                 <img src={article.img} alt={article.title} className={cls.img} />
                 {textBlock && (
                     <ArticleBlockTextComponent block={textBlock} className={cls.description} />
                 )}
-                <div className={cls.footer}>
+                <HStack className={cls.footer}>
                     <AppLink to={link}>
                         <Button theme='outline'>
                             {t('readMore')}
@@ -81,7 +82,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                         </Button>
                     </AppLink>
                     {views}
-                </div>
+                </HStack>
             </Card>
         </div>
     );

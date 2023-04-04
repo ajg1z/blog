@@ -5,8 +5,9 @@ import { Button } from 'shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import { useSelector } from 'react-redux';
-import { getCanEdit } from 'pages/ArticleDetailsPage/model/selectors/article';
 import { getArticleDetailsData } from 'entities/Article';
+import { HStack } from 'shared/ui/Stack';
+import { getCanEdit } from '../../model/selectors/article';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
@@ -32,14 +33,14 @@ export const ArticleDetailsPageHeader = memo(
         };
 
         return (
-            <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+            <HStack className={classNames('', {}, [className])}>
                 <Button onClick={onBackToList}>{t('backToArticles')}</Button>
                 {canEdit && (
                     <Button className={cls.editBtn} onClick={onEdit}>
                         {commonT('button.edit')}
                     </Button>
                 )}
-            </div>
+            </HStack>
         );
     },
 );

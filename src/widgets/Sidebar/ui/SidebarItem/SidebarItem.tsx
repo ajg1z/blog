@@ -4,6 +4,7 @@ import { memo, PropsWithChildren } from 'react';
 import { AppLink } from 'shared/ui/AppLink';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/types/sidebar';
 
@@ -20,8 +21,10 @@ export const SidebarItem = memo((props: PropsWithChildren<SidebarItemProps>) => 
 
     return (
         <AppLink to={item.path} className={cls.item}>
-            <item.Icon className={cls.icon} />
-            <span>{t(`navbar.${item.text}`)}</span>
+            <HStack gap={12}>
+                <item.Icon className={cls.icon} />
+                <span>{t(`navbar.${item.text}`)}</span>
+            </HStack>
         </AppLink>
     );
 });

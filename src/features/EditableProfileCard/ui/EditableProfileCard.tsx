@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { ChangeEvent, PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
+import { ChangeEvent, PropsWithChildren, useCallback, useMemo } from 'react';
 import { Text } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button';
 import { ProfileCard } from 'entities/Profile';
@@ -11,6 +11,7 @@ import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { isNumber } from 'shared/lib/validators/isNumber';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
+import { HStack } from 'shared/ui/Stack';
 import cls from './EditableProfileCard.module.scss';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
@@ -35,7 +36,6 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
     const dispatch = useAppDispatch();
 
     const isLoading = useSelector(getProfileLoading);
-    console.log('isLoading', isLoading);
 
     const error = useSelector(getProfileError);
     const data = useSelector(getProfileForm);
@@ -134,7 +134,7 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
 
     return (
         <div className={classNames(cls.EditableProfileCard, {}, [className])}>
-            <header className={cls.header}>
+            <HStack className={cls.header} gap={12}>
                 <Text title={t('title')} className={cls.title} />
                 {readonly || isLoading ? (
                     isEditable && (
@@ -152,7 +152,7 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
                         </Button>
                     </>
                 )}
-            </header>
+            </HStack>
 
             {validateError?.map((error) => (
                 <Text theme='error' key={error} text={validateErrorTranslate[error]} />

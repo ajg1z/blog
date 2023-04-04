@@ -4,7 +4,7 @@ import { Select, SelectOption } from 'shared/ui/Select';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleSortField } from 'entities/Article';
 import { SortOrder } from 'shared/types';
-import cls from './ArticlesSortSelector.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticlesSortSelectorProps {
     className?: string;
@@ -37,7 +37,7 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
     );
 
     return (
-        <div className={classNames(cls.ArticlesSortSelector, {}, [className])}>
+        <HStack gap={12} className={classNames('', {}, [className])}>
             <Select
                 label={commonT('sortBy')}
                 value={sort}
@@ -45,6 +45,6 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
                 options={sortOptions}
             />
             <Select value={order} onChange={onChangeSortOrder} options={orderOptions} />
-        </div>
+        </HStack>
     );
 });
