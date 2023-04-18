@@ -93,6 +93,7 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
                         theme='backgroundInverted'
                         value={password}
                         onChange={onChangePassword}
+                        type='password'
                     />
                 </Field>
                 <HStack className={cls.footer} gap={12} justify='end'>
