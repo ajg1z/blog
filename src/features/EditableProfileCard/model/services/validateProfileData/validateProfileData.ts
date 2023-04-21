@@ -4,6 +4,7 @@ import { ValidateProfileError } from '../../types/profile';
 
 export const validateProfileData = (data?: Profile) => {
     const errors: ValidateProfileError[] = [];
+
     if (!data) {
         errors.push('NoData');
         return errors;

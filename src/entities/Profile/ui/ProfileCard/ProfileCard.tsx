@@ -75,12 +75,18 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
                 <Field label={t('firstname')}>
                     <Input
                         value={data?.firstname}
+                        data-testid='ProfileCard.firstname'
                         readOnly={readonly}
                         onChange={onChangeFirstName}
                     />
                 </Field>
                 <Field label={t('lastname')}>
-                    <Input value={data?.lastname} readOnly={readonly} onChange={onChangeLastName} />
+                    <Input
+                        value={data?.lastname}
+                        data-testid='ProfileCard.lastname'
+                        readOnly={readonly}
+                        onChange={onChangeLastName}
+                    />
                 </Field>
                 <Field label={t('age')}>
                     <Input value={data?.age} readOnly={readonly} onChange={onChangeAge} />

@@ -138,16 +138,31 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
                 <Text title={t('title')} className={cls.title} />
                 {readonly || isLoading ? (
                     isEditable && (
-                        <Button theme='background' disabled={isLoading} onClick={onEdit}>
+                        <Button
+                            theme='background'
+                            data-testid='EditableProfileCard.EditButton'
+                            disabled={isLoading}
+                            onClick={onEdit}
+                        >
                             {commonT('button.edit')}
                         </Button>
                     )
                 ) : (
                     <>
-                        <Button theme='outlineRed' disabled={isLoading} onClick={onCancel}>
+                        <Button
+                            theme='outlineRed'
+                            data-testid='EditableProfileCard.CancelButton'
+                            disabled={isLoading}
+                            onClick={onCancel}
+                        >
                             {commonT('button.cancel')}
                         </Button>
-                        <Button theme='backgroundInverted' disabled={isLoading} onClick={onSave}>
+                        <Button
+                            theme='backgroundInverted'
+                            data-testid='EditableProfileCard.SaveButton'
+                            disabled={isLoading}
+                            onClick={onSave}
+                        >
                             {commonT('button.save')}
                         </Button>
                     </>
@@ -155,7 +170,12 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
             </HStack>
 
             {validateError?.map((error) => (
-                <Text theme='error' key={error} text={validateErrorTranslate[error]} />
+                <Text
+                    theme='error'
+                    key={error}
+                    text={validateErrorTranslate[error]}
+                    data-testid='EditableProfileCard.Error'
+                />
             ))}
 
             <ProfileCard

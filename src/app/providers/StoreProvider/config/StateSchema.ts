@@ -12,22 +12,24 @@ import {
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
-import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollRecoverySchema } from 'features/ScrollRecovery';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     scrollRecovery: ScrollRecoverySchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
     addCommentForm?: AddCommentFormSchema;
     articlesPage?: ArticlesPageSchema;
-    articleDetailsPage?: ArticleDetailsPageSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

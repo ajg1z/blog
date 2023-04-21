@@ -8,16 +8,17 @@ import { Story } from '@storybook/react';
 import { profileReducer } from 'features/EditableProfileCard';
 import { articleDetailsReducer } from 'entities/Article';
 import { scrollRecoveryReducer } from 'features/ScrollRecovery';
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
-import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice';
+import { articlesPageReducer } from 'pages/ArticlesPage';
+import { addCommentFormReducer } from 'features/AddCommentForm';
 import { userReducer } from 'entities/User';
 import { counterReducer } from 'entities/Counter';
+import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     login: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
-    articleDetailsPage: articleDetailsReducer,
+    articleDetailsComments: articleDetailsCommentsReducer,
     scrollRecovery: scrollRecoveryReducer,
     articlesPage: articlesPageReducer,
     addCommentForm: addCommentFormReducer,

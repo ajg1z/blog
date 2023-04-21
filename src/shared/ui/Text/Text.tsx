@@ -20,16 +20,33 @@ interface TextProps {
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
+    'data-testid'?: string;
 }
 
 export const Text = memo((props: PropsWithChildren<TextProps>) => {
-    const { className, text, title, align = 'left', theme = 'primary', size = 'M' } = props;
+    const {
+        className,
+        text,
+        title,
+        align = 'left',
+        theme = 'primary',
+        size = 'M',
+        'data-testid': dataTestId = 'Text',
+    } = props;
     const HeaderTag = mapSizeToHeaderTag[size];
 
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme], cls[align], cls[size]])}>
-            {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-            {text && <p className={cls.text}>{text}</p>}
+            {title && (
+                <HeaderTag data-testid={`${dataTestId}.Header`} className={cls.title}>
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p data-testid={`${dataTestId}.Paragraph`} className={cls.text}>
+                    {text}
+                </p>
+            )}
         </div>
     );
 });

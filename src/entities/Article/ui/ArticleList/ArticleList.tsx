@@ -34,7 +34,7 @@ interface ArticleListProps {
 export const ArticleList: FC<ArticleListProps> = memo((props) => {
     const {
         className,
-        articles,
+        articles = [],
         view = ArticleView.TILE,
         isLoading,
         error,
@@ -194,9 +194,9 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
             className={classNames(cls.ArticleList, {}, [className, cls.fullHeight])}
             onScroll={saveScrollPosition ? onScroll : undefined}
         >
-            {!!articles.length && articles.map(renderArticle)}
+            {!!articles.length && !isLoading && articles.map(renderArticle)}
 
-            {error && <Text title={error} theme='error' align='center' />}
+            {error && !isLoading && <Text title={error} theme='error' align='center' />}
 
             {!isLoading && !articles.length && (
                 <Text title={t('noArticles')} align='center' className={cls.noArticles} />
