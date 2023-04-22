@@ -1,4 +1,4 @@
-import { getUserData, userActions } from 'entities/User';
+import { getUserData, isUserAdmin, isUserManager, userActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
 import { FC, memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +21,12 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const { t } = useTranslation();
     const { t: articleT } = useTranslation('article');
-    const { t: profileT } = useTranslation('profile');
+
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
+
+    const isAdminPanel = isAdmin || isManager;
+
     const user = useSelector(getUserData);
     const dispatch = useDispatch();
 
@@ -50,13 +55,22 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
                     className={cls.dropdown}
                     placement='bottom-start'
                     items={[
-                        {
-                            id: 1,
-                            href: RoutePaths.profile + user.id,
-                            content: profileT('title'),
-                        },
+                        ...(isAdminPanel
+                            ? [
+                                {
+                                    id: 1,
+                                    href: RoutePaths.adminPanel,
+                                    content: t('navbar.admin'),
+                                },
+                            ]
+                            : []),
                         {
                             id: 2,
+                            href: RoutePaths.profile + user.id,
+                            content: t('navbar.profile'),
+                        },
+                        {
+                            id: 3,
                             onClick: onLogout,
                             content: t('logout'),
                         },

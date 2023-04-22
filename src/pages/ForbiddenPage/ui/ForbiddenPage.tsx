@@ -1,13 +1,16 @@
-import { memo } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'shared/ui/Text';
 import { PageWrapper } from 'widgets/PageWrapper';
+import { Text } from 'shared/ui/Text';
 
-export const NotFoundPage = memo(() => {
+const ForbiddenPage: FC = () => {
     const { t } = useTranslation();
+
     return (
         <PageWrapper>
-            <Text title={t('notFoundPage')} />
+            <Text title={t('forbiddenPage')} />
         </PageWrapper>
     );
-});
+};
+
+export default ForbiddenPage;

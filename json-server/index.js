@@ -44,6 +44,7 @@ server.get('/check-login', (req, res) => {
         const userOutputData = {
             id: user.id,
             username: user.username,
+            roles: user.roles,
         };
 
         const response = {
@@ -73,6 +74,7 @@ server.post('/login', (req, res) => {
             const userOutputData = {
                 id: userFromBd.id,
                 username: userFromBd.username,
+                roles: userFromBd.roles,
             };
 
             const response = {

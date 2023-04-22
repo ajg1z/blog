@@ -40,7 +40,7 @@
 }
 
 .collapseBtn {
-    z-index: 2;
+    z-index: var(--sidebar-toggle-z-index);
     position: absolute;
     right: -32px;
     bottom: 40px;

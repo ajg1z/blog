@@ -91,6 +91,7 @@ module.exports = {
         'no-debugger': 'warn',
         'implicit-arrow-linebreak': 'off',
         'operator-linebreak': 'off',
+        'function-paren-newline': 'off',
     },
     globals: {
         __IS_DEV__: true,

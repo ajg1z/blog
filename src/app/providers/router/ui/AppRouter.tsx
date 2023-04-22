@@ -4,17 +4,24 @@ import { Route, Routes } from 'react-router-dom';
 import { PageLoader } from 'widgets/PageLoader';
 import { RouteConfig } from '../lib/RouteConfig';
 import { RequireAuth } from './RequireAuth';
+import { RequireRoles } from './RequireRoles';
 
 const AppRouter: FC = () => {
     const routes = useMemo(() => {
-        return Object.values(RouteConfig).map(({ path, element, authOnly }) => (
+        return Object.values(RouteConfig).map(({ path, element, authOnly, roles }) => (
             <Route
                 key={path}
                 path={path}
                 element={
                     // eslint-disable-next-line react/jsx-wrap-multilines
                     <Suspense fallback={<PageLoader />}>
-                        {authOnly ? <RequireAuth>{element}</RequireAuth> : element}
+                        {authOnly ? (
+                            <RequireAuth>
+                                <RequireRoles roles={roles}>{element}</RequireRoles>
+                            </RequireAuth>
+                        ) : (
+                            element
+                        )}
                     </Suspense>
                 }
             />

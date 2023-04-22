@@ -33,6 +33,7 @@ export const Text = memo((props: PropsWithChildren<TextProps>) => {
         size = 'M',
         'data-testid': dataTestId = 'Text',
     } = props;
+
     const HeaderTag = mapSizeToHeaderTag[size];
 
     return (

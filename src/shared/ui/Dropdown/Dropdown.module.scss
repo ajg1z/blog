@@ -8,6 +8,7 @@
 .item {
     padding: 10px 15px;
     width: 100%;
+    text-align: center;
     background: none;
     outline: none;
     display: block;
@@ -24,7 +25,7 @@
     border-radius: 4px;
     box-shadow: 2px 2px 4px var(--overlay-color);
     position: absolute;
-    z-index: 10000;
+    z-index: var(--dropdown-z-index);
     background-color: var(--inverted-bg-color);
     border: 1px solid var(--primary-color);
 }

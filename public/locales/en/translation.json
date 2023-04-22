@@ -5,11 +5,13 @@
         "about": "About",
         "main": "Main",
         "profile": "Profile",
-        "articles": "Articles"
+        "articles": "Articles",
+        "admin": "Admin"
     },
     "notFoundPage": "Page not found",
     "pageError": "Something went wrong...",
     "reloadPage": "Reload page",
+    "forbiddenPage": "You don't have permission to access page",
     "button": {
         "toggle": "Toggle",
         "edit": "Edit",

@@ -11,7 +11,7 @@ export const RequireAuth: FC = ({ children }: PropsWithChildren<RequireAuthProps
     const location = useLocation();
 
     if (!user) {
-        return <Navigate to={RoutePaths.main} state={{ from: location }} />;
+        return <Navigate to={RoutePaths.main} state={{ from: location }} replace />;
     }
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>;

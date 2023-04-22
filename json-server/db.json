@@ -619,7 +619,7 @@
       "city": "Victym",
       "username": "dota 2",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn1iQgPf2Fqusd6V5QC_nqFw-0q2ZHNJ2nlQ&usqp=CAU",
-      "country": "Russian"
+      "country": "Russia"
     }
   ],
   "users": [
@@ -628,14 +628,18 @@
       "username": "admin",
       "password": "admin",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
-      "role": "ADMIN"
+      "roles": [
+        "ADMIN"
+      ]
     },
     {
       "id": 2,
       "username": "user",
       "password": "123",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
-      "role": "USER"
+      "roles": [
+        "USER"
+      ]
     }
   ]
 }
