@@ -16,28 +16,27 @@ interface CommentListProps {
 }
 
 export const CommentList: FC<CommentListProps> = memo((props) => {
-    const { className, comments, isLoading, error } = props;
+    const { className, comments = [], isLoading, error } = props;
     const { t } = useTranslation();
+
+    const isNoComments = Boolean(!comments?.length) && !isLoading && !error;
 
     return (
         <div className={classNames(cls.CommentList, {}, [className])}>
-            {!!comments?.length &&
-                comments.map((comment) => (
-                    <CommentCard
-                        isLoading={isLoading}
-                        className={cls.comment}
-                        key={comment.id}
-                        comment={comment}
-                    />
-                ))}
+            {comments?.map((comment) => (
+                <CommentCard
+                    isLoading={isLoading}
+                    className={cls.comment}
+                    key={comment.id}
+                    comment={comment}
+                />
+            ))}
 
             {isLoading && <CircleLoader size='medium' />}
 
             {error && <Text text={t('errorLoadingComments')} />}
 
-            {Boolean(!comments?.length) && !isLoading && !error && (
-                <Text text={t('noComments')} />
-            )}
+            {isNoComments && <Text text={t('noComments')} />}
         </div>
     );
 });

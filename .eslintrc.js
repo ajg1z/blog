@@ -21,7 +21,7 @@ module.exports = {
     plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-stable'],
     rules: {
         'react/function-component-definition': 'off',
-        'fsd-stable/fsd-paths-checker': 'error',
+        'fsd-stable/fsd-paths-checker': 'warn',
         'fsd-stable/public-api-imports-only': 'warn',
         'fsd-stable/fsd-layer-imports': 'warn',
         'no-unused-vars': 'warn',
@@ -92,6 +92,7 @@ module.exports = {
         'implicit-arrow-linebreak': 'off',
         'operator-linebreak': 'off',
         'function-paren-newline': 'off',
+        'react/jsx-props-no-spreading': 'off',
     },
     globals: {
         __IS_DEV__: true,

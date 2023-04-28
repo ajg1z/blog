@@ -6,6 +6,7 @@ import {
 } from '../../selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../slice/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
+import { ArticleUrlParams } from '../../types/articlesPageSchema';
 
 export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
     'articlesPage/initArticlesPage',
@@ -13,8 +14,9 @@ export const initArticlesPage = createAsyncThunk<void, URLSearchParams, ThunkCon
     async (url, thunkApi) => {
         try {
             const { getState, dispatch } = thunkApi;
+            const objectUrl = Object.fromEntries(url) as unknown as ArticleUrlParams;
 
-            dispatch(articlesPageActions.initSortParamsFromUrl(url));
+            dispatch(articlesPageActions.initSortParamsFromUrl(objectUrl));
 
             const inited = getArticlesPageInited(getState());
             const isLoading = getArticlesPageIsLoading(getState());

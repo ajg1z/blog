@@ -3,7 +3,7 @@ import { InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-export type InputTheme = 'background' | 'backgroundInverted' | 'outline';
+type InputTheme = 'background' | 'backgroundInverted' | 'outline';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;

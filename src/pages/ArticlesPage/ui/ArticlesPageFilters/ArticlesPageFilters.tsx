@@ -29,7 +29,6 @@ interface ArticleViewSelectorProps {
 
 export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSelectorProps>) => {
     const { className } = props;
-    const { t } = useTranslation('articles');
     const { t: commonT } = useTranslation();
 
     const dispatch = useAppDispatch();

@@ -1,7 +1,7 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ModalAnimationTime } from './Modal';
+import { ModalAnimationTime } from '../const/modal';
 import cls from './Modal.module.scss';
 
 interface LayoutProps {
@@ -10,6 +10,7 @@ interface LayoutProps {
     onClose: () => void;
     className?: string;
     isOpen: boolean;
+    children?: ReactNode;
 }
 
 const overlayAnimation = {

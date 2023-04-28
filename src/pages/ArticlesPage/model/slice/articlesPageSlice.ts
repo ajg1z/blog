@@ -1,11 +1,17 @@
-import { Article, ArticleView, ArticleSortField, ArticleType } from 'entities/Article';
+import {
+    Article,
+    ArticleView,
+    ArticleSortField,
+    ArticleType,
+    CountItemListPage,
+    CountItemTilePage,
+} from 'entities/Article';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ArticlesViewLocalStorageKey } from 'shared/const/localStorage';
 import { SortOrder } from 'shared/types';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { ArticlesPageSchema } from '../types/articlesPageSchema';
-import { CountItemListPage, CountItemTilePage } from '../const/loadNextArticlePage';
+import { ArticleUrlParams, ArticlesPageSchema } from '../types/articlesPageSchema';
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
@@ -59,16 +65,11 @@ export const articlesPageSlice = createSlice({
         setType: (state, action: PayloadAction<ArticleType>) => {
             state.type = action.payload;
         },
-        initSortParamsFromUrl: (state, action: PayloadAction<URLSearchParams>) => {
-            const sortUrl = action.payload.get('sort');
-            const searchUrl = action.payload.get('search');
-            const orderUrl = action.payload.get('order');
-            const typeUrl = action.payload.get('type');
-
-            if (sortUrl) state.sort = sortUrl as ArticleSortField;
-            if (orderUrl) state.order = sortUrl as SortOrder;
-            if (searchUrl) state.search = searchUrl;
-            if (typeUrl) state.type = typeUrl as ArticleType;
+        initSortParamsFromUrl: (state, action: PayloadAction<ArticleUrlParams>) => {
+            if (action.payload?.sort) state.sort = action.payload.sort;
+            if (action.payload?.order) state.order = action.payload.order;
+            if (action.payload?.search) state.search = action.payload.search;
+            if (action.payload?.type) state.type = action.payload.type;
         },
     },
     extraReducers: (builder) => {

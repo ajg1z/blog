@@ -10,10 +10,11 @@ import { Button } from 'shared/ui/Button';
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import { HStack } from 'shared/ui/Stack';
-import { Article, ArticleBlockText, ArticleView } from '../../model/types/article';
+import { Article, ArticleBlockText } from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
 import { ArticleBlockTextComponent } from '../ArticleDetails/Blocks/ArticleBlockTextComponent/ArticleBlockTextComponent';
+import { ArticleView } from '../../model/const/articleConst';
 
 interface ArticleListItemProps {
     className?: string;

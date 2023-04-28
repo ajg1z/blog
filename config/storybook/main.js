@@ -6,6 +6,7 @@ module.exports = {
         '@storybook/addon-interactions',
         'storybook-addon-themes',
         'storybook-react-i18next',
+        'storybook-addon-mock/register',
     ],
     framework: '@storybook/react',
     core: {

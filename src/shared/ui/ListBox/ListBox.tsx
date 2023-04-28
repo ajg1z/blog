@@ -7,7 +7,7 @@ import { HStack } from '../Stack';
 
 export interface ListBoxItem<T extends string> {
     value: T;
-    content: ReactNode;
+    content?: ReactNode;
     disabled?: boolean;
 }
 
@@ -25,6 +25,8 @@ export interface ListBoxProps<T extends string> {
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const { items, onChange, value, className, defaultValue, label, readonly, disabled } = props;
 
+    const selectedContent = items?.find((item) => item.value === (value ?? defaultValue));
+
     return (
         <HStack gap={12}>
             {label && <span>{label}</span>}
@@ -41,30 +43,33 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                         disabled={disabled || readonly}
                         theme={readonly ? 'clearInverted' : 'outline'}
                     >
-                        {value ?? defaultValue}
+                        {selectedContent?.content ?? selectedContent?.value}
                     </Button>
                 </HListBox.Button>
+
                 <HListBox.Options className={cls.options}>
-                    {items?.map((option) => (
-                        <HListBox.Option
-                            key={option.value}
-                            value={option.value}
-                            as={Fragment}
-                            disabled={option.disabled}
-                        >
-                            {({ selected, active, disabled }) => (
-                                <li
-                                    className={classNames(cls.item, {
-                                        [cls.selectedItem]: selected,
-                                        [cls.disabledItem]: disabled,
-                                        [cls.activeItem]: active,
-                                    })}
-                                >
-                                    {option.content}
-                                </li>
-                            )}
-                        </HListBox.Option>
-                    ))}
+                    {items
+                        ?.filter((item) => Boolean(item.value))
+                        .map((option) => (
+                            <HListBox.Option
+                                key={option.value}
+                                value={option.value}
+                                as={Fragment}
+                                disabled={option.disabled}
+                            >
+                                {({ selected, active, disabled }) => (
+                                    <li
+                                        className={classNames(cls.item, {
+                                            [cls.selectedItem]: selected,
+                                            [cls.disabledItem]: disabled,
+                                            [cls.activeItem]: active,
+                                        })}
+                                    >
+                                        {option.content ?? option.value}
+                                    </li>
+                                )}
+                            </HListBox.Option>
+                        ))}
                 </HListBox.Options>
             </HListBox>
         </HStack>

@@ -24,6 +24,7 @@
     padding: 5px 8px;
     cursor: pointer;
     transition: scale 0.2s;
+    white-space: nowrap;
 
     &.selectedItem {
         background-color: var(--primary-color);

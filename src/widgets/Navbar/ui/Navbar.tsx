@@ -25,10 +25,7 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
 
-    const isAdminPanel = isAdmin || isManager;
-
     const user = useSelector(getUserData);
-    const dispatch = useDispatch();
 
     const closeAuthModal = useCallback(() => {
         setIsAuthModal(false);
@@ -38,12 +35,37 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
         setIsAuthModal(true);
     }, []);
 
+    const dispatch = useDispatch();
+
     const onLogout = useCallback(() => {
         localStorage.removeItem(TokenLocalStorageKey);
         dispatch(userActions.logout());
     }, [dispatch]);
 
     if (user) {
+        const isAdminPanel = isAdmin || isManager;
+
+        const dropdownItems = [
+            {
+                id: '2',
+                href: RoutePaths.profile + user.id,
+                content: t('navbar.profile'),
+            },
+            {
+                id: '3',
+                onClick: onLogout,
+                content: t('logout'),
+            },
+        ];
+
+        if (isAdminPanel) {
+            dropdownItems.unshift({
+                id: '1',
+                href: RoutePaths.adminPanel,
+                content: t('navbar.admin'),
+            });
+        }
+
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
                 <Text title={t('logo')} className={cls.logo} />
@@ -54,27 +76,7 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
                     trigger={<Avatar size={30} src={user.avatar} />}
                     className={cls.dropdown}
                     placement='bottom-start'
-                    items={[
-                        ...(isAdminPanel
-                            ? [
-                                {
-                                    id: 1,
-                                    href: RoutePaths.adminPanel,
-                                    content: t('navbar.admin'),
-                                },
-                            ]
-                            : []),
-                        {
-                            id: 2,
-                            href: RoutePaths.profile + user.id,
-                            content: t('navbar.profile'),
-                        },
-                        {
-                            id: 3,
-                            onClick: onLogout,
-                            content: t('logout'),
-                        },
-                    ]}
+                    items={dropdownItems}
                 />
             </header>
         );

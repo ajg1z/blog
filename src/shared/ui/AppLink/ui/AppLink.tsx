@@ -3,10 +3,7 @@ import { FC, memo } from 'react';
 import { LinkProps, Link } from 'react-router-dom';
 import cls from './AppLink.module.scss';
 
-export enum ThemeAppLink {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-}
+type ThemeAppLink = 'primary' | 'secondary';
 
 interface AppLinkProps extends LinkProps {
     className?: string;
@@ -14,14 +11,10 @@ interface AppLinkProps extends LinkProps {
 }
 
 export const AppLink: FC<AppLinkProps> = memo((props) => {
-    const { className, children, theme = ThemeAppLink.PRIMARY, ...rest } = props;
+    const { className, children, theme = 'primary', ...rest } = props;
 
     return (
-        <Link
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...rest}
-            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-        >
+        <Link {...rest} className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
             {children}
         </Link>
     );

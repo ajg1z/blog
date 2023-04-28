@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useMemo } from 'react';
-import { Select, SelectOption } from 'shared/ui/Select';
+import { ListBox, ListBoxItem } from 'shared/ui/ListBox';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleSortField } from 'entities/Article';
 import { SortOrder } from 'shared/types';
@@ -19,7 +19,7 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
     const { t: commonT } = useTranslation();
     const { t } = useTranslation('articles');
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(
+    const orderOptions = useMemo<ListBoxItem<SortOrder>[]>(
         () => [
             { content: commonT('decreasing'), value: 'asc' },
             { content: commonT('increasing'), value: 'desc' },
@@ -27,7 +27,7 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
         [commonT],
     );
 
-    const sortOptions = useMemo<SelectOption<ArticleSortField>[]>(
+    const sortOptions = useMemo<ListBoxItem<ArticleSortField>[]>(
         () => [
             { content: t('sortByDate'), value: ArticleSortField.CREATED },
             { content: t('sortByTitle'), value: ArticleSortField.TITLE },
@@ -38,13 +38,13 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
 
     return (
         <HStack gap={12} className={classNames('', {}, [className])}>
-            <Select
+            <ListBox<ArticleSortField>
                 label={commonT('sortBy')}
                 value={sort}
                 onChange={onChangeSort}
-                options={sortOptions}
+                items={sortOptions}
             />
-            <Select value={order} onChange={onChangeSortOrder} options={orderOptions} />
+            <ListBox<SortOrder> value={order} onChange={onChangeSortOrder} items={orderOptions} />
         </HStack>
     );
 });

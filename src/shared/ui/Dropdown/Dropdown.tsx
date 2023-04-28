@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-expressions */
-import { Fragment, ReactNode, useEffect, useRef } from 'react';
+import { Fragment, ReactNode, useRef } from 'react';
 import { Menu } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { computePosition, shift, flip, Placement } from '@floating-ui/react';
-import cls from './DropDown.module.scss';
-import { AppLink } from '../AppLink';
+import { AppLink } from 'shared/ui/AppLink';
+import { Button } from 'shared/ui/Button';
+import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
     content: ReactNode;
-    id: number;
+    id: string;
     disabled?: boolean;
     onClick?: () => void;
     href?: string;
@@ -19,10 +20,11 @@ interface DropdownProps {
     className?: string;
     items: DropdownItem[];
     trigger: ReactNode;
+    disabled?: boolean;
 }
 
 export const Dropdown = (props: DropdownProps) => {
-    const { items, trigger, className, placement = 'bottom' } = props;
+    const { items, trigger, className, placement = 'bottom', disabled } = props;
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     const calculatePosition = async (ref: HTMLDivElement | null) => {
@@ -32,6 +34,7 @@ export const Dropdown = (props: DropdownProps) => {
                 placement,
                 strategy: 'absolute',
             });
+
             if (ref?.style) {
                 Object.assign(ref.style, {
                     left: `${x}px`,
@@ -43,41 +46,45 @@ export const Dropdown = (props: DropdownProps) => {
 
     return (
         <Menu as='div' className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button ref={buttonRef} className={cls.trigger} id='menu-button'>
+            <Menu.Button
+                ref={buttonRef}
+                className={cls.trigger}
+                id='menu-button'
+                disabled={disabled}
+            >
                 {trigger}
             </Menu.Button>
             <Menu.Items ref={calculatePosition} className={cls.menu}>
-                {items.map((item) => {
-                    if (item.href) {
-                        return (
-                            <Menu.Item key={item.id} as={Fragment} disabled={item.disabled}>
-                                {({ active }) => (
+                {items.map((item) => (
+                    <Menu.Item key={item.id} as={Fragment} disabled={item.disabled}>
+                        {({ active }) => {
+                            if (item.href) {
+                                return (
                                     <AppLink
-                                        className={classNames(cls.item, { [cls.active]: active })}
+                                        className={classNames(cls.item, {
+                                            [cls.active]: active,
+                                        })}
                                         to={item.href!}
                                     >
                                         {item.content}
                                     </AppLink>
-                                )}
-                            </Menu.Item>
-                        );
-                    }
+                                );
+                            }
 
-                    return (
-                        <Menu.Item key={item.id} as={Fragment} disabled={item.disabled}>
-                            {({ active }) => (
-                                <button
-                                    type='button'
+                            return (
+                                <Button
                                     disabled={item.disabled}
-                                    className={classNames(cls.item, { [cls.active]: active })}
+                                    className={classNames(cls.item, {
+                                        [cls.active]: active,
+                                    })}
                                     onClick={item.onClick}
                                 >
                                     {item.content}
-                                </button>
-                            )}
-                        </Menu.Item>
-                    );
-                })}
+                                </Button>
+                            );
+                        }}
+                    </Menu.Item>
+                ))}
             </Menu.Items>
         </Menu>
     );

@@ -51,7 +51,7 @@ BackgroundInverted.args = {
 export const Square = Template.bind({});
 Square.args = {
     theme: 'backgroundInverted',
-    children: 'Text',
+    children: 'Te',
     square: true,
 };
 

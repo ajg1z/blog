@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AppLink, ThemeAppLink } from './AppLink';
+import { AppLink } from './AppLink';
 
 export default {
     title: 'shared/AppLink',
@@ -19,11 +19,11 @@ const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />
 export const Primary = Template.bind({});
 Primary.args = {
     children: 'App Link',
-    theme: ThemeAppLink.PRIMARY,
+    theme: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     children: 'App Link',
-    theme: ThemeAppLink.SECONDARY,
+    theme: 'secondary',
 };

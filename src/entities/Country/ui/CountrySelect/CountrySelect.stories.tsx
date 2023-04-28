@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CountrySelect } from './CountrySelect';
+import { Country } from '../../model/const/country';
 
 export default {
     title: 'entities/CountrySelect',
@@ -13,9 +14,18 @@ export default {
 const Template: ComponentStory<typeof CountrySelect> = (arg) => <CountrySelect {...arg} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    value: Country.Armenia,
+};
 
 export const ReadOnly = Template.bind({});
 ReadOnly.args = {
     readonly: true,
+    value: Country.Armenia,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    disabled: true,
+    value: Country.Armenia,
 };

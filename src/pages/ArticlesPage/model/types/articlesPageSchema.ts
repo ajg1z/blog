@@ -17,3 +17,10 @@ export interface ArticlesPageSchema extends EntityState<Article> {
     search: string;
     type: ArticleType;
 }
+
+export interface ArticleUrlParams {
+    sort: ArticleSortField;
+    order: SortOrder;
+    search: string;
+    type: ArticleType;
+}

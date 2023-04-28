@@ -5,7 +5,7 @@ import avarar from 'shared/assets/tests/image/avatar.jpg';
 import { ProfileCard } from './ProfileCard';
 
 export default {
-    title: 'features/ProfileCard',
+    title: 'entities/ProfileCard',
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },

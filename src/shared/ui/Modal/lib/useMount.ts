@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ModalAnimationTime } from '../ui/Modal';
+import { ModalAnimationTime } from '../const/modal';
 
 export const useMount = (opened: boolean) => {
     const [mounted, setMounted] = useState(false);
