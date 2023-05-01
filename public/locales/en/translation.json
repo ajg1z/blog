@@ -12,6 +12,7 @@
     "pageError": "Something went wrong...",
     "reloadPage": "Reload page",
     "forbiddenPage": "You don't have permission to access page",
+    "notificationError": "An error occurred while loading the notifications",
     "button": {
         "toggle": "Toggle",
         "edit": "Edit",

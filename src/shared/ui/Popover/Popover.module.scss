@@ -1,0 +1,19 @@
+.panel {
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px var(--overlay-color);
+    position: absolute;
+    padding: 10px;
+    z-index: var(--popover-z-index);
+    background-color: var(--inverted-bg-color);
+}
+
+.trigger {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.7;
+    }
+}

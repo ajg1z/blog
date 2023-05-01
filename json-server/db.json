@@ -90,6 +90,18 @@
       "articleId": "3",
       "userId": 1,
       "id": 14
+    },
+    {
+      "text": "qwewqe",
+      "articleId": "15",
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "text": "wqeqwewqe",
+      "articleId": "15",
+      "userId": 1,
+      "id": 16
     }
   ],
   "articles": [
@@ -604,11 +616,11 @@
       "firstname": "ajgiz",
       "lastname": "ummo",
       "age": 21,
-      "currency": "RUB",
+      "currency": "USD",
       "city": "Ufa",
       "username": "admin",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
-      "country": "Armenia"
+      "country": "Russia"
     },
     {
       "id": "2",
@@ -640,6 +652,40 @@
       "roles": [
         "USER"
       ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Уведомление 2",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "3",
+      "title": "Уведомление 3",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "4",
+      "title": "Уведомление 4",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "2"
     }
   ]
 }

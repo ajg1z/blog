@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Skeleton.module.scss';
 
@@ -7,10 +7,11 @@ interface SkeletonProps {
     height?: string | number;
     width?: string | number;
     border?: string;
+    children?: ReactNode;
 }
 
 export const Skeleton: FC<SkeletonProps> = (props) => {
-    const { className, border, height, width } = props;
+    const { className, border, height, width, children } = props;
 
     const styles: CSSProperties = {
         borderRadius: border,
@@ -18,5 +19,9 @@ export const Skeleton: FC<SkeletonProps> = (props) => {
         height,
     };
 
-    return <div style={styles} className={classNames(cls.Skeleton, {}, [className])} />;
+    return (
+        <div style={styles} className={classNames(cls.Skeleton, {}, [className])}>
+            {children}
+        </div>
+    );
 };

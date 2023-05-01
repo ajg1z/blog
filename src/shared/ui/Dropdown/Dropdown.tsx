@@ -2,9 +2,10 @@
 import { Fragment, ReactNode, useRef } from 'react';
 import { Menu } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { computePosition, shift, flip, Placement } from '@floating-ui/react';
+import { Placement } from '@floating-ui/react';
 import { AppLink } from 'shared/ui/AppLink';
 import { Button } from 'shared/ui/Button';
+import { useCalculatePosition } from 'shared/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
@@ -27,22 +28,7 @@ export const Dropdown = (props: DropdownProps) => {
     const { items, trigger, className, placement = 'bottom', disabled } = props;
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-    const calculatePosition = async (ref: HTMLDivElement | null) => {
-        if (buttonRef.current && ref) {
-            const { x, y } = await computePosition(buttonRef.current, ref, {
-                middleware: [flip(), shift()],
-                placement,
-                strategy: 'absolute',
-            });
-
-            if (ref?.style) {
-                Object.assign(ref.style, {
-                    left: `${x}px`,
-                    top: `${y}px`,
-                });
-            }
-        }
-    };
+    const calculatePosition = useCalculatePosition(buttonRef, placement);
 
     return (
         <Menu as='div' className={classNames(cls.Dropdown, {}, [className])}>

@@ -1,6 +1,8 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Listbox as HListBox } from '@headlessui/react';
+import { useCalculatePosition } from 'shared/hooks/useCalculatePosition/useCalculatePosition';
+import { Placement } from '@floating-ui/react';
 import cls from './ListBox.module.scss';
 import { Button } from '../Button';
 import { HStack } from '../Stack';
@@ -20,12 +22,25 @@ export interface ListBoxProps<T extends string> {
     label?: string;
     readonly?: boolean;
     disabled?: boolean;
+    placement?: Placement;
 }
 
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
-    const { items, onChange, value, className, defaultValue, label, readonly, disabled } = props;
+    const {
+        items,
+        onChange,
+        value,
+        className,
+        defaultValue,
+        placement = 'bottom',
+        label,
+        readonly,
+        disabled,
+    } = props;
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     const selectedContent = items?.find((item) => item.value === (value ?? defaultValue));
+    const calculatePosition = useCalculatePosition(buttonRef, placement);
 
     return (
         <HStack gap={12}>
@@ -37,6 +52,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 onChange={onChange}
             >
                 <HListBox.Button
+                    ref={buttonRef}
                     className={classNames(cls.trigger, { [cls.readonly]: readonly }, [])}
                 >
                     <Button
@@ -47,7 +63,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                     </Button>
                 </HListBox.Button>
 
-                <HListBox.Options className={cls.options}>
+                <HListBox.Options ref={calculatePosition} className={cls.options}>
                     {items
                         ?.filter((item) => Boolean(item.value))
                         .map((option) => (

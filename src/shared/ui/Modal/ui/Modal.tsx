@@ -1,7 +1,8 @@
-import { FC, ReactNode, useCallback, useEffect } from 'react';
-import { Portal } from '../../Portal/Portal';
-import { useMount } from '../lib/useMount';
-import { Layout } from './Layout';
+import { FC, Fragment, ReactNode } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { Overlay } from 'shared/ui/Overlay';
+import { Dialog, Transition } from '@headlessui/react';
+import cls from './Modal.module.scss';
 
 interface ModalProps {
     isOpen: boolean;
@@ -10,45 +11,44 @@ interface ModalProps {
     height?: number;
     className?: string;
     children?: ReactNode;
+    title?: string;
+    description?: string;
+    unmount?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-    const { children, className, isOpen, width, onClose, height } = props;
-    const { mounted } = useMount(isOpen);
-
-    const handleClose = useCallback(() => {
-        onClose();
-    }, [onClose]);
-
-    const onKeyDown = useCallback(
-        (e: KeyboardEvent) => {
-            if (e.key === 'Escape') handleClose();
-        },
-        [handleClose],
-    );
-
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-        return () => {
-            if (!isOpen) window.removeEventListener('keydown', onKeyDown);
-        };
-    }, [isOpen, onKeyDown]);
-
-    if (!mounted) return null;
+    const { children, description, unmount, className, title, isOpen, width, onClose, height } =
+        props;
 
     return (
-        <Portal>
-            <Layout
-                onClose={handleClose}
-                className={className}
-                height={height}
-                isOpen={isOpen}
-                width={width}
-            >
-                {children}
-            </Layout>
-        </Portal>
+        <Transition show={isOpen}>
+            <Dialog className={cls.Modal} unmount={unmount} onClose={onClose}>
+                <Transition.Child
+                    enterFrom={cls.overlayEnter}
+                    enterTo={cls.overlayEnterActive}
+                    leaveFrom={cls.overlayExit}
+                    as={Fragment}
+                    leaveTo={cls.overlayExitActive}
+                >
+                    <Overlay />
+                </Transition.Child>
+                <Transition.Child
+                    as={Fragment}
+                    enterFrom={cls.contentEnter}
+                    enterTo={cls.contentEnterActive}
+                    leaveFrom={cls.contentExit}
+                    leaveTo={cls.contentExitActive}
+                >
+                    <Dialog.Panel
+                        style={{ width, height }}
+                        className={classNames(cls.panel, {}, [className])}
+                    >
+                        {title && <Dialog.Title className={cls.title}>{title}</Dialog.Title>}
+                        {description && <Dialog.Description>{description}</Dialog.Description>}
+                        {children}
+                    </Dialog.Panel>
+                </Transition.Child>
+            </Dialog>
+        </Transition>
     );
 };

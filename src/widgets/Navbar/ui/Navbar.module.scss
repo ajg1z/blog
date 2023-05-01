@@ -16,10 +16,14 @@
 }
 
 .logout,
-.dropdown {
+.actions {
     margin-left: auto;
 }
 
 .logo {
     width: var(--sidebar-width);
+}
+
+.NotificationsList {
+    width: 100%;
 }

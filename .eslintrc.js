@@ -70,6 +70,7 @@ module.exports = {
                     'role',
                     'as',
                     'placement',
+                    'border',
                 ],
             },
         ],

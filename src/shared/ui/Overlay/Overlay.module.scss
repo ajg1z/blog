@@ -1,0 +1,7 @@
+.Overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: var(--overlay-modal-z-index);
+    background-color: var(--overlay-color);
+}
