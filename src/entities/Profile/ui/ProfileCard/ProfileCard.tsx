@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { classNames, ClassNamesMods } from 'shared/lib/classNames/classNames';
-
-import { Currency, CurrencySelect } from 'entities/Currency';
 import { ChangeEvent, PropsWithChildren } from 'react';
-import { Text } from 'shared/ui/Text/Text';
-import { Field } from 'shared/ui/Field/Field';
-import { Input } from 'shared/ui/Input/Input';
-import { CircleLoader } from 'shared/ui/CircleLoader';
-import { Avatar } from 'shared/ui/Avatar';
-import { Country, CountrySelect } from 'entities/Country';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { classNames, ClassNamesMods } from '@/shared/lib/classNames/classNames';
+
+import { Currency, CurrencySelect } from '@/entities/Currency';
+import { Text } from '@/shared/ui/Text/Text';
+import { Field } from '@/shared/ui/Field/Field';
+import { Input } from '@/shared/ui/Input/Input';
+import { CircleLoader } from '@/shared/ui/CircleLoader';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Country, CountrySelect } from '@/entities/Country';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profileSchema';
 

@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { HStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../model/const/articleConst';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len

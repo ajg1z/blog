@@ -1,7 +1,7 @@
 import { FC, Fragment, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Overlay } from 'shared/ui/Overlay';
 import { Dialog, Transition } from '@headlessui/react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Overlay } from '@/shared/ui/Overlay';
 import cls from './Modal.module.scss';
 
 interface ModalProps {

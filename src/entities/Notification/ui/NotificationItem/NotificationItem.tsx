@@ -1,7 +1,7 @@
 import { PropsWithChildren, memo } from 'react';
-import { Text } from 'shared/ui/Text';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card';
 import cls from './NotificationItem.module.scss';
 import { Notification } from '../../model/types/notification';
 

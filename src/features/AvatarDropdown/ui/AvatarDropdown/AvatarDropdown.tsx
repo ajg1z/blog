@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useCallback } from 'react';
-import { Dropdown } from 'shared/ui/Dropdown';
-import { Avatar } from 'shared/ui/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserData, isUserAdmin, isUserManager, userActions } from 'entities/User';
-import { RoutePaths } from 'shared/config/routeConfig/routeConfig';
-import { TokenLocalStorageKey } from 'shared/const/localStorage';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Placement } from '@floating-ui/react';
+import { Dropdown } from '@/shared/ui/Dropdown';
+import { Avatar } from '@/shared/ui/Avatar';
+import { getUserData, isUserAdmin, isUserManager, userActions } from '@/entities/User';
+import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
+import { TokenLocalStorageKey } from '@/shared/const/localStorage';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {

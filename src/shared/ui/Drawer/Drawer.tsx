@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode, memo, useCallback, useEffect } from 'react';
-import { Portal } from 'shared/ui/Portal';
-import { Overlay } from 'shared/ui/Overlay';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider';
+import { Portal } from '@/shared/ui/Portal';
+import { Overlay } from '@/shared/ui/Overlay';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {

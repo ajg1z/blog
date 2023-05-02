@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 import { Suspense, FC, memo, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { PageLoader } from 'widgets/PageLoader';
+import { PageLoader } from '@/widgets/PageLoader';
 import { RouteConfig } from '../lib/RouteConfig';
 import { RequireAuth } from './RequireAuth';
 import { RequireRoles } from './RequireRoles';

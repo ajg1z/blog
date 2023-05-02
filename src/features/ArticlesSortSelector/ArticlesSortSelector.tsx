@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useMemo } from 'react';
-import { ListBox, ListBoxItem } from 'shared/ui/ListBox';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleSortField } from 'entities/Article';
-import { SortOrder } from 'shared/types';
-import { HStack } from 'shared/ui/Stack';
+import { ListBox, ListBoxItem } from '@/shared/ui/ListBox';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ArticleSortField } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ArticlesSortSelectorProps {
     className?: string;

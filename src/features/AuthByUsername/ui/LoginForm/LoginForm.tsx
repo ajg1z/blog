@@ -1,18 +1,18 @@
 /* eslint-disable indent */
 import { useTranslation } from 'react-i18next';
 import { ChangeEvent, memo, PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button';
-import { Input } from 'shared/ui/Input/Input';
-import { Field } from 'shared/ui/Field/Field';
-import { Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input/Input';
+import { Field } from '@/shared/ui/Field/Field';
+import { Text } from '@/shared/ui/Text';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { HStack, VStack } from 'shared/ui/Stack';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';

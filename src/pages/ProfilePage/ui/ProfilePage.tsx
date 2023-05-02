@@ -1,16 +1,16 @@
 import { memo } from 'react';
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
-import { useParams } from 'react-router-dom';
-import { Text } from 'shared/ui/Text';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { getUserData } from 'entities/User';
-import { PageWrapper } from 'widgets/PageWrapper';
-import { HStack } from 'shared/ui/Stack';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
+import { Text } from '@/shared/ui/Text';
+import { getUserData } from '@/entities/User';
+import { PageWrapper } from '@/widgets/PageWrapper';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
 
 const initialReducers: ReducersList = {

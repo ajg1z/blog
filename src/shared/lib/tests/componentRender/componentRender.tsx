@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
 import { ReactNode } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import i18nForTests from '../../../config/i18n/i18nForTests';
 
 interface renderWithRouterOptions {

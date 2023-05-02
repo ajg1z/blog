@@ -1,6 +1,6 @@
 import { memo, PropsWithChildren, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import CopyIcon from 'shared/assets/img/copy.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import CopyIcon from '@/shared/assets/img/copy.svg';
 import { Button } from '../Button';
 import cls from './Code.module.scss';
 

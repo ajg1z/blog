@@ -1,8 +1,8 @@
 import { Fragment, ReactNode, useRef } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Listbox as HListBox } from '@headlessui/react';
-import { useCalculatePosition } from 'shared/hooks/useCalculatePosition/useCalculatePosition';
 import { Placement } from '@floating-ui/react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useCalculatePosition } from '@/shared/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './ListBox.module.scss';
 import { Button } from '../Button';
 import { HStack } from '../Stack';

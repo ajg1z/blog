@@ -1,17 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
 import { ChangeEvent, PropsWithChildren, useCallback, useMemo } from 'react';
-import { Text } from 'shared/ui/Text/Text';
-import { Button } from 'shared/ui/Button';
-import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import { isNumber } from 'shared/lib/validators/isNumber';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
-import { HStack } from 'shared/ui/Stack';
+import { Text } from '@/shared/ui/Text/Text';
+import { Button } from '@/shared/ui/Button';
+import { ProfileCard } from '@/entities/Profile';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { isNumber } from '@/shared/lib/validators/isNumber';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './EditableProfileCard.module.scss';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';

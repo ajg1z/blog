@@ -1,17 +1,17 @@
 import { ChangeEvent, memo, PropsWithChildren, useCallback, useMemo } from 'react';
-import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticlesViewSelector } from 'features/ArticlesViewSelector';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'shared/ui/Input';
-import { ArticlesSortSelector } from 'features/ArticlesSortSelector';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { SortOrder } from 'shared/types';
-import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
-import { TabItem } from 'shared/ui/Tabs';
-import { ArticleTypeTabs } from 'features/ArticleTypeTabs';
-import { HStack } from 'shared/ui/Stack';
+import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ArticlesViewSelector } from '@/features/ArticlesViewSelector';
+import { Input } from '@/shared/ui/Input';
+import { ArticlesSortSelector } from '@/features/ArticlesSortSelector';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { SortOrder } from '@/shared/types';
+import { useDebounce } from '@/shared/hooks/useDebounce/useDebounce';
+import { TabItem } from '@/shared/ui/Tabs';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticlesPageFilters.module.scss';
 import {
     getArticlesPageOrder,

@@ -2,17 +2,17 @@
 import { FC, memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Text } from 'shared/ui/Text';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { Avatar } from 'shared/ui/Avatar';
-import { Icon } from 'shared/ui/Icon';
-import { HStack } from 'shared/ui/Stack';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Text } from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Icon } from '@/shared/ui/Icon';
+import { HStack } from '@/shared/ui/Stack';
 import { ArticleBlock } from '../../model/types/article';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import {

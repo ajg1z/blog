@@ -1,4 +1,4 @@
-import { ProfileSchema } from 'entities/Profile';
+import { ProfileSchema } from '@/entities/Profile';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { profileActions, profileReducer } from './profileSlice';
 

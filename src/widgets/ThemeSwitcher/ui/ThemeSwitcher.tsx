@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { FC, memo } from 'react';
-import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import { Button } from 'shared/ui/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Theme, useTheme } from '@/app/providers/ThemeProvider';
+import { Button } from '@/shared/ui/Button';
 import LightThemeIcon from '../../../shared/assets/icons/theme-light.svg';
 import DarkThemeIcon from '../../../shared/assets/icons/theme-dark.svg';
 

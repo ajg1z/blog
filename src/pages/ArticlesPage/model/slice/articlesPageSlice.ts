@@ -1,3 +1,4 @@
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
     Article,
     ArticleView,
@@ -5,11 +6,10 @@ import {
     ArticleType,
     CountItemListPage,
     CountItemTilePage,
-} from 'entities/Article';
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticlesViewLocalStorageKey } from 'shared/const/localStorage';
-import { SortOrder } from 'shared/types';
+} from '@/entities/Article';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ArticlesViewLocalStorageKey } from '@/shared/const/localStorage';
+import { SortOrder } from '@/shared/types';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticleUrlParams, ArticlesPageSchema } from '../types/articlesPageSchema';
 

@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
 type AlignItems = 'center' | 'start' | 'end' | 'baseline' | 'stretch';

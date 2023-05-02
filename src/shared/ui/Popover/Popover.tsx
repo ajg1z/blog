@@ -1,7 +1,7 @@
 import { FC, ReactNode, useRef } from 'react';
 import { Popover as HPopover } from '@headlessui/react';
 import { Placement } from '@floating-ui/react';
-import { useCalculatePosition } from 'shared/hooks/useCalculatePosition/useCalculatePosition';
+import { useCalculatePosition } from '@/shared/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './Popover.module.scss';
 
 interface PopoverProps {

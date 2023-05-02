@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
 import { ArticleBlockText } from '../../../../model/types/article';
 import cls from './ArticleBlockTextComponent.module.scss';
 

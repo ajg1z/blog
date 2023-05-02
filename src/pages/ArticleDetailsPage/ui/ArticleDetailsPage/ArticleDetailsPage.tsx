@@ -1,17 +1,17 @@
-import { ArticleDetails } from 'entities/Article';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { ArticleDetails } from '@/entities/Article';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { PageWrapper } from 'widgets/PageWrapper';
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
+import { PageWrapper } from '@/widgets/PageWrapper';
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { articleDetailsCommentsReducer } from '../../model/slice/articleDetailsCommentsSlice';
 // eslint-disable-next-line max-len
 import { fetchCommentsByArticleId } from '../../model/service/fetchCommentsByArticleId/fetchCommentsByArticleId';

@@ -11,18 +11,18 @@ import {
     useCallback,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createArray } from 'shared/lib/arrayUtils/arrayUtils';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
 import { useSelector } from 'react-redux';
-import { getScrollPositionByPath, scrollRecoveryActions } from 'features/ScrollRecovery';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useLocation } from 'react-router-dom';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
-import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useThrottle } from 'shared/hooks/useThrottle/useThrottle';
 import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle } from 'react-virtuoso';
+import { createArray } from '@/shared/lib/arrayUtils/arrayUtils';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import { getScrollPositionByPath, scrollRecoveryActions } from '@/features/ScrollRecovery';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle';
 import cls from './ArticleList.module.scss';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';

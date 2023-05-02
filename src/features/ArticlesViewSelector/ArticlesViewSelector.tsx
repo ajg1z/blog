@@ -1,10 +1,10 @@
-import ListIcon from 'shared/assets/img/list.svg';
-import TileIcon from 'shared/assets/img/tile.svg';
 import type { PropsWithChildren } from 'react';
-import { ArticleView } from 'entities/Article';
-import { Icon } from 'shared/ui/Icon';
-import { Button } from 'shared/ui/Button';
-import { classNames } from 'shared/lib/classNames/classNames';
+import ListIcon from '@/shared/assets/img/list.svg';
+import TileIcon from '@/shared/assets/img/tile.svg';
+import { ArticleView } from '@/entities/Article';
+import { Icon } from '@/shared/ui/Icon';
+import { Button } from '@/shared/ui/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {

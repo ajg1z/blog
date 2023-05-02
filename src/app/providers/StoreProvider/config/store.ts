@@ -1,10 +1,10 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { counterReducer } from 'entities/Counter';
-import { userReducer } from 'entities/User';
-import { scrollRecoveryReducer } from 'features/ScrollRecovery';
 import { NavigateOptions, To } from 'react-router-dom';
-import { privateApi, publicApi } from 'shared/api/api';
-import { rtkApi } from 'shared/api/rtkApi';
+import { counterReducer } from '@/entities/Counter';
+import { userReducer } from '@/entities/User';
+import { scrollRecoveryReducer } from '@/features/ScrollRecovery';
+import { privateApi, publicApi } from '@/shared/api/api';
+import { rtkApi } from '@/shared/api/rtkApi';
 import { createReducerManager } from './reduxManager';
 import { StateSchema } from './StateSchema';
 

@@ -2,8 +2,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { PropsWithChildren } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ListBox, ListBoxItem, ListBoxProps } from 'shared/ui/ListBox';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ListBox, ListBoxItem, ListBoxProps } from '@/shared/ui/ListBox';
 import { Country } from '../../model/const/country';
 
 interface CountrySelectProps<T extends string>

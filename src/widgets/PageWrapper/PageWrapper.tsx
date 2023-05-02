@@ -1,14 +1,14 @@
 import { PropsWithChildren, ReactNode, useRef, MutableRefObject, UIEvent } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { getScrollPositionByPath, scrollRecoveryActions } from 'features/ScrollRecovery';
 import { useLocation } from 'react-router-dom';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
-import { StateSchema } from 'app/providers/StoreProvider';
 import { useSelector } from 'react-redux';
-import { useThrottle } from 'shared/hooks/useThrottle/useThrottle';
-import { PageWrapperId } from 'shared/const/id';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { getScrollPositionByPath, scrollRecoveryActions } from '@/features/ScrollRecovery';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle';
+import { PageWrapperId } from '@/shared/const/id';
 import cls from './PageWrapper.module.scss';
 
 interface PageWrapperProps {

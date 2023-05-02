@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
 import { FC } from 'react';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
-import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useSearchParams } from 'react-router-dom';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { PageWrapper } from 'widgets/PageWrapper';
-import { useSearchParams } from 'react-router-dom';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';

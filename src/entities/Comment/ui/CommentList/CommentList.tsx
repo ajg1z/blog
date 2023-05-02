@@ -1,9 +1,9 @@
 /* eslint-disable operator-linebreak */
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { CircleLoader } from 'shared/ui/CircleLoader';
-import { Text } from 'shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { CircleLoader } from '@/shared/ui/CircleLoader';
+import { Text } from '@/shared/ui/Text';
 import { Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 import cls from './CommentList.module.scss';

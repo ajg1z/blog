@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-expressions */
 import { Fragment, ReactNode, useRef } from 'react';
 import { Menu } from '@headlessui/react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Placement } from '@floating-ui/react';
-import { AppLink } from 'shared/ui/AppLink';
-import { Button } from 'shared/ui/Button';
-import { useCalculatePosition } from 'shared/hooks/useCalculatePosition/useCalculatePosition';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink';
+import { Button } from '@/shared/ui/Button';
+import { useCalculatePosition } from '@/shared/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {

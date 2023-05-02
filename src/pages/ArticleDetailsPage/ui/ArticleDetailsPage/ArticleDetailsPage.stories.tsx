@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {

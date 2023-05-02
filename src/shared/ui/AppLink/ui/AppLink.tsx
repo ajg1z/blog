@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { FC, memo } from 'react';
 import { LinkProps, Link } from 'react-router-dom';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
 type ThemeAppLink = 'primary' | 'secondary';

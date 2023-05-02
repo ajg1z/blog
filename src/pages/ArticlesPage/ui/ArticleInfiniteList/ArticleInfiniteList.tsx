@@ -1,8 +1,8 @@
 import { FC, useCallback } from 'react';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ArticleList } from 'entities/Article';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { ArticleList } from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,

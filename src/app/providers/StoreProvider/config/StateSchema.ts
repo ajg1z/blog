@@ -1,7 +1,3 @@
-import { ArticleDetailsSchema } from 'entities/Article';
-import { LoginSchema } from 'features/AuthByUsername';
-import { CounterSchema } from 'entities/Counter';
-import { UserSchema } from 'entities/User';
 import {
     AnyAction,
     CombinedState,
@@ -9,14 +5,18 @@ import {
     Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
-import { AddCommentFormSchema } from 'features/AddCommentForm';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
-import { ScrollRecoverySchema } from 'features/ScrollRecovery';
-import { rtkApi } from 'shared/api/rtkApi';
+import { ArticleDetailsSchema } from '@/entities/Article';
+import { LoginSchema } from '@/features/AuthByUsername';
+import { CounterSchema } from '@/entities/Counter';
+import { UserSchema } from '@/entities/User';
+import { ProfileSchema } from '@/entities/Profile';
+import { ArticleDetailsCommentsSchema } from '@/pages/ArticleDetailsPage';
+import { AddCommentFormSchema } from '@/features/AddCommentForm';
+import { ArticlesPageSchema } from '@/pages/ArticlesPage';
+import { ScrollRecoverySchema } from '@/features/ScrollRecovery';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema;

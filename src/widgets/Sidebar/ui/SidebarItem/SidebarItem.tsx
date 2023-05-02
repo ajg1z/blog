@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
 import { memo, PropsWithChildren } from 'react';
-import { AppLink } from 'shared/ui/AppLink';
 import { useSelector } from 'react-redux';
-import { getUserData } from 'entities/User';
-import { HStack } from 'shared/ui/Stack';
+import { AppLink } from '@/shared/ui/AppLink';
+import { getUserData } from '@/entities/User';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/types/sidebar';
 

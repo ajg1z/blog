@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { checkAuth } from './checkAuth';
 
 const data = {

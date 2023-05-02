@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo } from 'react';
-import { VStack } from 'shared/ui/Stack';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
 import { useNotifications } from '../../api/notificationApi';
 import cls from './NotificationsList.module.scss';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
