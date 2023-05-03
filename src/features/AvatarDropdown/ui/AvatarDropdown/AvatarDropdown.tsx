@@ -8,7 +8,7 @@ import { getUserData, isUserAdmin, isUserManager, userActions } from '@/entities
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
 import { TokenLocalStorageKey } from '@/shared/const/localStorage';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './AvatarDropdown.module.scss';
+import { ButtonProps } from '@/shared/ui/Button';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -56,9 +56,14 @@ export const AvatarDropdown = memo((props: PropsWithChildren<AvatarDropdownProps
         });
     }
 
+    const triggerProps: ButtonProps = {
+        theme: 'clear',
+    };
+
     return (
         <Dropdown
             trigger={<Avatar size={30} src={user.avatar} />}
+            triggerProps={triggerProps}
             className={classNames('', {}, [className])}
             placement={placement}
             items={dropdownItems}

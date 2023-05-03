@@ -1,0 +1,16 @@
+.startIconBtn {
+    svg {
+        stroke: var(--primary-color);
+        fill: none;
+    }
+
+    &.hovered {
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+
+    &.selected {
+        cursor: auto;
+    }
+}

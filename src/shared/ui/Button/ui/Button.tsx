@@ -1,4 +1,5 @@
-import { FC, ButtonHTMLAttributes, memo } from 'react';
+/* eslint-disable react/no-unused-prop-types */
+import { ButtonHTMLAttributes, memo, forwardRef } from 'react';
 import { classNames, ClassNamesMods } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
@@ -13,28 +14,38 @@ export type ButtonTheme =
 
 export type ButtonSize = 'M' | 'L' | 'XL';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ButtonTheme;
     square?: boolean;
     size?: ButtonSize;
 }
 
-export const Button: FC<ButtonProps> = memo((props) => {
-    const { className, children, theme = 'primary', square, size = 'M', ...otherProps } = props;
+export const Button = memo(
+    forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+        const {
+            className,
+            children,
+            disabled,
+            theme = 'primary',
+            square,
+            size = 'M',
+            ...otherProps
+        } = props;
 
-    const mods: ClassNamesMods = {
-        [cls.square]: square,
-    };
+        const mods: ClassNamesMods = {
+            [cls.square]: square,
+        };
 
-    return (
-        <button
-            type='button'
-            className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...otherProps}
-        >
-            {children}
-        </button>
-    );
-});
+        return (
+            <button
+                type='button'
+                {...otherProps}
+                ref={ref}
+                className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
+            >
+                {children}
+            </button>
+        );
+    }),
+);

@@ -2,11 +2,8 @@
     position: relative;
 }
 
-.trigger {
-    outline: none;
-    border: none;
-    background: none;
-    color: inherit;
+.readonly {
+    pointer-events: none;
 }
 
 .options {

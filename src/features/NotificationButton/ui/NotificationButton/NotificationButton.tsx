@@ -2,13 +2,12 @@ import { memo, useCallback, useState } from 'react';
 import { Placement } from '@floating-ui/react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { Popover } from '@/shared/ui/Popover';
-import { Button } from '@/shared/ui/Button';
+import { Button, ButtonProps } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { NotificationsList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/img/notification.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Drawer } from '@/shared/ui/Drawer';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
@@ -28,24 +27,27 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         setIsOpen(false);
     }, []);
 
-    const trigger = (
-        <Button theme='clear' onClick={onOpenDrawer}>
-            <Icon Svg={NotificationIcon} />
-        </Button>
-    );
+    const triggerProps: ButtonProps = {
+        theme: 'clear',
+    };
 
     return (
         <>
             <MobileView>
-                {trigger}
-                <AnimationProvider>
-                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                        <NotificationsList className={cls.notificationsMobile} />
-                    </Drawer>
-                </AnimationProvider>
+                <Button theme='clear' onClick={onOpenDrawer}>
+                    <Icon Svg={NotificationIcon} />
+                </Button>
+                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                    <NotificationsList className={cls.notificationsMobile} />
+                </Drawer>
             </MobileView>
             <BrowserView>
-                <Popover placement={placement} unmount trigger={trigger}>
+                <Popover
+                    triggerProps={triggerProps}
+                    placement={placement}
+                    unmount
+                    trigger={<Icon Svg={NotificationIcon} />}
+                >
                     <NotificationsList className={classNames(cls.notifications, {}, [className])} />
                 </Popover>
             </BrowserView>

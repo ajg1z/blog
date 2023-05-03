@@ -1,20 +1,29 @@
 /* eslint-disable react/no-unused-prop-types */
-import { InputHTMLAttributes, memo, useEffect, useRef } from 'react';
+import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-type InputTheme = 'background' | 'backgroundInverted' | 'outline';
+export type InputTheme = 'background' | 'backgroundInverted' | 'outline';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     className?: string;
     theme?: InputTheme;
     autofocus?: boolean;
+    onChangeValue?: (value: string) => void;
     getRef?: (ref: HTMLInputElement | null) => void;
 }
 
 export const Input = memo((props: InputProps) => {
-    // eslint-disable-next-line react/prop-types
-    const { className, getRef, theme = 'background', autofocus, ...otherProps } = props;
+    const {
+        onChange,
+        className,
+        getRef,
+        onChangeValue,
+        theme = 'background',
+        autofocus,
+        ...otherProps
+    } = props;
+
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
@@ -30,9 +39,14 @@ export const Input = memo((props: InputProps) => {
         };
     }, [getRef]);
 
+    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e);
+        onChangeValue?.(e.target.value);
+    };
+
     return (
         <input
-            // eslint-disable-next-line react/jsx-props-no-spreading
+            onChange={onChangeInput}
             {...otherProps}
             ref={inputRef}
             className={classNames(cls.Input, {}, [className, cls[theme]])}

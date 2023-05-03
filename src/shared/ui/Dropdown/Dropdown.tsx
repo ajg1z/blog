@@ -4,8 +4,8 @@ import { Menu } from '@headlessui/react';
 import { Placement } from '@floating-ui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
-import { Button } from '@/shared/ui/Button';
-import { useCalculatePosition } from '@/shared/hooks/useCalculatePosition/useCalculatePosition';
+import { Button, ButtonProps } from '@/shared/ui/Button';
+import { useCalculatePosition } from '@/shared/lib/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
@@ -21,24 +21,22 @@ interface DropdownProps {
     className?: string;
     items: DropdownItem[];
     trigger: ReactNode;
+    triggerProps?: Omit<ButtonProps, 'disabled'>;
     disabled?: boolean;
 }
 
 export const Dropdown = (props: DropdownProps) => {
-    const { items, trigger, className, placement = 'bottom', disabled } = props;
+    const { items, trigger, className, placement = 'bottom', disabled, triggerProps } = props;
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     const calculatePosition = useCalculatePosition(buttonRef, placement);
 
     return (
         <Menu as='div' className={classNames(cls.Dropdown, {}, [className])}>
-            <Menu.Button
-                ref={buttonRef}
-                className={cls.trigger}
-                id='menu-button'
-                disabled={disabled}
-            >
-                {trigger}
+            <Menu.Button as={Fragment}>
+                <Button {...triggerProps} ref={buttonRef} disabled={disabled}>
+                    {trigger}
+                </Button>
             </Menu.Button>
             <Menu.Items ref={calculatePosition} className={cls.menu}>
                 {items.map((item) => (
@@ -50,7 +48,7 @@ export const Dropdown = (props: DropdownProps) => {
                                         className={classNames(cls.item, {
                                             [cls.active]: active,
                                         })}
-                                        to={item.href!}
+                                        to={item.href}
                                     >
                                         {item.content}
                                     </AppLink>

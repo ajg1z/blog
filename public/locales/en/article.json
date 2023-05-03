@@ -3,5 +3,10 @@
     "errorLoading": "An error occurred while loading the article",
     "backToArticles": "Back to list",
     "recommendations": "Recommendations",
-    "createArticle": "create Article"
+    "createArticle": "create Article",
+    "rating": {
+        "title": "Evaluates the article",
+        "feedbackTitle": "Leave feedback",
+        "error": "Rating could not be loaded, try refreshing the page"
+    }
 }

@@ -6,7 +6,7 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { checkAuth, getUserLoading } from '@/entities/User';
 import { PageLoader } from '@/widgets/PageLoader';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 function App() {
     const dispatch = useAppDispatch();

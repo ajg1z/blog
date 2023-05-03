@@ -1,0 +1,13 @@
+.RatingCard {
+    min-height: 120px;
+    width: 350px;
+}
+
+.errorIcon {
+    margin: 10px auto 0;
+    text-align: center;
+
+    svg {
+        font: var(--font-xl);
+    }
+}

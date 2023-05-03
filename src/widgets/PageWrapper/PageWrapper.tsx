@@ -2,12 +2,12 @@ import { PropsWithChildren, ReactNode, useRef, MutableRefObject, UIEvent } from 
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getScrollPositionByPath, scrollRecoveryActions } from '@/features/ScrollRecovery';
-import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { PageWrapperId } from '@/shared/const/id';
 import cls from './PageWrapper.module.scss';
 

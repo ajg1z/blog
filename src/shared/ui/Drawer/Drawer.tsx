@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode, memo, useCallback, useEffect } from 'reac
 import { Portal } from '@/shared/ui/Portal';
 import { Overlay } from '@/shared/ui/Overlay';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
@@ -14,7 +14,7 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-export const Drawer = memo((props: PropsWithChildren<DrawerProps>) => {
+export const DrawerContent = memo((props: PropsWithChildren<DrawerProps>) => {
     const { className, children, isOpen, onClose } = props;
 
     const { Gesture, Spring } = useAnimationLibs();
@@ -83,3 +83,9 @@ export const Drawer = memo((props: PropsWithChildren<DrawerProps>) => {
         </Portal>
     );
 });
+
+export const Drawer = memo((props: PropsWithChildren<DrawerProps>) => (
+    <AnimationProvider>
+        <DrawerContent {...props} />
+    </AnimationProvider>
+));

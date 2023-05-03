@@ -6,14 +6,3 @@
     z-index: var(--popover-z-index);
     background-color: var(--inverted-bg-color);
 }
-
-.trigger {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    &:disabled {
-        opacity: 0.7;
-    }
-}

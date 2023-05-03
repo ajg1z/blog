@@ -1,8 +1,8 @@
 import { PropsWithChildren, useLayoutEffect } from 'react';
 import { Reducer } from '@reduxjs/toolkit';
 import { StateSchema, StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
-import { useStore } from '@/shared/hooks/useStore/useStore';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useStore } from '@/shared/lib/hooks/useStore/useStore';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;

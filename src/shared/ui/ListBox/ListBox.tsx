@@ -2,7 +2,7 @@ import { Fragment, ReactNode, useRef } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { Placement } from '@floating-ui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useCalculatePosition } from '@/shared/hooks/useCalculatePosition/useCalculatePosition';
+import { useCalculatePosition } from '@/shared/lib/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './ListBox.module.scss';
 import { Button } from '../Button';
 import { HStack } from '../Stack';
@@ -40,6 +40,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     const selectedContent = items?.find((item) => item.value === (value ?? defaultValue));
+
     const calculatePosition = useCalculatePosition(buttonRef, placement);
 
     return (
@@ -50,14 +51,14 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 value={value}
                 className={classNames(cls.ListBox, {}, [className])}
                 onChange={onChange}
+                disabled={disabled}
             >
-                <HListBox.Button
-                    ref={buttonRef}
-                    className={classNames(cls.trigger, { [cls.readonly]: readonly }, [])}
-                >
+                <HListBox.Button as={Fragment}>
                     <Button
-                        disabled={disabled || readonly}
+                        ref={buttonRef}
+                        disabled={readonly || disabled}
                         theme={readonly ? 'clearInverted' : 'outline'}
+                        className={classNames('', { [cls.readonly]: readonly })}
                     >
                         {selectedContent?.content ?? selectedContent?.value}
                     </Button>

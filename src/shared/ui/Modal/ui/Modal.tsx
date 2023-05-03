@@ -6,7 +6,7 @@ import cls from './Modal.module.scss';
 
 interface ModalProps {
     isOpen: boolean;
-    onClose: () => void;
+    onClose?: () => void;
     width?: number;
     height?: number;
     className?: string;
@@ -20,9 +20,13 @@ export const Modal: FC<ModalProps> = (props) => {
     const { children, description, unmount, className, title, isOpen, width, onClose, height } =
         props;
 
+    const onCloseModal = () => {
+        onClose?.();
+    };
+
     return (
-        <Transition show={isOpen}>
-            <Dialog className={cls.Modal} unmount={unmount} onClose={onClose}>
+        <Transition className={cls.transitionWrapper} show={isOpen}>
+            <Dialog className={cls.Modal} unmount={unmount} onClose={onCloseModal}>
                 <Transition.Child
                     enterFrom={cls.overlayEnter}
                     enterTo={cls.overlayEnterActive}

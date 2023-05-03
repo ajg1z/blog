@@ -19,7 +19,8 @@
         "cancel": "Сancel",
         "save": "Save",
         "copy": "Copy",
-        "send": "Send"
+        "send": "Send",
+        "close": "Close"
     },
     "shortLan": "En",
     "sign": "Sign in",

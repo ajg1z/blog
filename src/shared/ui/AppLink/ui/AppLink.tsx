@@ -1,4 +1,5 @@
-import { FC, memo } from 'react';
+/* eslint-disable react/no-unused-prop-types */
+import { FC, forwardRef, memo } from 'react';
 import { LinkProps, Link } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
@@ -10,12 +11,18 @@ interface AppLinkProps extends LinkProps {
     theme?: ThemeAppLink;
 }
 
-export const AppLink: FC<AppLinkProps> = memo((props) => {
-    const { className, children, theme = 'primary', ...rest } = props;
+export const AppLink: FC<AppLinkProps> = memo(
+    forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref) => {
+        const { className, children, theme = 'primary', ...rest } = props;
 
-    return (
-        <Link {...rest} className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
-            {children}
-        </Link>
-    );
-});
+        return (
+            <Link
+                {...rest}
+                ref={ref}
+                className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+            >
+                {children}
+            </Link>
+        );
+    }),
+);
