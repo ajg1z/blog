@@ -5,8 +5,10 @@
     "recommendations": "Recommendations",
     "createArticle": "create Article",
     "rating": {
-        "title": "Evaluates the article",
+        "evaluate": "Evaluates the article",
+        "thanksForEvaluate": "Thanks for the review",
         "feedbackTitle": "Leave feedback",
-        "error": "Rating could not be loaded, try refreshing the page"
+        "errorLoading": "Rating could not be loaded, try refreshing the page",
+        "errorRate": "Set rating failed, try refreshing the page"
     }
 }

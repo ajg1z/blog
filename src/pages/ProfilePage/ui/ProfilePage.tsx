@@ -12,6 +12,7 @@ import { getUserData } from '@/entities/User';
 import { PageWrapper } from '@/widgets/PageWrapper';
 import { HStack } from '@/shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
+import { ProfileRating } from '@/features/ProfileRating';
 
 const initialReducers: ReducersList = {
     profile: profileReducer,
@@ -30,10 +31,13 @@ const ProfilePage = memo(() => {
         );
     }
 
+    const isMyProfile = +id === user?.id;
+
     return (
         <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
             <PageWrapper>
-                <EditableProfileCard id={id} isEditable={+id === user?.id} />
+                <EditableProfileCard id={id} isEditable={isMyProfile} />
+                {!isMyProfile && <ProfileRating profileId={id} />}
             </PageWrapper>
         </DynamicModuleLoader>
     );

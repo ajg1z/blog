@@ -27,27 +27,19 @@ export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
 
-    if (saveScrollPosition) {
-        // eslint-disable-next-line
-        const scrollPosition = useSelector(
-            (state: StateSchema) => getScrollPositionByPath(state, pathname),
-            // eslint-disable-next-line function-paren-newline
-        );
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getScrollPositionByPath(state, pathname),
+    );
 
-        // eslint-disable-next-line
-        useInitialEffect(() => {
-            wrapperRef.current.scrollTop = scrollPosition;
-        });
-    }
+    useInitialEffect(() => {
+        if (saveScrollPosition) wrapperRef.current.scrollTop = scrollPosition;
+    });
 
-    if (onScrollEnd) {
-        // eslint-disable-next-line
-        useInfiniteScroll({
-            callback: onScrollEnd,
-            triggerRef,
-            wrapperRef,
-        });
-    }
+    useInfiniteScroll({
+        callback: onScrollEnd,
+        triggerRef,
+        wrapperRef,
+    });
 
     const onScroll = useThrottle((e: UIEvent) => {
         dispatch(

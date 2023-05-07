@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { PropsWithChildren, memo, useCallback, useState } from 'react';
-import cls from './RatingCard.module.scss';
+import { PropsWithChildren, memo, useState } from 'react';
 import { Card } from '@/shared/ui/Card';
 import { StarRating } from '@/shared/ui/StarRating';
 import { Text } from '@/shared/ui/Text';
 import { Modal } from '@/shared/ui/Modal';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Input, TextArea } from '@/shared/ui/Input';
+import { TextArea } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
+import { RotatingLinesLoader } from '@/shared/ui/Loaders';
 
 interface RatingCardProps {
     className?: string;
@@ -15,6 +15,8 @@ interface RatingCardProps {
     feedbackTitle?: string;
     title?: string;
     rate?: number;
+    isSending?: boolean;
+    initFeedback?: string;
     onCancel?: (startsCount: number) => void;
     onSendRating?: (startsCount: number, feedback?: string) => void;
 }
@@ -26,14 +28,18 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
         title,
         feedbackTitle,
         rate = 0,
+        isSending,
+        initFeedback = '',
         onCancel,
         onSendRating,
     } = props;
+
     const { t } = useTranslation();
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [starsCount, setStarsCount] = useState(rate);
-    const [feedback, setFeedback] = useState('');
+
+    const [feedback, setFeedback] = useState(initFeedback);
 
     const onSelectStars = (starsCount: number) => {
         setStarsCount(starsCount);
@@ -45,7 +51,9 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
     };
 
     const onChangeFeedback = (value: string) => {
-        setFeedback(value);
+        if (value.length < 64) {
+            setFeedback(value);
+        }
     };
 
     const onSendFeedback = () => {
@@ -58,11 +66,27 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
         onCancel?.(starsCount);
     };
 
+    const isShowFeedback = Boolean(
+        starsCount && hasFeedback && feedback && !isOpenModal && !isSending,
+    );
+
     return (
         <Card className={className}>
             <VStack gap={8} align='center'>
-                <Text align='center' title={title} />
-                <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+                {isSending ? (
+                    <VStack align='center' gap={8} justify='center'>
+                        <RotatingLinesLoader width='50px' />
+                        <Text text={t('sending')} />
+                    </VStack>
+                ) : (
+                    <>
+                        <Text align='center' title={title} />
+                        <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+                    </>
+                )}
+
+                {isShowFeedback && <Text text={feedback} />}
+
                 <Modal title={feedbackTitle} isOpen={isOpenModal}>
                     <VStack gap={12}>
                         <TextArea

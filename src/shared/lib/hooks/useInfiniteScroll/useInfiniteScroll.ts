@@ -11,6 +11,7 @@ export const useInfiniteScroll = (props: UseInfiniteOptions) => {
 
     useEffect(() => {
         if (!callback) return;
+
         const localTriggerRef = triggerRef.current;
 
         const options = {

@@ -9,8 +9,7 @@ export const privateApi = axios.create({
 
 privateApi.interceptors.request.use((config) => {
     if (config.headers) {
-        config.headers.Authorization =
-            `Bearer ${localStorage.getItem(TokenLocalStorageKey)?.replaceAll('"', '')}` ?? '';
+        config.headers.Authorization = `Bearer ${localStorage.getItem(TokenLocalStorageKey)}` ?? '';
     }
     return config;
 });

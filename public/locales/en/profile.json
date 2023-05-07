@@ -19,5 +19,12 @@
         "invalid_city": "Invalid city",
         "fail_update": "Error update"
     },
-    "noProfile": "Profile not found"
+    "noProfile": "Profile not found",
+    "rating": {
+        "evaluate": "Evaluates the article",
+        "thanksForEvaluate": "Thanks for the review",
+        "feedbackTitle": "Leave feedback",
+        "errorLoading": "Rating could not be loaded, try refreshing the page",
+        "errorRate": "Set rating failed, try refreshing the page"
+    }
 }

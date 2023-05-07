@@ -14,9 +14,9 @@ interface StarRatingProps {
 const starts = [1, 2, 3, 4, 5];
 
 export const StarRating = memo((props: PropsWithChildren<StarRatingProps>) => {
-    const { className, onSelect, selectedStars, size } = props;
+    const { className, onSelect, selectedStars = 0, size } = props;
 
-    const [currentStartsCount, setCurrentStartsCount] = useState(0);
+    const [currentStartsCount, setCurrentStartsCount] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
     const onHover = (startsCount: number) => () => {
@@ -38,7 +38,6 @@ export const StarRating = memo((props: PropsWithChildren<StarRatingProps>) => {
             onSelect(startsCount);
         }
     };
-
     return (
         <div className={classNames(cls.StarRating, {}, [className])}>
             {starts.map((starIndex) => (

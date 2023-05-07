@@ -78,46 +78,38 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
         <ArticleListItem target={target} article={article} view={view} key={article.id} />
     );
 
-    if (saveScrollPosition) {
-        // eslint-disable-next-line
-        scrollPosition = useSelector(
-            (state: StateSchema) => getScrollPositionByPath(state, pathname),
-            // eslint-disable-next-line function-paren-newline
-        );
+    scrollPosition = useSelector((state: StateSchema) => getScrollPositionByPath(state, pathname));
 
-        // eslint-disable-next-line
-        useInitialEffect(() => {
-            if (!virtualized) {
-                wrapperRef.current.scrollTop = scrollPosition;
-            }
+    useInitialEffect(() => {
+        if (!saveScrollPosition) return;
 
-            if (virtualized && (virtuosoGridRef.current || virtuosoListRef.current)) {
-                setTimeout(() => {
-                    if (virtuosoListRef.current) {
-                        virtuosoListRef.current.scrollTo({
-                            top: scrollPosition,
-                            behavior: 'auto',
-                        });
-                    }
-                    if (virtuosoGridRef.current) {
-                        virtuosoGridRef.current.scrollTo({
-                            top: scrollPosition,
-                            behavior: 'auto',
-                        });
-                    }
-                }, 100);
-            }
-        });
-    }
+        if (!virtualized) {
+            wrapperRef.current.scrollTop = scrollPosition;
+        }
 
-    if (onScrollEnd && !virtualized) {
-        // eslint-disable-next-line
-        useInfiniteScroll({
-            callback: onScrollEnd,
-            triggerRef,
-            wrapperRef,
-        });
-    }
+        if (virtualized && (virtuosoGridRef.current || virtuosoListRef.current)) {
+            setTimeout(() => {
+                if (virtuosoListRef.current) {
+                    virtuosoListRef.current.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'auto',
+                    });
+                }
+                if (virtuosoGridRef.current) {
+                    virtuosoGridRef.current.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'auto',
+                    });
+                }
+            }, 100);
+        }
+    });
+
+    useInfiniteScroll({
+        callback: onScrollEnd && !virtualized ? onScrollEnd : undefined,
+        triggerRef,
+        wrapperRef,
+    });
 
     const onScroll = useThrottle((e: UIEvent) => {
         dispatch(

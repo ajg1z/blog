@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { CircleLoader } from '@/shared/ui/CircleLoader';
+import { RotatingLinesLoader } from '@/shared/ui/Loaders';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderProps {
@@ -9,6 +9,6 @@ interface PageLoaderProps {
 
 export const PageLoader: FC<PageLoaderProps> = memo(({ className }) => (
     <div className={classNames(cls.PageLoader, {}, [className])}>
-        <CircleLoader />
+        <RotatingLinesLoader width='80px' />
     </div>
 ));

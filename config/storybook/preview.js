@@ -29,6 +29,6 @@ export const parameters = {
     },
 };
 
+addDecorator(SuspenseDecorator);
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);
-addDecorator(SuspenseDecorator);

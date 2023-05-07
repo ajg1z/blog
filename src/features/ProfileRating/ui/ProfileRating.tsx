@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { PropsWithChildren, memo, useCallback, useEffect } from 'react';
+import { PropsWithChildren, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { BiMessageAltError } from 'react-icons/bi';
-import cls from './ArticleRating.module.scss';
+import cls from './ProfileRating.module.scss';
 import { RatingCard } from '@/entities/Rating';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useArticleRating, useRateArticle } from '../api/artilceRatingApi';
+import { useProfileRating, useRateProfile } from '../api/profileRatingApi';
 import { getUserData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Card } from '@/shared/ui/Card';
@@ -13,35 +13,35 @@ import { Text } from '@/shared/ui/Text';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Icon } from '@/shared/ui/Icon';
 
-export interface ArticleRatingProps {
+export interface ProfileRatingProps {
     className?: string;
-    articleId: string;
+    profileId: string;
 }
 
-const ArticleRating = memo((props: PropsWithChildren<ArticleRatingProps>) => {
-    const { className, articleId } = props;
-    const { t } = useTranslation('article');
+const ProfileRating = memo((props: PropsWithChildren<ProfileRatingProps>) => {
+    const { className, profileId } = props;
+    const { t } = useTranslation('profile');
 
     const userData = useSelector(getUserData);
     const userId = userData?.id ?? 0;
 
-    const { data, isError, isFetching, refetch } = useArticleRating({
-        articleId,
+    const { data, isError, isFetching, refetch } = useProfileRating({
+        profileId,
         userId,
     });
 
-    const [rateArticleMutation, rateArticleMutationResult] = useRateArticle();
+    const [rateProfileMutation, rateProfileMutationResult] = useRateProfile();
 
     useInitialEffect(() => {
         refetch();
     });
 
-    const handleRateArticle = useCallback(
+    const handleRateProfile = useCallback(
         (startCount: number, feedback?: string) => {
             try {
-                rateArticleMutation({
+                rateProfileMutation({
                     rate: startCount,
-                    articleId,
+                    profileId,
                     userId,
                     feedback,
                 });
@@ -49,21 +49,21 @@ const ArticleRating = memo((props: PropsWithChildren<ArticleRatingProps>) => {
                 console.log(e);
             }
         },
-        [articleId, rateArticleMutation, userId],
+        [profileId, rateProfileMutation, userId],
     );
 
     const onCancel = useCallback(
         (startCount: number) => {
-            handleRateArticle(startCount);
+            handleRateProfile(startCount);
         },
-        [handleRateArticle],
+        [handleRateProfile],
     );
 
     const onSendRating = useCallback(
         (startCount: number, feedback?: string) => {
-            handleRateArticle(startCount, feedback);
+            handleRateProfile(startCount, feedback);
         },
-        [handleRateArticle],
+        [handleRateProfile],
     );
 
     if (isFetching) {
@@ -76,7 +76,7 @@ const ArticleRating = memo((props: PropsWithChildren<ArticleRatingProps>) => {
         );
     }
 
-    if (isError || rateArticleMutationResult.isError) {
+    if (isError || rateProfileMutationResult.isError) {
         return (
             <Card className={classNames(cls.RatingCard, { [cls.error]: isError }, [className])}>
                 <Text
@@ -89,12 +89,12 @@ const ArticleRating = memo((props: PropsWithChildren<ArticleRatingProps>) => {
     }
 
     const rating = data?.[0];
-    const isSetRated = rating?.rate || rateArticleMutationResult.data;
+    const isSetRated = rating?.rate || rateProfileMutationResult.data;
 
     return (
         <RatingCard
             initFeedback={rating?.feedback}
-            isSending={rateArticleMutationResult.isLoading}
+            isSending={rateProfileMutationResult.isLoading}
             title={isSetRated ? t('rating.thanksForEvaluate') : t('rating.evaluate')}
             feedbackTitle={t('rating.feedbackTitle')}
             hasFeedback
@@ -106,4 +106,4 @@ const ArticleRating = memo((props: PropsWithChildren<ArticleRatingProps>) => {
     );
 });
 
-export default ArticleRating;
+export default ProfileRating;

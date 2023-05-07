@@ -89,5 +89,16 @@ Normal.decorators = [
                 ],
             },
         },
+        scrollRecovery: {
+            403: 0,
+        },
+        addCommentForm: {
+            text: '',
+        },
+        articleDetailsComments: {
+            entities: {},
+            ids: [],
+            isLoading: false,
+        },
     }),
 ];

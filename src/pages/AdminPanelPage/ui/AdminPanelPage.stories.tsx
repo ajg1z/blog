@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import AdminPanelPage from './AdminPanelPage';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 
 export default {
-    title: 'shared/AdminPanelPage',
+    title: 'pages/AdminPanelPage',
     component: AdminPanelPage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -11,5 +12,12 @@ export default {
 
 const Template: ComponentStory<typeof AdminPanelPage> = (args) => <AdminPanelPage />;
 
-export const Normal = Template.bind({});
-Normal.args = {};
+export const Default = Template.bind({});
+Default.args = {};
+Default.decorators = [
+    StoreDecorator({
+        scrollRecovery: {
+            403: 0,
+        },
+    }),
+];
