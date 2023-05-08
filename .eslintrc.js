@@ -18,12 +18,9 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-stable'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-react'],
     rules: {
         'react/function-component-definition': 'off',
-        'fsd-stable/fsd-paths-checker': 'warn',
-        'fsd-stable/public-api-imports-only': 'warn',
-        'fsd-stable/fsd-layer-imports': 'warn',
         'no-unused-vars': 'warn',
         'react/jsx-indent': [2, 4],
         'import/no-unresolved': 'off',
@@ -97,6 +94,8 @@ module.exports = {
         'operator-linebreak': 'off',
         'function-paren-newline': 'off',
         'react/jsx-props-no-spreading': 'off',
+        'fsd-react/path-checker': ['error', { alias: '@' }],
+        'fsd-react/public-api-imports': ['error', { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,

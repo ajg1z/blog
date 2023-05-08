@@ -795,6 +795,13 @@
       "articleId": "2",
       "userId": 1,
       "id": "PL-DGH5"
+    },
+    {
+      "rate": 5,
+      "articleId": "4",
+      "userId": 1,
+      "feedback": "132",
+      "id": "sEwRXiR"
     }
   ],
   "profile-ratings": [
