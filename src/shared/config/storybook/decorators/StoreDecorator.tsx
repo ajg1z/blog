@@ -14,8 +14,9 @@ import { addCommentFormReducer } from '@/features/AddCommentForm/testing';
 import { userReducer } from '@/entities/User/testing';
 import { counterReducer } from '@/entities/Counter/testing';
 import { articleDetailsCommentsReducer } from '@/pages/ArticleDetailsPage/testing';
+import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
