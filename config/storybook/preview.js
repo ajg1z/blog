@@ -19,6 +19,7 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    layout: 'fullscreen',
     themes: {
         default: 'light',
         list: [

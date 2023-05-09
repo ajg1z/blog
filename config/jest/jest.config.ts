@@ -22,6 +22,7 @@ export default {
     moduleNameMapper: {
         '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestMockComponent.tsx'),
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
     reporters: [
         'default',
