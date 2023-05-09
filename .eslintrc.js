@@ -18,7 +18,14 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-react'],
+    plugins: [
+        'react',
+        '@typescript-eslint',
+        'i18next',
+        'react-hooks',
+        'fsd-react',
+        'unused-imports',
+    ],
     rules: {
         'react/function-component-definition': 'off',
         'no-unused-vars': 'warn',
@@ -106,6 +113,7 @@ module.exports = {
                 testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
             },
         ],
+        'unused-imports/no-unused-imports': 'error',
     },
     globals: {
         __IS_DEV__: true,

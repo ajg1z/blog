@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { PropsWithChildren, memo, useCallback, useEffect } from 'react';
+import { PropsWithChildren, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { BiMessageAltError } from 'react-icons/bi';
 import cls from './ArticleRating.module.scss';

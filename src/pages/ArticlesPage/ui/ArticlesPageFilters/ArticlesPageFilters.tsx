@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, PropsWithChildren, useCallback, useMemo } from 'react';
+import { ChangeEvent, memo, PropsWithChildren, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';

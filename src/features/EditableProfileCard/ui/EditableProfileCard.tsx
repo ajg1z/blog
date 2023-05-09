@@ -4,7 +4,7 @@ import { ChangeEvent, PropsWithChildren, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Text } from '@/shared/ui/Text/Text';
 import { Button } from '@/shared/ui/Button';
-import { ProfileCard } from '@/entities/Profile';
+import { ProfileCard, ValidateProfileError } from '@/entities/Profile';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from '@/entities/Currency';
@@ -21,7 +21,6 @@ import { profileActions } from '../model/slice/profileSlice';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
 import { getProfileValidateError } from '../model/selectors/getProfileValError/getProfileValError';
-import { ValidateProfileError } from '../model/types/profile';
 
 interface EditableProfileCardProps {
     className?: string;

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -8,6 +7,7 @@ import { Text } from '@/shared/ui/Text';
 import { HStack } from '@/shared/ui/Stack';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
+import { RoutePaths } from '@/shared/const/router';
 
 interface CommentCardProps {
     className?: string;

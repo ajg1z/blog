@@ -1,4 +1,4 @@
-import { FC, HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
@@ -7,7 +7,6 @@ import { Text } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/img/eye.svg';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
-import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
 import { Article, ArticleBlockText } from '../../model/types/article';
@@ -15,6 +14,7 @@ import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
 import { ArticleBlockTextComponent } from '../ArticleDetails/Blocks/ArticleBlockTextComponent/ArticleBlockTextComponent';
 import { ArticleView } from '../../model/const/articleConst';
+import { RoutePaths } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     className?: string;

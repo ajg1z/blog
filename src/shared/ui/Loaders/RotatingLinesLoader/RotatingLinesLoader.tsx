@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 

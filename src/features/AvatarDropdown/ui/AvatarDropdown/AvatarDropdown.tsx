@@ -5,10 +5,10 @@ import { Placement } from '@floating-ui/react';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Avatar } from '@/shared/ui/Avatar';
 import { getUserData, isUserAdmin, isUserManager, userActions } from '@/entities/User';
-import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
 import { TokenLocalStorageKey } from '@/shared/const/localStorage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ButtonProps } from '@/shared/ui/Button';
+import { RoutePaths } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
     className?: string;
