@@ -4,15 +4,15 @@ import { ReducersMapObject } from 'redux';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import '@/app/styles/index.scss';
-import { loginReducer } from '@/features/AuthByUsername';
-import { profileReducer } from '@/features/EditableProfileCard';
-import { articleDetailsReducer } from '@/entities/Article';
-import { scrollRecoveryReducer } from '@/features/ScrollRecovery';
-import { articlesPageReducer } from '@/pages/ArticlesPage';
-import { addCommentFormReducer } from '@/features/AddCommentForm';
-import { userReducer } from '@/entities/User';
-import { counterReducer } from '@/entities/Counter';
-import { articleDetailsCommentsReducer } from '@/pages/ArticleDetailsPage';
+import { loginReducer } from '@/features/AuthByUsername/testing';
+import { profileReducer } from '@/features/EditableProfileCard/testing';
+import { articleDetailsReducer } from '@/entities/Article/testing';
+import { scrollRecoveryReducer } from '@/features/ScrollRecovery/testing';
+import { articlesPageReducer } from '@/pages/ArticlesPage/testing';
+import { addCommentFormReducer } from '@/features/AddCommentForm/testing';
+import { userReducer } from '@/entities/User/testing';
+import { counterReducer } from '@/entities/Counter/testing';
+import { articleDetailsCommentsReducer } from '@/pages/ArticleDetailsPage/testing';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
     login: loginReducer,

@@ -95,7 +95,13 @@ module.exports = {
         'function-paren-newline': 'off',
         'react/jsx-props-no-spreading': 'off',
         'fsd-react/path-checker': ['error', { alias: '@' }],
-        'fsd-react/public-api-imports': ['error', { alias: '@' }],
+        'fsd-react/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
