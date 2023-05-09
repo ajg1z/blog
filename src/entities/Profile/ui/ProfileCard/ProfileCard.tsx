@@ -106,6 +106,7 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
                     readonly={readonly}
                     onChange={onChangeCurrency}
                 />
+
                 <CountrySelect
                     value={data?.country}
                     readonly={readonly}

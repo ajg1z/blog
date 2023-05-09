@@ -6,8 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBox, ListBoxItem, ListBoxProps } from '@/shared/ui/ListBox';
 import { Country } from '../../model/const/country';
 
-interface CountrySelectProps<T extends string>
-    extends Omit<ListBoxProps<T>, 'items' | 'label' | 'defaultValue'> {}
+interface CountrySelectProps
+    extends Omit<ListBoxProps<Country>, 'items' | 'label' | 'defaultValue'> {}
 
 const CountryOptions: ListBoxItem<Country>[] = [
     { value: Country.Armenia, content: Country.Armenia },
@@ -17,18 +17,16 @@ const CountryOptions: ListBoxItem<Country>[] = [
     { value: Country.Ukraine, content: Country.Ukraine },
 ];
 
-export const CountrySelect = <T extends string>(
-    props: PropsWithChildren<CountrySelectProps<T>>,
-) => {
+export const CountrySelect = (props: PropsWithChildren<CountrySelectProps>) => {
     const { className, value, onChange, ...otherProps } = props;
     const { t } = useTranslation();
 
     return (
-        <ListBox
+        <ListBox<Country>
             {...otherProps}
-            value={value as T}
+            value={value}
             className={classNames('', {}, [className])}
-            items={CountryOptions as ListBoxItem<T>[]}
+            items={CountryOptions}
             label={t('country.labelSelect')}
             onChange={onChange}
         />

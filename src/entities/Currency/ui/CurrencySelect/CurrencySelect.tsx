@@ -6,8 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBoxProps, ListBox, ListBoxItem } from '@/shared/ui/ListBox';
 import { Currency } from '../../model/const/currency';
 
-interface CurrencySelectProps<T extends string>
-    extends Omit<ListBoxProps<T>, 'items' | 'label' | 'defaultValue'> {}
+interface CurrencySelectProps
+    extends Omit<ListBoxProps<Currency>, 'items' | 'label' | 'defaultValue'> {}
 
 const CurrencyOptions: ListBoxItem<Currency>[] = [
     { value: Currency.EUR, content: Currency.EUR },
@@ -15,18 +15,16 @@ const CurrencyOptions: ListBoxItem<Currency>[] = [
     { value: Currency.USD, content: Currency.USD },
 ];
 
-export const CurrencySelect = <T extends string>(
-    props: PropsWithChildren<CurrencySelectProps<T>>,
-) => {
+export const CurrencySelect = (props: PropsWithChildren<CurrencySelectProps>) => {
     const { className, value, onChange, ...otherProps } = props;
     const { t } = useTranslation();
 
     return (
-        <ListBox
+        <ListBox<Currency>
             {...otherProps}
-            value={value as T}
+            value={value}
             className={classNames('', {}, [className])}
-            items={CurrencyOptions as ListBoxItem<T>[]}
+            items={CurrencyOptions}
             label={t('currency.labelSelect')}
             onChange={onChange}
         />
