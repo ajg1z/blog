@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { Profile } from '@/entities/Profile';
-import { ValidateProfileError } from '../../types/profile';
+import { Profile, ValidateProfileError } from '@/entities/Profile';
 
 export const validateProfileData = (data?: Profile) => {
     const errors: ValidateProfileError[] = [];

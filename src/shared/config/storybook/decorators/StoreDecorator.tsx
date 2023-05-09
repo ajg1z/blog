@@ -3,6 +3,7 @@
 import { ReducersMapObject } from 'redux';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+// eslint-disable-next-line fsd-react/layer-imports
 import '@/app/styles/index.scss';
 import { loginReducer } from '@/features/AuthByUsername/testing';
 import { profileReducer } from '@/features/EditableProfileCard/testing';

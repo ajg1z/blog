@@ -95,6 +95,10 @@ module.exports = {
         'function-paren-newline': 'off',
         'react/jsx-props-no-spreading': 'off',
         'fsd-react/path-checker': ['error', { alias: '@' }],
+        'fsd-react/layer-imports': [
+            'error',
+            { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing'] },
+        ],
         'fsd-react/public-api-imports': [
             'error',
             {

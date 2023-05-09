@@ -11,3 +11,8 @@ export interface UserSchema {
     authData?: User;
     isLoading: boolean;
 }
+
+export interface AuthResponse {
+    user: User;
+    token: string;
+}

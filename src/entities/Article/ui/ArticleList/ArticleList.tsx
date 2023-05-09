@@ -17,6 +17,8 @@ import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle, VirtuosoHandle } from 'reac
 import { createArray } from '@/shared/lib/arrayUtils/arrayUtils';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
+// TODO
+// eslint-disable-next-line fsd-react/layer-imports
 import { getScrollPositionByPath, scrollRecoveryActions } from '@/features/ScrollRecovery';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { StateSchema } from '@/app/providers/StoreProvider';

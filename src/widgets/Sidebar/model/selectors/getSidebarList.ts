@@ -1,9 +1,9 @@
-import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import MainIcon from '@/shared/assets/img/main.svg';
 import AboutIcon from '@/shared/assets/img/about.svg';
 import ProfileIcon from '@/shared/assets/img/profile.svg';
 import ArticlesIcon from '@/shared/assets/img/articles.svg';
-import { RoutePaths } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePaths } from '@/shared/const/router';
 import { SidebarItemType } from '../types/sidebar';
 
 export const getSidebarLinkList = (state: StateSchema) => {

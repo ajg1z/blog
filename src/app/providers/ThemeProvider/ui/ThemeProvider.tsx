@@ -1,5 +1,7 @@
 import { useMemo, useState, FC, useEffect, ReactNode } from 'react';
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
+import { ThemeContext } from '@/shared/lib/context/ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
+import { Theme } from '@/shared/const/theme';
 
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
@@ -8,7 +10,7 @@ interface ThemeProviderProps {
     children?: ReactNode;
 }
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     const [theme, setTheme] = useState<Theme>(initialTheme ?? defaultTheme);
 
     useEffect(() => {
@@ -27,5 +29,3 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
 
     return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
-
-export default ThemeProvider;

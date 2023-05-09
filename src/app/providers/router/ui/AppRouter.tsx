@@ -2,7 +2,7 @@
 import { Suspense, FC, memo, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PageLoader } from '@/widgets/PageLoader';
-import { RouteConfig } from '../lib/RouteConfig';
+import { RouteConfig } from '../config/RouteConfig';
 import { RequireAuth } from './RequireAuth';
 import { RequireRoles } from './RequireRoles';
 

@@ -1,4 +1,4 @@
-import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
@@ -18,9 +18,7 @@ describe('getArticleDetailsData', () => {
             },
         };
 
-        expect(getArticleDetailsData(state as StateSchema)).toEqual(
-            state.articleDetails?.data,
-        );
+        expect(getArticleDetailsData(state as StateSchema)).toEqual(state.articleDetails?.data);
     });
 });
 
@@ -30,9 +28,7 @@ describe('getArticleDetailsError', () => {
             articleDetails: { error: 'error' },
         };
 
-        expect(getArticleDetailsError(state as StateSchema)).toEqual(
-            state.articleDetails?.error,
-        );
+        expect(getArticleDetailsError(state as StateSchema)).toEqual(state.articleDetails?.error);
     });
 });
 
