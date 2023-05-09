@@ -14,7 +14,7 @@ import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
 import { ArticleBlockTextComponent } from '../ArticleDetails/Blocks/ArticleBlockTextComponent/ArticleBlockTextComponent';
 import { ArticleView } from '../../model/const/articleConst';
-import { RoutePaths } from '@/shared/const/router';
+import { getRouteArticleDetail } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     className?: string;
@@ -28,7 +28,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
     const { t } = useTranslation('articles');
 
     const types = <Text text={article.type.join(', ')} className={cls.articleTypes} />;
-    const link = RoutePaths.articleDetail + article.id;
+    const link = getRouteArticleDetail(article.id);
 
     const views = (
         <>

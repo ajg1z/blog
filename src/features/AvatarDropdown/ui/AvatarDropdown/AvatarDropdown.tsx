@@ -8,7 +8,7 @@ import { getUserData, isUserAdmin, isUserManager, userActions } from '@/entities
 import { TokenLocalStorageKey } from '@/shared/const/localStorage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ButtonProps } from '@/shared/ui/Button';
-import { RoutePaths } from '@/shared/const/router';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -38,7 +38,7 @@ export const AvatarDropdown = memo((props: PropsWithChildren<AvatarDropdownProps
     const dropdownItems = [
         {
             id: '2',
-            href: RoutePaths.profile + user.id,
+            href: getRouteProfile(user.id),
             content: t('navbar.profile'),
         },
         {
@@ -51,7 +51,7 @@ export const AvatarDropdown = memo((props: PropsWithChildren<AvatarDropdownProps
     if (isAdminPanel) {
         dropdownItems.unshift({
             id: '1',
-            href: RoutePaths.adminPanel,
+            href: getRouteAdminPanel(),
             content: t('navbar.admin'),
         });
     }

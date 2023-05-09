@@ -7,7 +7,7 @@ import { Text } from '@/shared/ui/Text';
 import { HStack } from '@/shared/ui/Stack';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
-import { RoutePaths } from '@/shared/const/router';
+import { getRouteProfile } from '@/shared/const/router';
 
 interface CommentCardProps {
     className?: string;
@@ -32,7 +32,7 @@ export const CommentCard: FC<CommentCardProps> = (props) => {
 
     return (
         <div className={classNames(cls.commentCard, {}, [className])}>
-            <AppLink to={`${RoutePaths.profile}${comment.user.id}`}>
+            <AppLink to={getRouteProfile(comment.user.id)}>
                 <HStack gap={12}>
                     {comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
                     <Text title={comment.user.username} />

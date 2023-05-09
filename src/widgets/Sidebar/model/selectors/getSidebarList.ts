@@ -3,7 +3,12 @@ import MainIcon from '@/shared/assets/img/main.svg';
 import AboutIcon from '@/shared/assets/img/about.svg';
 import ProfileIcon from '@/shared/assets/img/profile.svg';
 import ArticlesIcon from '@/shared/assets/img/articles.svg';
-import { RoutePaths } from '@/shared/const/router';
+import {
+    getRouteAbout,
+    getRouteMain,
+    getRouteProfile,
+    getRouteArticles,
+} from '@/shared/const/router';
 import { SidebarItemType } from '../types/sidebar';
 
 export const getSidebarLinkList = (state: StateSchema) => {
@@ -11,12 +16,12 @@ export const getSidebarLinkList = (state: StateSchema) => {
 
     const links: SidebarItemType[] = [
         {
-            path: RoutePaths.main,
+            path: getRouteMain(),
             text: 'main',
             Icon: MainIcon,
         },
         {
-            path: RoutePaths.about,
+            path: getRouteAbout(),
             text: 'about',
             Icon: AboutIcon,
         },
@@ -25,13 +30,13 @@ export const getSidebarLinkList = (state: StateSchema) => {
     if (isAuth) {
         links.push(
             {
-                path: RoutePaths.profile + state.user.authData!.id,
+                path: getRouteProfile(state.user.authData!.id),
                 text: 'profile',
                 Icon: ProfileIcon,
                 authOnly: true,
             },
             {
-                path: RoutePaths.articles,
+                path: getRouteArticles(),
                 text: 'articles',
                 Icon: ArticlesIcon,
                 authOnly: true,

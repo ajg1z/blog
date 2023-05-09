@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole, getUserRoles } from '@/entities/User';
-import { RoutePaths } from '@/shared/const/router';
+import { getRouteForbidden } from '@/shared/const/router';
 
 interface RequireRolesProps {
     roles?: UserRole[];
@@ -26,6 +26,6 @@ export const RequireRoles = memo((props: PropsWithChildren<RequireRolesProps>) =
         // eslint-disable-next-line react/jsx-no-useless-fragment
         <>{children}</>
     ) : (
-        <Navigate to={RoutePaths.forbidden} state={{ from: location }} replace />
+        <Navigate to={getRouteForbidden()} state={{ from: location }} replace />
     );
 });
