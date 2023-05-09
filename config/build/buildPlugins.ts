@@ -14,6 +14,8 @@ export function buildPlugins({
     apiUrl,
     environment,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
+    const isProd = !isDev;
+
     const plugins = [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
@@ -22,19 +24,13 @@ export function buildPlugins({
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __ENVIRONMENT__: JSON.stringify(environment),
         }),
-        new CopyWebpackPlugin({
-            patterns: [{ from: paths.locales, to: paths.buildLocales }],
-        }),
+
         new ForkTsCheckerWebpackPlugin({
             typescript: {
                 diagnosticOptions: {
@@ -52,6 +48,20 @@ export function buildPlugins({
         plugins.push(
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
+            }),
+        );
+    }
+
+    if (isProd) {
+        plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css',
+            }),
+        );
+        plugins.push(
+            new CopyWebpackPlugin({
+                patterns: [{ from: paths.locales, to: paths.buildLocales }],
             }),
         );
     }

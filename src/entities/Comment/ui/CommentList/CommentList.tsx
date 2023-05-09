@@ -31,11 +31,8 @@ export const CommentList: FC<CommentListProps> = memo((props) => {
                     comment={comment}
                 />
             ))}
-
             {isLoading && <CircleLoader size='medium' />}
-
             {error && <Text text={t('errorLoadingComments')} />}
-
             {isNoComments && <Text text={t('noComments')} />}
         </div>
     );
