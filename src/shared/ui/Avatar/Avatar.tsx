@@ -1,6 +1,10 @@
 import { CSSProperties, ImgHTMLAttributes, memo, PropsWithChildren, useMemo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
+import { AppImage } from '../AppImage';
+import { Skeleton } from '../Skeleton';
+import { Icon } from '../Icon';
+import UserIcon from '@/shared/assets/img/user.svg';
 
 interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
@@ -20,12 +24,13 @@ export const Avatar = memo((props: PropsWithChildren<AvatarProps>) => {
     );
 
     return (
-        <img
-            // eslint-disable-next-line react/jsx-props-no-spreading
+        <AppImage
             {...otherProps}
             className={classNames(cls.avatar, {}, [className])}
             alt={alt}
             style={styles}
+            fallback={<Skeleton height={size} width={size} border='50%' />}
+            errorFallback={<Icon Svg={UserIcon} />}
         />
     );
 });

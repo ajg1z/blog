@@ -15,6 +15,8 @@ import cls from './ArticleListItem.module.scss';
 import { ArticleBlockTextComponent } from '../ArticleDetails/Blocks/ArticleBlockTextComponent/ArticleBlockTextComponent';
 import { ArticleView } from '../../model/const/articleConst';
 import { getRouteArticleDetail } from '@/shared/const/router';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
     className?: string;
@@ -47,7 +49,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                 <Card className={cls.card}>
                     <div className={cls.imgWrapper}>
                         <Text text={article.createdAt} className={cls.createdAt} />
-                        <img src={article.img} alt={article.title} className={cls.img} />
+                        <AppImage
+                            fallback={<Skeleton height='100%' />}
+                            src={article.img}
+                            alt={article.title}
+                            className={cls.img}
+                        />
                     </div>
                     <HStack className={cls.articleInfo}>
                         {types}
@@ -71,7 +78,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
                 </HStack>
                 <Text title={article.title} className={cls.articleTitle} />
                 {types}
-                <img src={article.img} alt={article.title} className={cls.img} />
+                <AppImage
+                    fallback={<Skeleton height='100%' />}
+                    src={article.img}
+                    alt={article.title}
+                    className={cls.img}
+                />
                 {textBlock && (
                     <ArticleBlockTextComponent block={textBlock} className={cls.description} />
                 )}

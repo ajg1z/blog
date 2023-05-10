@@ -3,6 +3,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import { ArticleBlockImage } from '../../../../model/types/article';
 import cls from './ArticleBlockImageComponent.module.scss';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleBlockImageComponentProps {
     className?: string;
@@ -14,7 +16,12 @@ export const ArticleBlockImageComponent: FC<ArticleBlockImageComponentProps> = m
 
     return (
         <div className={classNames(cls.ArticleBlockImageComponent, {}, [className])}>
-            <img className={cls.image} src={block.src} alt={block.title} />
+            <AppImage
+                fallback={<Skeleton height='100%' />}
+                className={cls.image}
+                src={block.src}
+                alt={block.title}
+            />
             {block.title && <Text align='center' text={block.title} />}
         </div>
     );
