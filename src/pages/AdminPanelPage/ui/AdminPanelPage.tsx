@@ -13,7 +13,7 @@ const AdminPanelPage: FC<AdminPanelPageProps> = (props) => {
     const { t } = useTranslation('admin-panel');
 
     return (
-        <PageWrapper>
+        <PageWrapper data-testid='AdminPanelPage'>
             <div className={classNames(cls.AdminPanelPage, {}, [className])}>{t('title')}</div>
         </PageWrapper>
     );

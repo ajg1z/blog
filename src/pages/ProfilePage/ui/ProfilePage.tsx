@@ -35,7 +35,7 @@ const ProfilePage = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
-            <PageWrapper>
+            <PageWrapper data-testid='ProfilePage'>
                 <EditableProfileCard id={id} isEditable={isMyProfile} />
                 {!isMyProfile && <ProfileRating profileId={id} />}
             </PageWrapper>

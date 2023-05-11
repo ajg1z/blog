@@ -7,7 +7,7 @@ const MainPage = memo(() => {
 
     return (
         <div>
-            <PageWrapper>{t('title')}</PageWrapper>
+            <PageWrapper data-testid='MainPage'>{t('title')}</PageWrapper>
         </div>
     );
 });

@@ -3,7 +3,7 @@ import { PropsWithChildren, memo, useMemo } from 'react';
 import { ListBox, ListBoxItem } from '@/shared/ui/ListBox';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField } from '@/entities/Article';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { HStack } from '@/shared/ui/Stack';
 
 interface ArticlesSortSelectorProps {

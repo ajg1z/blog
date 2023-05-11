@@ -7,7 +7,7 @@ import { ArticlesViewSelector } from '@/features/ArticlesViewSelector';
 import { Input } from '@/shared/ui/Input';
 import { ArticlesSortSelector } from '@/features/ArticlesSortSelector';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { TabItem } from '@/shared/ui/Tabs';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';

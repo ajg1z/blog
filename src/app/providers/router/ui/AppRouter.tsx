@@ -3,8 +3,7 @@ import { Suspense, FC, memo, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PageLoader } from '@/widgets/PageLoader';
 import { RouteConfig } from '../config/RouteConfig';
-import { RequireAuth } from './RequireAuth';
-import { RequireRoles } from './RequireRoles';
+import { ValidateRoute } from './ValidateRoute';
 
 const AppRouter: FC = () => {
     const routes = useMemo(() => {
@@ -16,9 +15,7 @@ const AppRouter: FC = () => {
                     // eslint-disable-next-line react/jsx-wrap-multilines
                     <Suspense fallback={<PageLoader />}>
                         {authOnly ? (
-                            <RequireAuth>
-                                <RequireRoles roles={roles}>{element}</RequireRoles>
-                            </RequireAuth>
+                            <ValidateRoute roles={roles}>{element}</ValidateRoute>
                         ) : (
                             element
                         )}

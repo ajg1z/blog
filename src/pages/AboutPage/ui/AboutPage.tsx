@@ -8,7 +8,7 @@ const AboutPage = memo(() => {
 
     return (
         <div>
-            <PageWrapper>
+            <PageWrapper data-testid='AboutPage'>
                 <Text title={t('title')} size='L' />
             </PageWrapper>
         </div>

@@ -10,8 +10,9 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { PageWrapperId } from '@/shared/const/id';
 import cls from './PageWrapper.module.scss';
+import { TestProps } from '@/shared/types/test';
 
-interface PageWrapperProps {
+interface PageWrapperProps extends TestProps {
     className?: string;
     children?: ReactNode;
     onScrollEnd?: () => void;
@@ -19,7 +20,13 @@ interface PageWrapperProps {
 }
 
 export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
-    const { className, children, onScrollEnd, saveScrollPosition = true } = props;
+    const {
+        className,
+        children,
+        onScrollEnd,
+        'data-testid': dataTestId,
+        saveScrollPosition = true,
+    } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -52,6 +59,7 @@ export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
 
     return (
         <section
+            data-testid={dataTestId}
             id={PageWrapperId}
             ref={wrapperRef}
             className={classNames(cls.PageWrapper, {}, [className])}

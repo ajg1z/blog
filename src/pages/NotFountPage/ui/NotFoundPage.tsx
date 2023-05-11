@@ -6,7 +6,7 @@ import { PageWrapper } from '@/widgets/PageWrapper';
 export const NotFoundPage = memo(() => {
     const { t } = useTranslation();
     return (
-        <PageWrapper>
+        <PageWrapper data-testid='NotFoundPage'>
             <Text title={t('notFoundPage')} />
         </PageWrapper>
     );

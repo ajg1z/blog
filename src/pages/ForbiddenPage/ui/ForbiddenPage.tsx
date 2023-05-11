@@ -7,7 +7,7 @@ const ForbiddenPage: FC = () => {
     const { t } = useTranslation();
 
     return (
-        <PageWrapper>
+        <PageWrapper data-testid='ForbiddenPage'>
             <Text title={t('forbiddenPage')} />
         </PageWrapper>
     );
