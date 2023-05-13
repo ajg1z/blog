@@ -6,6 +6,5 @@ describe('Button', () => {
         // eslint-disable-next-line
         render(<Button>Test</Button>);
         expect(screen.getByText(/test/i)).toBeInTheDocument();
-        screen.debug();
     });
 });

@@ -2,6 +2,7 @@ import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/decorators/RouterDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/decorators/SuspenseDecorator';
+import { ContainerDecorator } from '../../src/shared/config/storybook/decorators/ContainerDecorator';
 import i18n from './i18n';
 import '../../src/app/styles/index.scss';
 
@@ -12,6 +13,7 @@ export const parameters = {
         en: 'English',
         ru: 'Russian',
     },
+    layout: 'fullscreen',
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
         matchers: {
@@ -19,9 +21,8 @@ export const parameters = {
             date: /Date$/,
         },
     },
-    layout: 'fullscreen',
     themes: {
-        default: 'light',
+        default: 'dark',
         list: [
             { name: 'light', class: ['app', 'light'] },
             { name: 'dark', class: ['app', 'dark'] },
@@ -33,3 +34,4 @@ export const parameters = {
 addDecorator(SuspenseDecorator);
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);
+addDecorator(ContainerDecorator);

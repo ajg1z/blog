@@ -4,7 +4,7 @@ export const getQueryParams = (params: Record<string, string | undefined>) => {
     Object.entries(params).forEach(([name, value]) => {
         if (value) {
             searchParams.set(name, value);
-        } else searchParams.set(name, '');
+        }
     });
 
     return searchParams.toString();

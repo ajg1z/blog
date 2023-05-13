@@ -6,7 +6,7 @@ import {
 } from './comments';
 
 describe('comments', () => {
-    test('getArticleCommentsError should return error', () => {
+    test('getArticleFetchCommentsError should return error', () => {
         const state: DeepPartial<StateSchema> = {
             articleDetailsComments: {
                 fetchCommentsError: 'Error',
@@ -18,7 +18,7 @@ describe('comments', () => {
     test('getArticleSendCommentError should return error', () => {
         const state: DeepPartial<StateSchema> = {
             articleDetailsComments: {
-                fetchCommentsError: 'Error',
+                sendCommentError: 'Error',
             },
         };
         expect(getArticleSendCommentError(state as StateSchema)).toEqual('Error');

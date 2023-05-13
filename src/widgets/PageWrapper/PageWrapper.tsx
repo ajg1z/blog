@@ -10,7 +10,7 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { PageWrapperId } from '@/shared/const/id';
 import cls from './PageWrapper.module.scss';
-import { TestProps } from '@/shared/types/test';
+import { TestProps } from '@/shared/types/tests';
 
 interface PageWrapperProps extends TestProps {
     className?: string;

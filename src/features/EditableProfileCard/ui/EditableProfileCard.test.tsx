@@ -49,8 +49,6 @@ describe('features/EditableProfileCard.test', () => {
         expect(mockPutRequest).toHaveBeenCalled();
 
         expect(screen.getByTestId('EditableProfileCard.EditButton')).toBeInTheDocument();
-
-        screen.debug();
     });
 
     test('Cancel changes', async () => {
@@ -60,6 +58,9 @@ describe('features/EditableProfileCard.test', () => {
                     data: profile,
                     form: profile,
                     readonly: true,
+                },
+                user: {
+                    authData: { id: 1 },
                 },
             },
             asyncReducers: { profile: profileReducer },
@@ -82,7 +83,5 @@ describe('features/EditableProfileCard.test', () => {
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue(profile.lastname);
         expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue(profile.firstname);
         expect(screen.getByTestId('EditableProfileCard.EditButton')).toBeInTheDocument();
-
-        screen.debug();
     });
 });

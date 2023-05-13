@@ -8,7 +8,6 @@ describe('Sidebar', () => {
     });
     test('render', () => {
         expect(screen.getByTestId('toggle-btn')).toBeInTheDocument();
-        screen.debug();
     });
 
     test('toggle', () => {
@@ -16,6 +15,5 @@ describe('Sidebar', () => {
         expect(screen.getByLabelText('sidebar')).toHaveClass('collapsed');
         fireEvent.click(screen.getByTestId('toggle-btn'));
         expect(screen.getByLabelText('sidebar')).not.toHaveClass('collapsed');
-        screen.debug();
     });
 });

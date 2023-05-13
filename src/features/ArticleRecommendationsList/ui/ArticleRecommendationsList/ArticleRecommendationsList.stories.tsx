@@ -2,6 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 
 export default {
     title: 'features/ArticleRecommendationsList',
@@ -9,11 +10,10 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [withMock],
+    decorators: [withMock, StoreDecorator({})],
 } as ComponentMeta<typeof ArticleRecommendationsList>;
 
 const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <ArticleRecommendationsList {...args} />
 );
 
@@ -87,12 +87,32 @@ const article = {
     ],
 };
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.parameters = {
+export const WithData = Template.bind({});
+WithData.args = {};
+WithData.parameters = {
     mockData: [
         {
-            url: __API__,
+            url: `${__API__}/articles?_expand=user&_limit=6`,
+            method: 'GET',
+            status: 200,
+            response: [
+                { ...article, id: 1 },
+                { ...article, id: 2 },
+                { ...article, id: 3 },
+                { ...article, id: 4 },
+                { ...article, id: 5 },
+                { ...article, id: 6 },
+            ],
+        },
+    ],
+};
+
+export const WithError = Template.bind({});
+WithError.args = {};
+WithError.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/articles?_expand=user`,
             method: 'GET',
             status: 200,
             response: [

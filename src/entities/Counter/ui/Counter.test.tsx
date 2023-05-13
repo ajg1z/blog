@@ -15,7 +15,6 @@ describe('Counter', () => {
 
     test('render', () => {
         expect(screen.getByTestId('count')).toHaveTextContent('10');
-        screen.debug();
     });
 
     test('decrement', () => {
