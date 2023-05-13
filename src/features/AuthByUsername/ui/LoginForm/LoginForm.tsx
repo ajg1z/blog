@@ -7,10 +7,7 @@ import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { Field } from '@/shared/ui/Field/Field';
 import { Text } from '@/shared/ui/Text';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
@@ -72,28 +69,13 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
 
     return (
         <DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>
-            <VStack
-                gap={4}
-                justify='start'
-                align='stretch'
-                className={classNames('', {}, [className])}
-            >
+            <VStack gap={4} justify='start' align='stretch' className={classNames('', {}, [className])}>
                 <Field label={t('login')} className={cls.field}>
-                    <Input
-                        autofocus
-                        theme='backgroundInverted'
-                        value={username}
-                        onChange={onChangeUsername}
-                    />
+                    <Input autofocus theme='backgroundInverted' value={username} onChange={onChangeUsername} />
                 </Field>
 
                 <Field label={t('password')} className={cls.field}>
-                    <Input
-                        theme='backgroundInverted'
-                        value={password}
-                        onChange={onChangePassword}
-                        type='password'
-                    />
+                    <Input theme='backgroundInverted' value={password} onChange={onChangePassword} type='password' />
                 </Field>
                 <HStack className={cls.footer} gap={12} justify='end'>
                     {error && <Text theme='error' text={error} />}

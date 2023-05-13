@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
+import { Meta, StoryObj } from '@storybook/react';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 import { StoreDecorator } from '@/shared/config/storybook/decorators/StoreDecorator';
 
@@ -10,12 +9,10 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [withMock, StoreDecorator({})],
-} as ComponentMeta<typeof ArticleRecommendationsList>;
+    decorators: [StoreDecorator({})],
+} as Meta<typeof ArticleRecommendationsList>;
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
-    <ArticleRecommendationsList {...args} />
-);
+type Story = StoryObj<typeof ArticleRecommendationsList>;
 
 const article = {
     id: 1,
@@ -87,42 +84,44 @@ const article = {
     ],
 };
 
-export const WithData = Template.bind({});
-WithData.args = {};
-WithData.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/articles?_expand=user&_limit=6`,
-            method: 'GET',
-            status: 200,
-            response: [
-                { ...article, id: 1 },
-                { ...article, id: 2 },
-                { ...article, id: 3 },
-                { ...article, id: 4 },
-                { ...article, id: 5 },
-                { ...article, id: 6 },
-            ],
-        },
-    ],
+export const WithData: Story = {
+    render: () => <ArticleRecommendationsList />,
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/articles?_expand=user&_limit=6`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    { ...article, id: 1 },
+                    { ...article, id: 2 },
+                    { ...article, id: 3 },
+                    { ...article, id: 4 },
+                    { ...article, id: 5 },
+                    { ...article, id: 6 },
+                ],
+            },
+        ],
+    },
 };
 
-export const WithError = Template.bind({});
-WithError.args = {};
-WithError.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/articles?_expand=user`,
-            method: 'GET',
-            status: 200,
-            response: [
-                { ...article, id: 1 },
-                { ...article, id: 2 },
-                { ...article, id: 3 },
-                { ...article, id: 4 },
-                { ...article, id: 5 },
-                { ...article, id: 6 },
-            ],
-        },
-    ],
+export const WithError: Story = {
+    render: () => <ArticleRecommendationsList />,
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/articles?_expand=user&_`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    { ...article, id: 1 },
+                    { ...article, id: 2 },
+                    { ...article, id: 3 },
+                    { ...article, id: 4 },
+                    { ...article, id: 5 },
+                    { ...article, id: 6 },
+                ],
+            },
+        ],
+    },
 };
