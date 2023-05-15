@@ -103,14 +103,15 @@ export const ArticleDetails: FC<ArticleDetailProps> = memo((props) => {
                     className={cls.title}
                     title={article?.title}
                     text={article?.subtitle}
+                    data-testid='ArticleDetails.text'
                     size='L'
                 />
-                <HStack gap={12}>
+                <HStack gap={12} data-testid='ArticleDetails.views'>
                     <Icon Svg={EyeIcon} />
                     <Text text={String(article?.views)} />
                 </HStack>
 
-                <HStack gap={12}>
+                <HStack gap={12} data-testid='ArticleDetails.createdAt'>
                     <Icon Svg={CalendarIcon} />
                     <Text text={article?.createdAt} />
                 </HStack>

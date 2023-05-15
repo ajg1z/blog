@@ -35,7 +35,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <PageWrapper className={cls.page} saveScrollPosition={false}>
+            <PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>
                     <ArticlesPageFilters className={cls.articleFilters} />
                     <ArticleInfiniteList />

@@ -51,15 +51,17 @@ const AddCommentForm: FC<AddCommentFormProps> = memo((props) => {
             <HStack
                 justify='space-between'
                 className={classNames(cls.AddCommentForm, {}, [className])}
+                data-testid='AddCommentForm'
             >
                 <textarea
+                    data-testid='AddCommentForm.Textarea'
                     placeholder={t('placeholder.addComment')}
                     rows={3}
                     value={text}
                     onChange={onCommentTextChange}
                     className={cls.input}
                 />
-                <Button theme='outline' onClick={onSendComment}>
+                <Button data-testid='AddCommentForm.Button' theme='outline' onClick={onSendComment}>
                     {t('button.send')}
                 </Button>
             </HStack>

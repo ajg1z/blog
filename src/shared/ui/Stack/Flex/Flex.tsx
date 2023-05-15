@@ -61,6 +61,7 @@ export const Flex: FC<FlexProps> = (props) => {
         justify = 'start',
         gap,
         max,
+        ...otherProps
     } = props;
 
     const classes = [
@@ -71,5 +72,9 @@ export const Flex: FC<FlexProps> = (props) => {
         gap && gapClasses[gap],
     ];
 
-    return <div className={classNames(cls.Flex, { [cls.max]: max }, classes)}>{children}</div>;
+    return (
+        <div className={classNames(cls.Flex, { [cls.max]: max }, classes)} {...otherProps}>
+            {children}
+        </div>
+    );
 };

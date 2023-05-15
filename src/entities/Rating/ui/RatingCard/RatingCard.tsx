@@ -71,7 +71,7 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
     );
 
     return (
-        <Card className={className}>
+        <Card data-testid='RatingCard' className={className}>
             <VStack gap={8} align='center'>
                 {isSending ? (
                     <VStack align='center' gap={8} justify='center'>
@@ -94,12 +94,19 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
                             rows={4}
                             value={feedback}
                             onChangeValue={onChangeFeedback}
+                            data-testid='RatingCard.TextArea'
                         />
                         <HStack justify='end' gap={8}>
-                            <Button theme='outlineRed' onClick={onCancelFeedback}>
+                            <Button
+                                data-testid='RatingCard.Cancel'
+                                theme='outlineRed'
+                                onClick={onCancelFeedback}
+                            >
                                 {t('button.cancel')}
                             </Button>
-                            <Button onClick={onSendFeedback}>{t('button.send')}</Button>
+                            <Button data-testid='RatingCard.Send' onClick={onSendFeedback}>
+                                {t('button.send')}
+                            </Button>
                         </HStack>
                     </VStack>
                 </Modal>

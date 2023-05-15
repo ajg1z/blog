@@ -1,6 +1,5 @@
 /* eslint-disable indent */
 /* eslint-disable operator-linebreak */
-import { ReducersMapObject } from 'redux';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 // eslint-disable-next-line fsd-react/layer-imports
@@ -15,6 +14,7 @@ import { userReducer } from '@/entities/User/testing';
 import { counterReducer } from '@/entities/Counter/testing';
 import { articleDetailsCommentsReducer } from '@/pages/ArticleDetailsPage/testing';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ReducersMapObject } from '@reduxjs/toolkit';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,

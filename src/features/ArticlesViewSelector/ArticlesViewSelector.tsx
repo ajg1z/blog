@@ -31,6 +31,7 @@ export function ArticlesViewSelector(props: PropsWithChildren<ArticleViewSelecto
         <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
             {viewTypes.map(({ icon, view }) => (
                 <Button
+                    data-testid={`ArticlesViewSelector.${view}`}
                     theme='clear'
                     key={view}
                     className={classNames('', { [cls.activeView]: view === activeView }, [])}

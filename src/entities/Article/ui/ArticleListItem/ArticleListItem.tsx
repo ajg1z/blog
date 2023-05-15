@@ -42,6 +42,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
     if (view === ArticleView.TILE) {
         return (
             <AppLink
+                data-testid='ArticleListItem.TILE'
                 target={target}
                 to={link}
                 className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}
@@ -69,7 +70,10 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
     const textBlock = article.blocks.find((block) => block.type === 'text') as ArticleBlockText;
 
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls.LIST])}>
+        <div
+            data-testid='ArticleListItem.LIST'
+            className={classNames(cls.ArticleListItem, {}, [className, cls.LIST])}
+        >
             <Card className={cls.card}>
                 <HStack gap={12} className={cls.header}>
                     <Avatar src={article.user.avatar} alt={article.user.username} size={30} />

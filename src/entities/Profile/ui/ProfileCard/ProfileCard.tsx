@@ -89,16 +89,36 @@ export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => {
                     />
                 </Field>
                 <Field label={t('age')}>
-                    <Input value={data?.age} readOnly={readonly} onChange={onChangeAge} />
+                    <Input
+                        data-testid='ProfileCard.age'
+                        value={data?.age}
+                        readOnly={readonly}
+                        onChange={onChangeAge}
+                    />
                 </Field>
                 <Field label={t('city')}>
-                    <Input value={data?.city} readOnly={readonly} onChange={onChangeCity} />
+                    <Input
+                        data-testid='ProfileCard.city'
+                        value={data?.city}
+                        readOnly={readonly}
+                        onChange={onChangeCity}
+                    />
                 </Field>
                 <Field label={t('avatar')}>
-                    <Input value={data?.avatar} readOnly={readonly} onChange={onChangeAvatar} />
+                    <Input
+                        data-testid='ProfileCard.avatar'
+                        value={data?.avatar}
+                        readOnly={readonly}
+                        onChange={onChangeAvatar}
+                    />
                 </Field>
                 <Field label={t('username')}>
-                    <Input value={data?.username} readOnly={readonly} onChange={onChangeUserName} />
+                    <Input
+                        data-testid='ProfileCard.username'
+                        value={data?.username}
+                        readOnly={readonly}
+                        onChange={onChangeUserName}
+                    />
                 </Field>
 
                 <CurrencySelect

@@ -48,7 +48,9 @@ export const StarRating = memo((props: PropsWithChildren<StarRatingProps>) => {
                         [cls.hovered]: currentStartsCount >= starIndex,
                         [cls.selected]: isSelected,
                     })}
+                    data-testid={`StarRating.${starIndex}`}
                     key={starIndex}
+                    data-selected={currentStartsCount >= starIndex}
                     Svg={StarIcon}
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(starIndex)}

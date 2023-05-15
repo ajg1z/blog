@@ -1,0 +1,28 @@
+[
+    {
+        "text": "asdsadsadsad",
+        "articleId": "3",
+        "userId": 1,
+        "id": 13,
+        "user": {
+            "id": 1,
+            "username": "admin",
+            "password": "admin",
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
+            "roles": ["ADMIN"]
+        }
+    },
+    {
+        "text": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CA",
+        "articleId": "3",
+        "userId": 1,
+        "id": 14,
+        "user": {
+            "id": 1,
+            "username": "admin",
+            "password": "admin",
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
+            "roles": ["ADMIN"]
+        }
+    }
+]

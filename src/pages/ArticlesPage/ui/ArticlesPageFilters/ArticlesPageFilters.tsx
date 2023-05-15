@@ -107,6 +107,7 @@ export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSel
                 theme='outline'
                 placeholder={`${commonT('search')}...`}
                 className={cls.search}
+                data-testid='ArticlesPageFilters.Search'
             />
             <ArticleTypeTabs type={type} onChangeType={onChangeType} className={cls.tabs} />
         </div>

@@ -22,7 +22,7 @@ export const loginByUsername = createAsyncThunk<
             throw new Error();
         }
 
-        localStorage.setItem(TokenLocalStorageKey, JSON.stringify(response.data.token));
+        localStorage.setItem(TokenLocalStorageKey, response.data.token);
         thunkApi.dispatch(userActions.setAuthData(response.data.user));
         return response.data;
     } catch (e) {

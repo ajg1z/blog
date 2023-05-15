@@ -20,7 +20,10 @@ export const CommentCard: FC<CommentCardProps> = (props) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.commentCard, {}, [className])}>
+            <div
+                data-testid='CommentCard.Loading'
+                className={classNames(cls.commentCard, {}, [className])}
+            >
                 <HStack gap={12}>
                     <Skeleton border='50%' height={30} width={30} />
                     <Skeleton height={20} width={150} />
@@ -31,7 +34,10 @@ export const CommentCard: FC<CommentCardProps> = (props) => {
     }
 
     return (
-        <div className={classNames(cls.commentCard, {}, [className])}>
+        <div
+            data-testid='CommentCard.Content'
+            className={classNames(cls.commentCard, {}, [className])}
+        >
             <AppLink to={getRouteProfile(comment.user.id)}>
                 <HStack gap={12}>
                     {comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}

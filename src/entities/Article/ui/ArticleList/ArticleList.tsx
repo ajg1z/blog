@@ -139,6 +139,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
         if (view === ArticleView.LIST) {
             content = (
                 <Virtuoso
+                    data-testid='ArticleList'
                     ref={virtuosoListRef}
                     className={classNames(cls.virtualizeList, {}, [cls.virtualizedFullHeight])}
                     data={articles}
@@ -165,6 +166,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
         if (view === ArticleView.TILE) {
             content = (
                 <VirtuosoGrid
+                    data-testid='ArticleList'
                     overscan={20}
                     ref={virtuosoGridRef}
                     onScroll={saveScrollPosition ? onScroll : undefined}
@@ -209,6 +211,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 
     return (
         <div
+            data-testid='ArticleList'
             ref={wrapperRef}
             className={classNames(cls.ArticleList, {}, [className, cls.fullHeight])}
             onScroll={saveScrollPosition ? onScroll : undefined}

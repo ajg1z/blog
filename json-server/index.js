@@ -21,6 +21,7 @@ server.use(async (req, res, next) => {
 server.get('/check-login', (req, res) => {
     try {
         const token = req.headers.authorization?.split(' ')[1].replaceAll('"', '');
+        console.log('token', token);
 
         if (!token) {
             return res.status(403).json({ message: 'AUTH ERROR' });
@@ -49,7 +50,7 @@ server.get('/check-login', (req, res) => {
 
         const response = {
             user: userOutputData,
-            token: jwt.sign(userOutputData, SecretJwtKey),
+            token: jwt.sign(userOutputData, SecretJwtKey, { expiresIn: '2h' }),
         };
 
         return res.status(200).json(response);
@@ -95,19 +96,26 @@ server.post('/login', (req, res) => {
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
+    try {
+        console.log('auth', req.headers.authorization);
+
+        if (!req.headers.authorization) {
+            return res.status(403).json({ message: 'AUTH ERROR' });
+        }
+
+        const token = req.headers.authorization?.split(' ')[1];
+
+        const isVerify = jwt.verify(token, SecretJwtKey);
+
+        if (!isVerify) {
+            return res.status(403).json({ message: 'AUTH ERROR' });
+        }
+
+        next();
+    } catch (e) {
+        console.log('check jwt');
+        throw new Error(e);
     }
-
-    const token = req.headers.authorization?.split(' ')[1];
-
-    const isVerify = jwt.verify(token, SecretJwtKey);
-
-    if (!isVerify) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
-    }
-
-    next();
 });
 
 server.use(router);

@@ -29,6 +29,7 @@ export const Tabs = memo((props: PropsWithChildren<TabsProps>) => {
         <div className={classNames(cls.Tabs, {}, [className])}>
             {tabs.map((tab) => (
                 <Card
+                    data-testid={`Tab.${tab.value}`}
                     key={tab.value}
                     theme={value === tab.value ? 'normal' : 'outline'}
                     className={cls.card}

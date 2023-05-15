@@ -9,12 +9,13 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
     'articleDetailsComments/addCommentForArticle',
     async (text, thunkApi) => {
         try {
-            const { extra, getState, rejectWithValue, dispatch } = thunkApi;
+            const { extra, getState, dispatch } = thunkApi;
+
             const article = getArticleDetailsData(getState());
             const user = getUserData(getState());
 
             if (!user || !article || text === undefined) {
-                rejectWithValue('no data');
+                throw new Error();
             }
 
             const response = await extra.privateApi.post<Comment>('/comments', {
@@ -24,8 +25,7 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
             });
 
             if (!response.data) throw new Error();
-
-            dispatch(fetchCommentsByArticleId(String(article!.id)));
+            dispatch(fetchCommentsByArticleId(String(response.data?.articleId)));
 
             return response.data;
         } catch (e) {

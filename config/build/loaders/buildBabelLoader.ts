@@ -7,6 +7,7 @@ interface BuildBabelLoaderProps extends BuildOptions {
 
 export function buildBabelLoader(options: BuildBabelLoaderProps) {
     const { isDev, isTsx } = options;
+    const isIncludePluginRemoveAttribute = !isDev;
 
     return {
         test: isTsx ? /\.(jsx|tsx)$/ : /\.(|js|ts)$/,
@@ -17,7 +18,7 @@ export function buildBabelLoader(options: BuildBabelLoaderProps) {
                 cacheDirectory: true,
                 presets: ['@babel/preset-env'],
                 plugins: [
-                    isTsx && [
+                    isIncludePluginRemoveAttribute && [
                         babelRemoveAttributesPlugin(),
                         {
                             props: ['data-testid'],
