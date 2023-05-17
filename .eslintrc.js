@@ -9,6 +9,7 @@ module.exports = {
         'airbnb',
         'plugin:i18next/recommended',
         'plugin:storybook/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,22 +19,13 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: [
-        'react',
-        '@typescript-eslint',
-        'i18next',
-        'react-hooks',
-        'fsd-react',
-        'unused-imports',
-    ],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'fsd-react', 'unused-imports'],
     rules: {
         'react/function-component-definition': 'off',
         'no-unused-vars': 'warn',
-        'react/jsx-indent': [2, 4],
         'import/no-unresolved': 'off',
         'no-shadow': 'off',
         'no-undef': 'off',
-        indent: [2, 4],
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': [
@@ -42,7 +34,6 @@ module.exports = {
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
         ],
-        'react/jsx-indent-props': ['error', 4],
         'import/prefer-default-export': 'off',
         'import/extensions': 'off',
         'react/jsx-no-bind': 'off',
@@ -81,13 +72,6 @@ module.exports = {
                 ],
             },
         ],
-        'max-len': [
-            'error',
-            {
-                ignoreComments: true,
-                code: 120,
-            },
-        ],
         'react/prop-types': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
         'linebreak-style': 'off',
@@ -104,7 +88,10 @@ module.exports = {
         'fsd-react/path-checker': ['error', { alias: '@' }],
         'fsd-react/layer-imports': [
             'error',
-            { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing'] },
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
         ],
         'fsd-react/public-api-imports': [
             'error',

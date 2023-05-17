@@ -11,11 +11,7 @@ const ArticleEditPage: FC<ArticleEditPageProps> = (props) => {
     const { className } = props;
     const { t } = useTranslation();
 
-    return (
-        <div className={classNames(cls.ArticleEditPage, {}, [className])}>
-            {t('ArticleEditPage')}
-        </div>
-    );
+    return <div className={classNames(cls.ArticleEditPage, {}, [className])}>{t('ArticleEditPage')}</div>;
 };
 
 export default ArticleEditPage;

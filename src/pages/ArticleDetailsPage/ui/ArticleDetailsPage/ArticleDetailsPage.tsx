@@ -5,10 +5,7 @@ import { ArticleDetails } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 import { PageWrapper } from '@/widgets/PageWrapper';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
@@ -41,11 +38,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
     });
 
     if (!id) {
-        return (
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                {t('articleNotFound')}
-            </div>
-        );
+        return <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>{t('articleNotFound')}</div>;
     }
 
     return (

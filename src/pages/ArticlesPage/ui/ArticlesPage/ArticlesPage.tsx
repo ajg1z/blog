@@ -4,10 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { PageWrapper } from '@/widgets/PageWrapper';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
@@ -35,7 +32,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
+            <PageWrapper data-testid="ArticlesPage" className={cls.page} saveScrollPosition={false}>
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>
                     <ArticlesPageFilters className={cls.articleFilters} />
                     <ArticleInfiniteList />

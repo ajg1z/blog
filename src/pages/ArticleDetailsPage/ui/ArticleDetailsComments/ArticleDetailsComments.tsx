@@ -47,11 +47,7 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = (props) =
         <div className={classNames('', {}, [className])}>
             <Text title={commonT('commentsTitle')} />
             <AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
-            <CommentList
-                error={fetchCommentsError}
-                comments={comments}
-                isLoading={!!commentsLoading}
-            />
+            <CommentList error={fetchCommentsError} comments={comments} isLoading={!!commentsLoading} />
         </div>
     );
 };
