@@ -92,7 +92,7 @@ export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSel
 
 	return (
 		<div className={classNames(cls.ArticleViewSelector, {}, [className])}>
-			<HStack justify="space-between" className={cls.sortWrapper}>
+			<HStack justify='space-between' className={cls.sortWrapper}>
 				<ArticlesSortSelector
 					order={order}
 					sort={sort}
@@ -104,10 +104,10 @@ export const ArticlesPageFilters = memo((props: PropsWithChildren<ArticleViewSel
 			<Input
 				value={search}
 				onChange={onChangeSearch}
-				theme="outline"
+				theme='outline'
 				placeholder={`${commonT('search')}...`}
 				className={cls.search}
-				data-testid="ArticlesPageFilters.Search"
+				data-testid='ArticlesPageFilters.Search'
 			/>
 			<ArticleTypeTabs type={type} onChangeType={onChangeType} className={cls.tabs} />
 		</div>

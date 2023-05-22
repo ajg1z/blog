@@ -13,33 +13,33 @@ import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 
 interface ArticlesPageProps {
-    className?: string;
+	className?: string;
 }
 
 const reducers: ReducersList = {
-    articlesPage: articlesPageReducer,
+	articlesPage: articlesPageReducer,
 };
 
 const ArticlesPage: FC<ArticlesPageProps> = (props) => {
-    const { className } = props;
-    const dispatch = useAppDispatch();
+	const { className } = props;
+	const dispatch = useAppDispatch();
 
-    const [searchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 
-    useInitialEffect(() => {
-        dispatch(initArticlesPage(searchParams));
-    });
+	useInitialEffect(() => {
+		dispatch(initArticlesPage(searchParams));
+	});
 
-    return (
-        <DynamicModuleLoader reducers={reducers}>
-            <PageWrapper data-testid="ArticlesPage" className={cls.page} saveScrollPosition={false}>
-                <div className={classNames(cls.ArticlesPage, {}, [className])}>
-                    <ArticlesPageFilters className={cls.articleFilters} />
-                    <ArticleInfiniteList />
-                </div>
-            </PageWrapper>
-        </DynamicModuleLoader>
-    );
+	return (
+		<DynamicModuleLoader reducers={reducers}>
+			<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
+				<div className={classNames(cls.ArticlesPage, {}, [className])}>
+					<ArticlesPageFilters className={cls.articleFilters} />
+					<ArticleInfiniteList />
+				</div>
+			</PageWrapper>
+		</DynamicModuleLoader>
+	);
 };
 
 export default ArticlesPage;
