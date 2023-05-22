@@ -1,10 +1,4 @@
-import {
-    AnyAction,
-    CombinedState,
-    EnhancedStore,
-    Reducer,
-    ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
 import { ArticleDetailsSchema } from '@/entities/Article';
@@ -19,43 +13,40 @@ import { ScrollRecoverySchema } from '@/features/ScrollRecovery';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
-    counter: CounterSchema;
-    user: UserSchema;
-    scrollRecovery: ScrollRecoverySchema;
-    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
+	counter: CounterSchema;
+	user: UserSchema;
+	scrollRecovery: ScrollRecoverySchema;
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
-    login?: LoginSchema;
-    profile?: ProfileSchema;
-    articleDetails?: ArticleDetailsSchema;
-    addCommentForm?: AddCommentFormSchema;
-    articlesPage?: ArticlesPageSchema;
-    articleDetailsComments?: ArticleDetailsCommentsSchema;
+	login?: LoginSchema;
+	profile?: ProfileSchema;
+	articleDetails?: ArticleDetailsSchema;
+	addCommentForm?: AddCommentFormSchema;
+	articlesPage?: ArticlesPageSchema;
+	articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
 
 export interface ReducerManager {
-    getReducerMap: () => ReducersMapObject<StateSchema>;
-    add: (key: StateSchemaKey, reducer: Reducer) => void;
-    remove: (key: StateSchemaKey) => void;
-    reduce: (
-        state: StateSchema,
-        action: AnyAction,
-    ) => CombinedState<StateSchema>;
+	getReducerMap: () => ReducersMapObject<StateSchema>;
+	add: (key: StateSchemaKey, reducer: Reducer) => void;
+	remove: (key: StateSchemaKey) => void;
+	reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-    manager: ReducerManager;
+	manager: ReducerManager;
 }
 
 export interface ThunkExtraArg {
-    privateApi: AxiosInstance;
-    publicApi: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void;
+	privateApi: AxiosInstance;
+	publicApi: AxiosInstance;
+	navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 export interface ThunkConfig<T> {
-    rejectValue: T;
-    extra: ThunkExtraArg;
-    state: StateSchema;
+	rejectValue: T;
+	extra: ThunkExtraArg;
+	state: StateSchema;
 }
