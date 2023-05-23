@@ -48,6 +48,7 @@ server.get('/check-login', (req, res) => {
 			id: user.id,
 			username: user.username,
 			roles: user.roles,
+			features: user.features,
 		};
 
 		const response = {
@@ -76,6 +77,7 @@ server.post('/login', (req, res) => {
 				id: userFromBd.id,
 				username: userFromBd.username,
 				roles: userFromBd.roles,
+				features: userFromBd.features,
 			};
 
 			const response = {
@@ -97,8 +99,6 @@ server.post('/login', (req, res) => {
 // eslint-disable-next-line
 server.use((req, res, next) => {
 	try {
-		console.log('auth', req.headers.authorization);
-
 		if (!req.headers.authorization) {
 			return res.status(403).json({ message: 'AUTH ERROR' });
 		}

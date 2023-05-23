@@ -14,96 +14,89 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { Icon } from '@/shared/ui/Icon';
 
 export interface ProfileRatingProps {
-    className?: string;
-    profileId: string;
+	className?: string;
+	profileId: string;
 }
 
 const ProfileRating = memo((props: PropsWithChildren<ProfileRatingProps>) => {
-    const { className, profileId } = props;
-    const { t } = useTranslation('profile');
+	const { className, profileId } = props;
+	const { t } = useTranslation('profile');
 
-    const userData = useSelector(getUserData);
-    const userId = userData?.id ?? 0;
+	const userData = useSelector(getUserData);
+	const userId = userData?.id ?? 0;
 
-    const { data, isError, isFetching, refetch } = useProfileRating({
-        profileId,
-        userId,
-    });
+	const { data, isError, isFetching, refetch } = useProfileRating({
+		profileId,
+		userId,
+	});
 
-    const [rateProfileMutation, rateProfileMutationResult] = useRateProfile();
+	console.log('data', data);
 
-    useInitialEffect(() => {
-        refetch();
-    });
+	const [rateProfileMutation, rateProfileMutationResult] = useRateProfile();
 
-    const handleRateProfile = useCallback(
-        (startCount: number, feedback?: string) => {
-            try {
-                rateProfileMutation({
-                    rate: startCount,
-                    profileId,
-                    userId,
-                    feedback,
-                });
-            } catch (e) {
-                console.log(e);
-            }
-        },
-        [profileId, rateProfileMutation, userId],
-    );
+	useInitialEffect(() => {
+		refetch();
+	});
 
-    const onCancel = useCallback(
-        (startCount: number) => {
-            handleRateProfile(startCount);
-        },
-        [handleRateProfile],
-    );
+	const handleRateProfile = useCallback(
+		(startCount: number, feedback?: string) => {
+			try {
+				rateProfileMutation({
+					rate: startCount,
+					profileId,
+					userId,
+					feedback,
+				});
+			} catch (e) {
+				console.log(e);
+			}
+		},
+		[profileId, rateProfileMutation, userId],
+	);
 
-    const onSendRating = useCallback(
-        (startCount: number, feedback?: string) => {
-            handleRateProfile(startCount, feedback);
-        },
-        [handleRateProfile],
-    );
+	const onCancel = useCallback(
+		(startCount: number) => {
+			handleRateProfile(startCount);
+		},
+		[handleRateProfile],
+	);
 
-    if (isFetching) {
-        return (
-            <Skeleton
-                className={classNames(cls.RatingCard, {}, [className])}
-                height={120}
-                border='5px'
-            />
-        );
-    }
+	const onSendRating = useCallback(
+		(startCount: number, feedback?: string) => {
+			handleRateProfile(startCount, feedback);
+		},
+		[handleRateProfile],
+	);
 
-    if (isError || rateProfileMutationResult.isError) {
-        return (
-            <Card className={classNames(cls.RatingCard, { [cls.error]: isError }, [className])}>
-                <Text
-                    align='center'
-                    text={isError ? t('rating.errorLoading') : t('rating.errorRate')}
-                />
-                <Icon Svg={BiMessageAltError} className={cls.errorIcon} />
-            </Card>
-        );
-    }
+	if (isFetching) {
+		return <Skeleton className={classNames(cls.RatingCard, {}, [className])} height={120} border='5px' />;
+	}
 
-    const rating = data?.[0];
-    const isSetRated = rating?.rate || rateProfileMutationResult.data;
+	if (isError || rateProfileMutationResult.isError) {
+		return (
+			<Card className={classNames(cls.RatingCard, { [cls.error]: isError }, [className])}>
+				<Text align='center' text={isError ? t('rating.errorLoading') : t('rating.errorRate')} />
+				<Icon Svg={BiMessageAltError} className={cls.errorIcon} />
+			</Card>
+		);
+	}
 
-    return (
-        <RatingCard
-            initFeedback={rating?.feedback}
-            isSending={rateProfileMutationResult.isLoading}
-            title={isSetRated ? t('rating.thanksForEvaluate') : t('rating.evaluate')}
-            feedbackTitle={t('rating.feedbackTitle')}
-            hasFeedback
-            className={classNames(cls.RatingCard, {}, [className])}
-            rate={rating?.rate}
-            onCancel={onCancel}
-            onSendRating={onSendRating}
-        />
-    );
+	const rating = data?.[0];
+	const isSetRated = rating?.rate || rateProfileMutationResult.data;
+
+	return (
+		<RatingCard
+			initFeedback={rating?.feedback}
+			isSending={rateProfileMutationResult.isLoading}
+			title={isSetRated ? t('rating.thanksForEvaluate') : t('rating.evaluate')}
+			feedbackTitle={t('rating.feedbackTitle')}
+			hasFeedback
+			className={classNames(cls.RatingCard, {}, [className])}
+			rate={rating?.rate}
+			onCancel={onCancel}
+			onSendRating={onSendRating}
+		/>
+	);
 });
 
 export default ProfileRating;

@@ -630,6 +630,10 @@
       "username": "admin",
       "password": "admin",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
+      "features": {
+        "isArticleRatingEnabled": false,
+        "isProfileRatingEnabled": false
+      },
       "roles": [
         "ADMIN"
       ]
@@ -641,7 +645,11 @@
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
       "roles": [
         "USER"
-      ]
+      ],
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isProfileRatingEnabled": true
+      }
     },
     {
       "id": 3,
@@ -795,29 +803,36 @@
       "userId": 1,
       "feedback": "",
       "id": "CTnzaIa"
+    },
+    {
+      "rate": 5,
+      "articleId": "12",
+      "userId": 1,
+      "feedback": "",
+      "id": "1ZcssF5"
+    },
+    {
+      "rate": 3,
+      "articleId": "6",
+      "userId": 2,
+      "feedback": "sadsad",
+      "id": "I5mywFY"
+    },
+    {
+      "rate": 5,
+      "articleId": "12",
+      "userId": 2,
+      "feedback": "asdasd",
+      "id": "6dE2KKt"
     }
   ],
   "profile-ratings": [
     {
-      "id": "1",
       "rate": 5,
-      "feedback": "",
-      "userId": 1,
-      "profileId": "1"
-    },
-    {
-      "id": "2",
-      "rate": 0,
-      "feedback": "",
+      "profileId": "1",
       "userId": 2,
-      "profileId": "1"
-    },
-    {
-      "rate": 5,
-      "profileId": "2",
-      "userId": 1,
-      "feedback": "Класный чел!",
-      "id": "MpRDc9M"
+      "feedback": "cool",
+      "id": 1
     }
   ]
 }
