@@ -17,7 +17,8 @@ import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { getFeatureFlag } from '@/shared/lib/featureFlags';
+import { toggleFeature } from '@/shared/lib/featureFlags';
+import { Card } from '@/shared/ui/Card';
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -31,8 +32,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	const { className } = props;
 	const { t } = useTranslation('article');
 	const { id } = useParams<{ id: string }>();
-	const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
-	console.log('isArticleRatingEnabled', isArticleRatingEnabled);
 
 	const dispatch = useAppDispatch();
 
@@ -44,13 +43,19 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		return <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>{t('articleNotFound')}</div>;
 	}
 
+	const articleRating = toggleFeature({
+		name: 'isArticleRatingEnabled',
+		off: () => <Card>{t('Скоро будет доступна оценка статьи!')}</Card>,
+		on: () => <ArticleRating articleId={id} className={cls.articleRating} />,
+	});
+
 	return (
 		<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
 			<PageWrapper>
 				<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 					<ArticleDetailsPageHeader />
 					<ArticleDetails id={id} />
-					{isArticleRatingEnabled && <ArticleRating articleId={id} className={cls.articleRating} />}
+					{articleRating}
 					<ArticleRecommendationsList />
 					<ArticleDetailsComments id={id} className={cls.articleComments} />
 				</div>
