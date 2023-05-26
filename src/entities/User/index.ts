@@ -5,3 +5,11 @@ export { checkAuth } from './model/services/checkAuth/checkAuth';
 export { getUserData } from './model/selectors/getUserData/getUserData';
 export { getUserLoading } from './model/selectors/getUserLoading/getUserLoading';
 export { getUserRoles, isUserAdmin, isUserManager } from './model/selectors/roleSelectors';
+export {
+	getJsonSettings,
+	useJsonSettings,
+	useJsonSettingsByKey,
+	getJsonSettingsByKey,
+} from './model/selectors/jsonSettings';
+
+export { saveJsonSettings } from './model/services/saveJsonSettings/saveJsonSettings';

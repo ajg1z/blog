@@ -636,7 +636,12 @@
       },
       "roles": [
         "ADMIN"
-      ]
+      ],
+      "jsonSettings": {
+        "theme": "dark",
+        "isFirstVisit": true,
+        "profilePageHasBeenOpen": false
+      }
     },
     {
       "id": 2,
@@ -649,6 +654,11 @@
       "features": {
         "isArticleRatingEnabled": true,
         "isProfileRatingEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "dark",
+        "isFirstVisit": true,
+        "profilePageHasBeenOpen": false
       }
     },
     {
