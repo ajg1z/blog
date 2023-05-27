@@ -12,6 +12,7 @@ import cls from './ProfilePage.module.scss';
 import { ProfileRating } from '@/features/ProfileRating';
 import { toggleFeature } from '@/shared/lib/featureFlags';
 import { Card } from '@/shared/ui/Card';
+import { ProfilePageGreeting } from '@/features/ProfilePageGreeting';
 
 const initialReducers: ReducersList = {
 	profile: profileReducer,
@@ -43,6 +44,7 @@ const ProfilePage = memo(() => {
 			<PageWrapper data-testid='ProfilePage'>
 				<EditableProfileCard id={id} isEditable={isMyProfile} />
 				{!isMyProfile && profileRating}
+				<ProfilePageGreeting />
 			</PageWrapper>
 		</DynamicModuleLoader>
 	);

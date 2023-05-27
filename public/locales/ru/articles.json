@@ -1,14 +1,14 @@
 {
-    "noArticles": "Нету статей",
-    "readMore": "Читать далее",
-    "sortByDate": "дате",
-    "sortByViews": "популярности",
-    "sortByTitle": "алфавиту",
-    "tabs": {
-        "all": "Все",
-        "it": "Айти",
-        "economics": "Экономика",
-        "politics": "Политика",
-        "science": "Наука"
-    }
+	"noArticles": "Нету статей",
+	"readMore": "Читать далее",
+	"sortByDate": "дате",
+	"sortByViews": "популярности",
+	"sortByTitle": "алфавиту",
+	"tabs": {
+		"all": "Все",
+		"it": "Айти",
+		"economics": "Экономика",
+		"politics": "Политика",
+		"science": "Наука"
+	}
 }

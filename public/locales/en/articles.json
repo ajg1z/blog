@@ -1,14 +1,14 @@
 {
-    "noArticles": "No articles",
-    "readMore": "Read more",
-    "sortByDate": "date",
-    "sortByViews": "popular",
-    "sortByTitle": "alphabet",
-    "tabs": {
-        "all": "All",
-        "it": "IT",
-        "economics": "Economics",
-        "politics": "Politics",
-        "science": "Science"
-    }
+	"noArticles": "No articles",
+	"readMore": "Read more",
+	"sortByDate": "date",
+	"sortByViews": "popular",
+	"sortByTitle": "alphabet",
+	"tabs": {
+		"all": "All",
+		"it": "IT",
+		"economics": "Economics",
+		"politics": "Politics",
+		"science": "Science"
+	}
 }
