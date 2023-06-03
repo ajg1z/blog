@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticlesViewSelector } from '@/features/ArticlesViewSelector';
-import { Input } from '@/shared/ui/Input';
+import { Input } from '@/shared/ui/deprecated/Input';
 import { ArticlesSortSelector } from '@/features/ArticlesSortSelector';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { SortOrder } from '@/shared/types/sort';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem } from '@/shared/ui/Tabs';
+import { TabItem } from '@/shared/ui/designV2/Tabs';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/designV2/Stack';
 import cls from './ArticlesPageFilters.module.scss';
 import {
 	getArticlesPageOrder,

@@ -1,5 +1,7 @@
 :root {
     /* font */
+    --font-family-text-design-v2: 'Nunito Sans', sans-serif;
+    --font-family-header-design-v2: 'Roboto', sans-serif;
     --font-family-main: consolas, monospace;
 
     /* s */
@@ -34,4 +36,17 @@
     --overlay-color: rgb(0 0 0 / 60%);
     --red-light: rgb(255 0 0);
     --red-dark: rgb(193 11 11);
+
+    
+    /* s */
+    --font-s-design-v2: var(--font-size-s) / var(--font-line-s) var(--font-family-text-design-v2);
+
+    /* m */
+    --font-m-design-v2: var(--font-size-m) / var(--font-line-m) var(--font-family-text-design-v2);
+
+    /* l */
+    --font-l-design-v2: var(--font-size-l) / var(--font-line-l) var(--font-family-header-design-v2);
+
+    /* xl */
+    --font-xl-design-v2: var(--font-size-xl) / var(--font-line-xl) var(--font-family-header-design-v2);
 }

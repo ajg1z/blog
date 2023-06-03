@@ -2,6 +2,7 @@ import { useMemo, useState, FC, useEffect, ReactNode } from 'react';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
 import { Theme } from '@/shared/const/theme';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface ThemeProviderProps {
 	initialTheme?: Theme;
@@ -16,7 +17,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }
 	useEffect(() => {
 		if (!document.body.className) {
 			const localeStorageTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
-			document.body.className = localeStorageTheme ?? defaultTheme;
+			document.body.classList.add(localeStorageTheme ?? defaultTheme);
 		}
 	}, []);
 

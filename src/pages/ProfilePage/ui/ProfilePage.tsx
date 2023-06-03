@@ -4,14 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { getUserData } from '@/entities/User';
 import { PageWrapper } from '@/widgets/PageWrapper';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/designV2/Stack';
 import cls from './ProfilePage.module.scss';
 import { ProfileRating } from '@/features/ProfileRating';
-import { toggleFeature } from '@/shared/lib/featureFlags';
-import { Card } from '@/shared/ui/Card';
 import { ProfilePageGreeting } from '@/features/ProfilePageGreeting';
 
 const initialReducers: ReducersList = {
@@ -33,17 +31,11 @@ const ProfilePage = memo(() => {
 
 	const isMyProfile = +id === user?.id;
 
-	const profileRating = toggleFeature({
-		name: 'isProfileRatingEnabled',
-		off: () => <Card>{t('Скоро будет доступна оценка профиля!')}</Card>,
-		on: () => <ProfileRating profileId={id} />,
-	});
-
 	return (
 		<DynamicModuleLoader reducers={initialReducers} isRemoveAfterUnmount>
 			<PageWrapper data-testid='ProfilePage'>
 				<EditableProfileCard id={id} isEditable={isMyProfile} />
-				{!isMyProfile && profileRating}
+				{!isMyProfile && <ProfileRating profileId={id} />}
 				<ProfilePageGreeting />
 			</PageWrapper>
 		</DynamicModuleLoader>

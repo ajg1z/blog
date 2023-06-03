@@ -17,8 +17,8 @@ import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { toggleFeature } from '@/shared/lib/featureFlags';
-import { Card } from '@/shared/ui/Card';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Card } from '@/shared/ui/deprecated/Card';
 
 interface ArticleDetailsPageProps {
 	className?: string;
@@ -43,19 +43,17 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		return <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>{t('articleNotFound')}</div>;
 	}
 
-	const articleRating = toggleFeature({
-		name: 'isArticleRatingEnabled',
-		off: () => <Card>{t('Скоро будет доступна оценка статьи!')}</Card>,
-		on: () => <ArticleRating articleId={id} className={cls.articleRating} />,
-	});
-
 	return (
 		<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
 			<PageWrapper>
 				<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 					<ArticleDetailsPageHeader />
 					<ArticleDetails id={id} />
-					{articleRating}
+					<ToggleFeatureComponent
+						name='isArticleRatingEnabled'
+						on={<ArticleRating articleId={id} className={cls.articleRating} />}
+						off={<Card>{t('Скоро будет доступна оценка статьи!')}</Card>}
+					/>
 					<ArticleRecommendationsList />
 					<ArticleDetailsComments id={id} className={cls.articleComments} />
 				</div>

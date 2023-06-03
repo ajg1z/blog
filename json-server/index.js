@@ -50,6 +50,7 @@ server.get('/check-login', (req, res) => {
 			roles: user.roles,
 			features: user.features,
 			jsonSettings: user.jsonSettings,
+			isAppRedesigned: user.isAppRedesigned,
 		};
 
 		const response = {
@@ -80,6 +81,7 @@ server.post('/login', (req, res) => {
 				roles: userFromBd.roles,
 				features: userFromBd.features,
 				jsonSettings: userFromBd.jsonSettings,
+				isAppRedesigned: userFromBd.isAppRedesigned,
 			};
 
 			const response = {

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useCallback, useEffect, useState } from 'react';
-import { Modal } from '@/shared/ui/Modal';
-import { Text } from '@/shared/ui/Text';
+import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { saveJsonSettings, useJsonSettings } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from '@/shared/ui/Button';
-import { VStack } from '@/shared/ui/Stack';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { VStack } from '@/shared/ui/designV2/Stack';
 
 interface ProfilePageGreetingProps {}
 

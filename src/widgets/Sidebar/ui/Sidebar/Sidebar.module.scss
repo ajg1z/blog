@@ -5,43 +5,107 @@
     position: relative;
     transition: width 0.3s;
     flex-shrink: 0;
-}
-
-.switchers {
-    position: absolute;
-    bottom: 20px;
-}
-
-.items {
-    margin-top: 10px;
-    margin-left: 23px;
-    font-size: var(--font-size-l);
-
-    span {
-        transition: all 0.3s;
-    }
-}
-
-.collapsed {
-    width: var(--sidebar-width-collapsed);
 
     .switchers {
-        flex-direction: column;
+        position: absolute;
+        bottom: 20px;
     }
-
+    
     .items {
+        margin-top: 10px;
+        margin-left: 23px;
+        font-size: var(--font-size-l);
+    
         span {
-            opacity: 0;
-            scale: 0;
-            width: 0;
-            visibility: hidden;
+            transition: all 0.3s;
         }
     }
+
+    .collapsed {
+        width: var(--sidebar-width-collapsed);
+    
+        .switchers {
+            flex-direction: column;
+        }
+    
+        .items {
+            span {
+                opacity: 0;
+                scale: 0;
+                width: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    .collapseBtn {
+        z-index: var(--sidebar-toggle-z-index);
+        position: absolute;
+        right: -32px;
+        bottom: 40px;
+    }
+     
 }
 
-.collapseBtn {
-    z-index: var(--sidebar-toggle-z-index);
-    position: absolute;
-    right: -32px;
-    bottom: 40px;
+.SidebarDesignV2 {
+    background: var(--light-bg-design-v2);
+    width: 220px;
+    height: calc(100vh - var(--navbar-height));
+    border-radius: 32px;
+    position: relative;
+    transition: width 0.2s;
+
+    
+    .items {
+        font-size: var(--font-size-m);
+        flex: 1;
+    }
+
+    .switchers {
+        margin-bottom: 20px;
+    }
+
+    &.collapsed {
+         width: 70px;
+
+         .items {
+            padding-left: 0;
+            align-items: center;
+            span {
+                display: none;
+            }
+        }
+
+        .switchers {
+           flex-direction: column;
+        }
+    }
+
+
+    .collapseBtn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 35px; 
+
+        svg {
+            transition: all 0.2s;
+            transform: rotate(90deg);
+        }
+
+        &.collapsed {
+            svg {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    
 }
+
+.appLogo {
+    padding: 20px;
+}
+
+

@@ -565,7 +565,7 @@
       "id": "19",
       "title": "top 10 the best course 2022",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "img": "https://teknotower.com/wp-content/3123213213loads/2020/11/js.png",
       "views": 6701,
       "createdAt": "26.01.2019",
       "type": [
@@ -632,7 +632,8 @@
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
       "features": {
         "isArticleRatingEnabled": false,
-        "isProfileRatingEnabled": false
+        "isProfileRatingEnabled": false,
+        "isAppRedesigned": true
       },
       "roles": [
         "ADMIN"
@@ -656,7 +657,7 @@
         "isProfileRatingEnabled": true
       },
       "jsonSettings": {
-        "theme": "dark",
+        "theme": "light",
         "isFirstVisit": true,
         "profilePageHasBeenOpen": true
       }

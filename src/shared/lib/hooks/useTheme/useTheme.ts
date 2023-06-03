@@ -12,9 +12,10 @@ interface UseThemeResult {
 const useTheme = (): UseThemeResult => {
 	const { theme, setTheme } = useContext(ThemeContext);
 
-	const onChangeTheme = (theme: Theme) => {
-		setTheme?.(theme);
-		document.body.className = theme;
+	const onChangeTheme = (newTheme: Theme) => {
+		setTheme?.(newTheme);
+		if (theme) document.body.classList.remove(theme);
+		document.body.classList.add(newTheme);
 	};
 
 	function toggleTheme(saveAction?: (theme: Theme) => void) {

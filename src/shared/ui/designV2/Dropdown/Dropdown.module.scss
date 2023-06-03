@@ -1,0 +1,25 @@
+.item {
+    padding: 10px 15px;
+    width: 100%;
+    text-align: center;
+    background: none;
+    outline: none;
+    display: block;
+    border: none;
+    color: var(--text-design-v2);
+    cursor: pointer;
+
+    &.active {
+        background: var(--light-bg-design-v2);
+    }
+}
+
+.menu {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 2px 2px 4px var(--overlay-color);
+    position: absolute;
+    z-index: var(--dropdown-z-index);
+    background-color: var(--dark-bg-design-v2);
+    border: 1px solid var(--accent-design-v2);
+}

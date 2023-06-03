@@ -7,11 +7,11 @@ import { RatingCard } from '@/entities/Rating';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useProfileRating, useRateProfile } from '../api/profileRatingApi';
 import { getUserData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Card } from '@/shared/ui/Card';
-import { Text } from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 
 export interface ProfileRatingProps {
 	className?: string;

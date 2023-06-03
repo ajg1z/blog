@@ -2,8 +2,16 @@
     span {
         white-space: nowrap;
     }
+    border-left: 1px solid transparent;
+    width: 100%;
+    padding: 6px 0 6px 16px;
 }
 
 .icon {
     fill: var(--primary-color);
+}
+
+.active {
+    background: linear-gradient(89.97deg, rgba(29, 89, 255, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);
+    border-left-color: var(--accent-design-v2);
 }

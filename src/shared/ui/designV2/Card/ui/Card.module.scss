@@ -1,0 +1,41 @@
+.Card {
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.withoutPaddings {
+    padding: 0;
+}
+
+.normal {
+    background: var(--dark-bg-design-v2);
+}
+
+.outline {
+    background: none;
+    border: 1px solid var(--accent-design-v2);
+}
+
+.padding_0 {
+    padding: 0;
+}
+
+.padding_4 {
+    padding: 4;
+}
+
+.padding_8 {
+    padding: 8;
+}
+
+.padding_10 {
+    padding: 10;
+}
+
+.padding_16 {
+    padding: 16;
+}
+
+.padding_24 {
+    padding: 24;
+}

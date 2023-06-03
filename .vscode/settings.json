@@ -1,6 +1,6 @@
 {
-    "cSpell.words": ["languagedetector", "overscan", "Propss", "Scroller"],
-    "prettier.tabWidth": 4,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+	"cSpell.words": ["languagedetector", "overscan", "Propss", "Scroller"],
+	"prettier.tabWidth": 4,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true
 }

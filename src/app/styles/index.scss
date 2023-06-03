@@ -7,15 +7,22 @@
 @import './variables/article';
 
 body {
-    font-size: var(--font-m);
-    color: var(--primary-color);
     overflow: hidden;
 }
 
-.app {
+.app,
+.app-design-v2 {
     min-height: 100vh;
-    background-color: var(--bg-color);
     overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font: var(--font-m);
+}
+
+.app-design-v2 {
+    background-color: var(--bg-design-v2);
+    color: var(--text-design-v2);
+    font: var(--font-m-design-v2);
 }
 
 .content-page {
@@ -23,15 +30,10 @@ body {
 }
 
 *::-webkit-scrollbar {
-    width: 10px;
-    height: 8px;
-}
-
-*::-webkit-scrollbar-track {
-    background-color: var(--primary-color);
+    width: 0px;
+    height: 0px;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--inverted-primary-color);
-    border-radius: 2px;
+    width:0;
 }

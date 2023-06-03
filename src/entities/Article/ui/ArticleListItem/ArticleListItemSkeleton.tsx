@@ -1,66 +1,66 @@
 import { FC, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { HStack } from '@/shared/ui/Stack';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { HStack } from '@/shared/ui/designV2/Stack';
 import { ArticleView } from '../../model/const/articleConst';
 import cls from './ArticleListItem.module.scss';
 // eslint-disable-next-line max-len
 
 interface ArticleListItemProps {
-    className?: string;
-    view: ArticleView;
+	className?: string;
+	view: ArticleView;
 }
 
 export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo((props) => {
-    const { className, view } = props;
+	const { className, view } = props;
 
-    if (view === ArticleView.TILE) {
-        return (
-            <div
-                data-testid='ArticleListItemSkeleton'
-                className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}
-            >
-                <Card className={cls.card}>
-                    <div className={cls.imgWrapper}>
-                        <Skeleton height={200} />
-                    </div>
-                    <div className={cls.articleInfo}>
-                        <Skeleton width={150} height={20} />
-                    </div>
-                    <Skeleton width={240} height={20} />
-                </Card>
-            </div>
-        );
-    }
+	if (view === ArticleView.TILE) {
+		return (
+			<div
+				data-testid='ArticleListItemSkeleton'
+				className={classNames(cls.ArticleListItem, {}, [cls.TAIL, className])}
+			>
+				<Card className={cls.card}>
+					<div className={cls.imgWrapper}>
+						<Skeleton height={200} />
+					</div>
+					<div className={cls.articleInfo}>
+						<Skeleton width={150} height={20} />
+					</div>
+					<Skeleton width={240} height={20} />
+				</Card>
+			</div>
+		);
+	}
 
-    return (
-        <div
-            data-testid='ArticleListItemSkeleton'
-            className={classNames(cls.ArticleListItem, {}, [className, cls.LIST])}
-        >
-            <Card className={cls.card}>
-                <div className={classNames(cls.header, cls.skeletonHeader)}>
-                    <Skeleton border='50%' height={30} width={30} />
-                    <Skeleton height={20} width={130} />
-                    <Skeleton height={20} width={130} className={cls.createdAt} />
-                </div>
+	return (
+		<div
+			data-testid='ArticleListItemSkeleton'
+			className={classNames(cls.ArticleListItem, {}, [className, cls.LIST])}
+		>
+			<Card className={cls.card}>
+				<div className={classNames(cls.header, cls.skeletonHeader)}>
+					<Skeleton border='50%' height={30} width={30} />
+					<Skeleton height={20} width={130} />
+					<Skeleton height={20} width={130} className={cls.createdAt} />
+				</div>
 
-                <Skeleton height={25} width={330} className={cls.articleTitle} />
+				<Skeleton height={25} width={330} className={cls.articleTitle} />
 
-                <HStack gap={12} className={cls.skeletonTypes}>
-                    <Skeleton height={20} width={40} className={cls.articleTitle} />
-                    <Skeleton height={20} width={40} className={cls.articleTitle} />
-                </HStack>
+				<HStack gap={12} className={cls.skeletonTypes}>
+					<Skeleton height={20} width={40} className={cls.articleTitle} />
+					<Skeleton height={20} width={40} className={cls.articleTitle} />
+				</HStack>
 
-                <Skeleton height={200} className={classNames(cls.img, {}, [cls.skeletonImg])} />
+				<Skeleton height={200} className={classNames(cls.img, {}, [cls.skeletonImg])} />
 
-                <Skeleton height={80} className={cls.skeletonDescription} />
-                <Skeleton height={50} className={cls.skeletonDescription} />
-                <div className={cls.footer}>
-                    <Skeleton height={25} width={80} />
-                </div>
-            </Card>
-        </div>
-    );
+				<Skeleton height={80} className={cls.skeletonDescription} />
+				<Skeleton height={50} className={cls.skeletonDescription} />
+				<div className={cls.footer}>
+					<Skeleton height={25} width={80} />
+				</div>
+			</Card>
+		</div>
+	);
 });

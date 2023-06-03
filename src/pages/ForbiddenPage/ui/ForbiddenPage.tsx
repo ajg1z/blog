@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageWrapper } from '@/widgets/PageWrapper';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 const ForbiddenPage: FC = () => {
-    const { t } = useTranslation();
+	const { t } = useTranslation();
 
-    return (
-        <PageWrapper data-testid='ForbiddenPage'>
-            <Text title={t('forbiddenPage')} />
-        </PageWrapper>
-    );
+	return (
+		<PageWrapper data-testid='ForbiddenPage'>
+			<Text title={t('forbiddenPage')} />
+		</PageWrapper>
+	);
 };
 
 export default ForbiddenPage;
