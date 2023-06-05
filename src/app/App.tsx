@@ -23,6 +23,7 @@ function App() {
 			const { meta, payload } = await dispatch(checkAuth());
 			if (meta.requestStatus === 'fulfilled' && payload && typeof payload === 'object') {
 				const jsonSettingsTheme = payload.jsonSettings?.theme;
+
 				if (jsonSettingsTheme && jsonSettingsTheme !== theme) {
 					onChangeTheme(jsonSettingsTheme);
 					localStorage.setItem(LOCAL_STORAGE_THEME_KEY, jsonSettingsTheme);

@@ -1,4 +1,9 @@
 .NotificationItem,
+.DesignV2NotificationItem,
 .link {
     width: 100%;
+}
+
+.DesignV2NotificationItem {
+    border-bottom: 1px solid var(--light-bg-design-v2); 
 }

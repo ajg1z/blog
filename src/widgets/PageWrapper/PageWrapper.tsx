@@ -11,62 +11,63 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { PageWrapperId } from '@/shared/const/id';
 import cls from './PageWrapper.module.scss';
 import { TestProps } from '@/shared/types/tests';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface PageWrapperProps extends TestProps {
-    className?: string;
-    children?: ReactNode;
-    onScrollEnd?: () => void;
-    saveScrollPosition?: boolean;
+	className?: string;
+	children?: ReactNode;
+	onScrollEnd?: () => void;
+	saveScrollPosition?: boolean;
 }
 
 export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
-    const {
-        className,
-        children,
-        onScrollEnd,
-        'data-testid': dataTestId,
-        saveScrollPosition = true,
-    } = props;
+	const { className, children, onScrollEnd, 'data-testid': dataTestId, saveScrollPosition = true } = props;
 
-    const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
-    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+	const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
+	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
-    const dispatch = useAppDispatch();
-    const { pathname } = useLocation();
+	const dispatch = useAppDispatch();
+	const { pathname } = useLocation();
 
-    const scrollPosition = useSelector((state: StateSchema) =>
-        getScrollPositionByPath(state, pathname),
-    );
+	const scrollPosition = useSelector((state: StateSchema) => getScrollPositionByPath(state, pathname));
 
-    useInitialEffect(() => {
-        if (saveScrollPosition) wrapperRef.current.scrollTop = scrollPosition;
-    });
+	useInitialEffect(() => {
+		if (saveScrollPosition) wrapperRef.current.scrollTop = scrollPosition;
+	});
 
-    useInfiniteScroll({
-        callback: onScrollEnd,
-        triggerRef,
-        wrapperRef,
-    });
+	useInfiniteScroll({
+		callback: onScrollEnd,
+		triggerRef,
+		wrapperRef,
+	});
 
-    const onScroll = useThrottle((e: UIEvent) => {
-        dispatch(
-            scrollRecoveryActions.setScrollPosition({
-                path: pathname,
-                position: e.currentTarget.scrollTop,
-            }),
-        );
-    }, 500);
+	const onScroll = useThrottle((e: UIEvent) => {
+		dispatch(
+			scrollRecoveryActions.setScrollPosition({
+				path: pathname,
+				position: e.currentTarget.scrollTop,
+			}),
+		);
+	}, 500);
 
-    return (
-        <section
-            data-testid={dataTestId}
-            id={PageWrapperId}
-            ref={wrapperRef}
-            className={classNames(cls.PageWrapper, {}, [className])}
-            onScroll={saveScrollPosition ? onScroll : undefined}
-        >
-            {children}
-            {onScrollEnd && <div className={cls.trigger} ref={triggerRef} />}
-        </section>
-    );
+	return (
+		<section
+			data-testid={dataTestId}
+			id={PageWrapperId}
+			ref={wrapperRef}
+			className={classNames(
+				toggleFeature({
+					name: 'isAppRedesigned',
+					off: () => cls.PageWrapper,
+					on: () => cls.DesignV2PageWrapper,
+				}),
+				{},
+				[className],
+			)}
+			onScroll={saveScrollPosition ? onScroll : undefined}
+		>
+			{children}
+			{onScrollEnd && <div className={cls.trigger} ref={triggerRef} />}
+		</section>
+	);
 };

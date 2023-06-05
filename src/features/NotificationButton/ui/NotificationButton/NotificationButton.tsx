@@ -1,7 +1,8 @@
 import { memo, useCallback, useState } from 'react';
 import { Placement } from '@floating-ui/react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { Popover as DeprecatedPopover, Popover } from '@/shared/ui/designV2/Popover';
+import { Popover as DeprecatedPopover } from '@/shared/ui/deprecated/Popover';
+import { Popover } from '@/shared/ui/designV2/Popover';
 import { Button as DeprecatedButton, ButtonProps } from '@/shared/ui/deprecated/Button';
 import { Icon as DeprecatedIcon } from '@/shared/ui/deprecated/Icon';
 import { NotificationsList } from '@/entities/Notification';

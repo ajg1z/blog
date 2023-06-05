@@ -1,52 +1,53 @@
 {
-    "lan": "English",
-    "logo": "BLOG v4",
-    "navbar": {
-        "about": "About",
-        "main": "Main",
-        "profile": "Profile",
-        "articles": "Articles",
-        "admin": "Admin"
-    },
-    "notFoundPage": "Page not found",
-    "pageError": "Something went wrong...",
-    "reloadPage": "Reload page",
-    "forbiddenPage": "You don't have permission to access page",
-    "notificationError": "An error occurred while loading the notifications",
-    "button": {
-        "toggle": "Toggle",
-        "edit": "Edit",
-        "cancel": "Сancel",
-        "save": "Save",
-        "copy": "Copy",
-        "send": "Send",
-        "close": "Close"
-    },
-    "sending": "Sending...",
-    "shortLan": "En",
-    "sign": "Sign in",
-    "login": "Username",
-    "password": "Password",
-    "loginError": {
-        "bagRequest": "Username or password is wrong",
-        "internalServer": "Internal Server Error"
-    },
-    "formAuth": "Authorization form",
-    "logout": "Logout",
-    "currency": {
-        "labelSelect": "Currency"
-    },
-    "country": {
-        "labelSelect": "Country"
-    },
-    "noComments": "There are no comments here yet, but yours could be the first",
-    "commentsTitle": "Comments",
-    "errorLoadingComments": "Failed to load comments",
-    "placeholder": {
-        "addComment": "Write comment..."
-    },
-    "sortBy": "Sort by",
-    "search": "Search",
-    "increasing": "increasing",
-    "decreasing": "decreasing"
+	"lan": "English",
+	"logo": "BLOG v4",
+	"navbar": {
+		"about": "About",
+		"main": "Main",
+		"profile": "Profile",
+		"articles": "Articles",
+		"admin": "Admin"
+	},
+	"notFoundPage": "Page not found",
+	"pageError": "Something went wrong...",
+	"reloadPage": "Reload page",
+	"forbiddenPage": "You don't have permission to access page",
+	"notificationError": "An error occurred while loading the notifications",
+	"button": {
+		"toggle": "Toggle",
+		"edit": "Edit",
+		"cancel": "Сancel",
+		"save": "Save",
+		"copy": "Copy",
+		"send": "Send",
+		"close": "Close"
+	},
+	"sending": "Sending...",
+	"shortLan": "En",
+	"sign": "Sign in",
+	"login": "Username",
+	"password": "Password",
+	"loginError": {
+		"bagRequest": "Username or password is wrong",
+		"internalServer": "Internal Server Error"
+	},
+	"formAuth": "Authorization form",
+	"logout": "Logout",
+	"currency": {
+		"labelSelect": "Currency"
+	},
+	"country": {
+		"labelSelect": "Country"
+	},
+	"noComments": "There are no comments here yet, but yours could be the first",
+	"commentsTitle": "Comments",
+	"errorLoadingComments": "Failed to load comments",
+	"placeholder": {
+		"addComment": "Write comment..."
+	},
+	"sortBy": "Sorting",
+	"search": "Search",
+	"typeView": "view",
+	"increasing": "increasing",
+	"decreasing": "decreasing"
 }

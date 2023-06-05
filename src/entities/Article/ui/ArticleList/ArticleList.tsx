@@ -30,6 +30,7 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article } from '../../model/types/article';
 import { ArticleView, CountItemListPage, CountItemTilePage } from '../../model/const/articleConst';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface ArticleListProps {
 	className?: string;
@@ -139,7 +140,13 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 				<Virtuoso
 					data-testid='ArticleList'
 					ref={virtuosoListRef}
-					className={classNames(cls.virtualizeList, {}, [cls.virtualizedFullHeight])}
+					className={classNames(cls.virtualizeList, {}, [
+						toggleFeature({
+							name: 'isAppRedesigned',
+							off: () => cls.virtualizedFullHeight,
+							on: () => cls.designV2VirtualizedFullHeight,
+						}),
+					])}
 					data={articles}
 					totalCount={articles.length}
 					onScroll={saveScrollPosition ? onScroll : undefined}
@@ -163,7 +170,13 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 					overscan={20}
 					ref={virtuosoGridRef}
 					onScroll={saveScrollPosition ? onScroll : undefined}
-					className={classNames(cls.virtualizeGrid, {}, [cls.virtualizedFullHeight])}
+					className={classNames(cls.virtualizeGrid, {}, [
+						toggleFeature({
+							name: 'isAppRedesigned',
+							off: () => cls.virtualizedFullHeight,
+							on: () => cls.designV2VirtualizedFullHeight,
+						}),
+					])}
 					data={articles}
 					totalCount={articles.length}
 					endReached={onScrollEnd}
@@ -190,7 +203,10 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 		<div
 			data-testid='ArticleList'
 			ref={wrapperRef}
-			className={classNames(cls.ArticleList, {}, [className, cls.fullHeight])}
+			className={classNames(cls.ArticleList, {}, [
+				className,
+				toggleFeature({ name: 'isAppRedesigned', off: () => cls.fullHeight, on: () => cls.designV2FullHeight }),
+			])}
 			onScroll={saveScrollPosition ? onScroll : undefined}
 		>
 			{!!articles.length && !isLoading && articles.map(renderArticle)}

@@ -1,0 +1,54 @@
+.Input,
+.TextArea {
+    resize: none;
+    width: 100%;
+    background: none;
+    outline: none;
+    color: var(--text-design-v2);
+    border: none;
+  
+    &::placeholder {
+        color: var(--hint-design-v2);
+    }
+}
+
+
+.InputWrapper {
+    width: 100%;
+    border: 2px solid var(--icon-design-v2);
+    padding: 8px 16px;
+    height: 38px;
+    border-radius: 48px;
+
+    &.focused {
+        box-shadow: 0 0 5px var(--icon-design-v2);
+        border-color: var(--accent-design-v2);
+
+        .addonLeft, .addonRight {
+            color: var(--accent-design-v2);
+        }
+    }
+    
+    &.readOnly {
+        box-shadow: none;
+        border-color: transparent;
+    }
+
+    &.disabled {
+        opacity: 0.6;
+    }
+
+    svg {
+        font-size: 20px;
+    }
+}
+
+
+.withAddonLeft {
+    padding-left: 8px;
+}
+
+.withAddonRight {
+    padding-right: 8px;
+}
+

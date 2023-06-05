@@ -26,7 +26,7 @@ export const SidebarItem = memo((props: PropsWithChildren<SidebarItemProps>) => 
 		<ToggleFeatureComponent
 			name='isAppRedesigned'
 			off={
-				<AppLinkDeprecated to={item.path} className={cls.item}>
+				<AppLinkDeprecated to={item.path} className={cls.SidebarItem}>
 					<HStack gap={12}>
 						<item.Icon className={cls.icon} />
 						<span>{t(`navbar.${item.text}`)}</span>
@@ -34,7 +34,7 @@ export const SidebarItem = memo((props: PropsWithChildren<SidebarItemProps>) => 
 				</AppLinkDeprecated>
 			}
 			on={
-				<AppLink activeClassName={cls.active} to={item.path} className={cls.item}>
+				<AppLink activeClassName={cls.active} to={item.path} className={cls.DesignV2SidebarItem}>
 					<HStack gap={12}>
 						<Icon Svg={item.Icon} width={30} height={30} />
 						<span>{t(`navbar.${item.text}`)}</span>

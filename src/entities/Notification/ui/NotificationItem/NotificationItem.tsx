@@ -26,7 +26,7 @@ export const NotificationItem = memo((props: PropsWithChildren<NotificationItemP
 				</DeprecatedCard>
 			}
 			on={
-				<Card className={classNames(cls.NotificationItem, {}, [className])}>
+				<Card className={classNames(cls.DesignV2NotificationItem, {}, [className])}>
 					<Text title={notification.title} />
 					<Text text={notification.description} />
 				</Card>
@@ -42,10 +42,5 @@ export const NotificationItem = memo((props: PropsWithChildren<NotificationItemP
 		);
 	}
 
-	return (
-		<Card className={classNames(cls.NotificationItem, {}, [className])}>
-			<Text title={notification.title} />
-			<Text text={notification.description} />
-		</Card>
-	);
+	return content;
 });

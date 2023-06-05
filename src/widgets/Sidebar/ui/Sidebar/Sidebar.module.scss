@@ -21,7 +21,7 @@
         }
     }
 
-    .collapsed {
+    &.collapsed {
         width: var(--sidebar-width-collapsed);
     
         .switchers {
@@ -29,6 +29,8 @@
         }
     
         .items {
+            padding: 0;
+
             span {
                 opacity: 0;
                 scale: 0;

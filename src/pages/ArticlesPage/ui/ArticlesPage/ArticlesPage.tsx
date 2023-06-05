@@ -11,6 +11,9 @@ import cls from './ArticlesPage.module.scss';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { StickyContentLayout } from '@/shared/lib/layouts/StickyContentLayout';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
 
 interface ArticlesPageProps {
 	className?: string;
@@ -32,12 +35,29 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
 	return (
 		<DynamicModuleLoader reducers={reducers}>
-			<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
-				<div className={classNames(cls.ArticlesPage, {}, [className])}>
-					<ArticlesPageFilters className={cls.articleFilters} />
-					<ArticleInfiniteList />
-				</div>
-			</PageWrapper>
+			<ToggleFeatureComponent
+				name='isAppRedesigned'
+				off={
+					<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
+						<div className={classNames(cls.ArticlesPage, {}, [className])}>
+							<ArticlesPageFilters className={cls.articleFilters} />
+							<ArticleInfiniteList />
+						</div>
+					</PageWrapper>
+				}
+				on={
+					<StickyContentLayout
+						right={<FiltersContainer />}
+						content={
+							<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
+								<div className={classNames(cls.ArticlesPage, {}, [className])}>
+									<ArticleInfiniteList />
+								</div>
+							</PageWrapper>
+						}
+					/>
+				}
+			/>
 		</DynamicModuleLoader>
 	);
 };

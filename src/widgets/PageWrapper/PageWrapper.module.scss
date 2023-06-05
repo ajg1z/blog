@@ -1,9 +1,12 @@
-.PageWrapper {
+.PageWrapper, .DesignV2PageWrapper {
     flex-grow: 1;
-    padding: 10px;
     height: calc(100vh - var(--navbar-height));
     overflow: auto;
     width: 100%;
+}
+
+.PageWrapper {
+    padding: 10px;
 }
 
 .trigger {

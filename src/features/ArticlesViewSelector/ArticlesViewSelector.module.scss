@@ -1,5 +1,23 @@
 .activeView {
-    & svg {
+    &.viewIconBtn {
         fill: var(--secondary-color);
     }
+}
+
+.ArticleViewSelectorDesignV2 {
+    border-radius: 30px;
+    .viewIconBtn {
+        fill: var(--light-bg-design-v2);
+    }
+
+    .activeView {
+        &.viewIconBtn {
+            fill: var(--accent-design-v2);
+        }
+    }
+}
+
+
+.label {
+    margin-right: 10px;
 }

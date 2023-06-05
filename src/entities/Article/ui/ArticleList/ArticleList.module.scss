@@ -26,8 +26,16 @@
     height: calc(100vh - var(--navbar-height) - var(--height-article-filters));
 }
 
+.designV2FullHeight {
+    height: calc(100vh - var(--navbar-height));
+}
+
 .virtualizedFullHeight {
     height: calc(100vh - var(--navbar-height) - var(--height-article-filters)) !important;
+}
+
+.designV2VirtualizedFullHeight {
+    height: calc(100vh - var(--navbar-height)) !important;
 }
 
 .footerVirtualizedList {

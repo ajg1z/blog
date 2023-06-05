@@ -1,11 +1,14 @@
 import { Fragment, ReactNode, useRef } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
 import { Listbox as HListBox } from '@headlessui/react';
 import { Placement } from '@floating-ui/react';
+import { BsCheck } from 'react-icons/bs';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useCalculatePosition } from '@/shared/lib/hooks/useCalculatePosition/useCalculatePosition';
 import cls from './ListBox.module.scss';
-import { Button } from '../Button';
+import { Button } from '@/shared/ui/designV2/Button';
 import { HStack } from '@/shared/ui/designV2/Stack';
+import { Icon } from '../Icon';
 
 export interface ListBoxItem<T extends string> {
 	value: T;
@@ -47,8 +50,9 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
 					<Button
 						ref={buttonRef}
 						disabled={readonly || disabled}
-						variant={readonly ? 'clear' : 'outline'}
-						className={classNames('', { [cls.readonly]: readonly })}
+						variant={readonly ? 'clear' : 'filled'}
+						className={classNames(cls.triggerBtn, { [cls.readonly]: readonly })}
+						addonRight={<IoIosArrowDown />}
 					>
 						{selectedContent?.content ?? selectedContent?.value}
 					</Button>
@@ -73,6 +77,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
 										})}
 									>
 										{option.content ?? option.value}
+										{selected && <Icon Svg={BsCheck} />}
 									</li>
 								)}
 							</HListBox.Option>

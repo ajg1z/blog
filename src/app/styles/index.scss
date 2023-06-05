@@ -30,10 +30,16 @@ body {
 }
 
 *::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+    width: 7px;               /* ширина scrollbar */
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--dark-bg-design-v2);        /* цвет дорожки */
 }
 
 *::-webkit-scrollbar-thumb {
-    width:0;
+    background-color: var(--light-bg-design-v2);    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 2px solid var(--accent-design-v2);  /* padding вокруг плашки */
 }

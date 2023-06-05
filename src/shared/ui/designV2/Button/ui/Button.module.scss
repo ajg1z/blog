@@ -1,7 +1,10 @@
 .Button {
     cursor: pointer;
-    padding: 6px 15px;
+    padding: 6px 12px;
     color: var(--text-design-v2);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 
     &:disabled {
         opacity: 0.6;
@@ -43,6 +46,13 @@
     background: none;
 }
 
+.filled {
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    background: var(--light-bg-design-v2);
+}
+
 .M {
     font: var(--font-m-design-v2);
 }
@@ -53,4 +63,11 @@
 
 .XL {
     font: var(--font-xl-design-v2);
+}
+
+
+.addonLeft, .addonRight {
+   svg {
+    color:var(--hint-design-v2);
+   }
 }

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { AuthResponse, userActions } from '@/entities/User';
 import { TokenLocalStorageKey } from '@/shared/const/localStorage';
-import { setFeatureFlags, toggleFeature } from '@/shared/lib/featureFlags';
+import { setFeatureFlags } from '@/shared/lib/featureFlags';
 
 interface LoginByUsernameProps {
 	username: string;
@@ -22,16 +22,9 @@ export const loginByUsername = createAsyncThunk<AuthResponse, LoginByUsernamePro
 			}
 
 			localStorage.setItem(TokenLocalStorageKey, response.data.token);
+
 			setFeatureFlags(response.data.user.features);
-			toggleFeature({
-				name: 'isAppRedesigned',
-				on() {
-					document.body.classList.add('app-design-v2');
-				},
-				off() {
-					document.body.classList.add('app');
-				},
-			});
+
 			thunkApi.dispatch(userActions.setAuthData(response.data.user));
 			return response.data;
 		} catch (e) {

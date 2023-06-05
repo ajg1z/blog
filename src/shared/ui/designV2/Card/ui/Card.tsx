@@ -2,7 +2,8 @@ import { HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
-type CardVariant = 'normal' | 'outline';
+type CardVariant = 'normal' | 'outline' | 'light';
+
 type CardPadding = 0 | 8 | 10 | 16 | 24;
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {

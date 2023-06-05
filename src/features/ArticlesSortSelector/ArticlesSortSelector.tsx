@@ -1,10 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useMemo } from 'react';
-import { ListBox, ListBoxItem } from '@/shared/ui/deprecated/ListBox';
+import { BiSortDown, BiSortUp } from 'react-icons/bi';
+import { ListBox as ListBoxDeprecated, ListBoxItem } from '@/shared/ui/deprecated/ListBox';
+import { ListBox } from '@/shared/ui/designV2/ListBox';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleSortField } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
-import { HStack } from '@/shared/ui/designV2/Stack';
+import { HStack, VStack } from '@/shared/ui/designV2/Stack';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { IconButton } from '@/shared/ui/designV2/Icon/IconButton';
+import { Text } from '@/shared/ui/designV2/Text';
 
 interface ArticlesSortSelectorProps {
 	className?: string;
@@ -36,15 +41,33 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
 		[t],
 	);
 
+	const onClickSortOrder = () => {
+		onChangeSortOrder(order === 'asc' ? 'desc' : 'asc');
+	};
+
 	return (
-		<HStack gap={12} className={classNames('', {}, [className])}>
-			<ListBox<ArticleSortField>
-				label={commonT('sortBy')}
-				value={sort}
-				onChange={onChangeSort}
-				items={sortOptions}
-			/>
-			<ListBox<SortOrder> value={order} onChange={onChangeSortOrder} items={orderOptions} />
-		</HStack>
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<HStack gap={12} className={classNames('', {}, [className])}>
+					<ListBoxDeprecated<ArticleSortField>
+						label={commonT('sortBy')}
+						value={sort}
+						onChange={onChangeSort}
+						items={sortOptions}
+					/>
+					<ListBoxDeprecated<SortOrder> value={order} onChange={onChangeSortOrder} items={orderOptions} />
+				</HStack>
+			}
+			on={
+				<VStack gap={12} className={classNames('', {}, [className])}>
+					<Text text={commonT('sortBy')} />
+					<HStack gap={8}>
+						<ListBox<ArticleSortField> value={sort} onChange={onChangeSort} items={sortOptions} />
+						<IconButton Svg={order === 'asc' ? BiSortDown : BiSortUp} onClick={onClickSortOrder} />
+					</HStack>
+				</VStack>
+			}
+		/>
 	);
 });

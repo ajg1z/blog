@@ -6,6 +6,10 @@
     pointer-events: none;
 }
 
+.triggerBtn {
+    padding: 5px 8px;
+}
+
 .options {
     background-color: var(--dark-bg-design-v2);
     position: absolute;
@@ -23,10 +27,9 @@
     transition: scale 0.2s;
     white-space: nowrap;
     color: var(--text-design-v2);
-
-    &.selectedItem {
-        color: var(--accent-design-v2);
-    }
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     &.activeItem {
         background: var(--light-bg-design-v2);

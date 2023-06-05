@@ -1,52 +1,53 @@
 {
-    "lan": "Русский",
-    "logo": "BLOG v4",
-    "navbar": {
-        "about": "О нас",
-        "main": "Главная",
-        "profile": "Профиль",
-        "articles": "Статьи",
-        "admin": "Админ"
-    },
-    "notFoundPage": "Страница не найдена",
-    "pageError": "Что то пошло не так...",
-    "reloadPage": "Обновить страницу",
-    "forbiddenPage": "У вас нет прав доступа к странице",
-    "notificationError": "Произошла ошибка при загрузке  уведомлений",
-    "button": {
-        "toggle": "Переключить",
-        "edit": "Редактировать",
-        "cancel": "Отменить",
-        "save": "Сохранить",
-        "copy": "Копировать",
-        "send": "Отправить",
-        "close": "Закрыть"
-    },
-    "sending": "Отправка...",
-    "shortLan": "Ru",
-    "sign": "Войти",
-    "login": "Логин",
-    "password": "Пароль",
-    "loginError": {
-        "bagRequest": "Логин или пароль не правильный",
-        "internalServer": "Internal Server Error"
-    },
-    "formAuth": "Форма авторизации",
-    "logout": "Выйти",
-    "currency": {
-        "labelSelect": "Валюта"
-    },
-    "country": {
-        "labelSelect": "Страна"
-    },
-    "noComments": "Здесь пока нет комментариев, но ваш может стать первым",
-    "commentsTitle": "Комментарии",
-    "errorLoadingComments": "Не удалось загрузить комментарии",
-    "placeholder": {
-        "addComment": "Написать коментарий..."
-    },
-    "sortBy": "Сортировать по",
-    "search": "Поиск",
-    "increasing": "возрастанию",
-    "decreasing": "убыванию"
+	"lan": "Русский",
+	"logo": "BLOG v4",
+	"navbar": {
+		"about": "О нас",
+		"main": "Главная",
+		"profile": "Профиль",
+		"articles": "Статьи",
+		"admin": "Админ"
+	},
+	"notFoundPage": "Страница не найдена",
+	"pageError": "Что то пошло не так...",
+	"reloadPage": "Обновить страницу",
+	"forbiddenPage": "У вас нет прав доступа к странице",
+	"notificationError": "Произошла ошибка при загрузке  уведомлений",
+	"button": {
+		"toggle": "Переключить",
+		"edit": "Редактировать",
+		"cancel": "Отменить",
+		"save": "Сохранить",
+		"copy": "Копировать",
+		"send": "Отправить",
+		"close": "Закрыть"
+	},
+	"sending": "Отправка...",
+	"shortLan": "Ru",
+	"sign": "Войти",
+	"login": "Логин",
+	"password": "Пароль",
+	"loginError": {
+		"bagRequest": "Логин или пароль не правильный",
+		"internalServer": "Internal Server Error"
+	},
+	"formAuth": "Форма авторизации",
+	"logout": "Выйти",
+	"currency": {
+		"labelSelect": "Валюта"
+	},
+	"country": {
+		"labelSelect": "Страна"
+	},
+	"noComments": "Здесь пока нет комментариев, но ваш может стать первым",
+	"commentsTitle": "Комментарии",
+	"errorLoadingComments": "Не удалось загрузить комментарии",
+	"placeholder": {
+		"addComment": "Написать коментарий..."
+	},
+	"sortBy": "Сортировка",
+	"search": "Поиск",
+	"typeView": "Вид",
+	"increasing": "возрастанию",
+	"decreasing": "убыванию"
 }
