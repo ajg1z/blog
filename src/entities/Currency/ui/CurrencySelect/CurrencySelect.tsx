@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { PropsWithChildren } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ListBoxProps, ListBox, ListBoxItem } from '@/shared/ui/deprecated/ListBox';
+import { ListBox as DeprecatedListBox, ListBoxItem } from '@/shared/ui/deprecated/ListBox';
 import { Currency } from '../../model/const/currency';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { ListBox, ListBoxProps } from '@/shared/ui/designV2/ListBox';
 
 interface CurrencySelectProps extends Omit<ListBoxProps<Currency>, 'items' | 'label' | 'defaultValue'> {}
 
@@ -19,13 +21,28 @@ export const CurrencySelect = (props: PropsWithChildren<CurrencySelectProps>) =>
 	const { t } = useTranslation();
 
 	return (
-		<ListBox<Currency>
-			{...otherProps}
-			value={value}
-			className={classNames('', {}, [className])}
-			items={CurrencyOptions}
-			label={t('currency.labelSelect')}
-			onChange={onChange}
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<DeprecatedListBox<Currency>
+					value={value}
+					className={classNames('', {}, [className])}
+					items={CurrencyOptions}
+					label={t('currency.labelSelect')}
+					onChange={onChange}
+					{...otherProps}
+				/>
+			}
+			on={
+				<ListBox<Currency>
+					value={value}
+					className={classNames('', {}, [className])}
+					items={CurrencyOptions}
+					label={t('currency.labelSelect')}
+					onChange={onChange}
+					{...otherProps}
+				/>
+			}
 		/>
 	);
 };

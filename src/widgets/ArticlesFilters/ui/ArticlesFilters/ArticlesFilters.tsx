@@ -53,6 +53,7 @@ export const ArticlesFilters = memo((props: PropsWithChildren<ArticlesFiltersPro
 					placeholder={`${t('search')}...`}
 					data-testid='ArticlesPageFilters.Search'
 					addonLeft={<Icon Svg={AiOutlineSearch} />}
+					size='large'
 					onChangeValue={onChangeSearch}
 				/>
 				<ArticleTypeTabs type={type} className={cls.tabs} onChangeType={onChangeType} />

@@ -27,6 +27,7 @@ export interface ListBoxProps<T extends string> {
 
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
 	const { items, onChange, value, className, defaultValue, placement = 'bottom', label, readonly, disabled } = props;
+
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
 
 	const selectedContent = items?.find((item) => item.value === (value ?? defaultValue));

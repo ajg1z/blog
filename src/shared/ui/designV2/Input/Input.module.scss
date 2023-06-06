@@ -15,10 +15,22 @@
 
 .InputWrapper {
     width: 100%;
-    border: 2px solid var(--icon-design-v2);
+    border: 1px solid var(--icon-design-v2);
     padding: 8px 16px;
-    height: 38px;
-    border-radius: 48px;
+    border-radius: 12px;
+
+  
+    &.medium {
+        height: 30px;
+    }
+
+    &.large {
+        height: 38px;
+    }
+
+    svg {
+        font-size: 20px;
+    }
 
     &.focused {
         box-shadow: 0 0 5px var(--icon-design-v2);
@@ -31,16 +43,18 @@
     
     &.readOnly {
         box-shadow: none;
-        border-color: transparent;
+        border-radius: 0;
+        border-width: 1px;
+        padding-left: 5px;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
     }
 
     &.disabled {
         opacity: 0.6;
     }
 
-    svg {
-        font-size: 20px;
-    }
 }
 
 

@@ -11,7 +11,7 @@ import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { isNumber } from '@/shared/lib/validators/isNumber';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack } from '@/shared/ui/designV2/Stack';
+import { HStack, VStack } from '@/shared/ui/designV2/Stack';
 import cls from './EditableProfileCard.module.scss';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
@@ -21,6 +21,7 @@ import { profileActions } from '../model/slice/profileSlice';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
 import { getProfileValidateError } from '../model/selectors/getProfileValError/getProfileValError';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 interface EditableProfileCardProps {
 	className?: string;
@@ -133,40 +134,46 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
 
 	return (
 		<div className={classNames(cls.EditableProfileCard, {}, [className])}>
-			<HStack className={cls.header} gap={12}>
-				<Text title={t('title')} className={cls.title} />
-				{readonly || isLoading ? (
-					isEditable && (
-						<Button
-							theme='background'
-							data-testid='EditableProfileCard.EditButton'
-							disabled={isLoading}
-							onClick={onEdit}
-						>
-							{commonT('button.edit')}
-						</Button>
-					)
-				) : (
-					<>
-						<Button
-							theme='outlineRed'
-							data-testid='EditableProfileCard.CancelButton'
-							disabled={isLoading}
-							onClick={onCancel}
-						>
-							{commonT('button.cancel')}
-						</Button>
-						<Button
-							theme='backgroundInverted'
-							data-testid='EditableProfileCard.SaveButton'
-							disabled={isLoading}
-							onClick={onSave}
-						>
-							{commonT('button.save')}
-						</Button>
-					</>
-				)}
-			</HStack>
+			<ToggleFeatureComponent
+				name='isAppRedesigned'
+				off={
+					<HStack className={cls.header} gap={12}>
+						<Text title={t('title')} className={cls.title} />
+						{readonly || isLoading ? (
+							isEditable && (
+								<Button
+									theme='background'
+									data-testid='EditableProfileCard.EditButton'
+									disabled={isLoading}
+									onClick={onEdit}
+								>
+									{commonT('button.edit')}
+								</Button>
+							)
+						) : (
+							<>
+								<Button
+									theme='outlineRed'
+									data-testid='EditableProfileCard.CancelButton'
+									disabled={isLoading}
+									onClick={onCancel}
+								>
+									{commonT('button.cancel')}
+								</Button>
+								<Button
+									theme='backgroundInverted'
+									data-testid='EditableProfileCard.SaveButton'
+									disabled={isLoading}
+									onClick={onSave}
+								>
+									{commonT('button.save')}
+								</Button>
+							</>
+						)}
+					</HStack>
+				}
+				on={<></>}
+			/>
 
 			{validateError?.map((error) => (
 				<Text

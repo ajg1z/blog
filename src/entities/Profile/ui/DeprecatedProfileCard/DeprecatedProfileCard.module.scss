@@ -1,0 +1,13 @@
+.ProfileCard {
+    padding: 10px;
+    border: 2px solid var(--inverted-secondary-color);
+
+    &.editable {
+        border-color: var(--inverted-primary-color);
+    }
+}
+
+.avatar {
+    width: 150px;
+    height: 100px;
+}

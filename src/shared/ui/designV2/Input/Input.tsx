@@ -4,11 +4,14 @@ import { ClassNamesMods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 import { HStack } from '../Stack';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+type InputSize = 'medium' | 'large';
+
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
 	className?: string;
 	autofocus?: boolean;
 	addonLeft?: ReactNode;
 	addonRight?: ReactNode;
+	size?: InputSize;
 	onChangeValue?: (value: string) => void;
 	getRef?: (ref: HTMLInputElement | null) => void;
 }
@@ -24,6 +27,7 @@ export const Input = memo((props: InputProps) => {
 		autofocus,
 		readOnly,
 		disabled,
+		size = 'medium',
 		...otherProps
 	} = props;
 
@@ -61,12 +65,12 @@ export const Input = memo((props: InputProps) => {
 		[cls.withAddonLeft]: Boolean(addonLeft),
 		[cls.withAddonRight]: Boolean(addonRight),
 		[cls.focused]: isFocus,
-		[cls.readonly]: readOnly,
-		[cls.disabled]: disabled,
+		[cls.readOnly]: Boolean(readOnly),
+		[cls.disabled]: Boolean(disabled),
 	};
 
 	return (
-		<HStack gap={4} className={classNames(cls.InputWrapper, mods, [className])}>
+		<HStack gap={4} className={classNames(cls.InputWrapper, mods, [className, cls[size]])}>
 			{addonLeft && <HStack className={cls.addonLeft}>{addonLeft}</HStack>}
 			<input
 				onChange={onChangeInput}

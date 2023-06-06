@@ -26,10 +26,23 @@ export interface ListBoxProps<T extends string> {
 	readonly?: boolean;
 	disabled?: boolean;
 	placement?: Placement;
+	labelClass?: string;
 }
 
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
-	const { items, onChange, value, className, defaultValue, placement = 'bottom', label, readonly, disabled } = props;
+	const {
+		items,
+		onChange,
+		value,
+		className,
+		defaultValue,
+		placement = 'bottom',
+		labelClass,
+		label,
+		readonly,
+		disabled,
+	} = props;
+
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
 
 	const selectedContent = items?.find((item) => item.value === (value ?? defaultValue));
@@ -38,7 +51,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
 
 	return (
 		<HStack gap={12}>
-			{label && <span>{label}</span>}
+			{label && <span className={labelClass}>{label}</span>}
 			<HListBox
 				as='div'
 				value={value}
@@ -52,7 +65,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
 						disabled={readonly || disabled}
 						variant={readonly ? 'clear' : 'filled'}
 						className={classNames(cls.triggerBtn, { [cls.readonly]: readonly })}
-						addonRight={<IoIosArrowDown />}
+						addonRight={!readonly && !disabled ? <IoIosArrowDown /> : null}
 					>
 						{selectedContent?.content ?? selectedContent?.value}
 					</Button>
