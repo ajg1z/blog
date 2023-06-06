@@ -37,33 +37,42 @@
 .right {
     text-align: right;
 }
-
 .S {
     .title {
-        font: var(--font-m-deisgn-v2);
+        font: var(--font-m-design-v2);
     }
 
     .text {
-        font: var(--font-s-deisgn-v2);
+        font: var(--font-s-design-v2);
     }
 }
 
 .L {
     .title {
-        font: var(--font-xl-deisgn-v2);
+        font: var(--font-xl-design-v2);
     }
 
     .text {
-        font: var(--font-l-deisgn-v2);
+        font: var(--font-l-design-v2);
     }
 }
 
 .M {
     .title {
-        font: var(--font-l-deisgn-v2);
+        font: var(--font-l-design-v2);
     }
 
     .text {
-        font: var(--font-m-deisgn-v2);
+        font: var(--font-m-design-v2);
+    }
+}
+
+.bold {
+    .title {
+        font-weight: 700;
+    }
+
+    .text {
+        font-weight: 500;
     }
 }

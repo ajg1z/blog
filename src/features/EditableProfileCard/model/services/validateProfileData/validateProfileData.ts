@@ -1,47 +1,59 @@
 /* eslint-disable no-restricted-globals */
+import i18next from 'i18next';
+import { toast } from 'react-toastify';
 import { Profile, ValidateProfileError } from '@/entities/Profile';
 
 export const validateProfileData = (data?: Profile) => {
-    const errors: ValidateProfileError[] = [];
+	const errors: ValidateProfileError[] = [];
 
-    if (!data) {
-        errors.push('NoData');
-        return errors;
-    }
+	if (!data) {
+		errors.push('NoData');
+		return errors;
+	}
 
-    const { age, avatar, city, country, currency, username, firstname, lastname } = data;
+	const { age, avatar, city, country, currency, username, firstname, lastname } = data;
 
-    if (!age || age <= 0) {
-        errors.push('InvalidAge');
-    }
+	toast.dismiss();
 
-    if (!avatar || typeof avatar === 'number') {
-        errors.push('InvalidAvatar');
-    }
+	if (!age || age <= 0) {
+		toast.error(i18next.t('profile.errors.invalid_age'));
+		errors.push('InvalidAge');
+	}
 
-    if (!city) {
-        errors.push('InvalidCity');
-    }
+	if (!avatar || typeof avatar === 'number') {
+		toast.error(i18next.t('profile.errors.invalid_avatar'));
+		errors.push('InvalidAvatar');
+	}
 
-    if (!country) {
-        errors.push('InvalidCountry');
-    }
+	if (!city) {
+		toast.error(i18next.t('profile.errors.invalid_city'));
+		errors.push('InvalidCity');
+	}
 
-    if (!currency) {
-        errors.push('InvalidCurrency');
-    }
+	if (!country) {
+		toast.error(i18next.t('profile.errors.invalid_country'));
+		errors.push('InvalidCountry');
+	}
 
-    if (!username || !isNaN(+username)) {
-        errors.push('InvalidUsername');
-    }
+	if (!currency) {
+		toast.error(i18next.t('profile.errors.invalid_currency'));
+		errors.push('InvalidCurrency');
+	}
 
-    if (!firstname || !isNaN(+firstname)) {
-        errors.push('InvalidFirstName');
-    }
+	if (!username || !isNaN(+username)) {
+		toast.error(i18next.t('profile.errors.invalid_username'));
+		errors.push('InvalidUsername');
+	}
 
-    if (!lastname || !isNaN(+lastname)) {
-        errors.push('InvalidLastName');
-    }
+	if (!firstname || !isNaN(+firstname)) {
+		toast.error(i18next.t('profile.errors.invalid_firstname'));
+		errors.push('InvalidFirstName');
+	}
 
-    return errors;
+	if (!lastname || !isNaN(+lastname)) {
+		toast.error(i18next.t('profile.errors.invalid_lastname'));
+		errors.push('InvalidLastName');
+	}
+
+	return errors;
 };

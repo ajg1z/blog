@@ -1,8 +1,10 @@
 import { FC, memo } from 'react';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/designV2/Text';
 import { ArticleBlockText } from '../../../../model/types/article';
-import cls from './ArticleBlockTextComponent.module.scss';
+import { VStack } from '@/shared/ui/designV2/Stack';
 
 interface ArticleBlockTextComponentProps {
 	className?: string;
@@ -13,12 +15,26 @@ export const ArticleBlockTextComponent: FC<ArticleBlockTextComponentProps> = mem
 	const { className, block } = props;
 
 	return (
-		<div className={classNames(cls.ArticleBlockTextComponent, {}, [className])}>
-			{block.title && <Text title={block.title} className={cls.title} />}
-			{block.paragraphs.map((p, index) => (
-				// eslint-disable-next-line react/no-array-index-key
-				<Text key={`${p}${index}`} text={p} className={cls.paragraph} />
-			))}
-		</div>
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<VStack gap={8} className={classNames('', {}, [className])}>
+					{block.title && <Text title={block.title} />}
+					{block.paragraphs.map((p, index) => (
+						// eslint-disable-next-line react/no-array-index-key
+						<DeprecatedText key={`${p}${index}`} text={p} />
+					))}
+				</VStack>
+			}
+			on={
+				<VStack gap={8} className={classNames('', {}, [className])}>
+					{block.title && <Text title={block.title} />}
+					{block.paragraphs.map((p, index) => (
+						// eslint-disable-next-line react/no-array-index-key
+						<Text key={`${p}${index}`} text={p} />
+					))}
+				</VStack>
+			}
+		/>
 	);
 });

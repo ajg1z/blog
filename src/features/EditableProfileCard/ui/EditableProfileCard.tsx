@@ -1,17 +1,19 @@
 import { useTranslation } from 'react-i18next';
 
-import { ChangeEvent, PropsWithChildren, useCallback, useMemo } from 'react';
+import { ChangeEvent, PropsWithChildren, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Text } from '@/shared/ui/deprecated/Text/Text';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { ProfileCard, ValidateProfileError } from '@/entities/Profile';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text/Text';
+import { Text } from '@/shared/ui/designV2/Text/Text';
+import { Button as DeprecatedButton } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/designV2/Button';
+import { ProfileCard } from '@/entities/Profile';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { isNumber } from '@/shared/lib/validators/isNumber';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack, VStack } from '@/shared/ui/designV2/Stack';
+import { HStack } from '@/shared/ui/designV2/Stack';
 import cls from './EditableProfileCard.module.scss';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
@@ -20,7 +22,6 @@ import { getProfileReadOnly } from '../model/selectors/getProfileReadOnly/getPro
 import { profileActions } from '../model/slice/profileSlice';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { updateProfileData } from '../model/services/updateProfileData/updateProfileData';
-import { getProfileValidateError } from '../model/selectors/getProfileValError/getProfileValError';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 interface EditableProfileCardProps {
@@ -40,23 +41,6 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
 	const error = useSelector(getProfileError);
 	const data = useSelector(getProfileForm);
 	const readonly = useSelector(getProfileReadOnly);
-	const validateError = useSelector(getProfileValidateError);
-
-	const validateErrorTranslate: Record<ValidateProfileError, string> = useMemo(
-		() => ({
-			FailUpdate: t('errors.no_data'),
-			InvalidAge: t('errors.invalid_age'),
-			InvalidAvatar: t('errors.invalid_avatar'),
-			InvalidCity: t('errors.invalid_city'),
-			InvalidCountry: t('errors.invalid_country'),
-			InvalidCurrency: t('errors.invalid_currency'),
-			InvalidFirstName: t('errors.invalid_firstname'),
-			InvalidLastName: t('errors.invalid_lastname'),
-			InvalidUsername: t('errors.invalid_username'),
-			NoData: t('errors.no_data'),
-		}),
-		[t],
-	);
 
 	useInitialEffect(() => {
 		dispatch(fetchProfileData(id));
@@ -134,55 +118,83 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
 
 	return (
 		<div className={classNames(cls.EditableProfileCard, {}, [className])}>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={
-					<HStack className={cls.header} gap={12}>
-						<Text title={t('title')} className={cls.title} />
-						{readonly || isLoading ? (
-							isEditable && (
-								<Button
-									theme='background'
-									data-testid='EditableProfileCard.EditButton'
-									disabled={isLoading}
-									onClick={onEdit}
-								>
-									{commonT('button.edit')}
-								</Button>
-							)
-						) : (
-							<>
-								<Button
-									theme='outlineRed'
-									data-testid='EditableProfileCard.CancelButton'
-									disabled={isLoading}
-									onClick={onCancel}
-								>
-									{commonT('button.cancel')}
-								</Button>
-								<Button
-									theme='backgroundInverted'
-									data-testid='EditableProfileCard.SaveButton'
-									disabled={isLoading}
-									onClick={onSave}
-								>
-									{commonT('button.save')}
-								</Button>
-							</>
-						)}
-					</HStack>
-				}
-				on={<></>}
-			/>
-
-			{validateError?.map((error) => (
-				<Text
-					theme='error'
-					key={error}
-					text={validateErrorTranslate[error]}
-					data-testid='EditableProfileCard.Error'
+			{!isLoading && (
+				<ToggleFeatureComponent
+					name='isAppRedesigned'
+					off={
+						<HStack className={cls.header} gap={12}>
+							<DeprecatedText title={t('title')} className={cls.title} />
+							{readonly || isLoading ? (
+								isEditable && (
+									<DeprecatedButton
+										theme='background'
+										data-testid='EditableProfileCard.EditButton'
+										disabled={isLoading}
+										onClick={onEdit}
+									>
+										{commonT('button.edit')}
+									</DeprecatedButton>
+								)
+							) : (
+								<>
+									<DeprecatedButton
+										theme='outlineRed'
+										data-testid='EditableProfileCard.CancelButton'
+										disabled={isLoading}
+										onClick={onCancel}
+									>
+										{commonT('button.cancel')}
+									</DeprecatedButton>
+									<DeprecatedButton
+										theme='backgroundInverted'
+										data-testid='EditableProfileCard.SaveButton'
+										disabled={isLoading}
+										onClick={onSave}
+									>
+										{commonT('button.save')}
+									</DeprecatedButton>
+								</>
+							)}
+						</HStack>
+					}
+					on={
+						<HStack className={cls.header} gap={12}>
+							<Text title={t('title')} className={cls.title} />
+							{readonly || isLoading ? (
+								isEditable && (
+									<Button
+										variant='filled'
+										data-testid='EditableProfileCard.EditButton'
+										disabled={isLoading}
+										onClick={onEdit}
+									>
+										{commonT('button.edit')}
+									</Button>
+								)
+							) : (
+								<>
+									<Button
+										variant='outline'
+										data-testid='EditableProfileCard.CancelButton'
+										disabled={isLoading}
+										onClick={onCancel}
+									>
+										{commonT('button.cancel')}
+									</Button>
+									<Button
+										variant='filled'
+										data-testid='EditableProfileCard.SaveButton'
+										disabled={isLoading}
+										onClick={onSave}
+									>
+										{commonT('button.save')}
+									</Button>
+								</>
+							)}
+						</HStack>
+					}
 				/>
-			))}
+			)}
 
 			<ProfileCard
 				data={data}

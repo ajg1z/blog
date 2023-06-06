@@ -1,0 +1,125 @@
+.TAIL {
+    width: 300px;
+    transition: 0.2s;
+    cursor: pointer;
+    display: inline-block;
+
+    .createdAt {
+        transition: 0.2s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        padding: 2px;
+        background: var(--inverted-bg-color);
+
+        & p {
+            color: var(--bg-color);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.01);
+
+        & .createdAt {
+            opacity: 1;
+        }
+    }
+
+    .imgWrapper {
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+
+    .img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .articleInfo {
+        margin: 5px 0;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .articleTypes p,
+    .articleTitle p {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 210px;
+        overflow: hidden;
+    }
+
+    .articleTitle p {
+        width: auto;
+    }
+
+    .viewsIcon {
+        height: 14px;
+    }
+}
+
+.LIST {
+    margin-bottom: 30px;
+    width: 100%;
+    /* stylelint-disable-next-line no-descending-specificity */
+    & .createdAt {
+        margin-left: auto;
+    }
+
+    .header {
+        margin-bottom: 5px;
+    }
+
+    .img {
+        width: 100%;
+        height: 200px;
+        max-height: 200px;
+        object-fit: cover;
+        margin-bottom: 5px;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .description {
+        max-height: 200px;
+        overflow-y: hidden;
+    }
+
+    .articleTypes,
+    .articleTitle {
+        margin-bottom: 5px;
+    }
+
+    .skeletonTypes {
+        margin-bottom: 15px;
+    }
+
+    .skeletonDescription {
+        margin-bottom: 15px;
+    }
+
+    .viewsIcon {
+        height: 14px;
+    }
+
+    .skeletonImg {
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
+
+    .skeletonHeader {
+        margin-bottom: 10px;
+    }
+}

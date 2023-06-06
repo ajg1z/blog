@@ -70,6 +70,7 @@ module.exports = {
 					'strokeColor',
 					'color',
 					'variant',
+					'position',
 				],
 			},
 		],
