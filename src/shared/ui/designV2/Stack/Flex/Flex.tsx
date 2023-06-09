@@ -6,6 +6,7 @@ type AlignItems = 'center' | 'start' | 'end' | 'baseline' | 'stretch';
 type JustifyContent = 'center' | 'start' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type Direction = 'column' | 'row';
 type Gap = 4 | 8 | 12 | 24 | 36;
+type FlexWrap = 'wrap' | 'nowrap';
 
 const gapClasses: Record<Gap, string> = {
 	4: cls.gap4,
@@ -44,6 +45,7 @@ export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
 	gap?: Gap;
 	direction?: Direction;
 	max?: boolean;
+	wrap?: FlexWrap;
 }
 
 export const Flex: FC<FlexProps> = (props) => {
@@ -55,6 +57,7 @@ export const Flex: FC<FlexProps> = (props) => {
 		justify = 'start',
 		gap,
 		max,
+		wrap = 'nowrap',
 		...otherProps
 	} = props;
 
@@ -64,6 +67,7 @@ export const Flex: FC<FlexProps> = (props) => {
 		directionClasses[direction],
 		justifyClasses[justify],
 		gap && gapClasses[gap],
+		cls[wrap],
 	];
 
 	return (

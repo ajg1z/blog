@@ -14,3 +14,22 @@
         cursor: auto;
     }
 }
+
+
+
+.redesignedStartIconBtn {
+    svg {
+        stroke:  var(--icon-design-v2);
+        fill: none;
+    }
+
+    &.hovered {
+        svg {
+            fill: var(--icon-design-v2);
+        }
+    }
+
+    &.selected {
+        cursor: auto;
+    }
+}

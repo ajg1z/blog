@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/designV2/Text';
 import { ArticleList, ArticleView } from '@/entities/Article';
 import cls from './ArticleRecommendationsList.module.scss';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 interface ArticleRecommendationsListProps {
 	className?: string;
@@ -22,16 +24,34 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
 	}, [refetch]);
 
 	return (
-		<div className={classNames('', {}, [className])}>
-			<Text title={t('recommendations')} className={cls.title} />
-			<ArticleList
-				target='_blank'
-				articles={articles}
-				view={ArticleView.TILE}
-				isLoading={isFetching}
-				error={errorMessage}
-				className={cls.recommendationsArticles}
-			/>
-		</div>
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<div className={classNames('', {}, [className])}>
+					<DeprecatedText title={t('recommendations')} className={cls.title} />
+					<ArticleList
+						target='_blank'
+						articles={articles}
+						view={ArticleView.TILE}
+						isLoading={isFetching}
+						error={errorMessage}
+						className={cls.recommendationsArticles}
+					/>
+				</div>
+			}
+			on={
+				<div className={classNames('', {}, [className])}>
+					<Text title={t('recommendations')} className={cls.title} />
+					<ArticleList
+						target='_blank'
+						articles={articles}
+						view={ArticleView.TILE}
+						isLoading={isFetching}
+						error={errorMessage}
+						className={cls.recommendationsArticles}
+					/>
+				</div>
+			}
+		/>
 	);
 });

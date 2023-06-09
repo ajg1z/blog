@@ -45,19 +45,31 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
 	return (
 		<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-			<PageWrapper>
-				<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-					<ArticleDetailsPageHeader />
-					<ArticleDetails id={id} />
-					<ToggleFeatureComponent
-						name='isArticleRatingEnabled'
-						on={<ArticleRating articleId={id} className={cls.articleRating} />}
-						off={<Card>{t('Скоро будет доступна оценка статьи!')}</Card>}
-					/>
-					<ArticleRecommendationsList />
-					<ArticleDetailsComments id={id} className={cls.articleComments} />
-				</div>
-			</PageWrapper>
+			<ToggleFeatureComponent
+				name='isAppRedesigned'
+				off={
+					<PageWrapper>
+						<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+							<ArticleDetailsPageHeader />
+							<ArticleDetails id={id} />
+							<Card>{t('Скоро будет доступна оценка статьи!')}</Card>
+							<ArticleRecommendationsList />
+							<ArticleDetailsComments id={id} className={cls.articleComments} />
+						</div>
+					</PageWrapper>
+				}
+				on={
+					<PageWrapper>
+						<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+							<ArticleDetailsPageHeader />
+							<ArticleDetails id={id} />
+							<ArticleRating articleId={id} className={cls.articleRating} />
+							<ArticleRecommendationsList />
+							<ArticleDetailsComments id={id} className={cls.articleComments} />
+						</div>
+					</PageWrapper>
+				}
+			/>
 		</DynamicModuleLoader>
 	);
 };

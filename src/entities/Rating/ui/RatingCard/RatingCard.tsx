@@ -1,13 +1,19 @@
 import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo, useState } from 'react';
-import { Card } from '@/shared/ui/deprecated/Card';
+import { Card as DeprecatedCard } from '@/shared/ui/deprecated/Card';
+import { Card } from '@/shared/ui/designV2/Card';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
-import { Text } from '@/shared/ui/deprecated/Text';
-import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/designV2/Text';
+import { Modal } from '@/shared/ui/designV2/Modal';
 import { HStack, VStack } from '@/shared/ui/designV2/Stack';
-import { TextArea } from '@/shared/ui/deprecated/Input';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { RotatingLinesLoader } from '@/shared/ui/deprecated/Loaders';
+import { TextArea as DeprecatedTextArea } from '@/shared/ui/deprecated/Input';
+import { TextArea } from '@/shared/ui/designV2/Input';
+import { Button as DeprecatedButton } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/designV2/Button';
+import { RotatingLinesLoader as DeprecatedRotatingLinesLoader } from '@/shared/ui/deprecated/Loaders';
+import { RotatingLinesLoader } from '@/shared/ui/designV2/Loaders';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 interface RatingCardProps {
 	className?: string;
@@ -69,42 +75,89 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
 	const isShowFeedback = Boolean(starsCount && hasFeedback && feedback && !isOpenModal && !isSending);
 
 	return (
-		<Card data-testid='RatingCard' className={className}>
-			<VStack gap={8} align='center'>
-				{isSending ? (
-					<VStack align='center' gap={8} justify='center'>
-						<RotatingLinesLoader width='50px' />
-						<Text text={t('sending')} />
-					</VStack>
-				) : (
-					<>
-						<Text align='center' title={title} />
-						<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
-					</>
-				)}
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<DeprecatedCard data-testid='RatingCard' className={className}>
+					<VStack gap={8} align='center'>
+						{isSending ? (
+							<VStack align='center' gap={8} justify='center'>
+								<DeprecatedRotatingLinesLoader width='50px' />
+								<DeprecatedText text={t('sending')} />
+							</VStack>
+						) : (
+							<>
+								<DeprecatedText align='center' title={title} />
+								<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+							</>
+						)}
 
-				{isShowFeedback && <Text text={feedback} />}
+						{isShowFeedback && <Text text={feedback} />}
 
-				<Modal title={feedbackTitle} isOpen={isOpenModal}>
-					<VStack gap={12}>
-						<TextArea
-							theme='outline'
-							rows={4}
-							value={feedback}
-							onChangeValue={onChangeFeedback}
-							data-testid='RatingCard.TextArea'
-						/>
-						<HStack justify='end' gap={8}>
-							<Button data-testid='RatingCard.Cancel' theme='outlineRed' onClick={onCancelFeedback}>
-								{t('button.cancel')}
-							</Button>
-							<Button data-testid='RatingCard.Send' onClick={onSendFeedback}>
-								{t('button.send')}
-							</Button>
-						</HStack>
+						<Modal title={feedbackTitle} isOpen={isOpenModal}>
+							<VStack gap={12}>
+								<DeprecatedTextArea
+									theme='outline'
+									rows={4}
+									value={feedback}
+									onChangeValue={onChangeFeedback}
+									data-testid='RatingCard.TextArea'
+								/>
+								<HStack justify='end' gap={8}>
+									<DeprecatedButton
+										data-testid='RatingCard.Cancel'
+										theme='outlineRed'
+										onClick={onCancelFeedback}
+									>
+										{t('button.cancel')}
+									</DeprecatedButton>
+									<DeprecatedButton data-testid='RatingCard.Send' onClick={onSendFeedback}>
+										{t('button.send')}
+									</DeprecatedButton>
+								</HStack>
+							</VStack>
+						</Modal>
 					</VStack>
-				</Modal>
-			</VStack>
-		</Card>
+				</DeprecatedCard>
+			}
+			on={
+				<Card data-testid='RatingCard' className={className}>
+					<VStack gap={8} align='center'>
+						{isSending ? (
+							<VStack align='center' gap={8} justify='center'>
+								<RotatingLinesLoader width='50px' />
+								<Text text={t('sending')} />
+							</VStack>
+						) : (
+							<>
+								<Text align='center' title={title} />
+								<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+							</>
+						)}
+
+						{isShowFeedback && <Text text={feedback} />}
+
+						<Modal title={feedbackTitle} isOpen={isOpenModal}>
+							<VStack gap={12}>
+								<TextArea
+									rows={4}
+									value={feedback}
+									onChangeValue={onChangeFeedback}
+									data-testid='RatingCard.TextArea'
+								/>
+								<HStack justify='end' gap={8}>
+									<Button data-testid='RatingCard.Cancel' onClick={onCancelFeedback}>
+										{t('button.cancel')}
+									</Button>
+									<Button data-testid='RatingCard.Send' onClick={onSendFeedback}>
+										{t('button.send')}
+									</Button>
+								</HStack>
+							</VStack>
+						</Modal>
+					</VStack>
+				</Card>
+			}
+		/>
 	);
 });

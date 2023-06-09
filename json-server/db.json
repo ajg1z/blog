@@ -112,6 +112,24 @@
       "articleId": "12",
       "userId": 1,
       "id": 20
+    },
+    {
+      "text": "",
+      "articleId": "19",
+      "userId": 1,
+      "id": 21
+    },
+    {
+      "text": "asdsadsadddddddddddddddddddddddddddddddd",
+      "articleId": "19",
+      "userId": 1,
+      "id": 22
+    },
+    {
+      "text": "",
+      "articleId": "19",
+      "userId": 1,
+      "id": 23
     }
   ],
   "articles": [
@@ -648,8 +666,8 @@
       "password": "admin",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6Z6Uxl-jW0hktZrPM6uOwPnm8h01l8Bk3w&usqp=CAU",
       "features": {
-        "isArticleRatingEnabled": false,
-        "isProfileRatingEnabled": false,
+        "isArticleRatingEnabled": true,
+        "isProfileRatingEnabled": true,
         "isAppRedesigned": true
       },
       "roles": [
@@ -674,7 +692,7 @@
         "isProfileRatingEnabled": true
       },
       "jsonSettings": {
-        "theme": "light",
+        "theme": "dark",
         "isFirstVisit": true,
         "profilePageHasBeenOpen": true
       }
@@ -852,6 +870,12 @@
       "userId": 2,
       "feedback": "asdasd",
       "id": "6dE2KKt"
+    },
+    {
+      "rate": 5,
+      "articleId": "2",
+      "userId": 1,
+      "id": "0zev2De"
     }
   ],
   "profile-ratings": [

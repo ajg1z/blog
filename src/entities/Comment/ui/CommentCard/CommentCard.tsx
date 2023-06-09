@@ -1,44 +1,55 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { AppLink as DeprecatedAppLink } from '@/shared/ui/deprecated/AppLink';
+import { AppLink } from '@/shared/ui/designV2/AppLink';
+import { Avatar as DeprecatedAvatar } from '@/shared/ui/deprecated/Avatar';
+import { Avatar } from '@/shared/ui/designV2/Avatar';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/designV2/Text';
 import { HStack } from '@/shared/ui/designV2/Stack';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 import { getRouteProfile } from '@/shared/const/router';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Card } from '@/shared/ui/designV2/Card';
 
 interface CommentCardProps {
 	className?: string;
 	comment: Comment;
-	isLoading?: boolean;
 }
 
 export const CommentCard: FC<CommentCardProps> = (props) => {
-	const { className, comment, isLoading } = props;
-
-	if (isLoading) {
-		return (
-			<div data-testid='CommentCard.Loading' className={classNames(cls.commentCard, {}, [className])}>
-				<HStack gap={12}>
-					<Skeleton border='50%' height={30} width={30} />
-					<Skeleton height={20} width={150} />
-				</HStack>
-				<Skeleton height={50} className={cls.text} />
-			</div>
-		);
-	}
+	const { className, comment } = props;
 
 	return (
-		<div data-testid='CommentCard.Content' className={classNames(cls.commentCard, {}, [className])}>
-			<AppLink to={getRouteProfile(comment.user.id)}>
-				<HStack gap={12}>
-					{comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
-					<Text title={comment.user.username} />
-				</HStack>
-			</AppLink>
-			<Text text={comment.text} className={cls.text} />
-		</div>
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<div data-testid='CommentCard.Content' className={classNames(cls.commentCard, {}, [className])}>
+					<DeprecatedAppLink to={getRouteProfile(comment.user.id)}>
+						<HStack gap={12}>
+							{comment.user?.avatar && <DeprecatedAvatar size={30} src={comment.user?.avatar} />}
+							<DeprecatedText title={comment.user.username} />
+						</HStack>
+					</DeprecatedAppLink>
+					<DeprecatedText text={comment.text} className={cls.text} />
+				</div>
+			}
+			on={
+				<Card
+					padding={10}
+					data-testid='CommentCard.Content'
+					className={classNames(cls.redesignedCommentCard, {}, [className])}
+				>
+					<AppLink to={getRouteProfile(comment.user.id)}>
+						<HStack gap={12}>
+							{comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
+							<Text title={comment.user.username} />
+						</HStack>
+					</AppLink>
+					<Text text={comment.text} className={cls.text} />
+				</Card>
+			}
+		/>
 	);
 };

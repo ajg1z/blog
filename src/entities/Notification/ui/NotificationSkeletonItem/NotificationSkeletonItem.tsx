@@ -1,14 +1,17 @@
-import { useTranslation } from 'react-i18next';
 import { PropsWithChildren, memo } from 'react';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as DeprecatedSkeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as DesignV2Skeleton } from '@/shared/ui/designV2/Skeleton';
 import cls from './NotificationSkeletonItem.module.scss';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
-interface NotificationSkeletonItemProps {
-	// className?: string;
-}
+interface NotificationSkeletonItemProps {}
 
 export const NotificationSkeletonItem = memo((props: PropsWithChildren<NotificationSkeletonItemProps>) => {
-	const { t } = useTranslation();
+	const Skeleton = toggleFeature({
+		name: 'isAppRedesigned',
+		off: () => DeprecatedSkeleton,
+		on: () => DesignV2Skeleton,
+	});
 
 	return (
 		<Skeleton border='5px' height='max-content' className={cls.NotificationSkeletonItem}>

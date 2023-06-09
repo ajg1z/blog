@@ -10,7 +10,7 @@ declare module 'i18next' {
 	}
 }
 
-const ns = ['translation', 'main', 'about', 'profile', 'article', 'articles'];
+const ns = ['translation', 'main', 'about', 'profile', 'article', 'articles', 'settings'];
 
 i18n.use(Backend)
 	.use(LanguageDetector)

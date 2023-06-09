@@ -2,7 +2,8 @@ import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/designV2/Text';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { CommentList } from '@/entities/Comment';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -15,6 +16,8 @@ import {
 	getArticleFetchCommentError,
 } from '../../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../../model/service/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { VStack } from '@/shared/ui/designV2/Stack';
 
 interface ArticleDetailsCommentsProps {
 	className?: string;
@@ -44,10 +47,14 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = (props) =
 	});
 
 	return (
-		<div className={classNames('', {}, [className])}>
-			<Text title={commonT('commentsTitle')} />
+		<VStack className={classNames('', {}, [className])} gap={8} max>
+			<ToggleFeatureComponent
+				name='isAppRedesigned'
+				off={<DeprecatedText title={commonT('commentsTitle')} />}
+				on={<Text title={commonT('commentsTitle')} />}
+			/>
 			<AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
 			<CommentList error={fetchCommentsError} comments={comments} isLoading={!!commentsLoading} />
-		</div>
+		</VStack>
 	);
 };

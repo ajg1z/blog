@@ -1,11 +1,16 @@
-.activeView {
-    &.viewIconBtn {
+.ArticleViewSelector {
+    .viewIconBtn svg {
+        fill: var(--primary-color);
+    }
+
+    .activeView svg {
         fill: var(--secondary-color);
     }
 }
 
 .ArticleViewSelectorDesignV2 {
     border-radius: 30px;
+
     .viewIconBtn {
         fill: var(--light-bg-design-v2);
     }

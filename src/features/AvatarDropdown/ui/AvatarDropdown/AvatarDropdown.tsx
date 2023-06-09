@@ -8,7 +8,7 @@ import { getUserData, isUserAdmin, isUserManager, userActions } from '@/entities
 import { TokenLocalStorageKey } from '@/shared/const/localStorage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ButtonProps } from '@/shared/ui/deprecated/Button';
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
+import { getRouteAdminPanel, getRouteProfile, getRouteSettings } from '@/shared/const/router';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { Avatar } from '@/shared/ui/designV2/Avatar';
 import { Dropdown } from '@/shared/ui/designV2/Dropdown';
@@ -30,6 +30,7 @@ export const AvatarDropdown = memo((props: PropsWithChildren<AvatarDropdownProps
 	const onLogout = useCallback(() => {
 		localStorage.removeItem(TokenLocalStorageKey);
 		dispatch(userActions.logout());
+		window.location.reload();
 	}, [dispatch]);
 
 	if (!user) {
@@ -39,6 +40,11 @@ export const AvatarDropdown = memo((props: PropsWithChildren<AvatarDropdownProps
 	const isAdminPanel = isAdmin || isManager;
 
 	const dropdownItems = [
+		{
+			id: '4',
+			href: getRouteSettings(),
+			content: t('navbar.settings'),
+		},
 		{
 			id: '2',
 			href: getRouteProfile(user.id),

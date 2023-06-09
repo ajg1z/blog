@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { useTranslation } from 'react-i18next';
 import ListIcon from '@/shared/assets/img/list.svg';
 import TileIcon from '@/shared/assets/img/tile.svg';
 import { ArticleView } from '@/entities/Article';
@@ -11,7 +12,6 @@ import { IconButton } from '@/shared/ui/designV2/Icon/IconButton';
 import { HStack } from '@/shared/ui/designV2/Stack';
 import { Card } from '@/shared/ui/designV2/Card';
 import { Text } from '@/shared/ui/designV2/Text';
-import { t } from 'i18next';
 
 interface ArticleViewSelectorProps {
 	className?: string;
@@ -32,6 +32,8 @@ const viewTypes = [
 
 export function ArticlesViewSelector(props: PropsWithChildren<ArticleViewSelectorProps>) {
 	const { className, onViewSelect, activeView } = props;
+
+	const { t } = useTranslation();
 
 	return (
 		<ToggleFeatureComponent

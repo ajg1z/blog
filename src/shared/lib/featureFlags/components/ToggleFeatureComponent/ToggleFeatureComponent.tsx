@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { getFeatureFlag } from '../featureFlagsManager';
+import { getFeatureFlag } from '../../lib/featureFlagsManager';
 import { KeysFeatureFlags } from '@/shared/types/featureFlags';
 
 interface ToggleFeaturesComponentProps {

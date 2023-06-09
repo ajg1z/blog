@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import { LoginModal } from '@/features/AuthByUsername';
 import { getUserData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { AppLink as DeprecatedAppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button as DeprecatedButton } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/designV2/Button';
+import { Text as DeprecatedText } from '@/shared/ui/deprecated/Text';
 
 import { HStack } from '@/shared/ui/designV2/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
@@ -48,10 +49,10 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
 				}
 				off={
 					<header className={classNames(cls.Navbar, {}, [className])}>
-						<Text title={t('logo')} className={cls.logo} />
-						<AppLink to={getRouteArticleCreate()} className={cls.createArticle}>
+						<DeprecatedText title={t('logo')} className={cls.logo} />
+						<DeprecatedAppLink to={getRouteArticleCreate()} className={cls.createArticle}>
 							{articleT('createArticle')}
-						</AppLink>
+						</DeprecatedAppLink>
 						<HStack gap={24} className={cls.actions}>
 							<NotificationButton />
 							<AvatarDropdown />
@@ -63,11 +64,25 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
 	}
 
 	return (
-		<header className={classNames(cls.Navbar, {}, [className])}>
-			<Button className={cls.logout} theme='clearInverted' onClick={openAuthModal}>
-				{t('sign')}
-			</Button>
-			<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
-		</header>
+		<ToggleFeatureComponent
+			name='isAppRedesigned'
+			off={
+				<header className={classNames(cls.Navbar, {}, [className])}>
+					<DeprecatedButton className={cls.logout} theme='clearInverted' onClick={openAuthModal}>
+						{t('sign')}
+					</DeprecatedButton>
+
+					<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
+				</header>
+			}
+			on={
+				<header className={classNames(cls.NavbarDesignV2, {}, [className])}>
+					<Button className={cls.logout} variant='clear' onClick={openAuthModal}>
+						{t('sign')}
+					</Button>
+					<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
+				</header>
+			}
+		/>
 	);
 });

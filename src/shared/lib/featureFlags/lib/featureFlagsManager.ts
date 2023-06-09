@@ -7,6 +7,7 @@ let featureFlags: FeatureFlags = {
 };
 
 export const getFeatureFlag = (key: keyof FeatureFlags): boolean => !!featureFlags[key];
+export const getFeatureAllFlags = () => featureFlags;
 
 export const setFeatureFlags = (value?: FeatureFlags) => {
 	if (value) {

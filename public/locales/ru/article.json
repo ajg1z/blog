@@ -1,14 +1,18 @@
 {
-    "articleNotFound": "Статья не найдена",
-    "errorLoading": "Произошла ошибка при загрузке статьи",
-    "backToArticles": "Назад к списку",
-    "recommendations": "Рекомендуем",
-    "createArticle": "Создать статью",
-    "rating": {
-        "thanksForEvaluate": "Спасибо за отзыв",
-        "evaluate": "Оцените статью",
-        "feedbackTitle": "Оставьте отзыв",
-        "errorLoading": "Не удалось загрузить рейтинг, попробуйте обновить страницу.",
-        "errorRate": "Не удалось поставить рейтинг, попробуйте обновить страницу"
-    }
+	"articleNotFound": "Статья не найдена",
+	"errorLoading": "Произошла ошибка при загрузке статьи",
+	"backToArticles": "Назад к списку",
+	"recommendations": "Рекомендуем",
+	"createArticle": "Создать статью",
+	"rating": {
+		"thanksForEvaluate": "Спасибо за отзыв",
+		"evaluate": "Оцените статью",
+		"feedbackTitle": "Оставьте отзыв",
+		"errorLoading": "Не удалось загрузить рейтинг, попробуйте обновить страницу.",
+		"errorRate": "Не удалось поставить рейтинг, попробуйте обновить страницу"
+	},
+	"{{count}} views_zero": "{{count}} просмотров",
+	"{{count}} views_one": "{{count}} просмотр",
+	"{{count}} views_few": "{{count}} просмотра",
+	"{{count}} views_many": "{{count}} просмотров"
 }

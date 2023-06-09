@@ -28,17 +28,17 @@ function App() {
 					onChangeTheme(jsonSettingsTheme);
 					localStorage.setItem(LOCAL_STORAGE_THEME_KEY, jsonSettingsTheme);
 				}
-
-				toggleFeature({
-					name: 'isAppRedesigned',
-					on() {
-						document.body.classList.add('app-design-v2');
-					},
-					off() {
-						document.body.classList.add('app');
-					},
-				});
 			}
+
+			toggleFeature({
+				name: 'isAppRedesigned',
+				on() {
+					document.body.classList.add('app-design-v2');
+				},
+				off() {
+					document.body.classList.add('app');
+				},
+			});
 		})();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);

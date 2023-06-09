@@ -6,7 +6,8 @@
 		"main": "Main",
 		"profile": "Profile",
 		"articles": "Articles",
-		"admin": "Admin"
+		"admin": "Admin",
+		"settings": "Settings"
 	},
 	"notFoundPage": "Page not found",
 	"pageError": "Something went wrong...",
@@ -49,5 +50,5 @@
 	"search": "Search",
 	"typeView": "view",
 	"increasing": "increasing",
-	"decreasing": "decreasing"
+	"decreasing": "decreasing"?
 }

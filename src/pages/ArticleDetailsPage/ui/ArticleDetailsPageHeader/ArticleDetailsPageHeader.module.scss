@@ -1,3 +1,17 @@
 .editBtn {
     margin-left: auto;
 }
+
+.ArticleDetailsPageHeader {
+    position: sticky;
+    top:0;
+    background-color: var(--light-bg-design-v2);
+    padding: 12px ;
+    margin: 10px;
+    z-index: 1;
+}
+
+.views {
+    margin-left: 20px;
+    margin-right: auto;
+}
