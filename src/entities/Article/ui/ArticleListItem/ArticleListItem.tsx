@@ -14,9 +14,5 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => (
-	<ToggleFeatureComponent
-		name='isAppRedesigned'
-		off={<DeprecatedArticleListItem {...props} />}
-		on={<DesignV2ArticleListItem {...props} />}
-	/>
+	<DesignV2ArticleListItem {...props} />
 ));

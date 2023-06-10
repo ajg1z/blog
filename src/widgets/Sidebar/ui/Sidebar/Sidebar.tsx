@@ -28,62 +28,29 @@ export const Sidebar: FC<SidebarProps> = memo((props) => {
 	}
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<menu
-					aria-label='sidebar'
-					className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
-				>
-					<Button
-						theme='backgroundInverted'
-						className={cls.collapseBtn}
-						data-testid='toggle-btn'
-						onClick={onToggle}
-						square
-						size='L'
-					>
-						{collapsed ? '>' : '<'}
-					</Button>
+		<VStack
+        					aria-label='sidebar'
+        					className={classNames(cls.SidebarDesignV2, { [cls.collapsed]: collapsed }, [className])}
+        				>
+        					<AppLogo className={cls.appLogo} />
 
-					<VStack className={cls.items} gap={24} role='navigation'>
-						{sidebarListLink.map((item) => (
-							<SidebarItem item={item} key={item.path} />
-						))}
-					</VStack>
+        					<VStack className={cls.items} gap={8} role='navigation' max align='start'>
+        						{sidebarListLink.map((item) => (
+        							<SidebarItem item={item} key={item.path} />
+        						))}
+        					</VStack>
 
-					<HStack className={cls.switchers} gap={8} max justify='center'>
-						<ThemeSwitcher />
-						<LangSwitcher isShort={collapsed} />
-					</HStack>
-				</menu>
-			}
-			on={
-				<VStack
-					aria-label='sidebar'
-					className={classNames(cls.SidebarDesignV2, { [cls.collapsed]: collapsed }, [className])}
-				>
-					<AppLogo className={cls.appLogo} />
+        					<HStack className={cls.switchers} gap={8} max justify='center'>
+        						<ThemeSwitcher />
+        						<LangSwitcher isShort={collapsed} />
+        					</HStack>
 
-					<VStack className={cls.items} gap={8} role='navigation' max align='start'>
-						{sidebarListLink.map((item) => (
-							<SidebarItem item={item} key={item.path} />
-						))}
-					</VStack>
-
-					<HStack className={cls.switchers} gap={8} max justify='center'>
-						<ThemeSwitcher />
-						<LangSwitcher isShort={collapsed} />
-					</HStack>
-
-					<IconButton
-						Svg={ArrowBottomIcon}
-						className={classNames(cls.collapseBtn, { [cls.collapsed]: collapsed })}
-						data-testid='toggle-btn'
-						onClick={onToggle}
-					/>
-				</VStack>
-			}
-		/>
+        					<IconButton
+        						Svg={ArrowBottomIcon}
+        						className={classNames(cls.collapseBtn, { [cls.collapsed]: collapsed })}
+        						data-testid='toggle-btn'
+        						onClick={onToggle}
+        					/>
+        				</VStack>
 	);
 });

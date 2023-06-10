@@ -36,35 +36,20 @@ export const ArticleDetailsPageHeader = memo((props: PropsWithChildren<ArticleDe
 	};
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<HStack className={classNames('', {}, [className])}>
-					<DeprecatedButton onClick={onBackToList}>{t('backToArticles')}</DeprecatedButton>
-					{canEdit && (
-						<DeprecatedButton className={cls.editBtn} onClick={onEdit}>
-							{commonT('button.edit')}
-						</DeprecatedButton>
-					)}
-				</HStack>
-			}
-			on={
-				<HStack className={classNames(cls.ArticleDetailsPageHeader, {}, [className])} gap={8}>
-					<HStack gap={8}>
-						<Avatar src={article?.user.avatar} size={33} />
-						<Text text={article?.user.username} bold />
-						<Text text={article?.createdAt} bold />
-					</HStack>
+		<HStack className={classNames(cls.ArticleDetailsPageHeader, {}, [className])} gap={8}>
+        					<HStack gap={8}>
+        						<Avatar src={article?.user.avatar} size={33} />
+        						<Text text={article?.user.username} bold />
+        						<Text text={article?.createdAt} bold />
+        					</HStack>
 
-					<Text text={t('{{count}} views', { count: article?.views ?? 0 })} className={cls.views} />
-					{canEdit && (
-						<Button variant='filled' className={cls.editBtn} onClick={onEdit}>
-							{commonT('button.edit')}
-						</Button>
-					)}
-					<Button onClick={onBackToList}>{t('backToArticles')}</Button>
-				</HStack>
-			}
-		/>
+        					<Text text={t('{{count}} views', { count: article?.views ?? 0 })} className={cls.views} />
+        					{canEdit && (
+        						<Button variant='filled' className={cls.editBtn} onClick={onEdit}>
+        							{commonT('button.edit')}
+        						</Button>
+        					)}
+        					<Button onClick={onBackToList}>{t('backToArticles')}</Button>
+        				</HStack>
 	);
 });

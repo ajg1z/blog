@@ -18,17 +18,9 @@ interface ArticleListItemProps {
 export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo((props) => {
 	const { className, view } = props;
 
-	const Skeleton = toggleFeature({
-		name: 'isAppRedesigned',
-		off: () => DeprecatedSkeleton,
-		on: () => DesignV2Skeleton,
-	});
+	const Skeleton = DesignV2Skeleton;
 
-	const Card = toggleFeature({
-		name: 'isAppRedesigned',
-		off: () => DeprecatedCard,
-		on: () => DesignV2Card,
-	});
+	const Card = DesignV2Card;
 
 	if (view === ArticleView.TILE) {
 		return (

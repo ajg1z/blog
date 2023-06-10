@@ -44,24 +44,11 @@ export const ArticleTypeTabs = memo((props: PropsWithChildren<ArticleTypeTAbsPro
 	);
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<TabsDeprecated
-					tabs={tabs}
-					value={type}
-					onTabClick={onChangeType}
-					className={classNames(cls.tabs, {}, [className])}
-				/>
-			}
-			on={
-				<Tabs
-					tabs={tabs}
-					value={type}
-					onTabClick={onChangeType}
-					className={classNames(cls.tabs, {}, [className])}
-				/>
-			}
-		/>
+		<Tabs
+        					tabs={tabs}
+        					value={type}
+        					onTabClick={onChangeType}
+        					className={classNames(cls.tabs, {}, [className])}
+        				/>
 	);
 });

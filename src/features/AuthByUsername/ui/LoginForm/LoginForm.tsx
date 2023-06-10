@@ -75,57 +75,23 @@ const LoginForm = memo((props: PropsWithChildren<LoginFormProps>) => {
 	}, []);
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>
-					<VStack gap={4} justify='start' align='stretch' className={classNames('', {}, [className])}>
-						<Field label={t('login')} className={cls.field}>
-							<DeprecatedInput
-								autofocus
-								theme='backgroundInverted'
-								value={username}
-								onChange={onChangeUsername}
-							/>
-						</Field>
+		<DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>
+        					<VStack gap={8} justify='start' align='stretch' className={classNames('', {}, [className])}>
+        						<Field label={t('login')} className={cls.field}>
+        							<Input autofocus value={username} onChange={onChangeUsername} />
+        						</Field>
 
-						<Field label={t('password')} className={cls.field}>
-							<DeprecatedInput
-								theme='backgroundInverted'
-								value={password}
-								onChange={onChangePassword}
-								type='password'
-							/>
-						</Field>
-						<HStack className={cls.footer} gap={12} justify='end'>
-							{error && <DeprecatedText theme='error' text={error} />}
-							<DeprecatedButton disabled={isLoading} className={cls.sign} onClick={onLoginClick}>
-								{t('sign')}
-							</DeprecatedButton>
-						</HStack>
-					</VStack>
-				</DynamicModuleLoader>
-			}
-			on={
-				<DynamicModuleLoader isRemoveAfterUnmount reducers={initialReducers}>
-					<VStack gap={8} justify='start' align='stretch' className={classNames('', {}, [className])}>
-						<Field label={t('login')} className={cls.field}>
-							<Input autofocus value={username} onChange={onChangeUsername} />
-						</Field>
-
-						<Field label={t('password')} className={cls.field}>
-							<Input value={password} onChange={onChangePassword} type='password' />
-						</Field>
-						<HStack className={cls.footer} gap={12} justify='end'>
-							{error && <Text variant='error' text={error} />}
-							<Button variant='filled' disabled={isLoading} className={cls.sign} onClick={onLoginClick}>
-								{t('sign')}
-							</Button>
-						</HStack>
-					</VStack>
-				</DynamicModuleLoader>
-			}
-		/>
+        						<Field label={t('password')} className={cls.field}>
+        							<Input value={password} onChange={onChangePassword} type='password' />
+        						</Field>
+        						<HStack className={cls.footer} gap={12} justify='end'>
+        							{error && <Text variant='error' text={error} />}
+        							<Button variant='filled' disabled={isLoading} className={cls.sign} onClick={onLoginClick}>
+        								{t('sign')}
+        							</Button>
+        						</HStack>
+        					</VStack>
+        				</DynamicModuleLoader>
 	);
 });
 

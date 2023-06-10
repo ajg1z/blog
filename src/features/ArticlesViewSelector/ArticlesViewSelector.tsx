@@ -36,41 +36,21 @@ export function ArticlesViewSelector(props: PropsWithChildren<ArticleViewSelecto
 	const { t } = useTranslation();
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<div className={classNames(cls.ArticleViewSelector, {}, [className])}>
-					{viewTypes.map(({ icon, view }) => (
-						<ButtonDeprecated
-							data-testid={`ArticlesViewSelector.${view}`}
-							theme='clear'
-							key={view}
-							className={classNames(cls.viewIconBtn, { [cls.activeView]: view === activeView }, [])}
-							onClick={() => onViewSelect?.(view)}
-						>
-							<IconDeprecated width={24} height={24} Svg={icon} />
-						</ButtonDeprecated>
-					))}
-				</div>
-			}
-			on={
-				<Card className={cls.ArticleViewSelectorDesignV2}>
-					<HStack gap={4} className={classNames('', {}, [className])}>
-						<Text text={t('typeView')} className={cls.label} />
-						{viewTypes.map(({ icon, view }) => (
-							<IconButton
-								key={view}
-								data-testid={`ArticlesViewSelector.${view}`}
-								Svg={icon}
-								width={24}
-								height={24}
-								className={classNames(cls.viewIconBtn, { [cls.activeView]: view === activeView }, [])}
-								onClick={() => onViewSelect?.(view)}
-							/>
-						))}
-					</HStack>
-				</Card>
-			}
-		/>
+		<Card className={cls.ArticleViewSelectorDesignV2}>
+        					<HStack gap={4} className={classNames('', {}, [className])}>
+        						<Text text={t('typeView')} className={cls.label} />
+        						{viewTypes.map(({ icon, view }) => (
+        							<IconButton
+        								key={view}
+        								data-testid={`ArticlesViewSelector.${view}`}
+        								Svg={icon}
+        								width={24}
+        								height={24}
+        								className={classNames(cls.viewIconBtn, { [cls.activeView]: view === activeView }, [])}
+        								onClick={() => onViewSelect?.(view)}
+        							/>
+        						))}
+        					</HStack>
+        				</Card>
 	);
 }

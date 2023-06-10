@@ -45,31 +45,15 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
 	return (
 		<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={
-					<PageWrapper>
-						<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-							<ArticleDetailsPageHeader />
-							<ArticleDetails id={id} />
-							<Card>{t('Скоро будет доступна оценка статьи!')}</Card>
-							<ArticleRecommendationsList />
-							<ArticleDetailsComments id={id} className={cls.articleComments} />
-						</div>
-					</PageWrapper>
-				}
-				on={
-					<PageWrapper>
-						<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-							<ArticleDetailsPageHeader />
-							<ArticleDetails id={id} />
-							<ArticleRating articleId={id} className={cls.articleRating} />
-							<ArticleRecommendationsList />
-							<ArticleDetailsComments id={id} className={cls.articleComments} />
-						</div>
-					</PageWrapper>
-				}
-			/>
+			<PageWrapper>
+            						<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+            							<ArticleDetailsPageHeader />
+            							<ArticleDetails id={id} />
+            							<ArticleRating articleId={id} className={cls.articleRating} />
+            							<ArticleRecommendationsList />
+            							<ArticleDetailsComments id={id} className={cls.articleComments} />
+            						</div>
+            					</PageWrapper>
 		</DynamicModuleLoader>
 	);
 };

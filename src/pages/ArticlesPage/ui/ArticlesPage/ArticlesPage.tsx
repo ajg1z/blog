@@ -35,29 +35,16 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
 
 	return (
 		<DynamicModuleLoader reducers={reducers}>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={
-					<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
-						<div className={classNames(cls.ArticlesPage, {}, [className])}>
-							<ArticlesPageFilters className={cls.articleFilters} />
-							<ArticleInfiniteList />
-						</div>
-					</PageWrapper>
-				}
-				on={
-					<StickyContentLayout
-						right={<FiltersContainer />}
-						content={
-							<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
-								<div className={classNames(cls.ArticlesPage, {}, [className])}>
-									<ArticleInfiniteList />
-								</div>
-							</PageWrapper>
-						}
-					/>
-				}
-			/>
+			<StickyContentLayout
+            						right={<FiltersContainer />}
+            						content={
+            							<PageWrapper data-testid='ArticlesPage' className={cls.page} saveScrollPosition={false}>
+            								<div className={classNames(cls.ArticlesPage, {}, [className])}>
+            									<ArticleInfiniteList />
+            								</div>
+            							</PageWrapper>
+            						}
+            					/>
 		</DynamicModuleLoader>
 	);
 };

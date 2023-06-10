@@ -9,9 +9,5 @@ interface ArticleDetailProps {
 }
 
 export const ArticleDetails: FC<ArticleDetailProps> = memo((props) => (
-	<ToggleFeatureComponent
-		name='isAppRedesigned'
-		off={<DeprecatedArticleDetails {...props} />}
-		on={<DesignV2ArticleDetails {...props} />}
-	/>
+	<DesignV2ArticleDetails {...props} />
 ));

@@ -22,34 +22,18 @@ export const CommentCard: FC<CommentCardProps> = (props) => {
 	const { className, comment } = props;
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<div data-testid='CommentCard.Content' className={classNames(cls.commentCard, {}, [className])}>
-					<DeprecatedAppLink to={getRouteProfile(comment.user.id)}>
-						<HStack gap={12}>
-							{comment.user?.avatar && <DeprecatedAvatar size={30} src={comment.user?.avatar} />}
-							<DeprecatedText title={comment.user.username} />
-						</HStack>
-					</DeprecatedAppLink>
-					<DeprecatedText text={comment.text} className={cls.text} />
-				</div>
-			}
-			on={
-				<Card
-					padding={10}
-					data-testid='CommentCard.Content'
-					className={classNames(cls.redesignedCommentCard, {}, [className])}
-				>
-					<AppLink to={getRouteProfile(comment.user.id)}>
-						<HStack gap={12}>
-							{comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
-							<Text title={comment.user.username} />
-						</HStack>
-					</AppLink>
-					<Text text={comment.text} className={cls.text} />
-				</Card>
-			}
-		/>
+		<Card
+        					padding={10}
+        					data-testid='CommentCard.Content'
+        					className={classNames(cls.redesignedCommentCard, {}, [className])}
+        				>
+        					<AppLink to={getRouteProfile(comment.user.id)}>
+        						<HStack gap={12}>
+        							{comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
+        							<Text title={comment.user.username} />
+        						</HStack>
+        					</AppLink>
+        					<Text text={comment.text} className={cls.text} />
+        				</Card>
 	);
 };

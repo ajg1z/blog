@@ -23,24 +23,11 @@ export const SidebarItem = memo((props: PropsWithChildren<SidebarItemProps>) => 
 	if (!isAuth && item.authOnly) return null;
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<AppLinkDeprecated to={item.path} className={cls.SidebarItem}>
-					<HStack gap={12}>
-						<item.Icon className={cls.icon} />
-						<span>{t(`navbar.${item.text}`)}</span>
-					</HStack>
-				</AppLinkDeprecated>
-			}
-			on={
-				<AppLink activeClassName={cls.active} to={item.path} className={cls.DesignV2SidebarItem}>
-					<HStack gap={12}>
-						<Icon Svg={item.Icon} width={30} height={30} />
-						<span>{t(`navbar.${item.text}`)}</span>
-					</HStack>
-				</AppLink>
-			}
-		/>
+		<AppLink activeClassName={cls.active} to={item.path} className={cls.DesignV2SidebarItem}>
+        					<HStack gap={12}>
+        						<Icon Svg={item.Icon} width={30} height={30} />
+        						<span>{t(`navbar.${item.text}`)}</span>
+        					</HStack>
+        				</AppLink>
 	);
 });

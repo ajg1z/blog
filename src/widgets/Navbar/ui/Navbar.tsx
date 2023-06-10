@@ -37,52 +37,21 @@ export const Navbar: FC<NavbarProps> = memo(({ className }) => {
 
 	if (user) {
 		return (
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				on={
-					<header className={classNames(cls.NavbarDesignV2, {}, [className])}>
-						<HStack gap={24} className={cls.actions}>
-							<NotificationButton />
-							<AvatarDropdown />
-						</HStack>
-					</header>
-				}
-				off={
-					<header className={classNames(cls.Navbar, {}, [className])}>
-						<DeprecatedText title={t('logo')} className={cls.logo} />
-						<DeprecatedAppLink to={getRouteArticleCreate()} className={cls.createArticle}>
-							{articleT('createArticle')}
-						</DeprecatedAppLink>
-						<HStack gap={24} className={cls.actions}>
-							<NotificationButton />
-							<AvatarDropdown />
-						</HStack>
-					</header>
-				}
-			/>
+			<header className={classNames(cls.NavbarDesignV2, {}, [className])}>
+            						<HStack gap={24} className={cls.actions}>
+            							<NotificationButton />
+            							<AvatarDropdown />
+            						</HStack>
+            					</header>
 		);
 	}
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<header className={classNames(cls.Navbar, {}, [className])}>
-					<DeprecatedButton className={cls.logout} theme='clearInverted' onClick={openAuthModal}>
-						{t('sign')}
-					</DeprecatedButton>
-
-					<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
-				</header>
-			}
-			on={
-				<header className={classNames(cls.NavbarDesignV2, {}, [className])}>
-					<Button className={cls.logout} variant='clear' onClick={openAuthModal}>
-						{t('sign')}
-					</Button>
-					<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
-				</header>
-			}
-		/>
+		<header className={classNames(cls.NavbarDesignV2, {}, [className])}>
+        					<Button className={cls.logout} variant='clear' onClick={openAuthModal}>
+        						{t('sign')}
+        					</Button>
+        					<LoginModal isOpen={isAuthModal} onClose={closeAuthModal} />
+        				</header>
 	);
 });

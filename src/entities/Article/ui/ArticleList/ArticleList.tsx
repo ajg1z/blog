@@ -141,11 +141,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 					data-testid='ArticleList'
 					ref={virtuosoListRef}
 					className={classNames(cls.virtualizeList, {}, [
-						toggleFeature({
-							name: 'isAppRedesigned',
-							off: () => cls.virtualizedFullHeight,
-							on: () => cls.designV2VirtualizedFullHeight,
-						}),
+						cls.designV2VirtualizedFullHeight,
 					])}
 					data={articles}
 					totalCount={articles.length}
@@ -171,11 +167,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 					ref={virtuosoGridRef}
 					onScroll={saveScrollPosition ? onScroll : undefined}
 					className={classNames(cls.virtualizeGrid, {}, [
-						toggleFeature({
-							name: 'isAppRedesigned',
-							off: () => cls.virtualizedFullHeight,
-							on: () => cls.designV2VirtualizedFullHeight,
-						}),
+						cls.designV2VirtualizedFullHeight,
 					])}
 					data={articles}
 					totalCount={articles.length}
@@ -205,7 +197,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 			ref={wrapperRef}
 			className={classNames(cls.ArticleList, {}, [
 				className,
-				toggleFeature({ name: 'isAppRedesigned', off: () => cls.fullHeight, on: () => cls.designV2FullHeight }),
+				cls.designV2FullHeight,
 			])}
 			onScroll={saveScrollPosition ? onScroll : undefined}
 		>

@@ -15,26 +15,12 @@ export const ArticleBlockTextComponent: FC<ArticleBlockTextComponentProps> = mem
 	const { className, block } = props;
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<VStack gap={8} className={classNames('', {}, [className])}>
-					{block.title && <DeprecatedText title={block.title} />}
-					{block.paragraphs.map((p, index) => (
-						// eslint-disable-next-line react/no-array-index-key
-						<DeprecatedText key={`${p}${index}`} text={p} />
-					))}
-				</VStack>
-			}
-			on={
-				<VStack gap={8} className={classNames('', {}, [className])}>
-					{block.title && <Text title={block.title} />}
-					{block.paragraphs.map((p, index) => (
-						// eslint-disable-next-line react/no-array-index-key
-						<Text key={`${p}${index}`} text={p} />
-					))}
-				</VStack>
-			}
-		/>
+		<VStack gap={8} className={classNames('', {}, [className])}>
+        					{block.title && <Text title={block.title} />}
+        					{block.paragraphs.map((p, index) => (
+        						// eslint-disable-next-line react/no-array-index-key
+        						<Text key={`${p}${index}`} text={p} />
+        					))}
+        				</VStack>
 	);
 });

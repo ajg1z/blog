@@ -16,11 +16,7 @@ const SettingsPage = memo((props: PropsWithChildren<SettingsPageProps>) => {
 
 	const { t } = useTranslation('settings');
 
-	const Text = toggleFeature({
-		name: 'isAppRedesigned',
-		off: () => DeprecatedText,
-		on: () => DesignV2Text,
-	});
+	const Text = DesignV2Text;
 
 	return (
 		<PageWrapper>

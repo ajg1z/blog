@@ -24,9 +24,5 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = (props: PropsWithChildren<ProfileCardProps>) => (
-	<ToggleFeatureComponent
-		name='isAppRedesigned'
-		on={<DesignV2ProfileCard {...props} />}
-		off={<DeprecatedProfileCard {...props} />}
-	/>
+	<DesignV2ProfileCard {...props} />
 );

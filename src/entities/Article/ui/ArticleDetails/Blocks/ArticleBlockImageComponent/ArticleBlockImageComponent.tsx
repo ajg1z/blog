@@ -19,30 +19,14 @@ export const ArticleBlockImageComponent: FC<ArticleBlockImageComponentProps> = m
 	const { className, block } = props;
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<VStack gap={12} className={classNames(cls.ArticleBlockImageComponent, {}, [className])} align='center'>
-					<AppImage
-						fallback={<DeprecatedSkeleton className={cls.image} height='100%' />}
-						className={cls.image}
-						src={block.src}
-						alt={block.title}
-					/>
-					{block.title && <DeprecatedText align='center' text={block.title} />}
-				</VStack>
-			}
-			on={
-				<VStack gap={12} className={classNames(cls.ArticleBlockImageComponent, {}, [className])} align='center'>
-					<AppImage
-						fallback={<Skeleton className={cls.image} height='100%' />}
-						className={cls.image}
-						src={block.src}
-						alt={block.title}
-					/>
-					{block.title && <Text align='center' text={block.title} />}
-				</VStack>
-			}
-		/>
+		<VStack gap={12} className={classNames(cls.ArticleBlockImageComponent, {}, [className])} align='center'>
+        					<AppImage
+        						fallback={<Skeleton className={cls.image} height='100%' />}
+        						className={cls.image}
+        						src={block.src}
+        						alt={block.title}
+        					/>
+        					{block.title && <Text align='center' text={block.title} />}
+        				</VStack>
 	);
 });

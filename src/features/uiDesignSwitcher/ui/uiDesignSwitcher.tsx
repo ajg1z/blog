@@ -59,14 +59,10 @@ export const UIDesignSwitcher = memo((props: PropsWithChildren<uiDesignSwitcherP
 
 	return (
 		<HStack align='start' gap={12} className={className}>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={<DeprecatedListBox value={value} items={items} onChange={onChangeDesign} />}
-				on={<ListBox value={value} items={items} onChange={onChangeDesign} />}
-			/>
+			<ListBox value={value} items={items} onChange={onChangeDesign} />
 
 			{isLoading && (
-				<ToggleFeatureComponent name='isAppRedesigned' off={<DeprecatedCircleLoader />} on={<CircleLoader />} />
+				<CircleLoader />
 			)}
 		</HStack>
 	);

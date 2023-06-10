@@ -15,11 +15,7 @@ export const ArticleBlockCodeComponent: FC<ArticleBlockCodeComponentProps> = mem
 
 	return (
 		<div className={classNames('', {}, [className])}>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={<DeprecatedCode text={block.code} />}
-				on={<Code text={block.code} />}
-			/>
+			<Code text={block.code} />
 		</div>
 	);
 });

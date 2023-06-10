@@ -21,28 +21,13 @@ export const CurrencySelect = (props: PropsWithChildren<CurrencySelectProps>) =>
 	const { t } = useTranslation();
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DeprecatedListBox<Currency>
-					value={value}
-					className={classNames('', {}, [className])}
-					items={CurrencyOptions}
-					label={t('currency.labelSelect')}
-					onChange={onChange}
-					{...otherProps}
-				/>
-			}
-			on={
-				<ListBox<Currency>
-					value={value}
-					className={classNames('', {}, [className])}
-					items={CurrencyOptions}
-					label={t('currency.labelSelect')}
-					onChange={onChange}
-					{...otherProps}
-				/>
-			}
-		/>
+		<ListBox<Currency>
+        					value={value}
+        					className={classNames('', {}, [className])}
+        					items={CurrencyOptions}
+        					label={t('currency.labelSelect')}
+        					onChange={onChange}
+        					{...otherProps}
+        				/>
 	);
 };

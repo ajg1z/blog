@@ -17,21 +17,10 @@ export const NotificationItem = memo((props: PropsWithChildren<NotificationItemP
 	const { className, notification } = props;
 
 	const content = (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DeprecatedCard className={classNames(cls.NotificationItem, {}, [className])}>
-					<DeprecatedText title={notification.title} />
-					<DeprecatedText text={notification.description} />
-				</DeprecatedCard>
-			}
-			on={
-				<Card className={classNames(cls.DesignV2NotificationItem, {}, [className])}>
-					<Text title={notification.title} />
-					<Text text={notification.description} />
-				</Card>
-			}
-		/>
+		<Card className={classNames(cls.DesignV2NotificationItem, {}, [className])}>
+        					<Text title={notification.title} />
+        					<Text text={notification.description} />
+        				</Card>
 	);
 
 	if (notification.href) {

@@ -46,11 +46,7 @@ export const StarRating = memo((props: PropsWithChildren<StarRatingProps>) => {
 					width={size}
 					height={size}
 					className={classNames(
-						toggleFeature({
-							name: 'isAppRedesigned',
-							on: () => cls.redesignedStartIconBtn,
-							off: () => cls.startIconBtn,
-						}),
+						cls.redesignedStartIconBtn,
 						{
 							[cls.hovered]: currentStartsCount >= starIndex,
 							[cls.selected]: isSelected,

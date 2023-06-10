@@ -23,28 +23,13 @@ export const CountrySelect = (props: PropsWithChildren<CountrySelectProps>) => {
 	const { t } = useTranslation();
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DeprecatedListBox<Country>
-					value={value}
-					className={classNames('', {}, [className])}
-					items={CountryOptions}
-					label={t('country.labelSelect')}
-					onChange={onChange}
-					{...otherProps}
-				/>
-			}
-			on={
-				<ListBox<Country>
-					value={value}
-					className={classNames('', {}, [className])}
-					items={CountryOptions}
-					label={t('country.labelSelect')}
-					onChange={onChange}
-					{...otherProps}
-				/>
-			}
-		/>
+		<ListBox<Country>
+        					value={value}
+        					className={classNames('', {}, [className])}
+        					items={CountryOptions}
+        					label={t('country.labelSelect')}
+        					onChange={onChange}
+        					{...otherProps}
+        				/>
 	);
 };

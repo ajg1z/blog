@@ -56,11 +56,7 @@ export const PageWrapper = (props: PropsWithChildren<PageWrapperProps>) => {
 			id={PageWrapperId}
 			ref={wrapperRef}
 			className={classNames(
-				toggleFeature({
-					name: 'isAppRedesigned',
-					off: () => cls.PageWrapper,
-					on: () => cls.DesignV2PageWrapper,
-				}),
+				cls.DesignV2PageWrapper,
 				{},
 				[className],
 			)}

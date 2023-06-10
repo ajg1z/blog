@@ -75,89 +75,41 @@ export const RatingCard = memo((props: PropsWithChildren<RatingCardProps>) => {
 	const isShowFeedback = Boolean(starsCount && hasFeedback && feedback && !isOpenModal && !isSending);
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DeprecatedCard data-testid='RatingCard' className={className}>
-					<VStack gap={8} align='center'>
-						{isSending ? (
-							<VStack align='center' gap={8} justify='center'>
-								<DeprecatedRotatingLinesLoader width='50px' />
-								<DeprecatedText text={t('sending')} />
-							</VStack>
-						) : (
-							<>
-								<DeprecatedText align='center' title={title} />
-								<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
-							</>
-						)}
+		<Card data-testid='RatingCard' className={className}>
+        					<VStack gap={8} align='center'>
+        						{isSending ? (
+        							<VStack align='center' gap={8} justify='center'>
+        								<RotatingLinesLoader width='50px' />
+        								<Text text={t('sending')} />
+        							</VStack>
+        						) : (
+        							<>
+        								<Text align='center' title={title} />
+        								<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
+        							</>
+        						)}
 
-						{isShowFeedback && <Text text={feedback} />}
+        						{isShowFeedback && <Text text={feedback} />}
 
-						<Modal title={feedbackTitle} isOpen={isOpenModal}>
-							<VStack gap={12}>
-								<DeprecatedTextArea
-									theme='outline'
-									rows={4}
-									value={feedback}
-									onChangeValue={onChangeFeedback}
-									data-testid='RatingCard.TextArea'
-								/>
-								<HStack justify='end' gap={8}>
-									<DeprecatedButton
-										data-testid='RatingCard.Cancel'
-										theme='outlineRed'
-										onClick={onCancelFeedback}
-									>
-										{t('button.cancel')}
-									</DeprecatedButton>
-									<DeprecatedButton data-testid='RatingCard.Send' onClick={onSendFeedback}>
-										{t('button.send')}
-									</DeprecatedButton>
-								</HStack>
-							</VStack>
-						</Modal>
-					</VStack>
-				</DeprecatedCard>
-			}
-			on={
-				<Card data-testid='RatingCard' className={className}>
-					<VStack gap={8} align='center'>
-						{isSending ? (
-							<VStack align='center' gap={8} justify='center'>
-								<RotatingLinesLoader width='50px' />
-								<Text text={t('sending')} />
-							</VStack>
-						) : (
-							<>
-								<Text align='center' title={title} />
-								<StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
-							</>
-						)}
-
-						{isShowFeedback && <Text text={feedback} />}
-
-						<Modal title={feedbackTitle} isOpen={isOpenModal}>
-							<VStack gap={12}>
-								<TextArea
-									rows={4}
-									value={feedback}
-									onChangeValue={onChangeFeedback}
-									data-testid='RatingCard.TextArea'
-								/>
-								<HStack justify='end' gap={8}>
-									<Button data-testid='RatingCard.Cancel' onClick={onCancelFeedback}>
-										{t('button.cancel')}
-									</Button>
-									<Button data-testid='RatingCard.Send' onClick={onSendFeedback}>
-										{t('button.send')}
-									</Button>
-								</HStack>
-							</VStack>
-						</Modal>
-					</VStack>
-				</Card>
-			}
-		/>
+        						<Modal title={feedbackTitle} isOpen={isOpenModal}>
+        							<VStack gap={12}>
+        								<TextArea
+        									rows={4}
+        									value={feedback}
+        									onChangeValue={onChangeFeedback}
+        									data-testid='RatingCard.TextArea'
+        								/>
+        								<HStack justify='end' gap={8}>
+        									<Button data-testid='RatingCard.Cancel' onClick={onCancelFeedback}>
+        										{t('button.cancel')}
+        									</Button>
+        									<Button data-testid='RatingCard.Send' onClick={onSendFeedback}>
+        										{t('button.send')}
+        									</Button>
+        								</HStack>
+        							</VStack>
+        						</Modal>
+        					</VStack>
+        				</Card>
 	);
 });

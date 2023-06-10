@@ -34,51 +34,20 @@ function App() {
 			const prevDesign = localStorage.getItem(DESIGN_STORAGE_THEME_KEY);
 			if (prevDesign) document.body.classList.remove(prevDesign);
 
-			toggleFeature({
-				name: 'isAppRedesigned',
-				on() {
-					localStorage.setItem(DESIGN_STORAGE_THEME_KEY, 'app-design-v2');
-					document.body.classList.add('app-design-v2');
-				},
-				off() {
-					localStorage.setItem(DESIGN_STORAGE_THEME_KEY, 'app');
-					document.body.classList.add('app');
-				},
-			});
+			localStorage.setItem(DESIGN_STORAGE_THEME_KEY, 'app-design-v2');
+			document.body.classList.add('app-design-v2');
 		})();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<div>
-					<Suspense fallback=''>
-						{userLoading ? (
-							<PageLoader />
-						) : (
-							<>
-								<Navbar />
-								<div className='content-page'>
-									<Sidebar />
-									<AppRouter />
-								</div>
-							</>
-						)}
-					</Suspense>
-				</div>
-			}
-			on={
-				<Suspense fallback=''>
-					{userLoading ? (
-						<PageLoader />
-					) : (
-						<MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} />
-					)}
-				</Suspense>
-			}
-		/>
+		<Suspense fallback=''>
+        					{userLoading ? (
+        						<PageLoader />
+        					) : (
+        						<MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} />
+        					)}
+        				</Suspense>
 	);
 }
 

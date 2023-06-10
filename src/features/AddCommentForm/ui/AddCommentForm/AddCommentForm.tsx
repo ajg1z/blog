@@ -45,54 +45,27 @@ const AddCommentForm: FC<AddCommentFormProps> = memo((props) => {
 	}, [dispatch, sendComment, text]);
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-					<HStack
-						justify='space-between'
-						className={classNames(cls.AddCommentForm, {}, [className])}
-						data-testid='AddCommentForm'
-					>
-						<textarea
-							data-testid='AddCommentForm.Textarea'
-							placeholder={t('placeholder.addComment')}
-							rows={3}
-							value={text}
-							onChange={onCommentTextChange}
-							className={cls.input}
-						/>
-						<DeprecatedButton data-testid='AddCommentForm.Button' theme='outline' onClick={onSendComment}>
-							{t('button.send')}
-						</DeprecatedButton>
-					</HStack>
-					{error && <DeprecatedText align='right' theme='error' text={error} />}
-				</DynamicModuleLoader>
-			}
-			on={
-				<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-					<HStack
-						justify='space-between'
-						className={classNames('', {}, [className])}
-						data-testid='AddCommentForm'
-						gap={24}
-						max
-					>
-						<TextArea
-							data-testid='AddCommentForm.Textarea'
-							value={text}
-							placeholder={t('placeholder.addComment')}
-							onChange={onCommentTextChange}
-							className={cls.input}
-						/>
-						<Button data-testid='AddCommentForm.Button' variant='clear' onClick={onSendComment}>
-							{t('button.send')}
-						</Button>
-					</HStack>
-					{error && <Text align='right' variant='error' text={error} />}
-				</DynamicModuleLoader>
-			}
-		/>
+		<DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
+        					<HStack
+        						justify='space-between'
+        						className={classNames('', {}, [className])}
+        						data-testid='AddCommentForm'
+        						gap={24}
+        						max
+        					>
+        						<TextArea
+        							data-testid='AddCommentForm.Textarea'
+        							value={text}
+        							placeholder={t('placeholder.addComment')}
+        							onChange={onCommentTextChange}
+        							className={cls.input}
+        						/>
+        						<Button data-testid='AddCommentForm.Button' variant='clear' onClick={onSendComment}>
+        							{t('button.send')}
+        						</Button>
+        					</HStack>
+        					{error && <Text align='right' variant='error' text={error} />}
+        				</DynamicModuleLoader>
 	);
 });
 

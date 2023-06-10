@@ -119,81 +119,40 @@ export const EditableProfileCard = (props: PropsWithChildren<EditableProfileCard
 	return (
 		<div className={classNames(cls.EditableProfileCard, {}, [className])}>
 			{!isLoading && (
-				<ToggleFeatureComponent
-					name='isAppRedesigned'
-					off={
-						<HStack className={cls.header} gap={12}>
-							<DeprecatedText title={t('title')} className={cls.title} />
-							{readonly || isLoading ? (
-								isEditable && (
-									<DeprecatedButton
-										theme='background'
-										data-testid='EditableProfileCard.EditButton'
-										disabled={isLoading}
-										onClick={onEdit}
-									>
-										{commonT('button.edit')}
-									</DeprecatedButton>
-								)
-							) : (
-								<>
-									<DeprecatedButton
-										theme='outlineRed'
-										data-testid='EditableProfileCard.CancelButton'
-										disabled={isLoading}
-										onClick={onCancel}
-									>
-										{commonT('button.cancel')}
-									</DeprecatedButton>
-									<DeprecatedButton
-										theme='backgroundInverted'
-										data-testid='EditableProfileCard.SaveButton'
-										disabled={isLoading}
-										onClick={onSave}
-									>
-										{commonT('button.save')}
-									</DeprecatedButton>
-								</>
-							)}
-						</HStack>
-					}
-					on={
-						<HStack className={cls.header} gap={12}>
-							<Text title={t('title')} className={cls.title} />
-							{readonly || isLoading ? (
-								isEditable && (
-									<Button
-										variant='filled'
-										data-testid='EditableProfileCard.EditButton'
-										disabled={isLoading}
-										onClick={onEdit}
-									>
-										{commonT('button.edit')}
-									</Button>
-								)
-							) : (
-								<>
-									<Button
-										variant='outline'
-										data-testid='EditableProfileCard.CancelButton'
-										disabled={isLoading}
-										onClick={onCancel}
-									>
-										{commonT('button.cancel')}
-									</Button>
-									<Button
-										variant='filled'
-										data-testid='EditableProfileCard.SaveButton'
-										disabled={isLoading}
-										onClick={onSave}
-									>
-										{commonT('button.save')}
-									</Button>
-								</>
-							)}
-						</HStack>
-					}
-				/>
+				<HStack className={cls.header} gap={12}>
+                							<Text title={t('title')} className={cls.title} />
+                							{readonly || isLoading ? (
+                								isEditable && (
+                									<Button
+                										variant='filled'
+                										data-testid='EditableProfileCard.EditButton'
+                										disabled={isLoading}
+                										onClick={onEdit}
+                									>
+                										{commonT('button.edit')}
+                									</Button>
+                								)
+                							) : (
+                								<>
+                									<Button
+                										variant='outline'
+                										data-testid='EditableProfileCard.CancelButton'
+                										disabled={isLoading}
+                										onClick={onCancel}
+                									>
+                										{commonT('button.cancel')}
+                									</Button>
+                									<Button
+                										variant='filled'
+                										data-testid='EditableProfileCard.SaveButton'
+                										disabled={isLoading}
+                										onClick={onSave}
+                									>
+                										{commonT('button.save')}
+                									</Button>
+                								</>
+                							)}
+                						</HStack>
 			)}
 
 			<ProfileCard

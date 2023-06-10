@@ -21,20 +21,12 @@ export const getSidebarLinkList = (state: StateSchema) => {
 		{
 			path: getRouteMain(),
 			text: 'main',
-			Icon: toggleFeature({
-				name: 'isAppRedesigned',
-				off: () => MainIconDeprecated,
-				on: () => MainIcon,
-			}),
+			Icon: MainIcon,
 		},
 		{
 			path: getRouteAbout(),
 			text: 'about',
-			Icon: toggleFeature({
-				name: 'isAppRedesigned',
-				off: () => AboutIconDeprecated,
-				on: () => AboutIcon,
-			}),
+			Icon: AboutIcon,
 		},
 	];
 
@@ -43,21 +35,13 @@ export const getSidebarLinkList = (state: StateSchema) => {
 			{
 				path: getRouteProfile(state.user.authData!.id),
 				text: 'profile',
-				Icon: toggleFeature({
-					name: 'isAppRedesigned',
-					off: () => ProfileIconDeprecated,
-					on: () => ProfileIcon,
-				}),
+				Icon: ProfileIcon,
 				authOnly: true,
 			},
 			{
 				path: getRouteArticles(),
 				text: 'articles',
-				Icon: toggleFeature({
-					name: 'isAppRedesigned',
-					off: () => ArticlesIconDeprecated,
-					on: () => ArticleIcon,
-				}),
+				Icon: ArticleIcon,
 				authOnly: true,
 			},
 		);

@@ -7,11 +7,7 @@ import { toggleFeature } from '@/shared/lib/featureFlags';
 interface NotificationSkeletonItemProps {}
 
 export const NotificationSkeletonItem = memo((props: PropsWithChildren<NotificationSkeletonItemProps>) => {
-	const Skeleton = toggleFeature({
-		name: 'isAppRedesigned',
-		off: () => DeprecatedSkeleton,
-		on: () => DesignV2Skeleton,
-	});
+	const Skeleton = DesignV2Skeleton;
 
 	return (
 		<Skeleton border='5px' height='max-content' className={cls.NotificationSkeletonItem}>

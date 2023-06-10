@@ -48,11 +48,7 @@ export const ArticleDetailsComments: FC<ArticleDetailsCommentsProps> = (props) =
 
 	return (
 		<VStack className={classNames('', {}, [className])} gap={8} max>
-			<ToggleFeatureComponent
-				name='isAppRedesigned'
-				off={<DeprecatedText title={commonT('commentsTitle')} />}
-				on={<Text title={commonT('commentsTitle')} />}
-			/>
+			<Text title={commonT('commentsTitle')} />
 			<AddCommentForm sendComment={onSendComment} error={sendCommentsError} />
 			<CommentList error={fetchCommentsError} comments={comments} isLoading={!!commentsLoading} />
 		</VStack>

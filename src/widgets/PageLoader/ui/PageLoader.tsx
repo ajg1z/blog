@@ -11,10 +11,6 @@ interface PageLoaderProps {
 
 export const PageLoader: FC<PageLoaderProps> = memo(({ className }) => (
 	<div className={classNames(cls.PageLoader, {}, [className])}>
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={<DeprecatedRotatingLinesLoader width='80px' />}
-			on={<RotatingLinesLoader width='80px' />}
-		/>
+		<RotatingLinesLoader width='80px' />
 	</div>
 ));

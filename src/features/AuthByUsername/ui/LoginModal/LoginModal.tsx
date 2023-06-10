@@ -18,34 +18,16 @@ export const LoginModal = memo((props: PropsWithChildren<LoginModalProps>) => {
 	const { t } = useTranslation();
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<DeprecatedModal
-					isOpen={isOpen}
-					onClose={onClose}
-					className={classNames('', {}, [className])}
-					width={400}
-					title={t('formAuth')}
-				>
-					<Suspense fallback={<CircleLoader />}>
-						<LoginFormAsync onSuccess={onClose} />
-					</Suspense>
-				</DeprecatedModal>
-			}
-			on={
-				<Modal
-					isOpen={isOpen}
-					onClose={onClose}
-					className={classNames('', {}, [className])}
-					width={400}
-					title={t('formAuth')}
-				>
-					<Suspense fallback={<CircleLoader />}>
-						<LoginFormAsync onSuccess={onClose} />
-					</Suspense>
-				</Modal>
-			}
-		/>
+		<Modal
+        					isOpen={isOpen}
+        					onClose={onClose}
+        					className={classNames('', {}, [className])}
+        					width={400}
+        					title={t('formAuth')}
+        				>
+        					<Suspense fallback={<CircleLoader />}>
+        						<LoginFormAsync onSuccess={onClose} />
+        					</Suspense>
+        				</Modal>
 	);
 });

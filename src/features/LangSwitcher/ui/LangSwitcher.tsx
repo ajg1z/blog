@@ -18,18 +18,8 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className, isShort })
 	}
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<ButtonDeprecated theme='clear' className={classNames('', {}, [className])} onClick={onToggle}>
-					{isShort ? t('shortLan') : t('lan')}
-				</ButtonDeprecated>
-			}
-			on={
-				<Button variant='clear' className={classNames('', {}, [className])} onClick={onToggle}>
-					{isShort ? t('shortLan') : t('lan')}
-				</Button>
-			}
-		/>
+		<Button variant='clear' className={classNames('', {}, [className])} onClick={onToggle}>
+			{isShort ? t('shortLan') : t('lan')}
+		</Button>
 	);
 });

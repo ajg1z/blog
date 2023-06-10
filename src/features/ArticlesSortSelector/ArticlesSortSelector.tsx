@@ -46,28 +46,12 @@ export const ArticlesSortSelector = memo((props: PropsWithChildren<ArticlesSortS
 	};
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<HStack gap={12} className={classNames('', {}, [className])}>
-					<ListBoxDeprecated<ArticleSortField>
-						label={commonT('sortBy')}
-						value={sort}
-						onChange={onChangeSort}
-						items={sortOptions}
-					/>
-					<ListBoxDeprecated<SortOrder> value={order} onChange={onChangeSortOrder} items={orderOptions} />
-				</HStack>
-			}
-			on={
-				<VStack gap={12} className={classNames('', {}, [className])}>
-					<Text text={commonT('sortBy')} />
-					<HStack gap={8}>
-						<ListBox<ArticleSortField> value={sort} onChange={onChangeSort} items={sortOptions} />
-						<IconButton Svg={order === 'asc' ? BiSortDown : BiSortUp} onClick={onClickSortOrder} />
-					</HStack>
-				</VStack>
-			}
-		/>
+		<VStack gap={12} className={classNames('', {}, [className])}>
+        					<Text text={commonT('sortBy')} />
+        					<HStack gap={8}>
+        						<ListBox<ArticleSortField> value={sort} onChange={onChangeSort} items={sortOptions} />
+        						<IconButton Svg={order === 'asc' ? BiSortDown : BiSortUp} onClick={onClickSortOrder} />
+        					</HStack>
+        				</VStack>
 	);
 });

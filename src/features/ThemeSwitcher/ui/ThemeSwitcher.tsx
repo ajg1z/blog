@@ -33,26 +33,12 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({ className }) => {
 	};
 
 	return (
-		<ToggleFeatureComponent
-			name='isAppRedesigned'
-			off={
-				<ButtonDeprecated theme='clear' className={classNames('', {}, [className])} onClick={onToggleTheme}>
-					<IconDeprecated
-						width={30}
-						height={30}
-						Svg={theme === Theme.LIGHT ? LightThemeIcon : DarkThemeIcon}
-					/>
-				</ButtonDeprecated>
-			}
-			on={
-				<IconButton
-					width={30}
-					height={30}
-					Svg={ThemeIcon}
-					className={classNames('', {}, [className])}
-					onClick={onToggleTheme}
-				/>
-			}
-		/>
+		<IconButton
+        					width={30}
+        					height={30}
+        					Svg={ThemeIcon}
+        					className={classNames('', {}, [className])}
+        					onClick={onToggleTheme}
+        				/>
 	);
 });
