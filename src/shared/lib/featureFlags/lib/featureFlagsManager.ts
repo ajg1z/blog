@@ -1,9 +1,10 @@
+import { DESIGN_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { FeatureFlags } from '@/shared/types/featureFlags';
 
 let featureFlags: FeatureFlags = {
 	isArticleRatingEnabled: false,
 	isProfileRatingEnabled: false,
-	isAppRedesigned: false,
+	isAppRedesigned: localStorage.getItem(DESIGN_STORAGE_THEME_KEY) === 'app-design-v2',
 };
 
 export const getFeatureFlag = (key: keyof FeatureFlags): boolean => !!featureFlags[key];

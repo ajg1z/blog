@@ -1,8 +1,7 @@
-import { useMemo, useState, FC, useEffect, ReactNode } from 'react';
+import { useMemo, useState, FC, ReactNode, useLayoutEffect } from 'react';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
 import { Theme } from '@/shared/const/theme';
-import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
-import { toggleFeature } from '@/shared/lib/featureFlags';
+import { DESIGN_STORAGE_THEME_KEY, LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 
 interface ThemeProviderProps {
 	initialTheme?: Theme;
@@ -14,10 +13,11 @@ const defaultTheme = Theme.LIGHT;
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
 	const [theme, setTheme] = useState<Theme>(initialTheme ?? defaultTheme);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (!document.body.className) {
 			const localeStorageTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
 			document.body.classList.add(localeStorageTheme ?? defaultTheme);
+			document.body.classList.add(localStorage.getItem(DESIGN_STORAGE_THEME_KEY) ?? 'app');
 		}
 	}, []);
 

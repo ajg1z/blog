@@ -8,9 +8,10 @@ import { checkAuth, getUserLoading } from '@/entities/User';
 import { PageLoader } from '@/widgets/PageLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import useTheme from '@/shared/lib/hooks/useTheme/useTheme';
-import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
+import { DESIGN_STORAGE_THEME_KEY, LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { ToggleFeatureComponent, toggleFeature } from '@/shared/lib/featureFlags';
 import { MainLayout } from '@/shared/lib/layouts/MainLayout';
+import { ScrollToolbar } from '@/widgets/ScrollToolbar';
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -30,12 +31,17 @@ function App() {
 				}
 			}
 
+			const prevDesign = localStorage.getItem(DESIGN_STORAGE_THEME_KEY);
+			if (prevDesign) document.body.classList.remove(prevDesign);
+
 			toggleFeature({
 				name: 'isAppRedesigned',
 				on() {
+					localStorage.setItem(DESIGN_STORAGE_THEME_KEY, 'app-design-v2');
 					document.body.classList.add('app-design-v2');
 				},
 				off() {
+					localStorage.setItem(DESIGN_STORAGE_THEME_KEY, 'app');
 					document.body.classList.add('app');
 				},
 			});
@@ -68,12 +74,7 @@ function App() {
 					{userLoading ? (
 						<PageLoader />
 					) : (
-						<MainLayout
-							header={<Navbar />}
-							content={<AppRouter />}
-							sidebar={<Sidebar />}
-							// toolbar={<Text text={t('Toolbar')} />}
-						/>
+						<MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} />
 					)}
 				</Suspense>
 			}

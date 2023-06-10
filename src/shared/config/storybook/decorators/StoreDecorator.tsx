@@ -14,31 +14,25 @@ import { userReducer } from '@/entities/User/testing';
 import { counterReducer } from '@/entities/Counter/testing';
 import { articleDetailsCommentsReducer } from '@/pages/ArticleDetailsPage/testing';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+// eslint-disable-next-line import/order
 import { ReducersMapObject } from '@reduxjs/toolkit';
 
 const defaultAsyncReducers: ReducersList = {
-    login: loginReducer,
-    profile: profileReducer,
-    articleDetails: articleDetailsReducer,
-    articleDetailsComments: articleDetailsCommentsReducer,
-    scrollRecovery: scrollRecoveryReducer,
-    articlesPage: articlesPageReducer,
-    addCommentForm: addCommentFormReducer,
-    user: userReducer,
-    counter: counterReducer,
+	login: loginReducer,
+	profile: profileReducer,
+	articleDetails: articleDetailsReducer,
+	articleDetailsComments: articleDetailsCommentsReducer,
+	scrollRecovery: scrollRecoveryReducer,
+	articlesPage: articlesPageReducer,
+	addCommentForm: addCommentFormReducer,
+	user: userReducer,
+	counter: counterReducer,
 };
 
 export const StoreDecorator =
-    (
-        state: DeepPartial<StateSchema>,
-        asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
-    ) =>
-    (Story: Story) =>
-        (
-            <StoreProvider
-                initialState={state}
-                asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
-            >
-                <Story />
-            </StoreProvider>
-        );
+	(state: DeepPartial<StateSchema>, asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>) => (Story: Story) =>
+		(
+			<StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
+				<Story />
+			</StoreProvider>
+		);
