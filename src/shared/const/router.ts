@@ -10,6 +10,7 @@ export enum AppRoutes {
 	ADMIN_PANEL = 'adminPanel',
 	FORBIDDEN = 'forbidden',
 	SETTINGS = 'settings',
+	VIRTUAL_GRID = 'virtualGrid',
 }
 
 export const getRouteMain = () => '/';
@@ -23,3 +24,4 @@ export const getRouteArticleEdit = (id?: string | number) => `/articles/${id}/ed
 export const getRouteAdminPanel = () => '/admin';
 export const getRouteForbidden = () => '/403';
 export const getRouteSettings = () => '/settings';
+export const getRouteVirtualGrid = () => '/virtual-grid';

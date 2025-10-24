@@ -1,0 +1,34 @@
+.VirtualizedSpanGridContainer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.VirtualizedSpanGridSpacer {
+  position: relative;
+}
+
+.VirtualizedSpanGridViewportGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  gap: 0;
+}
+
+.VirtualizedSpanGridCell {
+  box-sizing: border-box;
+  border: 1px solid var(--accent-redesigned, #d0d7de);
+  background: var(--light-bg-redesigned, #fff);
+  color: var(--text-redesigned, #24292f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  user-select: none;
+}
+
+.DemoCellRoot {
+  background: var(--bg-redesigned, #f6f8fa);
+  border-color: var(--icon-redesigned, #afb8c1);
+}
