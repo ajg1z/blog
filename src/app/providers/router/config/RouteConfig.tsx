@@ -22,14 +22,20 @@ import {
 	getRouteNotFound,
 	getRouteProfile,
 	getRouteSettings,
+	getRouteVirtualGrid,
 } from '@/shared/const/router';
 import { AppRouteProps } from '../types';
 import { SettingsPage } from '@/pages/SettingsPage';
+import { VirtualGridPage } from '@/pages/VirtualGridPage';
 
 export const RouteConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.ABOUT]: {
 		path: getRouteAbout(),
 		element: <AboutPage />,
+	},
+	[AppRoutes.VIRTUAL_GRID]: {
+		path: getRouteVirtualGrid(),
+		element: <VirtualGridPage />,
 	},
 	[AppRoutes.MAIN]: {
 		path: getRouteMain(),
