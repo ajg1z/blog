@@ -8,6 +8,12 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
         modules: [options.paths.src, 'node_modules'],
         alias: {
             '@': options.paths.src,
+            'node:path': require.resolve('path-browserify'),
+            'node:util': require.resolve('util/'),
+        },
+        fallback: {
+            path: require.resolve('path-browserify'),
+            util: require.resolve('util/'),
         },
         mainFiles: ['index'],
     };
